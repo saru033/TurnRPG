@@ -6,6 +6,7 @@ public class BattleManager : MonoBehaviour
 {
     [Header("References")]
     public BattleUI battleUI;
+    public CharacterPlacer characterPlacer;
 
     // -------------------------------------------------------
     // 전투 상태
@@ -34,16 +35,21 @@ public class BattleManager : MonoBehaviour
         // 임시 캐릭터 생성 — 추후 외부 데이터로 교체
         allCharacters = new List<BattleCharacter>
         {
-            new BattleCharacter("아군A", isPlayer: true,  maxHp: 1000, defense: 50,  speed: 321),
-            new BattleCharacter("아군B", isPlayer: true,  maxHp: 900,  defense: 40,  speed: 268),
-            new BattleCharacter("적A",   isPlayer: false, maxHp: 800,  defense: 30,  speed: 198),
-            new BattleCharacter("적B",   isPlayer: false, maxHp: 600,  defense: 20,  speed: 222),
+            new BattleCharacter("A", isPlayer: true,  maxHp: 1000, defense: 50,  speed: 321),
+            new BattleCharacter("B", isPlayer: true,  maxHp: 900,  defense: 40,  speed: 268),
+            new BattleCharacter("C", isPlayer: true,  maxHp: 900,  defense: 40,  speed: 112),
+
+            new BattleCharacter("EA",   isPlayer: false, maxHp: 800,  defense: 30,  speed: 198),
+            new BattleCharacter("EB",   isPlayer: false, maxHp: 600,  defense: 20,  speed: 222),
         };
 
         gaugeSystem = new Actiongaugesystem();
 
         battleUI.Init(allCharacters);
         battleUI.SetSkillButtonsVisible(false);
+
+        if (!object.ReferenceEquals(characterPlacer, null))
+            characterPlacer.PlaceCharacters(allCharacters);
 
         State = BattleState.Idle;
         StartCoroutine(TurnLoop());
