@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 105c21214ebaa0a4ba836d3b14b5e4e2, type: 3}
+  m_Name: 1000_male
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterData
+  ID: 1000
+  CharacterName: male
+  isPlayer: 1
+  MaxHp: 650
+  Attack: 115
+  Defense: 89
+  Speed: 98
+  CritChance: 0.15
+  CritDamage: 1.5
+  illustration: {fileID: 8897448393312800353, guid: 3ee6fd1c06416e346a97c0dcff1f32d5, type: 3}
+  iconImage: {fileID: 3838508675734187569, guid: 2c577ec5a447c9d4a919e6ad6d386d01, type: 3}
+  sideImage: {fileID: 5811013593148057389, guid: 8956ecde244ba124fa540d96c70262be, type: 3}
+  characterPrefab: {fileID: 9213099258232346730, guid: 5dc7fab655d4942448f26fdd241d19bb, type: 3}

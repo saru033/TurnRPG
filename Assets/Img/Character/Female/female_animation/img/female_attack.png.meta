@@ -1,0 +1,785 @@
+fileFormatVersion: 2
+guid: 0e6ae630a429ee042a8131db9a07414b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6525810074332237913
+    second: female_attack_0
+  - first:
+      213: 3567601379901167113
+    second: female_attack_1
+  - first:
+      213: -7124627368006790240
+    second: female_attack_2
+  - first:
+      213: -6441249856294483478
+    second: female_attack_3
+  - first:
+      213: -2646190744441158317
+    second: female_attack_4
+  - first:
+      213: -7270169595494520964
+    second: female_attack_5
+  - first:
+      213: 1171443244543052652
+    second: female_attack_6
+  - first:
+      213: 670522433199982405
+    second: female_attack_7
+  - first:
+      213: -3815084759624651719
+    second: female_attack_8
+  - first:
+      213: -7436000275453234012
+    second: female_attack_9
+  - first:
+      213: 4985637276795575311
+    second: female_attack_10
+  - first:
+      213: 7189507658717989159
+    second: female_attack_11
+  - first:
+      213: -8058260934934826455
+    second: female_attack_12
+  - first:
+      213: 7310494157015589024
+    second: female_attack_13
+  - first:
+      213: -1570190479147885004
+    second: female_attack_14
+  - first:
+      213: -7606874995820078576
+    second: female_attack_15
+  - first:
+      213: -3800081897965726328
+    second: female_attack_16
+  - first:
+      213: 478470715326823427
+    second: female_attack_17
+  - first:
+      213: -3284139054606588825
+    second: female_attack_18
+  - first:
+      213: 6116156588767156923
+    second: female_attack_19
+  - first:
+      213: -4772847799649657510
+    second: female_attack_20
+  - first:
+      213: 3104145657852163643
+    second: female_attack_21
+  - first:
+      213: -4000199823809380520
+    second: female_attack_22
+  - first:
+      213: -2980033324020492883
+    second: female_attack_23
+  - first:
+      213: 637174337538730774
+    second: female_attack_24
+  - first:
+      213: 7680417387180832234
+    second: female_attack_25
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 1
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: female_attack_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2592
+        width: 544
+        height: 648
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9501d38ffa5509a50800000000000000
+      internalID: 6525810074332237913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_attack_1
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 2592
+        width: 544
+        height: 648
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 906d3359d8aa28130800000000000000
+      internalID: 3567601379901167113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_attack_2
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 2592
+        width: 544
+        height: 648
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a3ddec182d302d90800000000000000
+      internalID: -7124627368006790240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_attack_3
+      rect:
+        serializedVersion: 2
+        x: 1632
+        y: 2592
+        width: 544
+        height: 648
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae9080602651c96a0800000000000000
+      internalID: -6441249856294483478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_attack_4
+      rect:
+        serializedVersion: 2
+        x: 2176
+        y: 2592
+        width: 544
+        height: 648
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35588adb987d64bd0800000000000000
+      internalID: -2646190744441158317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_attack_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1944
+        width: 544
+        height: 648
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7724bb954b2b1b90800000000000000
+      internalID: -7270169595494520964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_attack_6
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 1944
+        width: 544
+        height: 648
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6b0581ac6dc14010800000000000000
+      internalID: 1171443244543052652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_attack_7
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 1944
+        width: 544
+        height: 648
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 547c0d4b99c2e4900800000000000000
+      internalID: 670522433199982405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_attack_8
+      rect:
+        serializedVersion: 2
+        x: 1632
+        y: 1944
+        width: 544
+        height: 648
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93ce092df981e0bc0800000000000000
+      internalID: -3815084759624651719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_attack_9
+      rect:
+        serializedVersion: 2
+        x: 2176
+        y: 1944
+        width: 544
+        height: 648
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a437e7a5250ec890800000000000000
+      internalID: -7436000275453234012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_attack_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1296
+        width: 544
+        height: 648
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0c985e20ba803540800000000000000
+      internalID: 4985637276795575311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_attack_11
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 1296
+        width: 544
+        height: 648
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72906dbbf1346c360800000000000000
+      internalID: 7189507658717989159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_attack_12
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 1296
+        width: 544
+        height: 648
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9227dc9cf5e4b2090800000000000000
+      internalID: -8058260934934826455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_attack_13
+      rect:
+        serializedVersion: 2
+        x: 1632
+        y: 1296
+        width: 544
+        height: 648
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a0ab7104b7147560800000000000000
+      internalID: 7310494157015589024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_attack_14
+      rect:
+        serializedVersion: 2
+        x: 2176
+        y: 1296
+        width: 544
+        height: 648
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43e90b41410953ae0800000000000000
+      internalID: -1570190479147885004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_attack_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 648
+        width: 544
+        height: 648
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01ad7578e73fe6690800000000000000
+      internalID: -7606874995820078576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_attack_16
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 648
+        width: 544
+        height: 648
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8855c52c5a5634bc0800000000000000
+      internalID: -3800081897965726328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_attack_17
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 648
+        width: 544
+        height: 648
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30c7b7e949ed3a600800000000000000
+      internalID: 478470715326823427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_attack_18
+      rect:
+        serializedVersion: 2
+        x: 1632
+        y: 648
+        width: 544
+        height: 648
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 764ef211ee46c62d0800000000000000
+      internalID: -3284139054606588825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_attack_19
+      rect:
+        serializedVersion: 2
+        x: 2176
+        y: 648
+        width: 544
+        height: 648
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bba91204304f0e450800000000000000
+      internalID: 6116156588767156923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_attack_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 544
+        height: 648
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5d90eeb63073cdb0800000000000000
+      internalID: -4772847799649657510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_attack_21
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 0
+        width: 544
+        height: 648
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3679538704241b20800000000000000
+      internalID: 3104145657852163643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_attack_22
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 0
+        width: 544
+        height: 648
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85ff247447f6c78c0800000000000000
+      internalID: -4000199823809380520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_attack_23
+      rect:
+        serializedVersion: 2
+        x: 1632
+        y: 0
+        width: 544
+        height: 648
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da59eee0b7bc4a6d0800000000000000
+      internalID: -2980033324020492883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_attack_24
+      rect:
+        serializedVersion: 2
+        x: 2176
+        y: 0
+        width: 544
+        height: 648
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61badf02fa2b7d800800000000000000
+      internalID: 637174337538730774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 752146960fb81d041ad35510e695b6d5
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":5.0,"y":5.0},"gridSpriteSize":{"x":544.0,"y":648.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      female_attack_0: 6525810074332237913
+      female_attack_1: 3567601379901167113
+      female_attack_10: 4985637276795575311
+      female_attack_11: 7189507658717989159
+      female_attack_12: -8058260934934826455
+      female_attack_13: 7310494157015589024
+      female_attack_14: -1570190479147885004
+      female_attack_15: -7606874995820078576
+      female_attack_16: -3800081897965726328
+      female_attack_17: 478470715326823427
+      female_attack_18: -3284139054606588825
+      female_attack_19: 6116156588767156923
+      female_attack_2: -7124627368006790240
+      female_attack_20: -4772847799649657510
+      female_attack_21: 3104145657852163643
+      female_attack_22: -4000199823809380520
+      female_attack_23: -2980033324020492883
+      female_attack_24: 637174337538730774
+      female_attack_3: -6441249856294483478
+      female_attack_4: -2646190744441158317
+      female_attack_5: -7270169595494520964
+      female_attack_6: 1171443244543052652
+      female_attack_7: 670522433199982405
+      female_attack_8: -3815084759624651719
+      female_attack_9: -7436000275453234012
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,1068 @@
+fileFormatVersion: 2
+guid: bff4aa91cdc54e949a3e5c0edf436c17
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3070253186021682394
+    second: female_wait_0
+  - first:
+      213: -1497730169630682112
+    second: female_wait_1
+  - first:
+      213: -8806348561069177037
+    second: female_wait_2
+  - first:
+      213: -8965506550866663067
+    second: female_wait_3
+  - first:
+      213: 5261675069513059352
+    second: female_wait_4
+  - first:
+      213: 8128988436780688121
+    second: female_wait_5
+  - first:
+      213: -4783397071272800518
+    second: female_wait_6
+  - first:
+      213: -7426955980916761418
+    second: female_wait_7
+  - first:
+      213: -1645357468493586518
+    second: female_wait_8
+  - first:
+      213: 2357147972539960959
+    second: female_wait_9
+  - first:
+      213: 6730785598705140960
+    second: female_wait_10
+  - first:
+      213: -7331930826729840593
+    second: female_wait_11
+  - first:
+      213: -6662007769899284482
+    second: female_wait_12
+  - first:
+      213: -7525855273759469163
+    second: female_wait_13
+  - first:
+      213: -2329256815844901912
+    second: female_wait_14
+  - first:
+      213: 4684230514423369151
+    second: female_wait_15
+  - first:
+      213: 4392596937930657224
+    second: female_wait_16
+  - first:
+      213: 2820329343133550531
+    second: female_wait_17
+  - first:
+      213: -3277551746425685573
+    second: female_wait_18
+  - first:
+      213: 2114555738940221104
+    second: female_wait_19
+  - first:
+      213: -2257846328775382698
+    second: female_wait_20
+  - first:
+      213: 3025648454921362598
+    second: female_wait_21
+  - first:
+      213: -630123275114452592
+    second: female_wait_22
+  - first:
+      213: 3556219956067275998
+    second: female_wait_23
+  - first:
+      213: -1008534969534718198
+    second: female_wait_24
+  - first:
+      213: -3805727267833148156
+    second: female_wait_25
+  - first:
+      213: 1686454022036305218
+    second: female_wait_26
+  - first:
+      213: 8748413577774893749
+    second: female_wait_27
+  - first:
+      213: -201199242465530143
+    second: female_wait_28
+  - first:
+      213: -8693539119411936334
+    second: female_wait_29
+  - first:
+      213: 2053084717609372042
+    second: female_wait_30
+  - first:
+      213: 1681986066282694200
+    second: female_wait_31
+  - first:
+      213: 4990876039638524027
+    second: female_wait_32
+  - first:
+      213: 4896862761054595532
+    second: female_wait_33
+  - first:
+      213: -7632688068708813352
+    second: female_wait_34
+  - first:
+      213: 7194496773159995640
+    second: female_wait_35
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 1
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: female_wait_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3420
+        width: 364
+        height: 684
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: adc655b710bbb9a20800000000000000
+      internalID: 3070253186021682394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_wait_1
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 3420
+        width: 364
+        height: 684
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00417c5985ef63be0800000000000000
+      internalID: -1497730169630682112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_wait_2
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 3420
+        width: 364
+        height: 684
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 337033944a099c580800000000000000
+      internalID: -8806348561069177037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_wait_3
+      rect:
+        serializedVersion: 2
+        x: 1092
+        y: 3420
+        width: 364
+        height: 684
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 569a7241b4f149380800000000000000
+      internalID: -8965506550866663067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_wait_4
+      rect:
+        serializedVersion: 2
+        x: 1456
+        y: 3420
+        width: 364
+        height: 684
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81ccad12999350940800000000000000
+      internalID: 5261675069513059352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_wait_5
+      rect:
+        serializedVersion: 2
+        x: 1820
+        y: 3420
+        width: 364
+        height: 684
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f2229df9e7ffc070800000000000000
+      internalID: 8128988436780688121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_wait_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2736
+        width: 364
+        height: 684
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afe042b05b5fd9db0800000000000000
+      internalID: -4783397071272800518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_wait_7
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 2736
+        width: 364
+        height: 684
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6bc5ef292e62ee890800000000000000
+      internalID: -7426955980916761418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_wait_8
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 2736
+        width: 364
+        height: 684
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aaf57e199148a29e0800000000000000
+      internalID: -1645357468493586518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_wait_9
+      rect:
+        serializedVersion: 2
+        x: 1092
+        y: 2736
+        width: 364
+        height: 684
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7ec642a79546b020800000000000000
+      internalID: 2357147972539960959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_wait_10
+      rect:
+        serializedVersion: 2
+        x: 1456
+        y: 2736
+        width: 364
+        height: 684
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e4822e37dd886d50800000000000000
+      internalID: 6730785598705140960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_wait_11
+      rect:
+        serializedVersion: 2
+        x: 1820
+        y: 2736
+        width: 364
+        height: 684
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f20280362cfbf3a90800000000000000
+      internalID: -7331930826729840593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_wait_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2052
+        width: 364
+        height: 684
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef7c248ea3bcb83a0800000000000000
+      internalID: -6662007769899284482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_wait_13
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 2052
+        width: 364
+        height: 684
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5911190908ace8790800000000000000
+      internalID: -7525855273759469163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_wait_14
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 2052
+        width: 364
+        height: 684
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8eb38e45441dcafd0800000000000000
+      internalID: -2329256815844901912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_wait_15
+      rect:
+        serializedVersion: 2
+        x: 1092
+        y: 2052
+        width: 364
+        height: 684
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fbd0042b5dab10140800000000000000
+      internalID: 4684230514423369151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_wait_16
+      rect:
+        serializedVersion: 2
+        x: 1456
+        y: 2052
+        width: 364
+        height: 684
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8cd43de54a3a5fc30800000000000000
+      internalID: 4392596937930657224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_wait_17
+      rect:
+        serializedVersion: 2
+        x: 1820
+        y: 2052
+        width: 364
+        height: 684
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c706174892d32720800000000000000
+      internalID: 2820329343133550531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_wait_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1368
+        width: 364
+        height: 684
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb9f5554d0cc382d0800000000000000
+      internalID: -3277551746425685573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_wait_19
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 1368
+        width: 364
+        height: 684
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b6ab4dbd39685d10800000000000000
+      internalID: 2114555738940221104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_wait_20
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 1368
+        width: 364
+        height: 684
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6596ceff9b48aa0e0800000000000000
+      internalID: -2257846328775382698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_wait_21
+      rect:
+        serializedVersion: 2
+        x: 1092
+        y: 1368
+        width: 364
+        height: 684
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ac1cca3d334df920800000000000000
+      internalID: 3025648454921362598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_wait_22
+      rect:
+        serializedVersion: 2
+        x: 1456
+        y: 1368
+        width: 364
+        height: 684
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 099e816483a5147f0800000000000000
+      internalID: -630123275114452592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_wait_23
+      rect:
+        serializedVersion: 2
+        x: 1820
+        y: 1368
+        width: 364
+        height: 684
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed49b88553b3a5130800000000000000
+      internalID: 3556219956067275998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_wait_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 684
+        width: 364
+        height: 684
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0fd255e9c6f002f0800000000000000
+      internalID: -1008534969534718198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_wait_25
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 684
+        width: 364
+        height: 684
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40d89c8a6375f2bc0800000000000000
+      internalID: -3805727267833148156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_wait_26
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 684
+        width: 364
+        height: 684
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 245b0817ffc776710800000000000000
+      internalID: 1686454022036305218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_wait_27
+      rect:
+        serializedVersion: 2
+        x: 1092
+        y: 684
+        width: 364
+        height: 684
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ba0a734ccb986970800000000000000
+      internalID: 8748413577774893749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_wait_28
+      rect:
+        serializedVersion: 2
+        x: 1456
+        y: 684
+        width: 364
+        height: 684
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1eea3cfda52353df0800000000000000
+      internalID: -201199242465530143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_wait_29
+      rect:
+        serializedVersion: 2
+        x: 1820
+        y: 684
+        width: 364
+        height: 684
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b34d723b385a5780800000000000000
+      internalID: -8693539119411936334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_wait_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 364
+        height: 684
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a89c3e64ca50e7c10800000000000000
+      internalID: 2053084717609372042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_wait_31
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 0
+        width: 364
+        height: 684
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 836cfed6a6d975710800000000000000
+      internalID: 1681986066282694200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_wait_32
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 0
+        width: 364
+        height: 684
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b70a9a4b057234540800000000000000
+      internalID: 4990876039638524027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_wait_33
+      rect:
+        serializedVersion: 2
+        x: 1092
+        y: 0
+        width: 364
+        height: 684
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc96f7a8cb625f340800000000000000
+      internalID: 4896862761054595532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_wait_34
+      rect:
+        serializedVersion: 2
+        x: 1456
+        y: 0
+        width: 364
+        height: 684
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d5bf3724ae331690800000000000000
+      internalID: -7632688068708813352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_wait_35
+      rect:
+        serializedVersion: 2
+        x: 1820
+        y: 0
+        width: 364
+        height: 684
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f845e572bcf7d360800000000000000
+      internalID: 7194496773159995640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 990c06e034bebd74bb794c7a5935b767
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":6.0,"y":6.0},"gridSpriteSize":{"x":364.0,"y":684.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      female_wait_0: 3070253186021682394
+      female_wait_1: -1497730169630682112
+      female_wait_10: 6730785598705140960
+      female_wait_11: -7331930826729840593
+      female_wait_12: -6662007769899284482
+      female_wait_13: -7525855273759469163
+      female_wait_14: -2329256815844901912
+      female_wait_15: 4684230514423369151
+      female_wait_16: 4392596937930657224
+      female_wait_17: 2820329343133550531
+      female_wait_18: -3277551746425685573
+      female_wait_19: 2114555738940221104
+      female_wait_2: -8806348561069177037
+      female_wait_20: -2257846328775382698
+      female_wait_21: 3025648454921362598
+      female_wait_22: -630123275114452592
+      female_wait_23: 3556219956067275998
+      female_wait_24: -1008534969534718198
+      female_wait_25: -3805727267833148156
+      female_wait_26: 1686454022036305218
+      female_wait_27: 8748413577774893749
+      female_wait_28: -201199242465530143
+      female_wait_29: -8693539119411936334
+      female_wait_3: -8965506550866663067
+      female_wait_30: 2053084717609372042
+      female_wait_31: 1681986066282694200
+      female_wait_32: 4990876039638524027
+      female_wait_33: 4896862761054595532
+      female_wait_34: -7632688068708813352
+      female_wait_35: 7194496773159995640
+      female_wait_4: 5261675069513059352
+      female_wait_5: 8128988436780688121
+      female_wait_6: -4783397071272800518
+      female_wait_7: -7426955980916761418
+      female_wait_8: -1645357468493586518
+      female_wait_9: 2357147972539960959
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

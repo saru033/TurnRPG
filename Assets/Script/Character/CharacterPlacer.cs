@@ -65,10 +65,24 @@ public class CharacterPlacer : MonoBehaviour
                 continue;
             }
 
-            var go = Instantiate(characterPrefab, panelRect);
+            // CharacterData의 프리팹 사용, 없으면 fallback
+            GameObject prefabToUse = c.Data.characterPrefab != null 
+                ? c.Data.characterPrefab 
+                : characterPrefab;
+
+            var go = Instantiate(prefabToUse, panelRect);
             var rt = go.GetComponent<RectTransform>();
 
             if (rt == null) { Debug.LogError($"[CharacterPlacer] RectTransform 없음: {c.Name}"); continue; }
+
+            //나중에 제어를 위해 애니메이터 연결
+            var animator = go.GetComponent<Animator>();
+    if (animator == null)
+        animator = go.GetComponentInChildren<Animator>();
+
+    // BattleCharacter에 Animator 연결
+    c.SetAnimator(animator);
+
 
             // pivot (0.5, 0) 강제 설정
             rt.pivot = new Vector2(0.5f, 0f);

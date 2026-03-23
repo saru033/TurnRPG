@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 105c21214ebaa0a4ba836d3b14b5e4e2, type: 3}
+  m_Name: 1001_female
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterData
+  ID: 1001
+  CharacterName: female
+  isPlayer: 1
+  MaxHp: 558
+  Attack: 104
+  Defense: 95
+  Speed: 112
+  CritChance: 0.15
+  CritDamage: 1.5
+  illustration: {fileID: 8553771532132468781, guid: 02a90ce408e55d348ad22b3cdefc0e97, type: 3}
+  iconImage: {fileID: -55260056193131895, guid: 90afa1541dd0a6b4ab39ae4bdb648712, type: 3}
+  sideImage: {fileID: 3888641499719248106, guid: 87a664be21bf45f4f9219c14546c1816, type: 3}
+  characterPrefab: {fileID: 1635540565847222994, guid: dff8b8cfe3e764e449ce348511cef712, type: 3}

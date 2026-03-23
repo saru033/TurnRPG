@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +7,9 @@ public class BattleManager : MonoBehaviour
     [Header("References")]
     public BattleUI battleUI;
     public CharacterPlacer characterPlacer;
+
+    [Header("전투 참가 데이터 (테스트용)")]
+    public List<CharacterData> initialCharacterDatas;
 
     // -------------------------------------------------------
     // 전투 상태
@@ -32,21 +35,28 @@ public class BattleManager : MonoBehaviour
     // -------------------------------------------------------
     void InitBattle()
     {
-        // 임시 캐릭터 생성 — 추후 외부 데이터로 교체
-        allCharacters = new List<BattleCharacter>
+        // ScriptableObject(CharacterData) 리스트를 기반으로 런타임 캐릭터 생성
+        allCharacters = new List<BattleCharacter>();
+        
+        if (initialCharacterDatas != null && initialCharacterDatas.Count > 0)
         {
-            new BattleCharacter("A", isPlayer: true,  maxHp: 1000, defense: 50,  speed: 321),
-            new BattleCharacter("B", isPlayer: true,  maxHp: 900,  defense: 40,  speed: 268),
-            new BattleCharacter("C", isPlayer: true,  maxHp: 900,  defense: 40,  speed: 112),
-
-            new BattleCharacter("EA",   isPlayer: false, maxHp: 800,  defense: 30,  speed: 198),
-            new BattleCharacter("EB",   isPlayer: false, maxHp: 600,  defense: 20,  speed: 222),
-        };
+            foreach (var data in initialCharacterDatas)
+            {
+                if (data != null)
+                    allCharacters.Add(new BattleCharacter(data));
+            }
+        }
+        else
+        {
+            Debug.LogWarning("[BattleManager] initialCharacterDatas가 비어있습니다. 에디터에서 할당해주세요.");
+        }
 
         gaugeSystem = new Actiongaugesystem();
 
         battleUI.Init(allCharacters);
         battleUI.SetSkillButtonsVisible(false);
+        battleUI.SetSideImageVisible(false , currentActor);
+
 
         if (!object.ReferenceEquals(characterPlacer, null))
             characterPlacer.PlaceCharacters(allCharacters);
@@ -82,6 +92,7 @@ public class BattleManager : MonoBehaviour
                 // 2. 아군 턴 — 플레이어 입력 대기
                 State = BattleState.PlayerTurn;
                 battleUI.SetSkillButtonsVisible(true);
+                battleUI.SetSideImageVisible(true ,currentActor);
 
                 // OnSkillSelected()가 호출될 때까지 대기
                 yield return new WaitUntil(() => State != BattleState.PlayerTurn);
@@ -91,6 +102,7 @@ public class BattleManager : MonoBehaviour
                 // 3. 적 턴 — 자동 행동
                 State = BattleState.EnemyTurn;
                 battleUI.SetSkillButtonsVisible(false);
+                battleUI.SetSideImageVisible(true , currentActor);
 
                 yield return new WaitForSeconds(0.5f);   // 적 행동 연출 딜레이
                 EnemyAct(currentActor);
@@ -100,6 +112,7 @@ public class BattleManager : MonoBehaviour
             gaugeSystem.OnTurnEnd(currentActor);
             battleUI.UpdateGaugePositions(allCharacters);
             battleUI.SetSkillButtonsVisible(false);
+            battleUI.SetSideImageVisible(false , currentActor);
 
             yield return new WaitForSeconds(0.2f);
         }

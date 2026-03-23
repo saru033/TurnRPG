@@ -1,0 +1,1068 @@
+fileFormatVersion: 2
+guid: fc89a1a75dd649943a3836d6af5f9294
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6458462140447729788
+    second: male_concentration_0
+  - first:
+      213: 6679351628097102457
+    second: male_concentration_1
+  - first:
+      213: -8814799020867014615
+    second: male_concentration_2
+  - first:
+      213: -3391130129711700122
+    second: male_concentration_3
+  - first:
+      213: 576382774587869574
+    second: male_concentration_4
+  - first:
+      213: 6088853712750171933
+    second: male_concentration_5
+  - first:
+      213: -7952417385280689146
+    second: male_concentration_6
+  - first:
+      213: -1970481122049716220
+    second: male_concentration_7
+  - first:
+      213: -6557875179784268996
+    second: male_concentration_8
+  - first:
+      213: -3427752913633128478
+    second: male_concentration_9
+  - first:
+      213: -6813335881631432722
+    second: male_concentration_10
+  - first:
+      213: -5382700954664310319
+    second: male_concentration_11
+  - first:
+      213: 5021821185127296126
+    second: male_concentration_12
+  - first:
+      213: -5610151335886347796
+    second: male_concentration_13
+  - first:
+      213: -652855877089198643
+    second: male_concentration_14
+  - first:
+      213: -8995038895536770638
+    second: male_concentration_15
+  - first:
+      213: 2725532395545139430
+    second: male_concentration_16
+  - first:
+      213: 1943176981468430517
+    second: male_concentration_17
+  - first:
+      213: 8169541652030387224
+    second: male_concentration_18
+  - first:
+      213: -4704700393024179422
+    second: male_concentration_19
+  - first:
+      213: 2893597502155349447
+    second: male_concentration_20
+  - first:
+      213: 6394372370754959023
+    second: male_concentration_21
+  - first:
+      213: -1067593051220533835
+    second: male_concentration_22
+  - first:
+      213: 2585970490313600551
+    second: male_concentration_23
+  - first:
+      213: -6176394230722781982
+    second: male_concentration_24
+  - first:
+      213: -4694557374244673718
+    second: male_concentration_25
+  - first:
+      213: 1111347440533962026
+    second: male_concentration_26
+  - first:
+      213: -6161428551146182912
+    second: male_concentration_27
+  - first:
+      213: -6649106082879052346
+    second: male_concentration_28
+  - first:
+      213: -5937525202141610717
+    second: male_concentration_29
+  - first:
+      213: -1496352459303700726
+    second: male_concentration_30
+  - first:
+      213: 6819155833934291732
+    second: male_concentration_31
+  - first:
+      213: -6971480033660720360
+    second: male_concentration_32
+  - first:
+      213: -8392710171033787443
+    second: male_concentration_33
+  - first:
+      213: -1935460624827641261
+    second: male_concentration_34
+  - first:
+      213: -903956530422540656
+    second: male_concentration_35
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 1
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: male_concentration_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3400
+        width: 392
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7822bc291111a950800000000000000
+      internalID: 6458462140447729788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_concentration_1
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 3400
+        width: 392
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 972a7a2cae2d1bc50800000000000000
+      internalID: 6679351628097102457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_concentration_2
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 3400
+        width: 392
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 920b2ca4efa8ba580800000000000000
+      internalID: -8814799020867014615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_concentration_3
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 3400
+        width: 392
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 667e86f2d1940f0d0800000000000000
+      internalID: -3391130129711700122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_concentration_4
+      rect:
+        serializedVersion: 2
+        x: 1568
+        y: 3400
+        width: 392
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 689c6f56419bff700800000000000000
+      internalID: 576382774587869574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_concentration_5
+      rect:
+        serializedVersion: 2
+        x: 1960
+        y: 3400
+        width: 392
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d17dacd0134ff7450800000000000000
+      internalID: 6088853712750171933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_concentration_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2720
+        width: 392
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60c24b4958653a190800000000000000
+      internalID: -7952417385280689146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_concentration_7
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 2720
+        width: 392
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4001d9b0cd177a4e0800000000000000
+      internalID: -1970481122049716220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_concentration_8
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 2720
+        width: 392
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c339b93e44fbdf4a0800000000000000
+      internalID: -6557875179784268996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_concentration_9
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 2720
+        width: 392
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ef4615d2ec2e60d0800000000000000
+      internalID: -3427752913633128478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_concentration_10
+      rect:
+        serializedVersion: 2
+        x: 1568
+        y: 2720
+        width: 392
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eef7fef3d1b2271a0800000000000000
+      internalID: -6813335881631432722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_concentration_11
+      rect:
+        serializedVersion: 2
+        x: 1960
+        y: 2720
+        width: 392
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d9e311200ecc45b0800000000000000
+      internalID: -5382700954664310319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_concentration_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2040
+        width: 392
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7c2b09d2c711b540800000000000000
+      internalID: 5021821185127296126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_concentration_13
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 2040
+        width: 392
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce1af48751db422b0800000000000000
+      internalID: -5610151335886347796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_concentration_14
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 2040
+        width: 392
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dcd729ce90790f6f0800000000000000
+      internalID: -652855877089198643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_concentration_15
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 2040
+        width: 392
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b175b248c33b2380800000000000000
+      internalID: -8995038895536770638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_concentration_16
+      rect:
+        serializedVersion: 2
+        x: 1568
+        y: 2040
+        width: 392
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e89944f54903d520800000000000000
+      internalID: 2725532395545139430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_concentration_17
+      rect:
+        serializedVersion: 2
+        x: 1960
+        y: 2040
+        width: 392
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b044245b2d87fa10800000000000000
+      internalID: 1943176981468430517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_concentration_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1360
+        width: 392
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 814770339da006170800000000000000
+      internalID: 8169541652030387224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_concentration_19
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 1360
+        width: 392
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 223372b4beb85beb0800000000000000
+      internalID: -4704700393024179422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_concentration_20
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 1360
+        width: 392
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cd5de6e89f182820800000000000000
+      internalID: 2893597502155349447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_concentration_21
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 1360
+        width: 392
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa6fb68dacf5db850800000000000000
+      internalID: 6394372370754959023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_concentration_22
+      rect:
+        serializedVersion: 2
+        x: 1568
+        y: 1360
+        width: 392
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5bd1359b6c52f21f0800000000000000
+      internalID: -1067593051220533835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_concentration_23
+      rect:
+        serializedVersion: 2
+        x: 1960
+        y: 1360
+        width: 392
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72ee8cab57633e320800000000000000
+      internalID: 2585970490313600551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_concentration_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 680
+        width: 392
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ec1ffccb2a094aa0800000000000000
+      internalID: -6176394230722781982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_concentration_25
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 680
+        width: 392
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a47a472e0f499deb0800000000000000
+      internalID: -4694557374244673718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_concentration_26
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 680
+        width: 392
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2df017eb9c4c6f00800000000000000
+      internalID: 1111347440533962026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_concentration_27
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 680
+        width: 392
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0076bfb90653e7aa0800000000000000
+      internalID: -6161428551146182912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_concentration_28
+      rect:
+        serializedVersion: 2
+        x: 1568
+        y: 680
+        width: 392
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c5ea100f31a9b3a0800000000000000
+      internalID: -6649106082879052346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_concentration_29
+      rect:
+        serializedVersion: 2
+        x: 1960
+        y: 680
+        width: 392
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32d7b69794ca99da0800000000000000
+      internalID: -5937525202141610717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_concentration_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 392
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a07bb64cd53eb3be0800000000000000
+      internalID: -1496352459303700726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_concentration_31
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 0
+        width: 392
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 413afadf91282ae50800000000000000
+      internalID: 6819155833934291732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_concentration_32
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 0
+        width: 392
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81bacea88d3504f90800000000000000
+      internalID: -6971480033660720360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_concentration_33
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 0
+        width: 392
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc329b0e09a178b80800000000000000
+      internalID: -8392710171033787443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_concentration_34
+      rect:
+        serializedVersion: 2
+        x: 1568
+        y: 0
+        width: 392
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3529464f0dcd325e0800000000000000
+      internalID: -1935460624827641261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_concentration_35
+      rect:
+        serializedVersion: 2
+        x: 1960
+        y: 0
+        width: 392
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09615cf23508473f0800000000000000
+      internalID: -903956530422540656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 724e33a2a439b43459781a09e3fc06c0
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":6.0,"y":6.0},"gridSpriteSize":{"x":392.0,"y":680.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      male_concentration_0: 6458462140447729788
+      male_concentration_1: 6679351628097102457
+      male_concentration_10: -6813335881631432722
+      male_concentration_11: -5382700954664310319
+      male_concentration_12: 5021821185127296126
+      male_concentration_13: -5610151335886347796
+      male_concentration_14: -652855877089198643
+      male_concentration_15: -8995038895536770638
+      male_concentration_16: 2725532395545139430
+      male_concentration_17: 1943176981468430517
+      male_concentration_18: 8169541652030387224
+      male_concentration_19: -4704700393024179422
+      male_concentration_2: -8814799020867014615
+      male_concentration_20: 2893597502155349447
+      male_concentration_21: 6394372370754959023
+      male_concentration_22: -1067593051220533835
+      male_concentration_23: 2585970490313600551
+      male_concentration_24: -6176394230722781982
+      male_concentration_25: -4694557374244673718
+      male_concentration_26: 1111347440533962026
+      male_concentration_27: -6161428551146182912
+      male_concentration_28: -6649106082879052346
+      male_concentration_29: -5937525202141610717
+      male_concentration_3: -3391130129711700122
+      male_concentration_30: -1496352459303700726
+      male_concentration_31: 6819155833934291732
+      male_concentration_32: -6971480033660720360
+      male_concentration_33: -8392710171033787443
+      male_concentration_34: -1935460624827641261
+      male_concentration_35: -903956530422540656
+      male_concentration_4: 576382774587869574
+      male_concentration_5: 6088853712750171933
+      male_concentration_6: -7952417385280689146
+      male_concentration_7: -1970481122049716220
+      male_concentration_8: -6557875179784268996
+      male_concentration_9: -3427752913633128478
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

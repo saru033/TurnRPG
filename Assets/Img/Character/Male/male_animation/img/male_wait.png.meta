@@ -1,0 +1,1068 @@
+fileFormatVersion: 2
+guid: b91820b9e5e00424f8f9be5be8a88d12
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8420734491877442942
+    second: male_wait_0
+  - first:
+      213: -8569095436081401136
+    second: male_wait_1
+  - first:
+      213: 2994655355938043313
+    second: male_wait_2
+  - first:
+      213: 4030887987856912424
+    second: male_wait_3
+  - first:
+      213: 2415511503126705336
+    second: male_wait_4
+  - first:
+      213: 4206432047795916781
+    second: male_wait_5
+  - first:
+      213: -5865162808583878144
+    second: male_wait_6
+  - first:
+      213: -7181236878241354656
+    second: male_wait_7
+  - first:
+      213: -8094336573730420806
+    second: male_wait_8
+  - first:
+      213: -690562360988350450
+    second: male_wait_9
+  - first:
+      213: 5334034913963129973
+    second: male_wait_10
+  - first:
+      213: -8204561676369987593
+    second: male_wait_11
+  - first:
+      213: 6662409699465603940
+    second: male_wait_12
+  - first:
+      213: -4913224698396939854
+    second: male_wait_13
+  - first:
+      213: 3300277142289991656
+    second: male_wait_14
+  - first:
+      213: 6187520631017465668
+    second: male_wait_15
+  - first:
+      213: 1882930700594724229
+    second: male_wait_16
+  - first:
+      213: -5739934293425863032
+    second: male_wait_17
+  - first:
+      213: 8521998198963638526
+    second: male_wait_18
+  - first:
+      213: 8528378901451149736
+    second: male_wait_19
+  - first:
+      213: 3903255419661478627
+    second: male_wait_20
+  - first:
+      213: -8243102531324172914
+    second: male_wait_21
+  - first:
+      213: 4646361689378318291
+    second: male_wait_22
+  - first:
+      213: 2993319711295023093
+    second: male_wait_23
+  - first:
+      213: 5422003103745414525
+    second: male_wait_24
+  - first:
+      213: 8624174096518656794
+    second: male_wait_25
+  - first:
+      213: -4665275256601772704
+    second: male_wait_26
+  - first:
+      213: 8790676608103076302
+    second: male_wait_27
+  - first:
+      213: -311491730302245259
+    second: male_wait_28
+  - first:
+      213: 583842357367140337
+    second: male_wait_29
+  - first:
+      213: -6569668109929115617
+    second: male_wait_30
+  - first:
+      213: -4964514356267981530
+    second: male_wait_31
+  - first:
+      213: -6992593303895228210
+    second: male_wait_32
+  - first:
+      213: 1912905080452948509
+    second: male_wait_33
+  - first:
+      213: 6495538736776442670
+    second: male_wait_34
+  - first:
+      213: -6731837813609529213
+    second: male_wait_35
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 1
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: male_wait_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3380
+        width: 294
+        height: 676
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e750c38c7657cd470800000000000000
+      internalID: 8420734491877442942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_wait_1
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 3380
+        width: 294
+        height: 676
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d272f51a15741980800000000000000
+      internalID: -8569095436081401136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_wait_2
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 3380
+        width: 294
+        height: 676
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b5786b0e272f8920800000000000000
+      internalID: 2994655355938043313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_wait_3
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 3380
+        width: 294
+        height: 676
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 820b995b44790f730800000000000000
+      internalID: 4030887987856912424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_wait_4
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 3380
+        width: 294
+        height: 676
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b4bcb60aee958120800000000000000
+      internalID: 2415511503126705336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_wait_5
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 3380
+        width: 294
+        height: 676
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: defc1bc29af306a30800000000000000
+      internalID: 4206432047795916781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_wait_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2704
+        width: 294
+        height: 676
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00a86842081ca9ea0800000000000000
+      internalID: -5865162808583878144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_wait_7
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 2704
+        width: 294
+        height: 676
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06c2d786b1f175c90800000000000000
+      internalID: -7181236878241354656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_wait_8
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 2704
+        width: 294
+        height: 676
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab7885695c32baf80800000000000000
+      internalID: -8094336573730420806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_wait_9
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 2704
+        width: 294
+        height: 676
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e08c8020131aa66f0800000000000000
+      internalID: -690562360988350450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_wait_10
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 2704
+        width: 294
+        height: 676
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57cbd4a4e7c460a40800000000000000
+      internalID: 5334034913963129973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_wait_11
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 2704
+        width: 294
+        height: 676
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f7fe2eff9a832e80800000000000000
+      internalID: -8204561676369987593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_wait_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2028
+        width: 294
+        height: 676
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46ba3cc9252a57c50800000000000000
+      internalID: 6662409699465603940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_wait_13
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 2028
+        width: 294
+        height: 676
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b9ef5e0b28b0dbb0800000000000000
+      internalID: -4913224698396939854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_wait_14
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 2028
+        width: 294
+        height: 676
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e749864390fccd20800000000000000
+      internalID: 3300277142289991656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_wait_15
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 2028
+        width: 294
+        height: 676
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44762342b3d7ed550800000000000000
+      internalID: 6187520631017465668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_wait_16
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 2028
+        width: 294
+        height: 676
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58d30a9fe73812a10800000000000000
+      internalID: 1882930700594724229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_wait_17
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 2028
+        width: 294
+        height: 676
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 886c44eeb28a750b0800000000000000
+      internalID: -5739934293425863032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_wait_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1352
+        width: 294
+        height: 676
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef01fb1e538344670800000000000000
+      internalID: 8521998198963638526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_wait_19
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 1352
+        width: 294
+        height: 676
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a19ee2fc63ea5670800000000000000
+      internalID: 8528378901451149736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_wait_20
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 1352
+        width: 294
+        height: 676
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ea6a84bf162b2630800000000000000
+      internalID: 3903255419661478627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_wait_21
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 1352
+        width: 294
+        height: 676
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e85ac4debed9a9d80800000000000000
+      internalID: -8243102531324172914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_wait_22
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 1352
+        width: 294
+        height: 676
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d7e069c6513b7040800000000000000
+      internalID: 4646361689378318291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_wait_23
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 1352
+        width: 294
+        height: 676
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f72aea0b686a8920800000000000000
+      internalID: 2993319711295023093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_wait_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 676
+        width: 294
+        height: 676
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d759fc98813de3b40800000000000000
+      internalID: 5422003103745414525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_wait_25
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 676
+        width: 294
+        height: 676
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a13be10e5a83fa770800000000000000
+      internalID: 8624174096518656794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_wait_26
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 676
+        width: 294
+        height: 676
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06df4de2fdc914fb0800000000000000
+      internalID: -4665275256601772704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_wait_27
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 676
+        width: 294
+        height: 676
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec1d151dcc1cef970800000000000000
+      internalID: 8790676608103076302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_wait_28
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 676
+        width: 294
+        height: 676
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 576ecd0fbeb5dabf0800000000000000
+      internalID: -311491730302245259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_wait_29
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 676
+        width: 294
+        height: 676
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ffe1bbd7893a1800800000000000000
+      internalID: 583842357367140337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_wait_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 294
+        height: 676
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f10967f59a9d3d4a0800000000000000
+      internalID: -6569668109929115617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_wait_31
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 0
+        width: 294
+        height: 676
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 625e1500f708a1bb0800000000000000
+      internalID: -4964514356267981530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_wait_32
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 0
+        width: 294
+        height: 676
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec0cc8e307155fe90800000000000000
+      internalID: -6992593303895228210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_wait_33
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 0
+        width: 294
+        height: 676
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d12207129010c8a10800000000000000
+      internalID: 1912905080452948509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_wait_34
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 0
+        width: 294
+        height: 676
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e237956f01ac42a50800000000000000
+      internalID: 6495538736776442670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_wait_35
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 0
+        width: 294
+        height: 676
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3800342ec25b392a0800000000000000
+      internalID: -6731837813609529213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 32d029b7f34324b498b54e0893544499
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":6.0,"y":6.0},"gridSpriteSize":{"x":294.0,"y":676.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      male_wait_0: 8420734491877442942
+      male_wait_1: -8569095436081401136
+      male_wait_10: 5334034913963129973
+      male_wait_11: -8204561676369987593
+      male_wait_12: 6662409699465603940
+      male_wait_13: -4913224698396939854
+      male_wait_14: 3300277142289991656
+      male_wait_15: 6187520631017465668
+      male_wait_16: 1882930700594724229
+      male_wait_17: -5739934293425863032
+      male_wait_18: 8521998198963638526
+      male_wait_19: 8528378901451149736
+      male_wait_2: 2994655355938043313
+      male_wait_20: 3903255419661478627
+      male_wait_21: -8243102531324172914
+      male_wait_22: 4646361689378318291
+      male_wait_23: 2993319711295023093
+      male_wait_24: 5422003103745414525
+      male_wait_25: 8624174096518656794
+      male_wait_26: -4665275256601772704
+      male_wait_27: 8790676608103076302
+      male_wait_28: -311491730302245259
+      male_wait_29: 583842357367140337
+      male_wait_3: 4030887987856912424
+      male_wait_30: -6569668109929115617
+      male_wait_31: -4964514356267981530
+      male_wait_32: -6992593303895228210
+      male_wait_33: 1912905080452948509
+      male_wait_34: 6495538736776442670
+      male_wait_35: -6731837813609529213
+      male_wait_4: 2415511503126705336
+      male_wait_5: 4206432047795916781
+      male_wait_6: -5865162808583878144
+      male_wait_7: -7181236878241354656
+      male_wait_8: -8094336573730420806
+      male_wait_9: -690562360988350450
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

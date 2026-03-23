@@ -1,0 +1,1068 @@
+fileFormatVersion: 2
+guid: 0146e5d9210fd964db3c486504c2bf06
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8388530750116814979
+    second: female_skill_0
+  - first:
+      213: 5790502172606141929
+    second: female_skill_1
+  - first:
+      213: 6612401512302174467
+    second: female_skill_2
+  - first:
+      213: 2230547375057807394
+    second: female_skill_3
+  - first:
+      213: 3685598168243723048
+    second: female_skill_4
+  - first:
+      213: -7129249515745704969
+    second: female_skill_5
+  - first:
+      213: -524381224526235084
+    second: female_skill_6
+  - first:
+      213: 7800405962944899163
+    second: female_skill_7
+  - first:
+      213: 6389598488194307733
+    second: female_skill_8
+  - first:
+      213: -5482966249258934851
+    second: female_skill_9
+  - first:
+      213: -6808544098896860035
+    second: female_skill_10
+  - first:
+      213: -8504244597326451208
+    second: female_skill_11
+  - first:
+      213: 8412959144165966112
+    second: female_skill_12
+  - first:
+      213: 2875119727344843721
+    second: female_skill_13
+  - first:
+      213: -7291731256287948700
+    second: female_skill_14
+  - first:
+      213: 2426262374116619985
+    second: female_skill_15
+  - first:
+      213: -2405279053619684215
+    second: female_skill_16
+  - first:
+      213: 7321255789050459054
+    second: female_skill_17
+  - first:
+      213: 2803231059333478777
+    second: female_skill_18
+  - first:
+      213: -1681354769849106512
+    second: female_skill_19
+  - first:
+      213: 3025625349035790045
+    second: female_skill_20
+  - first:
+      213: 7637293900641104243
+    second: female_skill_21
+  - first:
+      213: -490977216115589740
+    second: female_skill_22
+  - first:
+      213: 5202595203891064608
+    second: female_skill_23
+  - first:
+      213: 8310162821703005321
+    second: female_skill_24
+  - first:
+      213: -6804349510001021763
+    second: female_skill_25
+  - first:
+      213: 6552999551234095897
+    second: female_skill_26
+  - first:
+      213: -1866452035043415858
+    second: female_skill_27
+  - first:
+      213: 1100228713601821536
+    second: female_skill_28
+  - first:
+      213: -4180393977014160144
+    second: female_skill_29
+  - first:
+      213: 6191879178438621287
+    second: female_skill_30
+  - first:
+      213: 783249828422017962
+    second: female_skill_31
+  - first:
+      213: -6468771979830033394
+    second: female_skill_32
+  - first:
+      213: -2512709741644469466
+    second: female_skill_33
+  - first:
+      213: 7819277686694403205
+    second: female_skill_34
+  - first:
+      213: -21954514470348455
+    second: female_skill_35
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 1
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: female_skill_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3430
+        width: 340
+        height: 686
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 380672cd54c0a6470800000000000000
+      internalID: 8388530750116814979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_skill_1
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 3430
+        width: 340
+        height: 686
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e5115deb0ffb5050800000000000000
+      internalID: 5790502172606141929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_skill_2
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 3430
+        width: 340
+        height: 686
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 301e6053428f3cb50800000000000000
+      internalID: 6612401512302174467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_skill_3
+      rect:
+        serializedVersion: 2
+        x: 1020
+        y: 3430
+        width: 340
+        height: 686
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2282009050f74fe10800000000000000
+      internalID: 2230547375057807394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_skill_4
+      rect:
+        serializedVersion: 2
+        x: 1360
+        y: 3430
+        width: 340
+        height: 686
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82b5ff2c100e52330800000000000000
+      internalID: 3685598168243723048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_skill_5
+      rect:
+        serializedVersion: 2
+        x: 1700
+        y: 3430
+        width: 340
+        height: 686
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f30ada7651df0d90800000000000000
+      internalID: -7129249515745704969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_skill_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2744
+        width: 340
+        height: 686
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43aba39fd0609b8f0800000000000000
+      internalID: -524381224526235084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_skill_7
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 2744
+        width: 340
+        height: 686
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b586b2d15eb904c60800000000000000
+      internalID: 7800405962944899163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_skill_8
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 2744
+        width: 340
+        height: 686
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 596d132b8f96ca850800000000000000
+      internalID: 6389598488194307733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_skill_9
+      rect:
+        serializedVersion: 2
+        x: 1020
+        y: 2744
+        width: 340
+        height: 686
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbd177d0f3798e3b0800000000000000
+      internalID: -5482966249258934851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_skill_10
+      rect:
+        serializedVersion: 2
+        x: 1360
+        y: 2744
+        width: 340
+        height: 686
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7cabab17313381a0800000000000000
+      internalID: -6808544098896860035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_skill_11
+      rect:
+        serializedVersion: 2
+        x: 1700
+        y: 2744
+        width: 340
+        height: 686
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fd625d989adaf980800000000000000
+      internalID: -8504244597326451208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_skill_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2058
+        width: 340
+        height: 686
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02103e194c5d0c470800000000000000
+      internalID: 8412959144165966112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_skill_13
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 2058
+        width: 340
+        height: 686
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9cb7b13b82a76e720800000000000000
+      internalID: 2875119727344843721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_skill_14
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 2058
+        width: 340
+        height: 686
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 460185f3e019eca90800000000000000
+      internalID: -7291731256287948700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_skill_15
+      rect:
+        serializedVersion: 2
+        x: 1020
+        y: 2058
+        width: 340
+        height: 686
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d6fd1d36c0dba120800000000000000
+      internalID: 2426262374116619985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_skill_16
+      rect:
+        serializedVersion: 2
+        x: 1360
+        y: 2058
+        width: 340
+        height: 686
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98c9f47c17bbe9ed0800000000000000
+      internalID: -2405279053619684215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_skill_17
+      rect:
+        serializedVersion: 2
+        x: 1700
+        y: 2058
+        width: 340
+        height: 686
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea3ff18b9535a9560800000000000000
+      internalID: 7321255789050459054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_skill_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1372
+        width: 340
+        height: 686
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 979f9eadbc317e620800000000000000
+      internalID: 2803231059333478777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_skill_19
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 1372
+        width: 340
+        height: 686
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0bf3cb9beb0aaa8e0800000000000000
+      internalID: -1681354769849106512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_skill_20
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 1372
+        width: 340
+        height: 686
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dde02b8793e2df920800000000000000
+      internalID: 3025625349035790045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_skill_21
+      rect:
+        serializedVersion: 2
+        x: 1020
+        y: 1372
+        width: 340
+        height: 686
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37178f8a65e1df960800000000000000
+      internalID: 7637293900641104243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_skill_22
+      rect:
+        serializedVersion: 2
+        x: 1360
+        y: 1372
+        width: 340
+        height: 686
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49dbe90c2d2bf29f0800000000000000
+      internalID: -490977216115589740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_skill_23
+      rect:
+        serializedVersion: 2
+        x: 1700
+        y: 1372
+        width: 340
+        height: 686
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02fe31ef5c4533840800000000000000
+      internalID: 5202595203891064608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_skill_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 686
+        width: 340
+        height: 686
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 984f345ae01a35370800000000000000
+      internalID: 8310162821703005321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_skill_25
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 686
+        width: 340
+        height: 686
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbc29c0fb281291a0800000000000000
+      internalID: -6804349510001021763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_skill_26
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 686
+        width: 340
+        height: 686
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91b3a906f5ee0fa50800000000000000
+      internalID: 6552999551234095897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_skill_27
+      rect:
+        serializedVersion: 2
+        x: 1020
+        y: 686
+        width: 340
+        height: 686
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec8aee453c70916e0800000000000000
+      internalID: -1866452035043415858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_skill_28
+      rect:
+        serializedVersion: 2
+        x: 1360
+        y: 686
+        width: 340
+        height: 686
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06bebed8f2cc44f00800000000000000
+      internalID: 1100228713601821536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_skill_29
+      rect:
+        serializedVersion: 2
+        x: 1700
+        y: 686
+        width: 340
+        height: 686
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f473ea93d14cf5c0800000000000000
+      internalID: -4180393977014160144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_skill_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 340
+        height: 686
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 768b8fa8e49fde550800000000000000
+      internalID: 6191879178438621287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_skill_31
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 0
+        width: 340
+        height: 686
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa3ea71b199aeda00800000000000000
+      internalID: 783249828422017962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_skill_32
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 0
+        width: 340
+        height: 686
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e040b39482e4a36a0800000000000000
+      internalID: -6468771979830033394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_skill_33
+      rect:
+        serializedVersion: 2
+        x: 1020
+        y: 0
+        width: 340
+        height: 686
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62b2e998dcf012dd0800000000000000
+      internalID: -2512709741644469466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_skill_34
+      rect:
+        serializedVersion: 2
+        x: 1360
+        y: 0
+        width: 340
+        height: 686
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58cde83b0a7a38c60800000000000000
+      internalID: 7819277686694403205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_skill_35
+      rect:
+        serializedVersion: 2
+        x: 1700
+        y: 0
+        width: 340
+        height: 686
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95957c34c7002bff0800000000000000
+      internalID: -21954514470348455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5b41ad36b5972fc4e9da41d049b4babf
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":6.0,"y":6.0},"gridSpriteSize":{"x":340.0,"y":686.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      female_skill_0: 8388530750116814979
+      female_skill_1: 5790502172606141929
+      female_skill_10: -6808544098896860035
+      female_skill_11: -8504244597326451208
+      female_skill_12: 8412959144165966112
+      female_skill_13: 2875119727344843721
+      female_skill_14: -7291731256287948700
+      female_skill_15: 2426262374116619985
+      female_skill_16: -2405279053619684215
+      female_skill_17: 7321255789050459054
+      female_skill_18: 2803231059333478777
+      female_skill_19: -1681354769849106512
+      female_skill_2: 6612401512302174467
+      female_skill_20: 3025625349035790045
+      female_skill_21: 7637293900641104243
+      female_skill_22: -490977216115589740
+      female_skill_23: 5202595203891064608
+      female_skill_24: 8310162821703005321
+      female_skill_25: -6804349510001021763
+      female_skill_26: 6552999551234095897
+      female_skill_27: -1866452035043415858
+      female_skill_28: 1100228713601821536
+      female_skill_29: -4180393977014160144
+      female_skill_3: 2230547375057807394
+      female_skill_30: 6191879178438621287
+      female_skill_31: 783249828422017962
+      female_skill_32: -6468771979830033394
+      female_skill_33: -2512709741644469466
+      female_skill_34: 7819277686694403205
+      female_skill_35: -21954514470348455
+      female_skill_4: 3685598168243723048
+      female_skill_5: -7129249515745704969
+      female_skill_6: -524381224526235084
+      female_skill_7: 7800405962944899163
+      female_skill_8: 6389598488194307733
+      female_skill_9: -5482966249258934851
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

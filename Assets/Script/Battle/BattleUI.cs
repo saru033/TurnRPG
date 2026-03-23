@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -15,6 +15,8 @@ public class BattleUI : MonoBehaviour
     public GameObject skillButtonRoot;
     public Button[] skillButtons;
     public TextMeshProUGUI[] skillLabels;
+    public RectTransform ImgAreaRect;
+
 
     // -------------------------------------------------------
     // 레이아웃 비율 (패널 기준)
@@ -22,6 +24,7 @@ public class BattleUI : MonoBehaviour
     [Header("Layout — ActionBar (패널 기준 비율)")]
     [Range(0f, 0.2f)] public float gaugeBarLeftRatio = 0.02f;  // 좌측에서 n% 위치
     [Range(0.01f, 0.1f)] public float gaugeBarWidthRatio = 0.03f;  // 가로 크기 k%
+    [Range(0.1f, 1.0f)] public float gaugeBarHeightRatio = 0.8f;   // 세로 크기 h%
 
     [Header("Layout — Skill Area (패널 기준 비율)")]
     [Range(0.1f, 0.6f)] public float skillAreaWidthRatio = 0.30f; // 스킬 영역 가로 a%
@@ -30,6 +33,10 @@ public class BattleUI : MonoBehaviour
 
     [Header("Layout — Portrait Icon (패널 기준 비율)")]
     [Range(0.02f, 0.12f)] public float portraitSizeRatio = 0.06f;  // 아이콘 크기 c%
+
+
+    [Header("Layout — image Area (패널 기준 비율)")]
+    [Range(0.1f, 0.5f)] public float imageAreaHeightRatio = 0.2f; // 이미지 영역 높이 b%
 
     // -------------------------------------------------------
     // 런타임 계산값
@@ -64,11 +71,14 @@ public class BattleUI : MonoBehaviour
         if (gaugeBarRect != null)
         {
             float barW = _panelW * gaugeBarWidthRatio;
+            float barH = _panelH * gaugeBarHeightRatio;
             float barX = _panelW * gaugeBarLeftRatio;
 
-            // 앵커/피벗은 씬에서 설정한 값 그대로 유지
-            // 가로 크기와 x 위치만 비율로 조정
-            gaugeBarRect.sizeDelta = new Vector2(barW, gaugeBarRect.sizeDelta.y);
+            // 앵커/피벗은 씬에서 설정한 값 그대로 유지하되,
+            // sizeDelta 직접 수정 시 앵커가 Stretch로 되어 있으면 값이 튀는 현상 방지
+            gaugeBarRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, barW);
+            gaugeBarRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, barH);
+            
             gaugeBarRect.anchoredPosition = new Vector2(barX, gaugeBarRect.anchoredPosition.y);
         }
 
@@ -106,6 +116,19 @@ public class BattleUI : MonoBehaviour
             }
         }
 
+        if (ImgAreaRect != null)
+        {
+            float areaH = _panelH * imageAreaHeightRatio;
+            float areaW = areaH * (2250f / 1250f); // 비율 고정 (1.8배)
+
+            ImgAreaRect.anchorMin = new Vector2(0f, 0f);
+            ImgAreaRect.anchorMax = new Vector2(0f, 0f);
+            ImgAreaRect.pivot = new Vector2(0f, 0f);
+
+            ImgAreaRect.sizeDelta = new Vector2(areaW, areaH);
+        }
+
+
         // --- Portrait 크기 ---
         _portraitSize = _panelH * portraitSizeRatio;
 
@@ -136,6 +159,13 @@ public class BattleUI : MonoBehaviour
             var go = Instantiate(portraitPrefab, gaugeBarRect);
 
             var portrait = go.GetComponent<GaugePortrait>();
+
+            var img = go.transform.Find("Icon")?.GetComponent<Image>();
+                if (img != null && c.Data.iconImage != null)
+             img.sprite = c.Data.iconImage;
+
+
+             
             if (object.ReferenceEquals(portrait, null))
             {
                 Debug.LogError($"[BattleUI] GaugePortrait 컴포넌트 없음: {c.Name}");
@@ -221,6 +251,54 @@ public class BattleUI : MonoBehaviour
             rt.DOAnchorPosX(areaW, 0.15f)
               .SetEase(Ease.InCubic)
               .OnComplete(() => skillButtonRoot.SetActive(false));
+        }
+    }
+
+
+    // -------------------------------------------------------
+    // 이미지 칸 표시/숨김
+    // -------------------------------------------------------
+public void SetSideImageVisible(bool visible , BattleCharacter actor)
+    {
+        if (ImgAreaRect == null) return;
+
+        var rt = ImgAreaRect.GetComponent<RectTransform>();
+        if (rt == null) return;
+
+        float areaW = _panelW * skillAreaWidthRatio;
+
+        rt.DOKill();
+
+        if (visible)
+        {
+            var img = ImgAreaRect.transform.Find("Image")?.GetComponent<Image>();
+            if (img != null && actor.Data.sideImage != null){
+                img.sprite = actor.Data.sideImage;
+                img.preserveAspect = true;
+
+                float h = ImgAreaRect.rect.height;
+        float ratio = (float)actor.Data.sideImage.texture.width / actor.Data.sideImage.texture.height;
+        float w = h * ratio;
+
+        var imgRt = img.GetComponent<RectTransform>();
+        imgRt.anchorMin = new Vector2(0f, 0f);
+        imgRt.anchorMax = new Vector2(0f, 0f);
+        imgRt.pivot = new Vector2(0f, 0f);
+        imgRt.sizeDelta = new Vector2(w, h);
+        imgRt.anchoredPosition = Vector2.zero; // 왼쪽 하단 기준
+        
+            }
+            // 왼쪽 바깥에서 시작해서 제자리로 슬라이드
+            ImgAreaRect.gameObject.SetActive(true);
+            rt.anchoredPosition = new Vector2(-areaW, rt.anchoredPosition.y);
+            rt.DOAnchorPosX(0f, 0.2f).SetEase(Ease.OutCubic);
+        }
+        else
+        {
+            // 왼쪽 바깥으로 슬라이드 후 비활성화
+            rt.DOAnchorPosX(-areaW, 0.15f)
+              .SetEase(Ease.InCubic)
+              .OnComplete(() => ImgAreaRect.gameObject.SetActive(false));
         }
     }
 }

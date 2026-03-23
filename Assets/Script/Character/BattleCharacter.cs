@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -7,18 +7,26 @@ using UnityEngine;
 /// </summary>
 /// 
 
-public class BattleCharacter : MonoBehaviour
+public class BattleCharacter
 {
+    // -------------------------------------------------------
+    // 원본 데이터 참조
+    // -------------------------------------------------------
+    public CharacterData Data { get; private set; }
+    public Animator Animator { get; private set; }
+
     // -------------------------------------------------------
     // 기본 정보
     // -------------------------------------------------------
+    public int ID;
     public string Name;
     public bool IsPlayer;   // true = 아군, false = 적
 
     // -------------------------------------------------------
-    // 스탯
+    // 스탯 (전투 중 버프 등으로 변경 가능)
     // -------------------------------------------------------
     public float MaxHp;
+    public float Attack;
     public float CurrentHp;
     public float Defense;        // 방어력
     public float Speed;          // 속도
@@ -36,21 +44,27 @@ public class BattleCharacter : MonoBehaviour
     public bool IsAlive => CurrentHp > 0f;
 
     // -------------------------------------------------------
-    // 생성자
+    // 생성자 (ScriptableObject 원본 데이터로 생성)
     // -------------------------------------------------------
-    public BattleCharacter(string name, bool isPlayer,
-                           float maxHp, float defense, float speed,
-                           float critChance = 0.15f, float critDamage = 1.5f)
+    public BattleCharacter(CharacterData data)
     {
-        Name = name;
-        IsPlayer = isPlayer;
-        MaxHp = maxHp;
-        CurrentHp = maxHp;
-        Defense = defense;
-        Speed = speed;
-        CritChance = critChance;
-        CritDamage = critDamage;
+        Data = data;
+        ID = data.ID;
+        Name = data.CharacterName;
+        IsPlayer = data.isPlayer;
+        MaxHp = data.MaxHp;
+        Attack = data.Attack;
+        CurrentHp = data.MaxHp;
+        Defense = data.Defense;
+        Speed = data.Speed;
+        CritChance = data.CritChance;
+        CritDamage = data.CritDamage;
         ActionGauge = 0f;
+    }
+
+    public void SetAnimator(Animator animator){
+Animator = animator;
+
     }
 
     // -------------------------------------------------------
