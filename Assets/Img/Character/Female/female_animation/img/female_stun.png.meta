@@ -1,0 +1,1068 @@
+fileFormatVersion: 2
+guid: 4898eeee292b29443bc64c6362917530
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8712860615863271588
+    second: female_stun_0
+  - first:
+      213: 5996155354210625613
+    second: female_stun_1
+  - first:
+      213: -2770128131720970270
+    second: female_stun_2
+  - first:
+      213: -2067810957178473832
+    second: female_stun_3
+  - first:
+      213: -8728369280226888977
+    second: female_stun_4
+  - first:
+      213: -7983073741533112112
+    second: female_stun_5
+  - first:
+      213: -4805626287499375795
+    second: female_stun_6
+  - first:
+      213: -3858228358538646237
+    second: female_stun_7
+  - first:
+      213: -4304216705178148848
+    second: female_stun_8
+  - first:
+      213: 1559120748901758583
+    second: female_stun_9
+  - first:
+      213: 5459755852727481224
+    second: female_stun_10
+  - first:
+      213: 2997175339336851798
+    second: female_stun_11
+  - first:
+      213: 4244293283209995244
+    second: female_stun_12
+  - first:
+      213: 6727058792305885500
+    second: female_stun_13
+  - first:
+      213: 8285332260962717390
+    second: female_stun_14
+  - first:
+      213: 6247841616376008768
+    second: female_stun_15
+  - first:
+      213: -5376657300660346172
+    second: female_stun_16
+  - first:
+      213: 5352316643234909102
+    second: female_stun_17
+  - first:
+      213: -7100087361933056136
+    second: female_stun_18
+  - first:
+      213: -1868263521996818103
+    second: female_stun_19
+  - first:
+      213: -8161137537985042720
+    second: female_stun_20
+  - first:
+      213: 598643999247873139
+    second: female_stun_21
+  - first:
+      213: 7932766222784208008
+    second: female_stun_22
+  - first:
+      213: -3748058612994464160
+    second: female_stun_23
+  - first:
+      213: -3457920639334746694
+    second: female_stun_24
+  - first:
+      213: 6059354552108738634
+    second: female_stun_25
+  - first:
+      213: 414551331655708926
+    second: female_stun_26
+  - first:
+      213: 6751332937698811180
+    second: female_stun_27
+  - first:
+      213: 9143647581652607510
+    second: female_stun_28
+  - first:
+      213: 5453134580485215705
+    second: female_stun_29
+  - first:
+      213: 4984100482709196604
+    second: female_stun_30
+  - first:
+      213: 1723230982490775343
+    second: female_stun_31
+  - first:
+      213: 1096687464071044733
+    second: female_stun_32
+  - first:
+      213: -7816880388982694430
+    second: female_stun_33
+  - first:
+      213: -7997449596143105029
+    second: female_stun_34
+  - first:
+      213: 4665045199880803467
+    second: female_stun_35
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: female_stun_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3080
+        width: 300
+        height: 616
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5f7afdbe63b51780800000000000000
+      internalID: -8712860615863271588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_stun_1
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 3080
+        width: 300
+        height: 616
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d48e7c1968f963350800000000000000
+      internalID: 5996155354210625613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_stun_2
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 3080
+        width: 300
+        height: 616
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ef747614278e89d0800000000000000
+      internalID: -2770128131720970270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_stun_3
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 3080
+        width: 300
+        height: 616
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89277b2e3e8ad43e0800000000000000
+      internalID: -2067810957178473832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_stun_4
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 3080
+        width: 300
+        height: 616
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe2f4af626a9ed680800000000000000
+      internalID: -8728369280226888977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_stun_5
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 3080
+        width: 300
+        height: 616
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d89b2c6abc663190800000000000000
+      internalID: -7983073741533112112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_stun_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2464
+        width: 300
+        height: 616
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4b02525a5cfe4db0800000000000000
+      internalID: -4805626287499375795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_stun_7
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 2464
+        width: 300
+        height: 616
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32d27faefb1d47ac0800000000000000
+      internalID: -3858228358538646237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_stun_8
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 2464
+        width: 300
+        height: 616
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 010ed8b16b95444c0800000000000000
+      internalID: -4304216705178148848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_stun_9
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 2464
+        width: 300
+        height: 616
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 776fa308f0c13a510800000000000000
+      internalID: 1559120748901758583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_stun_10
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 2464
+        width: 300
+        height: 616
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8837e226503f4cb40800000000000000
+      internalID: 5459755852727481224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_stun_11
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 2464
+        width: 300
+        height: 616
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 651ebb6671b189920800000000000000
+      internalID: 2997175339336851798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_stun_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1848
+        width: 300
+        height: 616
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce3ee4cf042c6ea30800000000000000
+      internalID: 4244293283209995244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_stun_13
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 1848
+        width: 300
+        height: 616
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c318f8284505b5d50800000000000000
+      internalID: 6727058792305885500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_stun_14
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 1848
+        width: 300
+        height: 616
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ece44c43bc96bf270800000000000000
+      internalID: 8285332260962717390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_stun_15
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 1848
+        width: 300
+        height: 616
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0409efcf8dac4b650800000000000000
+      internalID: 6247841616376008768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_stun_16
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 1848
+        width: 300
+        height: 616
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c2212bfba64265b0800000000000000
+      internalID: -5376657300660346172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_stun_17
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 1848
+        width: 300
+        height: 616
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eab8d6511af374a40800000000000000
+      internalID: 5352316643234909102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_stun_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1232
+        width: 300
+        height: 616
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8776db5892c677d90800000000000000
+      internalID: -7100087361933056136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_stun_19
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 1232
+        width: 300
+        height: 616
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9493f88a9389216e0800000000000000
+      internalID: -1868263521996818103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_stun_20
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 1232
+        width: 300
+        height: 616
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e6ab4516a0ddbe80800000000000000
+      internalID: -8161137537985042720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_stun_21
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 1232
+        width: 300
+        height: 616
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 374b61aab8fce4800800000000000000
+      internalID: 598643999247873139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_stun_22
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 1232
+        width: 300
+        height: 616
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88c154b99d8d61e60800000000000000
+      internalID: 7932766222784208008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_stun_23
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 1232
+        width: 300
+        height: 616
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0662f1fac883cfbc0800000000000000
+      internalID: -3748058612994464160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_stun_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 616
+        width: 300
+        height: 616
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab5f5f6df7ff200d0800000000000000
+      internalID: -3457920639334746694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_stun_25
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 616
+        width: 300
+        height: 616
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a48669e7cd6271450800000000000000
+      internalID: 6059354552108738634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_stun_26
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 616
+        width: 300
+        height: 616
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef0f0806d38c0c500800000000000000
+      internalID: 414551331655708926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_stun_27
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 616
+        width: 300
+        height: 616
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2d9ee7698d81bd50800000000000000
+      internalID: 6751332937698811180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_stun_28
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 616
+        width: 300
+        height: 616
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61263c7c703c4ee70800000000000000
+      internalID: 9143647581652607510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_stun_29
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 616
+        width: 300
+        height: 616
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d5583e420d6dab40800000000000000
+      internalID: 5453134580485215705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_stun_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 300
+        height: 616
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3f0cbc6bf41b2540800000000000000
+      internalID: 4984100482709196604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_stun_31
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 0
+        width: 300
+        height: 616
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2f5f41d2752ae710800000000000000
+      internalID: 1723230982490775343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_stun_32
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 0
+        width: 300
+        height: 616
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7e14952077383f00800000000000000
+      internalID: 1096687464071044733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_stun_33
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 0
+        width: 300
+        height: 616
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ed18faa3bcd48390800000000000000
+      internalID: -7816880388982694430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_stun_34
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 0
+        width: 300
+        height: 616
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bfb8cc0f6f9530190800000000000000
+      internalID: -7997449596143105029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: female_stun_35
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 0
+        width: 300
+        height: 616
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b84590094e19db040800000000000000
+      internalID: 4665045199880803467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 3bbe389de37633048b9b1eeefc20ffaa
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":6.0,"y":6.0},"gridSpriteSize":{"x":300.0,"y":616.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      female_stun_0: -8712860615863271588
+      female_stun_1: 5996155354210625613
+      female_stun_10: 5459755852727481224
+      female_stun_11: 2997175339336851798
+      female_stun_12: 4244293283209995244
+      female_stun_13: 6727058792305885500
+      female_stun_14: 8285332260962717390
+      female_stun_15: 6247841616376008768
+      female_stun_16: -5376657300660346172
+      female_stun_17: 5352316643234909102
+      female_stun_18: -7100087361933056136
+      female_stun_19: -1868263521996818103
+      female_stun_2: -2770128131720970270
+      female_stun_20: -8161137537985042720
+      female_stun_21: 598643999247873139
+      female_stun_22: 7932766222784208008
+      female_stun_23: -3748058612994464160
+      female_stun_24: -3457920639334746694
+      female_stun_25: 6059354552108738634
+      female_stun_26: 414551331655708926
+      female_stun_27: 6751332937698811180
+      female_stun_28: 9143647581652607510
+      female_stun_29: 5453134580485215705
+      female_stun_3: -2067810957178473832
+      female_stun_30: 4984100482709196604
+      female_stun_31: 1723230982490775343
+      female_stun_32: 1096687464071044733
+      female_stun_33: -7816880388982694430
+      female_stun_34: -7997449596143105029
+      female_stun_35: 4665045199880803467
+      female_stun_4: -8728369280226888977
+      female_stun_5: -7983073741533112112
+      female_stun_6: -4805626287499375795
+      female_stun_7: -3858228358538646237
+      female_stun_8: -4304216705178148848
+      female_stun_9: 1559120748901758583
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

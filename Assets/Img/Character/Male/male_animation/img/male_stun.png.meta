@@ -1,0 +1,1068 @@
+fileFormatVersion: 2
+guid: b78c6a9cc3d6cff40a3fbbc1c23afd70
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2456450229373984990
+    second: male_stun_0
+  - first:
+      213: -3757099995172261877
+    second: male_stun_1
+  - first:
+      213: -7147078373846738743
+    second: male_stun_2
+  - first:
+      213: -1235775139069331745
+    second: male_stun_3
+  - first:
+      213: -5499530983179000806
+    second: male_stun_4
+  - first:
+      213: -3095898895744070670
+    second: male_stun_5
+  - first:
+      213: 6715890210877181787
+    second: male_stun_6
+  - first:
+      213: -1972550288602202632
+    second: male_stun_7
+  - first:
+      213: 757862353162088677
+    second: male_stun_8
+  - first:
+      213: -6056523669616561308
+    second: male_stun_9
+  - first:
+      213: -8341935584805990570
+    second: male_stun_10
+  - first:
+      213: -3020486528228975804
+    second: male_stun_11
+  - first:
+      213: -2087172370449491358
+    second: male_stun_12
+  - first:
+      213: -7251141157220505499
+    second: male_stun_13
+  - first:
+      213: -8282899453764362271
+    second: male_stun_14
+  - first:
+      213: -9020194575065572149
+    second: male_stun_15
+  - first:
+      213: 8240570407298743515
+    second: male_stun_16
+  - first:
+      213: -18361740099693520
+    second: male_stun_17
+  - first:
+      213: -5259032415450039398
+    second: male_stun_18
+  - first:
+      213: 2313413041136777760
+    second: male_stun_19
+  - first:
+      213: -3779971088086305297
+    second: male_stun_20
+  - first:
+      213: -7056587598829656983
+    second: male_stun_21
+  - first:
+      213: -6932688282551274532
+    second: male_stun_22
+  - first:
+      213: -3898974798792818869
+    second: male_stun_23
+  - first:
+      213: 4293002016145213583
+    second: male_stun_24
+  - first:
+      213: -4633927430949382943
+    second: male_stun_25
+  - first:
+      213: 7667025627500627219
+    second: male_stun_26
+  - first:
+      213: -5981436369045219785
+    second: male_stun_27
+  - first:
+      213: 5851515331195066674
+    second: male_stun_28
+  - first:
+      213: 1165206646440224722
+    second: male_stun_29
+  - first:
+      213: 4691838349914354630
+    second: male_stun_30
+  - first:
+      213: -5697573359465404993
+    second: male_stun_31
+  - first:
+      213: 5359671429083145932
+    second: male_stun_32
+  - first:
+      213: 8971615793038475529
+    second: male_stun_33
+  - first:
+      213: 6404259969347892110
+    second: male_stun_34
+  - first:
+      213: 4609427158148927465
+    second: male_stun_35
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: male_stun_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3110
+        width: 376
+        height: 622
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed063420870171220800000000000000
+      internalID: 2456450229373984990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_stun_1
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 3110
+        width: 376
+        height: 622
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b00b22ad5791cdbc0800000000000000
+      internalID: -3757099995172261877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_stun_2
+      rect:
+        serializedVersion: 2
+        x: 752
+        y: 3110
+        width: 376
+        height: 622
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c81df8f51a70dc90800000000000000
+      internalID: -7147078373846738743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_stun_3
+      rect:
+        serializedVersion: 2
+        x: 1128
+        y: 3110
+        width: 376
+        height: 622
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd67385fe05a9dee0800000000000000
+      internalID: -1235775139069331745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_stun_4
+      rect:
+        serializedVersion: 2
+        x: 1504
+        y: 3110
+        width: 376
+        height: 622
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a146c5465bdbda3b0800000000000000
+      internalID: -5499530983179000806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_stun_5
+      rect:
+        serializedVersion: 2
+        x: 1880
+        y: 3110
+        width: 376
+        height: 622
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fb86aa6b582905d0800000000000000
+      internalID: -3095898895744070670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_stun_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2488
+        width: 376
+        height: 622
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5f8bd18092a33d50800000000000000
+      internalID: 6715890210877181787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_stun_7
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 2488
+        width: 376
+        height: 622
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fd754aa6f710a4e0800000000000000
+      internalID: -1972550288602202632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_stun_8
+      rect:
+        serializedVersion: 2
+        x: 752
+        y: 2488
+        width: 376
+        height: 622
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e03edc7bc7748a00800000000000000
+      internalID: 757862353162088677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_stun_9
+      rect:
+        serializedVersion: 2
+        x: 1128
+        y: 2488
+        width: 376
+        height: 622
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46372c2bfc7e2fba0800000000000000
+      internalID: -6056523669616561308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_stun_10
+      rect:
+        serializedVersion: 2
+        x: 1504
+        y: 2488
+        width: 376
+        height: 622
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65fc27878cd7b3c80800000000000000
+      internalID: -8341935584805990570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_stun_11
+      rect:
+        serializedVersion: 2
+        x: 1880
+        y: 2488
+        width: 376
+        height: 622
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44b1f0c71831516d0800000000000000
+      internalID: -3020486528228975804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_stun_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1866
+        width: 376
+        height: 622
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26a195299cfd803e0800000000000000
+      internalID: -2087172370449491358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_stun_13
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 1866
+        width: 376
+        height: 622
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56828a32985ce5b90800000000000000
+      internalID: -7251141157220505499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_stun_14
+      rect:
+        serializedVersion: 2
+        x: 752
+        y: 1866
+        width: 376
+        height: 622
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ef191cd4da3d0d80800000000000000
+      internalID: -8282899453764362271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_stun_15
+      rect:
+        serializedVersion: 2
+        x: 1128
+        y: 1866
+        width: 376
+        height: 622
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bcc9f4433d4d1d280800000000000000
+      internalID: -9020194575065572149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_stun_16
+      rect:
+        serializedVersion: 2
+        x: 1504
+        y: 1866
+        width: 376
+        height: 622
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdc33a100236c5270800000000000000
+      internalID: 8240570407298743515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_stun_17
+      rect:
+        serializedVersion: 2
+        x: 1880
+        y: 1866
+        width: 376
+        height: 622
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03456eb3814cebff0800000000000000
+      internalID: -18361740099693520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_stun_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1244
+        width: 376
+        height: 622
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9bf5d6b1e92407b0800000000000000
+      internalID: -5259032415450039398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_stun_19
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 1244
+        width: 376
+        height: 622
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02ab6b767e4ea1020800000000000000
+      internalID: 2313413041136777760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_stun_20
+      rect:
+        serializedVersion: 2
+        x: 752
+        y: 1244
+        width: 376
+        height: 622
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe57e519258da8bc0800000000000000
+      internalID: -3779971088086305297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_stun_21
+      rect:
+        serializedVersion: 2
+        x: 1128
+        y: 1244
+        width: 376
+        height: 622
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 964e45d57f6f11e90800000000000000
+      internalID: -7056587598829656983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_stun_22
+      rect:
+        serializedVersion: 2
+        x: 1504
+        y: 1244
+        width: 376
+        height: 622
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd3b40cecb42acf90800000000000000
+      internalID: -6932688282551274532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_stun_23
+      rect:
+        serializedVersion: 2
+        x: 1880
+        y: 1244
+        width: 376
+        height: 622
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4ff0c1041f04e9c0800000000000000
+      internalID: -3898974798792818869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_stun_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 622
+        width: 376
+        height: 622
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f880f50a69ec39b30800000000000000
+      internalID: 4293002016145213583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_stun_25
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 622
+        width: 376
+        height: 622
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e4d25b9d8bf0bfb0800000000000000
+      internalID: -4633927430949382943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_stun_26
+      rect:
+        serializedVersion: 2
+        x: 752
+        y: 622
+        width: 376
+        height: 622
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 315cdf2cf2fb66a60800000000000000
+      internalID: 7667025627500627219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_stun_27
+      rect:
+        serializedVersion: 2
+        x: 1128
+        y: 622
+        width: 376
+        height: 622
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7361578305badfca0800000000000000
+      internalID: -5981436369045219785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_stun_28
+      rect:
+        serializedVersion: 2
+        x: 1504
+        y: 622
+        width: 376
+        height: 622
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23952a9e032c43150800000000000000
+      internalID: 5851515331195066674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_stun_29
+      rect:
+        serializedVersion: 2
+        x: 1880
+        y: 622
+        width: 376
+        height: 622
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d76efa7545ab2010800000000000000
+      internalID: 1165206646440224722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_stun_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 376
+        height: 622
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c3333eee12cc1140800000000000000
+      internalID: 4691838349914354630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_stun_31
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 0
+        width: 376
+        height: 622
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb5e55377372ee0b0800000000000000
+      internalID: -5697573359465404993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_stun_32
+      rect:
+        serializedVersion: 2
+        x: 752
+        y: 0
+        width: 376
+        height: 622
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc6af4b94c0616a40800000000000000
+      internalID: 5359671429083145932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_stun_33
+      rect:
+        serializedVersion: 2
+        x: 1128
+        y: 0
+        width: 376
+        height: 622
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 901c755b705918c70800000000000000
+      internalID: 8971615793038475529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_stun_34
+      rect:
+        serializedVersion: 2
+        x: 1504
+        y: 0
+        width: 376
+        height: 622
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e833c3ac28080e850800000000000000
+      internalID: 6404259969347892110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: male_stun_35
+      rect:
+        serializedVersion: 2
+        x: 1880
+        y: 0
+        width: 376
+        height: 622
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ef418b1499f7ff30800000000000000
+      internalID: 4609427158148927465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: b9b67a158036e7f4881c9cbdf1272e0d
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":6.0,"y":6.0},"gridSpriteSize":{"x":376.0,"y":622.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      male_stun_0: 2456450229373984990
+      male_stun_1: -3757099995172261877
+      male_stun_10: -8341935584805990570
+      male_stun_11: -3020486528228975804
+      male_stun_12: -2087172370449491358
+      male_stun_13: -7251141157220505499
+      male_stun_14: -8282899453764362271
+      male_stun_15: -9020194575065572149
+      male_stun_16: 8240570407298743515
+      male_stun_17: -18361740099693520
+      male_stun_18: -5259032415450039398
+      male_stun_19: 2313413041136777760
+      male_stun_2: -7147078373846738743
+      male_stun_20: -3779971088086305297
+      male_stun_21: -7056587598829656983
+      male_stun_22: -6932688282551274532
+      male_stun_23: -3898974798792818869
+      male_stun_24: 4293002016145213583
+      male_stun_25: -4633927430949382943
+      male_stun_26: 7667025627500627219
+      male_stun_27: -5981436369045219785
+      male_stun_28: 5851515331195066674
+      male_stun_29: 1165206646440224722
+      male_stun_3: -1235775139069331745
+      male_stun_30: 4691838349914354630
+      male_stun_31: -5697573359465404993
+      male_stun_32: 5359671429083145932
+      male_stun_33: 8971615793038475529
+      male_stun_34: 6404259969347892110
+      male_stun_35: 4609427158148927465
+      male_stun_4: -5499530983179000806
+      male_stun_5: -3095898895744070670
+      male_stun_6: 6715890210877181787
+      male_stun_7: -1972550288602202632
+      male_stun_8: 757862353162088677
+      male_stun_9: -6056523669616561308
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,1068 @@
+fileFormatVersion: 2
+guid: 4bacb34687cb9c64ba934dec882d5806
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6076376902564729408
+    second: wolf_stun_0
+  - first:
+      213: 3275976693955754665
+    second: wolf_stun_1
+  - first:
+      213: 3137182223520606830
+    second: wolf_stun_2
+  - first:
+      213: 8882597467414761507
+    second: wolf_stun_3
+  - first:
+      213: 7651514999827134852
+    second: wolf_stun_4
+  - first:
+      213: 3435385158432776043
+    second: wolf_stun_5
+  - first:
+      213: 6065258427488229941
+    second: wolf_stun_6
+  - first:
+      213: 6114419327533872283
+    second: wolf_stun_7
+  - first:
+      213: 621922777863780070
+    second: wolf_stun_8
+  - first:
+      213: 8067970656004077791
+    second: wolf_stun_9
+  - first:
+      213: 1072544227412230659
+    second: wolf_stun_10
+  - first:
+      213: 879987039895394340
+    second: wolf_stun_11
+  - first:
+      213: -8338993473502974159
+    second: wolf_stun_12
+  - first:
+      213: 4467418760448732027
+    second: wolf_stun_13
+  - first:
+      213: -7563911932060394643
+    second: wolf_stun_14
+  - first:
+      213: -5246018097969623177
+    second: wolf_stun_15
+  - first:
+      213: 3934348041157681152
+    second: wolf_stun_16
+  - first:
+      213: -5751002671791715987
+    second: wolf_stun_17
+  - first:
+      213: -1521796433445268796
+    second: wolf_stun_18
+  - first:
+      213: -1280832510313024726
+    second: wolf_stun_19
+  - first:
+      213: -7014761697089070859
+    second: wolf_stun_20
+  - first:
+      213: 2819988797365785375
+    second: wolf_stun_21
+  - first:
+      213: -1609406802885423002
+    second: wolf_stun_22
+  - first:
+      213: -4718827339913493083
+    second: wolf_stun_23
+  - first:
+      213: -5759166390789297255
+    second: wolf_stun_24
+  - first:
+      213: 1554733675175155694
+    second: wolf_stun_25
+  - first:
+      213: -5926675548340470806
+    second: wolf_stun_26
+  - first:
+      213: -5619744966855503583
+    second: wolf_stun_27
+  - first:
+      213: -7014344184815487655
+    second: wolf_stun_28
+  - first:
+      213: 6723580161160836373
+    second: wolf_stun_29
+  - first:
+      213: 8453859520360105766
+    second: wolf_stun_30
+  - first:
+      213: 6187861307696552262
+    second: wolf_stun_31
+  - first:
+      213: 1707228716017189281
+    second: wolf_stun_32
+  - first:
+      213: 5768080322108153633
+    second: wolf_stun_33
+  - first:
+      213: 7444520355579480965
+    second: wolf_stun_34
+  - first:
+      213: -221681797552744761
+    second: wolf_stun_35
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: wolf_stun_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3140
+        width: 430
+        height: 628
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04252ce4990a35450800000000000000
+      internalID: 6076376902564729408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_stun_1
+      rect:
+        serializedVersion: 2
+        x: 430
+        y: 3140
+        width: 430
+        height: 628
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9aaf0bf327b967d20800000000000000
+      internalID: 3275976693955754665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_stun_2
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 3140
+        width: 430
+        height: 628
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6aad9c5c92898b20800000000000000
+      internalID: 3137182223520606830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_stun_3
+      rect:
+        serializedVersion: 2
+        x: 1290
+        y: 3140
+        width: 430
+        height: 628
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3209a08a553554b70800000000000000
+      internalID: 8882597467414761507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_stun_4
+      rect:
+        serializedVersion: 2
+        x: 1720
+        y: 3140
+        width: 430
+        height: 628
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 489f4465a54af2a60800000000000000
+      internalID: 7651514999827134852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_stun_5
+      rect:
+        serializedVersion: 2
+        x: 2150
+        y: 3140
+        width: 430
+        height: 628
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6fd803a990fcaf20800000000000000
+      internalID: 3435385158432776043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_stun_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2512
+        width: 430
+        height: 628
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53a516997602c2450800000000000000
+      internalID: 6065258427488229941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_stun_7
+      rect:
+        serializedVersion: 2
+        x: 430
+        y: 2512
+        width: 430
+        height: 628
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9470799bf7cad450800000000000000
+      internalID: 6114419327533872283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_stun_8
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 2512
+        width: 430
+        height: 628
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e67b4ca87381a800800000000000000
+      internalID: 621922777863780070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_stun_9
+      rect:
+        serializedVersion: 2
+        x: 1290
+        y: 2512
+        width: 430
+        height: 628
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd8f561d09037ff60800000000000000
+      internalID: 8067970656004077791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_stun_10
+      rect:
+        serializedVersion: 2
+        x: 1720
+        y: 2512
+        width: 430
+        height: 628
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3024dc0da4172ee00800000000000000
+      internalID: 1072544227412230659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_stun_11
+      rect:
+        serializedVersion: 2
+        x: 2150
+        y: 2512
+        width: 430
+        height: 628
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42899e7ec87563c00800000000000000
+      internalID: 879987039895394340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_stun_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1884
+        width: 430
+        height: 628
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13fed832e91f54c80800000000000000
+      internalID: -8338993473502974159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_stun_13
+      rect:
+        serializedVersion: 2
+        x: 430
+        y: 1884
+        width: 430
+        height: 628
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7b667771b57ffd30800000000000000
+      internalID: 4467418760448732027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_stun_14
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 1884
+        width: 430
+        height: 628
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6b93315c26970790800000000000000
+      internalID: -7563911932060394643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_stun_15
+      rect:
+        serializedVersion: 2
+        x: 1290
+        y: 1884
+        width: 430
+        height: 628
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77f0041a5566237b0800000000000000
+      internalID: -5246018097969623177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_stun_16
+      rect:
+        serializedVersion: 2
+        x: 1720
+        y: 1884
+        width: 430
+        height: 628
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00025f7c2bc999630800000000000000
+      internalID: 3934348041157681152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_stun_17
+      rect:
+        serializedVersion: 2
+        x: 2150
+        y: 1884
+        width: 430
+        height: 628
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6948854a855030b0800000000000000
+      internalID: -5751002671791715987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_stun_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1256
+        width: 430
+        height: 628
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c2d904e43e71eae0800000000000000
+      internalID: -1521796433445268796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_stun_19
+      rect:
+        serializedVersion: 2
+        x: 430
+        y: 1256
+        width: 430
+        height: 628
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2335063e91993ee0800000000000000
+      internalID: -1280832510313024726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_stun_20
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 1256
+        width: 430
+        height: 628
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f85dfcf66f86ae90800000000000000
+      internalID: -7014761697089070859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_stun_21
+      rect:
+        serializedVersion: 2
+        x: 1290
+        y: 1256
+        width: 430
+        height: 628
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f139199cedc922720800000000000000
+      internalID: 2819988797365785375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_stun_22
+      rect:
+        serializedVersion: 2
+        x: 1720
+        y: 1256
+        width: 430
+        height: 628
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 660daee2a0d3aa9e0800000000000000
+      internalID: -1609406802885423002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_stun_23
+      rect:
+        serializedVersion: 2
+        x: 2150
+        y: 1256
+        width: 430
+        height: 628
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a50e08298b538eb0800000000000000
+      internalID: -4718827339913493083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_stun_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 628
+        width: 430
+        height: 628
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99ba2a25ea45310b0800000000000000
+      internalID: -5759166390789297255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_stun_25
+      rect:
+        serializedVersion: 2
+        x: 430
+        y: 628
+        width: 430
+        height: 628
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee7172d4a06839510800000000000000
+      internalID: 1554733675175155694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_stun_26
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 628
+        width: 430
+        height: 628
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aeb3c2a5df730cda0800000000000000
+      internalID: -5926675548340470806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_stun_27
+      rect:
+        serializedVersion: 2
+        x: 1290
+        y: 628
+        width: 430
+        height: 628
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 121d9423ab7a202b0800000000000000
+      internalID: -5619744966855503583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_stun_28
+      rect:
+        serializedVersion: 2
+        x: 1720
+        y: 628
+        width: 430
+        height: 628
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 955feb3a02b08ae90800000000000000
+      internalID: -7014344184815487655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_stun_29
+      rect:
+        serializedVersion: 2
+        x: 2150
+        y: 628
+        width: 430
+        height: 628
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 515fad49884fe4d50800000000000000
+      internalID: 6723580161160836373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_stun_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 430
+        height: 628
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6274e1c7174225570800000000000000
+      internalID: 8453859520360105766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_stun_31
+      rect:
+        serializedVersion: 2
+        x: 430
+        y: 0
+        width: 430
+        height: 628
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64913ac1313bfd550800000000000000
+      internalID: 6187861307696552262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_stun_32
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 0
+        width: 430
+        height: 628
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a10d80d87b41b710800000000000000
+      internalID: 1707228716017189281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_stun_33
+      rect:
+        serializedVersion: 2
+        x: 1290
+        y: 0
+        width: 430
+        height: 628
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12f5d2b0e765c0050800000000000000
+      internalID: 5768080322108153633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_stun_34
+      rect:
+        serializedVersion: 2
+        x: 1720
+        y: 0
+        width: 430
+        height: 628
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58bca7512df305760800000000000000
+      internalID: 7444520355579480965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_stun_35
+      rect:
+        serializedVersion: 2
+        x: 2150
+        y: 0
+        width: 430
+        height: 628
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c6d2b3649d6cecf0800000000000000
+      internalID: -221681797552744761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 8a4e5d92148cdf044bd39a30a42f03fe
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":6.0,"y":6.0},"gridSpriteSize":{"x":430.0,"y":628.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      wolf_stun_0: 6076376902564729408
+      wolf_stun_1: 3275976693955754665
+      wolf_stun_10: 1072544227412230659
+      wolf_stun_11: 879987039895394340
+      wolf_stun_12: -8338993473502974159
+      wolf_stun_13: 4467418760448732027
+      wolf_stun_14: -7563911932060394643
+      wolf_stun_15: -5246018097969623177
+      wolf_stun_16: 3934348041157681152
+      wolf_stun_17: -5751002671791715987
+      wolf_stun_18: -1521796433445268796
+      wolf_stun_19: -1280832510313024726
+      wolf_stun_2: 3137182223520606830
+      wolf_stun_20: -7014761697089070859
+      wolf_stun_21: 2819988797365785375
+      wolf_stun_22: -1609406802885423002
+      wolf_stun_23: -4718827339913493083
+      wolf_stun_24: -5759166390789297255
+      wolf_stun_25: 1554733675175155694
+      wolf_stun_26: -5926675548340470806
+      wolf_stun_27: -5619744966855503583
+      wolf_stun_28: -7014344184815487655
+      wolf_stun_29: 6723580161160836373
+      wolf_stun_3: 8882597467414761507
+      wolf_stun_30: 8453859520360105766
+      wolf_stun_31: 6187861307696552262
+      wolf_stun_32: 1707228716017189281
+      wolf_stun_33: 5768080322108153633
+      wolf_stun_34: 7444520355579480965
+      wolf_stun_35: -221681797552744761
+      wolf_stun_4: 7651514999827134852
+      wolf_stun_5: 3435385158432776043
+      wolf_stun_6: 6065258427488229941
+      wolf_stun_7: 6114419327533872283
+      wolf_stun_8: 621922777863780070
+      wolf_stun_9: 8067970656004077791
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
