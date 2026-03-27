@@ -28,6 +28,9 @@ public class GaugePortrait : MonoBehaviour
     float _xOffset = 0f;
     bool _initialized = false;
 
+
+RectTransform _rt;
+public RectTransform RectTransform => _rt ??= GetComponent<RectTransform>();
     // -------------------------------------------------------
     // 초기화
     // -------------------------------------------------------
@@ -39,10 +42,9 @@ public class GaugePortrait : MonoBehaviour
         _initialized = true;
 
         // 앵커/피벗을 바 상단 기준으로 설정
-        var rt = GetComponent<RectTransform>();
-        rt.anchorMin = new Vector2(0.5f, 1f);
-        rt.anchorMax = new Vector2(0.5f, 1f);
-        rt.pivot = new Vector2(0.5f, 0.5f);
+    RectTransform.anchorMin = new Vector2(0.5f, 1f);
+    RectTransform.anchorMax = new Vector2(0.5f, 1f);
+    RectTransform.pivot = new Vector2(0.5f, 0.5f);
 
         if (nameLabel != null)
             nameLabel.text = c.Name.Length > 2 ? c.Name[..2] : c.Name;
@@ -81,13 +83,17 @@ public class GaugePortrait : MonoBehaviour
     // -------------------------------------------------------
     // 하이라이트
     // -------------------------------------------------------
-    public void SetHighlight(bool on)
+     public void SetHighlight(bool on)
     {
         if (highlightRing != null)
         {
             highlightRing.enabled = on;
             if (on) highlightRing.color = highlightColor;
         }
-        transform.localScale = Vector3.one * (on ? 1.25f : 1.0f);
+
+        if (on) RectTransform.SetAsLastSibling();
+
+        float targetScale = on ? 1.25f : 1.0f;
+        transform.DOScale(Vector3.one * targetScale, 0.2f).SetEase(Ease.OutBack);
     }
 }

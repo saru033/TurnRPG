@@ -84,6 +84,7 @@ public class BattleManager : MonoBehaviour
             battleUI.UpdateGaugePositions(allCharacters);
             battleUI.HighlightActor(currentActor);
 
+
             // 짧은 연출 딜레이
             yield return new WaitForSeconds(0.3f);
 
@@ -132,6 +133,14 @@ public class BattleManager : MonoBehaviour
     {
         if (State != BattleState.PlayerTurn) return;
 
+        battleUI.MoveSkillSelectIndicator(skillIndex);
+    }
+
+    public void OnSkillExecute(int skillIndex)
+    {
+        if (State != BattleState.PlayerTurn) return;
+
+        // TODO: 실제 스킬 실행 로직
         Debug.Log($"[Battle] {currentActor.Name} → {skillIndex + 1}번 스킬 사용");
 
         // TODO: 실제 스킬 로직 적용

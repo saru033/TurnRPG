@@ -8,6 +8,9 @@ TextureImporter:
   - first:
       213: 5085415284296604745
     second: shield_1
+  - first:
+      213: 1691966074973790518
+    second: shield_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -119,12 +122,12 @@ TextureImporter:
       name: shield_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1024
-        height: 1024
+        x: 190
+        y: 182
+        width: 653
+        height: 652
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -137,33 +140,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: shield_1
-      rect:
-        serializedVersion: 2
-        x: 932
-        y: 0
-        width: 19
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 94c57d3e146039640800000000000000
-      internalID: 5085415284296604745
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 625a8aaa77044864aa0eb546c46943af
     internalID: 0
     vertices: []
     indices: 
@@ -171,10 +152,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":1024.0,"y":1024.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       shield_0: 2389193319765324094
-      shield_1: 5085415284296604745
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

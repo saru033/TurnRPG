@@ -1,19 +1,22 @@
 fileFormatVersion: 2
-guid: 1260ac1d8ede7874e88d992f50c32885
+guid: 731029e21b62f8e4b903c856002eb890
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8548355244392744301
-    second: heal_ori_0
+      213: -364157829025628851
+    second: Hp_Bag 2_0
   - first:
-      213: 8491775148040441953
-    second: heal_ori_1
+      213: -6792309491102383763
+    second: Hp_Bag 2_1
   - first:
-      213: -6341903493118313915
-    second: heal_ori_2
+      213: -805294665892303663
+    second: Hp_Bag 2_2
   - first:
-      213: 6757375903555677978
-    second: heal_ori_3
+      213: 7728260646379472028
+    second: Hp_Bag 2_3
+  - first:
+      213: 2219348155528103302
+    second: Hp_Bag 2_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -84,7 +87,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -122,13 +125,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: heal_ori_0
+      name: Hp_Bag 2_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1280
-        height: 1280
+        x: 59
+        y: 639
+        width: 842
+        height: 158
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +140,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d6580ebbdcbd1a670800000000000000
-      internalID: 8548355244392744301
+      spriteID: d4dffb6426042faf0800000000000000
+      internalID: -364157829025628851
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: heal_ori_1
+      name: Hp_Bag 2_1
       rect:
         serializedVersion: 2
-        x: 1112
-        y: 776
-        width: 7
-        height: 8
+        x: 990
+        y: 457
+        width: 190
+        height: 222
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -159,20 +162,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 160d07b7188d8d570800000000000000
-      internalID: 8491775148040441953
+      spriteID: d61045a418edcb1a0800000000000000
+      internalID: -6792309491102383763
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: heal_ori_2
+      name: Hp_Bag 2_2
       rect:
         serializedVersion: 2
-        x: 1131
-        y: 619
-        width: 7
-        height: 8
+        x: 61
+        y: 466
+        width: 839
+        height: 110
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -181,20 +184,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 54abfd4bf580df7a0800000000000000
-      internalID: -6341903493118313915
+      spriteID: 1dce8fb94c403d4f0800000000000000
+      internalID: -805294665892303663
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: heal_ori_3
+      name: Hp_Bag 2_3
       rect:
         serializedVersion: 2
-        x: 732
-        y: 57
-        width: 6
-        height: 6
+        x: 53
+        y: 55
+        width: 875
+        height: 353
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -203,8 +206,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a1f6839059507cd50800000000000000
-      internalID: 6757375903555677978
+      spriteID: c94441f9c1c404b60800000000000000
+      internalID: 7728260646379472028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hp_Bag 2_4
+      rect:
+        serializedVersion: 2
+        x: 986
+        y: 140
+        width: 196
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 685cb2b8365bcce10800000000000000
+      internalID: 2219348155528103302
       vertices: []
       indices: 
       edges: []
@@ -223,10 +248,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      heal_ori_0: 8548355244392744301
-      heal_ori_1: 8491775148040441953
-      heal_ori_2: -6341903493118313915
-      heal_ori_3: 6757375903555677978
+      Hp_Bag 2_0: -364157829025628851
+      Hp_Bag 2_1: -6792309491102383763
+      Hp_Bag 2_2: -805294665892303663
+      Hp_Bag 2_3: 7728260646379472028
+      Hp_Bag 2_4: 2219348155528103302
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

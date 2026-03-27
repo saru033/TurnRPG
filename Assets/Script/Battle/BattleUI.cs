@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
+using System.Linq;
 
 public class BattleUI : MonoBehaviour
 {
@@ -14,9 +15,8 @@ public class BattleUI : MonoBehaviour
     public GameObject portraitPrefab;
     public GameObject skillButtonRoot;
     public Button[] skillButtons;
-    public TextMeshProUGUI[] skillLabels;
     public RectTransform ImgAreaRect;
-
+    public RectTransform select_SkillRect;
 
     // -------------------------------------------------------
     // 레이아웃 비율 (패널 기준)
@@ -30,6 +30,7 @@ public class BattleUI : MonoBehaviour
     [Range(0.1f, 0.6f)] public float skillAreaWidthRatio = 0.30f; // 스킬 영역 가로 a%
     [Range(0.1f, 0.5f)] public float skillAreaHeightRatio = 0.18f; // 스킬 영역 높이 b%
     [Range(0f, 0.1f)] public float skillAreaBottomRatio = 0.02f; // 하단 여백
+    [Range(0f, 30f)] public float skillButtonSpacing = 10f;
 
     [Header("Layout — Portrait Icon (패널 기준 비율)")]
     [Range(0.02f, 0.12f)] public float portraitSizeRatio = 0.06f;  // 아이콘 크기 c%
@@ -37,6 +38,14 @@ public class BattleUI : MonoBehaviour
 
     [Header("Layout — image Area (패널 기준 비율)")]
     [Range(0.1f, 0.5f)] public float imageAreaHeightRatio = 0.2f; // 이미지 영역 높이 b%
+
+    [Header("Layout — select_Skill (패널 기준 비율)")]
+    [Range(0.1f, 0.5f)] public float select_SkillWidthRatio = 0.2f; // 이미지 영역 높이 b%
+
+    [Header("따닥 버튼 클릭")]
+    private float lastClickTime = 0f;
+    private int lastClickedIndex = -1;
+    [SerializeField] private float doubleClickThreshold = 0.3f; // 따닥 인식 시간
 
     // -------------------------------------------------------
     // 런타임 계산값
@@ -111,7 +120,7 @@ public class BattleUI : MonoBehaviour
                     rt.anchorMin = new Vector2(0f, 0f);
                     rt.anchorMax = new Vector2(0f, 0f);
                     rt.pivot = new Vector2(0f, 0f);
-                    rt.anchoredPosition = new Vector2(i * btnSize, 0f);
+                    rt.anchoredPosition = new Vector2(i * (btnSize+skillButtonSpacing), 0f);
                 }
             }
         }
@@ -128,6 +137,22 @@ public class BattleUI : MonoBehaviour
             ImgAreaRect.sizeDelta = new Vector2(areaW, areaH);
         }
 
+
+    if(select_SkillRect != null && skillButtons != null && skillButtons.Length > 0)
+    {
+        float areaH = _panelH * select_SkillWidthRatio;
+        select_SkillRect.sizeDelta = new Vector2(areaH, areaH); // 정사각형
+
+        // 첫 번째 스킬 버튼의 자식으로 이동
+        select_SkillRect.SetParent(skillButtons[0].transform, false);
+        var sr = skillButtons[0].GetComponent<RectTransform>();
+        sr.SetAsLastSibling();
+
+        // 앵커 중앙, 위치 0,0
+        select_SkillRect.anchorMin = new Vector2(0.5f, 0.5f);
+        select_SkillRect.anchorMax = new Vector2(0.5f, 0.5f);
+        select_SkillRect.anchoredPosition = Vector2.zero;
+    }
 
         // --- Portrait 크기 ---
         _portraitSize = _panelH * portraitSizeRatio;
@@ -197,11 +222,19 @@ public class BattleUI : MonoBehaviour
                 skillButtons[i].onClick.AddListener(() =>
                 {
                     if (object.ReferenceEquals(bm, null)) { Debug.LogError("[BattleUI] battleManager null"); return; }
-                    bm.OnSkillSelected(idx);
+                    
+                    float timeSinceLastClick = Time.time - lastClickTime;
+                    bool isDoubleClick = (lastClickedIndex == idx) && (timeSinceLastClick <= doubleClickThreshold);
+
+                    lastClickTime = Time.time;
+                    lastClickedIndex = idx;
+
+                    if (isDoubleClick)
+                        bm.OnSkillExecute(idx);   // 따닥 → 실행
+                    else
+                        bm.OnSkillSelected(idx);  // 단일 클릭 → 선택만
                 });
 
-                if (skillLabels != null && i < skillLabels.Length && skillLabels[i] != null)
-                    skillLabels[i].text = $"{i + 1}스킬";
             }
         }
     }
@@ -213,6 +246,17 @@ public class BattleUI : MonoBehaviour
     {
         for (int i = 0; i < portraits.Count && i < characters.Count; i++)
             portraits[i].UpdatePosition(gaugeBarRect);
+
+
+    // ActionGauge 높을수록 앞에(SiblingIndex 높게)
+    var sorted = chars
+        .Select((c, i) => new { character = c, index = i })
+        .Where(x => x.index < portraits.Count)
+        .OrderBy(x => x.character.ActionGauge) // 낮은게 먼저 → 높은게 나중(앞)
+        .ToList();
+
+    for (int i = 0; i < sorted.Count; i++)
+        portraits[sorted[i].index].RectTransform.SetSiblingIndex(i);  
     }
 
     // -------------------------------------------------------
@@ -252,6 +296,24 @@ public class BattleUI : MonoBehaviour
               .SetEase(Ease.InCubic)
               .OnComplete(() => skillButtonRoot.SetActive(false));
         }
+    }
+
+    // -------------------------------------------------------
+    // 선택한 스킬 표시
+    // -------------------------------------------------------
+    public void MoveSkillSelectIndicator(int skillIndex)
+    {
+        if (select_SkillRect == null || skillButtons == null || skillIndex >= skillButtons.Length) return;
+
+        Transform targetParent = skillButtons[skillIndex].transform;
+
+        // 부모 이동 후 DOAnchorPos로 0,0으로 부드럽게 이동
+        select_SkillRect.SetParent(targetParent, true); // 월드 좌표 유지하며 부모 변경
+
+        //버튼 레이어 변경
+        targetParent.SetAsLastSibling();
+
+        select_SkillRect.DOAnchorPos(Vector2.zero, 0.2f).SetEase(Ease.OutQuad);
     }
 
 

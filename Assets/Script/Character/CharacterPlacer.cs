@@ -96,12 +96,12 @@ public class CharacterPlacer : MonoBehaviour
             Vector2 ratio = slots[slotIndex];
             rt.anchoredPosition = new Vector2(panelW * ratio.x, panelH * ratio.y);
 
-            // 렌더 순서 — slot2(앞)가 위에 그려지도록
+            // 렌더 순서 — slot2(앞)가 뒤에 그려지도록
             if (useSortingOrder)
             {
-                // 뒤(0,2번) → 먼저, 앞(1번) → 나중에 → 더 위에 그려짐
+                // 뒤(0,2번) → 나중에, 앞(1번) → 먼저
                 bool isFront = slotIndex == 1;
-                go.transform.SetSiblingIndex(isFront ? panelRect.childCount - 1 : 0);
+                go.transform.SetSiblingIndex(isFront ? 0 : panelRect.childCount - 1);
             }
 
             // CharacterView 초기화
