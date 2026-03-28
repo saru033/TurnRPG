@@ -1,0 +1,126 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7166cb7f5dfe6a84cbbfd47fcd0f00ad, type: 3}
+  m_Name: "1004_\uC57D\uD654\uD0C4"
+  m_EditorClassIdentifier: Assembly-CSharp::TurnRPG.SkillSystem.SkillData
+  SkillID: 1004
+  SkillName: "\uC57D\uD654\uD0C4"
+  SkillIcon: {fileID: -8449276782819457348, guid: e4616979001df2749aec550e6edeb2eb, type: 3}
+  Type: 1
+  PassiveTrigger: 0
+  SlotIndex: 2
+  EquipRestriction: 1
+  RequiredAnimationTrigger: 
+  UltimateCutsceneClip: {fileID: 7400000, guid: ddabf099aa821ae499878d770c611519, type: 2}
+  LevelDatas:
+  - Description: "\uC801 \uC804\uCCB4\uC758 \uAC15\uD654\uD6A8\uACFC\uB97C 2\uAC1C
+      \uC81C\uAC70\uD55C \uD6C4 \uD589\uB3D9\uAC8C\uC774\uC9C0\uB97C 20% \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
+    Cooldown: 6
+    TargetType: 3
+    Effects:
+    - rid: 7481024980550680685
+    - rid: 7481024980550680686
+  - Description: "\uC801 \uC804\uCCB4\uC758 \uAC15\uD654\uD6A8\uACFC\uB97C 2\uAC1C
+      \uC81C\uAC70\uD55C \uD6C4 \uD589\uB3D9\uAC8C\uC774\uC9C0\uB97C 20% \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
+    Cooldown: 5
+    TargetType: 3
+    Effects:
+    - rid: 7481024980550680685
+    - rid: 7481024980550680686
+  - Description: "\uC801 \uC804\uCCB4\uC758 \uAC15\uD654\uD6A8\uACFC\uB97C 2\uAC1C
+      \uC81C\uAC70\uD55C \uD6C4 100% \uD655\uB960\uB85C 2\uD134\uAC04 \uC18D\uB3C4
+      \uAC10\uC18C\uB97C \uBD80\uC5EC\uD569\uB2C8\uB2E4. \uC774\uD6C4 \uD589\uB3D9\uAC8C\uC774\uC9C0\uB97C
+      20% \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
+    Cooldown: 5
+    TargetType: 3
+    Effects:
+    - rid: 7481024980550680685
+    - rid: 7481024980550680687
+    - rid: 7481024980550680686
+  - Description: "\uC801 \uC804\uCCB4\uC758 \uAC15\uD654\uD6A8\uACFC\uB97C 2\uAC1C
+      \uC81C\uAC70\uD55C \uD6C4 100% \uD655\uB960\uB85C 2\uD134\uAC04 \uC18D\uB3C4
+      \uAC10\uC18C\uB97C \uBD80\uC5EC\uD569\uB2C8\uB2E4. \uC774\uD6C4 \uD589\uB3D9\uAC8C\uC774\uC9C0\uB97C
+      20% \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4. \uC790\uC2E0\uC5D0\uAC8C \uCD94\uAC00\uD134\uC774
+      \uBC1C\uC0DD\uD569\uB2C8\uB2E4."
+    Cooldown: 5
+    TargetType: 3
+    Effects:
+    - rid: 7481024980550680685
+    - rid: 7481024980550680687
+    - rid: 7481024980550680686
+    - rid: 7481024980550680688
+  - Description: "\uC801 \uC804\uCCB4\uC758 \uAC15\uD654\uD6A8\uACFC\uB97C 2\uAC1C
+      \uC81C\uAC70\uD55C \uD6C4 100% \uD655\uB960\uB85C 2\uD134\uAC04 \uC18D\uB3C4
+      \uAC10\uC18C , \uBA85\uC911 \uAC10\uC18C\uB97C \uBD80\uC5EC\uD569\uB2C8\uB2E4.
+      \uC774\uD6C4 \uD589\uB3D9\uAC8C\uC774\uC9C0\uB97C 20% \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4.
+      \uC790\uC2E0\uC5D0\uAC8C \uCD94\uAC00\uD134\uC774 \uBC1C\uC0DD\uD569\uB2C8\uB2E4."
+    Cooldown: 5
+    TargetType: 3
+    Effects:
+    - rid: 7481024980550680685
+    - rid: 7481024980550680687
+    - rid: 7481024980550680689
+    - rid: 7481024980550680686
+    - rid: 7481024980550680688
+  - Description: "\uC801 \uC804\uCCB4\uC758 \uAC15\uD654\uD6A8\uACFC\uB97C 2\uAC1C
+      \uC81C\uAC70\uD55C \uD6C4 100% \uD655\uB960\uB85C 2\uD134\uAC04 \uC18D\uB3C4
+      \uAC10\uC18C\uB97C \uBD80\uC5EC\uD569\uB2C8\uB2E4. \uC774\uD6C4 \uD589\uB3D9\uAC8C\uC774\uC9C0\uB97C
+      30% \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4. \uC790\uC2E0\uC5D0\uAC8C \uCD94\uAC00\uD134\uC774
+      \uBC1C\uC0DD\uD569\uB2C8\uB2E4."
+    Cooldown: 5
+    TargetType: 3
+    Effects:
+    - rid: 7481024980550680685
+    - rid: 7481024980550680687
+    - rid: 7481024980550680690
+    - rid: 7481024980550680688
+  references:
+    version: 2
+    RefIds:
+    - rid: 7481024980550680685
+      type: {class: CleanseEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 3
+        TargetCategory: 0
+        Count: 2
+    - rid: 7481024980550680686
+      type: {class: ActionGaugeEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 3
+        Amount: -20
+    - rid: 7481024980550680687
+      type: {class: ApplyStatusEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 3
+        EffectData: {fileID: 11400000, guid: 2088129e2ba5f92448d59475cbe7a7f6, type: 2}
+        Duration: 2
+        ApplyChance: 1
+        StatScaleType: 0
+        StatMultiplier: 0
+    - rid: 7481024980550680688
+      type: {class: ExtraTurnEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 1
+    - rid: 7481024980550680689
+      type: {class: ApplyStatusEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 3
+        EffectData: {fileID: 11400000, guid: 240f4229f4e8bd94c9b7cc22243d7f7e, type: 2}
+        Duration: 2
+        ApplyChance: 1
+        StatScaleType: 0
+        StatMultiplier: 0
+    - rid: 7481024980550680690
+      type: {class: ActionGaugeEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 3
+        Amount: -30

@@ -28,4 +28,8 @@ public class CharacterData : ScriptableObject
 
 [Tooltip("캐릭터 프리팹 (Animator 포함)")]
 public GameObject characterPrefab;
+
+    [Header("시작 스킬 로스터")]
+    [Tooltip("전투 시작 시 자동으로 장착될 스킬 (최대 3개)")]
+    public System.Collections.Generic.List<TurnRPG.SkillSystem.SkillData> StartingSkills;
 }

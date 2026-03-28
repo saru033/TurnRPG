@@ -1,0 +1,114 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7166cb7f5dfe6a84cbbfd47fcd0f00ad, type: 3}
+  m_Name: "2006_\uACF5\uACA9\uC900\uBE44"
+  m_EditorClassIdentifier: Assembly-CSharp::TurnRPG.SkillSystem.SkillData
+  SkillID: 2006
+  SkillName: "\uACF5\uACA9 \uC900\uBE44"
+  SkillIcon: {fileID: 6483172485400903665, guid: d2e4857c263b66c4ab9a5b30da4dae0a, type: 3}
+  Type: 2
+  PassiveTrigger: 0
+  SlotIndex: 1
+  EquipRestriction: 2
+  RequiredAnimationTrigger: 
+  UltimateCutsceneClip: {fileID: 0}
+  LevelDatas:
+  - Description: "\uC804\uD22C \uC2DC\uC791 \uC2DC \uC544\uAD70 \uC804\uCCB4\uC758
+      \uACF5\uACA9\uB825\uC744 10% \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
+    Cooldown: 0
+    TargetType: 0
+    ConstantEffects:
+    - rid: 7481024980550680779
+    Effects: []
+  - Description: "\uC804\uD22C \uC2DC\uC791 \uC2DC \uC544\uAD70 \uC804\uCCB4\uC758
+      \uACF5\uACA9\uB825 , \uCE58\uBA85\uD0C0 \uD53C\uD574\uB97C 10% \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
+    Cooldown: 0
+    TargetType: 0
+    ConstantEffects:
+    - rid: 7481024980550680779
+    - rid: 7481024980550680780
+    Effects: []
+  - Description: "\uC804\uD22C \uC2DC\uC791 \uC2DC \uC544\uAD70 \uC804\uCCB4\uC758
+      \uACF5\uACA9\uB825 , \uCE58\uBA85\uD0C0 \uD53C\uD574\uB97C 15% \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
+    Cooldown: 0
+    TargetType: 0
+    ConstantEffects:
+    - rid: 7481024980550680781
+    - rid: 7481024980550680782
+    Effects: []
+  - Description: "\uC804\uD22C \uC2DC\uC791 \uC2DC \uC790\uC2E0\uC758 \uACF5\uACA9\uB825
+      , \uCE58\uBA85\uD0C0 \uD53C\uD574\uB97C 50% \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
+    Cooldown: 0
+    TargetType: 0
+    ConstantEffects:
+    - rid: 7481024980550680783
+    - rid: 7481024980550680784
+    Effects: []
+  - Description: "\uC804\uD22C \uC2DC\uC791 \uC2DC \uC544\uAD70 \uC804\uCCB4\uC758
+      \uACF5\uACA9\uB825 , \uCE58\uBA85\uD0C0 \uD53C\uD574\uB97C 25% \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
+    Cooldown: 0
+    TargetType: 0
+    ConstantEffects:
+    - rid: 7481024980550680785
+    - rid: 7481024980550680786
+    Effects: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 7481024980550680779
+      type: {class: PassiveStatBoostEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 2
+        TargetStat: atk
+        PercentAmount: 0.1
+    - rid: 7481024980550680780
+      type: {class: PassiveStatBoostEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 2
+        TargetStat: critdmg
+        PercentAmount: 0.1
+    - rid: 7481024980550680781
+      type: {class: PassiveStatBoostEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 2
+        TargetStat: atk
+        PercentAmount: 0.15
+    - rid: 7481024980550680782
+      type: {class: PassiveStatBoostEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 2
+        TargetStat: critdmg
+        PercentAmount: 0.15
+    - rid: 7481024980550680783
+      type: {class: PassiveStatBoostEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 1
+        TargetStat: atk
+        PercentAmount: 0.5
+    - rid: 7481024980550680784
+      type: {class: PassiveStatBoostEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 1
+        TargetStat: critdmg
+        PercentAmount: 0.5
+    - rid: 7481024980550680785
+      type: {class: PassiveStatBoostEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 2
+        TargetStat: atk
+        PercentAmount: 0.25
+    - rid: 7481024980550680786
+      type: {class: PassiveStatBoostEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 2
+        TargetStat: critdmg
+        PercentAmount: 0.25

@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7166cb7f5dfe6a84cbbfd47fcd0f00ad, type: 3}
+  m_Name: "3010_\uD380\uCE58"
+  m_EditorClassIdentifier: Assembly-CSharp::TurnRPG.SkillSystem.SkillData
+  SkillID: 3010
+  SkillName: "\uD380\uCE58"
+  SkillIcon: {fileID: 1092332346000790644, guid: 401c595f02fd7684eb9cd1b052b2fd82, type: 3}
+  Type: 0
+  SlotIndex: 0
+  EquipRestriction: 4
+  RequiredAnimationTrigger: attack
+  UltimateCutsceneClip: {fileID: 0}
+  LevelDatas:
+  - Description: "\uC801\uC744 \uACF5\uACA9\uD569\uB2C8\uB2E4. \uBC29\uC5B4\uB825\uC744
+      5% \uAD00\uD1B5\uD569\uB2C8\uB2E4."
+    Cooldown: 0
+    TargetType: 2
+    PassiveTrigger: 0
+    ConstantEffects: []
+    Effects:
+    - rid: 7481024980550680886
+  - Description: "\uC801\uC744 \uACF5\uACA9\uD569\uB2C8\uB2E4. \uBC29\uC5B4\uB825\uC744
+      15% \uAD00\uD1B5\uD569\uB2C8\uB2E4."
+    Cooldown: 0
+    TargetType: 2
+    PassiveTrigger: 0
+    ConstantEffects: []
+    Effects:
+    - rid: 7481024980550680887
+  - Description: "\uC801\uC744 \uACF5\uACA9\uD55C \uD6C4 \uC790\uC2E0\uC758 \uD589\uB3D9\uAC8C\uC774\uC9C0\uB97C
+      15% \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4,. \uBC29\uC5B4\uB825\uC744 15% \uAD00\uD1B5\uD569\uB2C8\uB2E4."
+    Cooldown: 0
+    TargetType: 2
+    PassiveTrigger: 0
+    ConstantEffects: []
+    Effects:
+    - rid: 7481024980550680887
+    - rid: 7481024980550680888
+  references:
+    version: 2
+    RefIds:
+    - rid: 7481024980550680886
+      type: {class: DamageEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 0
+        DamageMultiplier: 1.3
+        Penetration: 0.05
+        CannotBeCountered: 0
+        AlwaysHit: 0
+    - rid: 7481024980550680887
+      type: {class: DamageEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 0
+        DamageMultiplier: 1.3
+        Penetration: 0.15
+        CannotBeCountered: 0
+        AlwaysHit: 0
+    - rid: 7481024980550680888
+      type: {class: ActionGaugeEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 1
+        Amount: 15

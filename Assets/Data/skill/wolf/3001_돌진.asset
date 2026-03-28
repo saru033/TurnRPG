@@ -1,0 +1,142 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7166cb7f5dfe6a84cbbfd47fcd0f00ad, type: 3}
+  m_Name: "3001_\uB3CC\uC9C4"
+  m_EditorClassIdentifier: Assembly-CSharp::TurnRPG.SkillSystem.SkillData
+  SkillID: 3001
+  SkillName: "\uB3CC\uC9C4"
+  SkillIcon: {fileID: -3446239142717287999, guid: 401c595f02fd7684eb9cd1b052b2fd82, type: 3}
+  Type: 0
+  SlotIndex: 2
+  EquipRestriction: 4
+  RequiredAnimationTrigger: 
+  UltimateCutsceneClip: {fileID: 7400000, guid: fc52cd7f4134f8a43a347b6d15cbffc9, type: 2}
+  LevelDatas:
+  - Description: "\uC801 \uC804\uCCB4\uB97C \uACF5\uACA9\uD55C \uD6C4 \uC790\uC2E0\uC5D0\uAC8C
+      2\uD134\uAC04 \uC18D\uB3C4 \uC99D\uAC00\uB97C \uBC1C\uC0DD\uC2DC\uD0B5\uB2C8\uB2E4."
+    Cooldown: 5
+    TargetType: 3
+    PassiveTrigger: 0
+    ConstantEffects: []
+    Effects:
+    - rid: 7481024980550680817
+    - rid: 7481024980550680818
+  - Description: "\uC801 \uC804\uCCB4\uB97C \uACF5\uACA9\uD55C \uD6C4 \uC790\uC2E0\uC5D0\uAC8C
+      2\uD134\uAC04 \uC18D\uB3C4 \uC99D\uAC00\uB97C \uBC1C\uC0DD\uC2DC\uD0B5\uB2C8\uB2E4.
+      \uC774 \uACF5\uACA9\uC73C\uB85C\uB294 \uBC18\uACA9\uC774 \uBC1C\uC0DD\uD558\uC9C0
+      \uC54A\uC2B5\uB2C8\uB2E4."
+    Cooldown: 5
+    TargetType: 3
+    PassiveTrigger: 0
+    ConstantEffects: []
+    Effects:
+    - rid: 7481024980550680819
+    - rid: 7481024980550680818
+  - Description: "\uC801 \uC804\uCCB4\uB97C \uACF5\uACA9\uD55C \uD6C4 \uC790\uC2E0\uC5D0\uAC8C
+      2\uD134\uAC04 \uC18D\uB3C4 \uC99D\uAC00\uB97C \uBC1C\uC0DD\uC2DC\uD0B5\uB2C8\uB2E4.
+      \uC774 \uACF5\uACA9\uC73C\uB85C\uB294 \uBC18\uACA9\uC774 \uBC1C\uC0DD\uD558\uC9C0
+      \uC54A\uC2B5\uB2C8\uB2E4."
+    Cooldown: 4
+    TargetType: 3
+    PassiveTrigger: 0
+    ConstantEffects: []
+    Effects:
+    - rid: 7481024980550680819
+    - rid: 7481024980550680818
+  - Description: "\uC801 \uC804\uCCB4\uB97C \uACF5\uACA9\uD55C \uD6C4 \uC544\uAD70\uC5D0\uAC8C
+      2\uD134\uAC04 \uC18D\uB3C4 \uC99D\uAC00\uB97C \uBC1C\uC0DD\uC2DC\uD0B5\uB2C8\uB2E4.
+      \uC774 \uACF5\uACA9\uC73C\uB85C\uB294 \uBC18\uACA9\uC774 \uBC1C\uC0DD\uD558\uC9C0
+      \uC54A\uC2B5\uB2C8\uB2E4."
+    Cooldown: 4
+    TargetType: 3
+    PassiveTrigger: 0
+    ConstantEffects: []
+    Effects:
+    - rid: 7481024980550680819
+    - rid: 7481024980550680820
+  - Description: "\uC801 \uC804\uCCB4\uB97C \uACF5\uACA9\uD55C \uD6C4 \uC544\uAD70\uC5D0\uAC8C
+      2\uD134\uAC04 \uC18D\uB3C4 \uC99D\uAC00 , \uBA85\uC911 \uC99D\uAC00\uB97C \uBC1C\uC0DD\uC2DC\uD0B5\uB2C8\uB2E4.
+      \uC774 \uACF5\uACA9\uC73C\uB85C\uB294 \uBC18\uACA9\uC774 \uBC1C\uC0DD\uD558\uC9C0
+      \uC54A\uC2B5\uB2C8\uB2E4."
+    Cooldown: 4
+    TargetType: 3
+    PassiveTrigger: 0
+    ConstantEffects: []
+    Effects:
+    - rid: 7481024980550680819
+    - rid: 7481024980550680820
+    - rid: 7481024980550680821
+  - Description: "\uC801 \uC804\uCCB4\uB97C \uACF5\uACA9\uD55C \uD6C4 \uC544\uAD70\uC5D0\uAC8C
+      2\uD134\uAC04 \uC18D\uB3C4 \uC99D\uAC00\uB97C \uBC1C\uC0DD\uC2DC\uD0B5\uB2C8\uB2E4.
+      \uC774\uD6C4 \uBB34\uC791\uC704 \uC544\uAD70 \uD55C \uBA85\uC758 \uC2A4\uD0AC
+      \uCFE8\uD0C0\uC784\uC744 1\uD134 \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4. \uC774
+      \uACF5\uACA9\uC73C\uB85C\uB294 \uBC18\uACA9\uC774 \uBC1C\uC0DD\uD558\uC9C0
+      \uC54A\uC2B5\uB2C8\uB2E4."
+    Cooldown: 4
+    TargetType: 3
+    PassiveTrigger: 0
+    ConstantEffects: []
+    Effects:
+    - rid: 7481024980550680819
+    - rid: 7481024980550680820
+    - rid: 7481024980550680822
+  references:
+    version: 2
+    RefIds:
+    - rid: 7481024980550680817
+      type: {class: DamageEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 3
+        DamageMultiplier: 1.5
+        Penetration: 0
+        CannotBeCountered: 0
+        AlwaysHit: 0
+    - rid: 7481024980550680818
+      type: {class: ApplyStatusEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 1
+        EffectData: {fileID: 11400000, guid: 240d832eeeacbbe479690f6e3f75d5fd, type: 2}
+        Duration: 2
+        ApplyChance: 1
+        StatScaleType: 0
+        StatMultiplier: 0
+    - rid: 7481024980550680819
+      type: {class: DamageEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 3
+        DamageMultiplier: 1.5
+        Penetration: 0
+        CannotBeCountered: 1
+        AlwaysHit: 0
+    - rid: 7481024980550680820
+      type: {class: ApplyStatusEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 2
+        EffectData: {fileID: 11400000, guid: 240d832eeeacbbe479690f6e3f75d5fd, type: 2}
+        Duration: 2
+        ApplyChance: 1
+        StatScaleType: 0
+        StatMultiplier: 0
+    - rid: 7481024980550680821
+      type: {class: ApplyStatusEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 2
+        EffectData: {fileID: 11400000, guid: 101b42930c65684408fae8cd19569527, type: 2}
+        Duration: 2
+        ApplyChance: 1
+        StatScaleType: 0
+        StatMultiplier: 0
+    - rid: 7481024980550680822
+      type: {class: CooldownEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 6
+        TurnAmount: -1

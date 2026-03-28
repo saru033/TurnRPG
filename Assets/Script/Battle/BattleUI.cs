@@ -12,6 +12,9 @@ public class BattleUI : MonoBehaviour
     public RectTransform panelRect;        // 비율 계산 기준 패널
     public RectTransform gaugeBarRect;     // 행동게이지 바
     public RectTransform skillAreaRect;    // 스킬 버튼 영역
+    [Header("UI Panels")]
+    [Tooltip("3스킬 컷씬 연출용 GameObject")]
+    public GameObject ultimateCutsceneRoot;
     public GameObject portraitPrefab;
     public GameObject skillButtonRoot;
     public Button[] skillButtons;
@@ -57,8 +60,8 @@ public class BattleUI : MonoBehaviour
     // -------------------------------------------------------
     // 캐릭터/포트레이트 목록
     // -------------------------------------------------------
-    List<GaugePortrait> portraits = new ();
-    List<BattleCharacter> characters = new ();
+    List<GaugePortrait> portraits = new();
+    List<BattleCharacter> characters = new();
 
     // -------------------------------------------------------
     // 레이아웃 계산
@@ -87,7 +90,7 @@ public class BattleUI : MonoBehaviour
             // sizeDelta 직접 수정 시 앵커가 Stretch로 되어 있으면 값이 튀는 현상 방지
             gaugeBarRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, barW);
             gaugeBarRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, barH);
-            
+
             gaugeBarRect.anchoredPosition = new Vector2(barX, gaugeBarRect.anchoredPosition.y);
         }
 
@@ -120,7 +123,7 @@ public class BattleUI : MonoBehaviour
                     rt.anchorMin = new Vector2(0f, 0f);
                     rt.anchorMax = new Vector2(0f, 0f);
                     rt.pivot = new Vector2(0f, 0f);
-                    rt.anchoredPosition = new Vector2(i * (btnSize+skillButtonSpacing), 0f);
+                    rt.anchoredPosition = new Vector2(i * (btnSize + skillButtonSpacing), 0f);
                 }
             }
         }
@@ -138,21 +141,21 @@ public class BattleUI : MonoBehaviour
         }
 
 
-    if(select_SkillRect != null && skillButtons != null && skillButtons.Length > 0)
-    {
-        float areaH = _panelH * select_SkillWidthRatio;
-        select_SkillRect.sizeDelta = new Vector2(areaH, areaH); // 정사각형
+        if (select_SkillRect != null && skillButtons != null && skillButtons.Length > 0)
+        {
+            float areaH = _panelH * select_SkillWidthRatio;
+            select_SkillRect.sizeDelta = new Vector2(areaH, areaH); // 정사각형
 
-        // 첫 번째 스킬 버튼의 자식으로 이동
-        select_SkillRect.SetParent(skillButtons[0].transform, false);
-        var sr = skillButtons[0].GetComponent<RectTransform>();
-        sr.SetAsLastSibling();
+            // 첫 번째 스킬 버튼의 자식으로 이동
+            select_SkillRect.SetParent(skillButtons[0].transform, false);
+            var sr = skillButtons[0].GetComponent<RectTransform>();
+            sr.SetAsLastSibling();
 
-        // 앵커 중앙, 위치 0,0
-        select_SkillRect.anchorMin = new Vector2(0.5f, 0.5f);
-        select_SkillRect.anchorMax = new Vector2(0.5f, 0.5f);
-        select_SkillRect.anchoredPosition = Vector2.zero;
-    }
+            // 앵커 중앙, 위치 0,0
+            select_SkillRect.anchorMin = new Vector2(0.5f, 0.5f);
+            select_SkillRect.anchorMax = new Vector2(0.5f, 0.5f);
+            select_SkillRect.anchoredPosition = Vector2.zero;
+        }
 
         // --- Portrait 크기 ---
         _portraitSize = _panelH * portraitSizeRatio;
@@ -186,11 +189,11 @@ public class BattleUI : MonoBehaviour
             var portrait = go.GetComponent<GaugePortrait>();
 
             var img = go.transform.Find("Icon")?.GetComponent<Image>();
-                if (img != null && c.Data.iconImage != null)
-             img.sprite = c.Data.iconImage;
+            if (img != null && c.Data.iconImage != null)
+                img.sprite = c.Data.iconImage;
 
 
-             
+
             if (object.ReferenceEquals(portrait, null))
             {
                 Debug.LogError($"[BattleUI] GaugePortrait 컴포넌트 없음: {c.Name}");
@@ -222,7 +225,7 @@ public class BattleUI : MonoBehaviour
                 skillButtons[i].onClick.AddListener(() =>
                 {
                     if (object.ReferenceEquals(bm, null)) { Debug.LogError("[BattleUI] battleManager null"); return; }
-                    
+
                     float timeSinceLastClick = Time.time - lastClickTime;
                     bool isDoubleClick = (lastClickedIndex == idx) && (timeSinceLastClick <= doubleClickThreshold);
 
@@ -248,15 +251,15 @@ public class BattleUI : MonoBehaviour
             portraits[i].UpdatePosition(gaugeBarRect);
 
 
-    // ActionGauge 높을수록 앞에(SiblingIndex 높게)
-    var sorted = chars
-        .Select((c, i) => new { character = c, index = i })
-        .Where(x => x.index < portraits.Count)
-        .OrderBy(x => x.character.ActionGauge) // 낮은게 먼저 → 높은게 나중(앞)
-        .ToList();
+        // ActionGauge 높을수록 앞에(SiblingIndex 높게)
+        var sorted = chars
+            .Select((c, i) => new { character = c, index = i })
+            .Where(x => x.index < portraits.Count)
+            .OrderBy(x => x.character.ActionGauge) // 낮은게 먼저 → 높은게 나중(앞)
+            .ToList();
 
-    for (int i = 0; i < sorted.Count; i++)
-        portraits[sorted[i].index].RectTransform.SetSiblingIndex(i);  
+        for (int i = 0; i < sorted.Count; i++)
+            portraits[sorted[i].index].RectTransform.SetSiblingIndex(i);
     }
 
     // -------------------------------------------------------
@@ -271,7 +274,7 @@ public class BattleUI : MonoBehaviour
     // -------------------------------------------------------
     // 스킬 버튼 표시/숨김
     // -------------------------------------------------------
-    public void SetSkillButtonsVisible(bool visible)
+    public void SetSkillButtonsVisible(bool visible, BattleCharacter actor = null)
     {
         if (skillButtonRoot == null) return;
 
@@ -284,6 +287,47 @@ public class BattleUI : MonoBehaviour
 
         if (visible)
         {
+            // 스킬 버튼 UI 업데이트 (아이콘 및 쿨타임/빈칸 상태 처리)
+            if (actor != null && skillButtons != null)
+            {
+                for (int i = 0; i < skillButtons.Length; i++)
+                {
+                    var skill = actor.ActiveSkills.Count > i ? actor.ActiveSkills[i] : null;
+                    var btn = skillButtons[i];
+                    var img = btn.GetComponent<Image>();
+                    float cd = (actor.SkillCooldowns.Length > i) ? actor.SkillCooldowns[i] : 0;
+
+                    Transform coolTimeObj = btn.transform.Find("CoolTime");
+                    if (coolTimeObj != null)
+                    {
+                        var textObj = coolTimeObj.GetComponentInChildren<TextMeshProUGUI>();
+                        if (cd > 0)
+                        {
+                            coolTimeObj.gameObject.SetActive(true);
+                            if (textObj != null) textObj.text = cd.ToString("F0");
+                        }
+                        else
+                        {
+                            coolTimeObj.gameObject.SetActive(false);
+                            if (textObj != null) textObj.text = "";
+                        }
+                    }
+
+                    if (skill == null || cd > 0)
+                    {
+                        btn.interactable = false;
+                        img.color = new Color(0.5f, 0.5f, 0.5f, 1f);
+                    }
+                    else
+                    {
+                        btn.interactable = true;
+                        img.color = Color.white;
+                    }
+
+                    if (skill != null && skill.SkillIcon != null) img.sprite = skill.SkillIcon;
+                }
+            }
+
             // 오른쪽 바깥에서 시작해서 제자리로 슬라이드
             skillButtonRoot.SetActive(true);
             rt.anchoredPosition = new Vector2(areaW, rt.anchoredPosition.y);
@@ -294,7 +338,7 @@ public class BattleUI : MonoBehaviour
             // 오른쪽 바깥으로 슬라이드 후 비활성화
             rt.DOAnchorPosX(areaW, 0.15f)
               .SetEase(Ease.InCubic)
-              .OnComplete(() => skillButtonRoot.SetActive(false));
+              .OnComplete(() => { skillButtonRoot.SetActive(false); select_SkillRect.gameObject.SetActive(false); });
         }
     }
 
@@ -305,6 +349,7 @@ public class BattleUI : MonoBehaviour
     {
         if (select_SkillRect == null || skillButtons == null || skillIndex >= skillButtons.Length) return;
 
+        select_SkillRect.gameObject.SetActive(true);
         Transform targetParent = skillButtons[skillIndex].transform;
 
         // 부모 이동 후 DOAnchorPos로 0,0으로 부드럽게 이동
@@ -320,7 +365,7 @@ public class BattleUI : MonoBehaviour
     // -------------------------------------------------------
     // 이미지 칸 표시/숨김
     // -------------------------------------------------------
-public void SetSideImageVisible(bool visible , BattleCharacter actor)
+    public void SetSideImageVisible(bool visible, BattleCharacter actor)
     {
         if (ImgAreaRect == null) return;
 
@@ -334,21 +379,22 @@ public void SetSideImageVisible(bool visible , BattleCharacter actor)
         if (visible)
         {
             var img = ImgAreaRect.transform.Find("Image")?.GetComponent<Image>();
-            if (img != null && actor.Data.sideImage != null){
+            if (img != null && actor.Data.sideImage != null)
+            {
                 img.sprite = actor.Data.sideImage;
                 img.preserveAspect = true;
 
                 float h = ImgAreaRect.rect.height;
-        float ratio = (float)actor.Data.sideImage.texture.width / actor.Data.sideImage.texture.height;
-        float w = h * ratio;
+                float ratio = (float)actor.Data.sideImage.texture.width / actor.Data.sideImage.texture.height;
+                float w = h * ratio;
 
-        var imgRt = img.GetComponent<RectTransform>();
-        imgRt.anchorMin = new Vector2(0f, 0f);
-        imgRt.anchorMax = new Vector2(0f, 0f);
-        imgRt.pivot = new Vector2(0f, 0f);
-        imgRt.sizeDelta = new Vector2(w, h);
-        imgRt.anchoredPosition = Vector2.zero; // 왼쪽 하단 기준
-        
+                var imgRt = img.GetComponent<RectTransform>();
+                imgRt.anchorMin = new Vector2(0f, 0f);
+                imgRt.anchorMax = new Vector2(0f, 0f);
+                imgRt.pivot = new Vector2(0f, 0f);
+                imgRt.sizeDelta = new Vector2(w, h);
+                imgRt.anchoredPosition = Vector2.zero; // 왼쪽 하단 기준
+
             }
             // 왼쪽 바깥에서 시작해서 제자리로 슬라이드
             ImgAreaRect.gameObject.SetActive(true);

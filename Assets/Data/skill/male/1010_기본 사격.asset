@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7166cb7f5dfe6a84cbbfd47fcd0f00ad, type: 3}
+  m_Name: "1010_\uAE30\uBCF8 \uC0AC\uACA9"
+  m_EditorClassIdentifier: Assembly-CSharp::TurnRPG.SkillSystem.SkillData
+  SkillID: 1010
+  SkillName: "\uAE30\uBCF8 \uC0AC\uACA9"
+  SkillIcon: {fileID: 5325021166588784539, guid: e4616979001df2749aec550e6edeb2eb, type: 3}
+  Type: 0
+  PassiveTrigger: 0
+  SlotIndex: 0
+  EquipRestriction: 1
+  RequiredAnimationTrigger: attack
+  UltimateCutsceneClip: {fileID: 0}
+  LevelDatas:
+  - Description: "\uC801\uC744 \uACF5\uACA9\uD558\uC5EC \uB300\uC0C1\uC758 \uD589\uB3D9\uAC8C\uC774\uC9C0\uB97C
+      5% \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
+    Cooldown: 0
+    TargetType: 2
+    ConstantEffects: []
+    Effects:
+    - rid: 7481024980550680736
+    - rid: 7481024980550680735
+  - Description: "\uC801\uC744 \uACF5\uACA9\uD558\uC5EC \uB300\uC0C1\uC758 \uD589\uB3D9\uAC8C\uC774\uC9C0\uB97C
+      15% \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
+    Cooldown: 0
+    TargetType: 2
+    ConstantEffects: []
+    Effects:
+    - rid: 7481024980550680736
+    - rid: 7481024980550680737
+  - Description: "\uC801\uC744 \uACF5\uACA9\uD558\uC5EC \uB300\uC0C1\uC758 \uD589\uB3D9\uAC8C\uC774\uC9C0\uB97C
+      15% \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4 \uACF5\uACA9\uB825\uC774 \uAC00\uC7A5
+      \uB192\uC740 \uC544\uAD70\uC5D0\uAC8C \uD611\uACF5\uC744 \uBC1C\uC0DD\uC2DC\uD0B5\uB2C8\uB2E4."
+    Cooldown: 0
+    TargetType: 2
+    ConstantEffects: []
+    Effects:
+    - rid: 7481024980550680736
+    - rid: 7481024980550680737
+    - rid: 7481024980550680738
+  references:
+    version: 2
+    RefIds:
+    - rid: 7481024980550680735
+      type: {class: ActionGaugeEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 0
+        Amount: -5
+    - rid: 7481024980550680736
+      type: {class: DamageEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 0
+        DamageMultiplier: 1.2
+        Penetration: 0
+        CannotBeCountered: 0
+        AlwaysHit: 0
+    - rid: 7481024980550680737
+      type: {class: ActionGaugeEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 0
+        Amount: -15
+    - rid: 7481024980550680738
+      type: {class: DualAttackEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        HelperSelection: 1

@@ -25,3 +25,7 @@ MonoBehaviour:
   iconImage: {fileID: 3838508675734187569, guid: 2c577ec5a447c9d4a919e6ad6d386d01, type: 3}
   sideImage: {fileID: 5811013593148057389, guid: 8956ecde244ba124fa540d96c70262be, type: 3}
   characterPrefab: {fileID: 9213099258232346730, guid: 5dc7fab655d4942448f26fdd241d19bb, type: 3}
+  StartingSkills:
+  - {fileID: 11400000, guid: ddbdfddbc0efd1d49a57529a47775ce2, type: 2}
+  - {fileID: 11400000, guid: a5f85646d836b674fb1b70b6f8e3a2dc, type: 2}
+  - {fileID: 11400000, guid: b5ef3bdee7561c342a8df64f230f7591, type: 2}

@@ -1,0 +1,158 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7166cb7f5dfe6a84cbbfd47fcd0f00ad, type: 3}
+  m_Name: "1006_\uACA9\uB824"
+  m_EditorClassIdentifier: Assembly-CSharp::TurnRPG.SkillSystem.SkillData
+  SkillID: 1006
+  SkillName: "\uACA9\uB824"
+  SkillIcon: {fileID: 1284117627236185218, guid: e4616979001df2749aec550e6edeb2eb, type: 3}
+  Type: 1
+  PassiveTrigger: 0
+  SlotIndex: 1
+  EquipRestriction: 1
+  RequiredAnimationTrigger: skill
+  UltimateCutsceneClip: {fileID: 0}
+  LevelDatas:
+  - Description: "\uC790\uC2E0\uC5D0\uAC8C 2\uD134\uAC04 \uACF5\uACA9\uB825 \uC99D\uAC00\uB97C
+      \uBD80\uC5EC\uD558\uACE0 \uC790\uC2E0\uC5D0\uAC8C \uCD94\uAC00\uD134\uC774
+      \uBD80\uC5EC\uB429\uB2C8\uB2E4."
+    Cooldown: 4
+    TargetType: 1
+    Effects:
+    - rid: 7481024980550680699
+    - rid: 7481024980550680700
+  - Description: "\uC790\uC2E0\uC5D0\uAC8C 2\uD134\uAC04 \uACF5\uACA9\uB825 \uC99D\uAC00
+      , \uCE58\uBA85 \uD655\uB960 \uC99D\uAC00\uB97C \uBD80\uC5EC\uD558\uACE0 \uC790\uC2E0\uC5D0\uAC8C
+      \uCD94\uAC00\uD134\uC774 \uBD80\uC5EC\uB429\uB2C8\uB2E4."
+    Cooldown: 4
+    TargetType: 1
+    Effects:
+    - rid: 7481024980550680699
+    - rid: 7481024980550680701
+    - rid: 7481024980550680700
+  - Description: "\uC544\uAD70\uC5D0\uAC8C 2\uD134\uAC04 \uACF5\uACA9\uB825 \uC99D\uAC00
+      , \uCE58\uBA85 \uD655\uB960 \uC99D\uAC00\uB97C \uBD80\uC5EC\uD558\uACE0 \uC790\uC2E0\uC5D0\uAC8C
+      \uCD94\uAC00\uD134\uC774 \uBD80\uC5EC\uB429\uB2C8\uB2E4."
+    Cooldown: 4
+    TargetType: 5
+    Effects:
+    - rid: 7481024980550680708
+    - rid: 7481024980550680709
+    - rid: 7481024980550680700
+  - Description: "\uC544\uAD70\uC5D0\uAC8C 2\uD134\uAC04 \uACF5\uACA9\uB825 \uC99D\uAC00
+      , \uCE58\uBA85 \uD655\uB960 \uC99D\uAC00, \uCE58\uBA85 \uD53C\uD574 \uC99D\uAC00\uB97C
+      \uBD80\uC5EC\uD558\uACE0 \uC790\uC2E0\uC5D0\uAC8C \uCD94\uAC00\uD134\uC774
+      \uBD80\uC5EC\uB429\uB2C8\uB2E4."
+    Cooldown: 4
+    TargetType: 5
+    Effects:
+    - rid: 7481024980550680710
+    - rid: 7481024980550680711
+    - rid: 7481024980550680712
+    - rid: 7481024980550680700
+  - Description: "\uC544\uAD70\uC5D0\uAC8C 3\uD134\uAC04 \uACF5\uACA9\uB825 \uC99D\uAC00
+      , \uCE58\uBA85 \uD655\uB960 \uC99D\uAC00\uB97C \uBD80\uC5EC\uD558\uACE0 \uC790\uC2E0\uC5D0\uAC8C
+      \uCD94\uAC00\uD134\uC774 \uBD80\uC5EC\uB429\uB2C8\uB2E4."
+    Cooldown: 4
+    TargetType: 5
+    Effects:
+    - rid: 7481024980550680713
+    - rid: 7481024980550680714
+    - rid: 7481024980550680700
+  references:
+    version: 2
+    RefIds:
+    - rid: 7481024980550680699
+      type: {class: ApplyStatusEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 1
+        EffectData: {fileID: 11400000, guid: d909d980d671ce249a8097f955ab6991, type: 2}
+        Duration: 2
+        ApplyChance: 1
+        StatScaleType: 0
+        StatMultiplier: 0
+    - rid: 7481024980550680700
+      type: {class: ExtraTurnEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 1
+    - rid: 7481024980550680701
+      type: {class: ApplyStatusEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 1
+        EffectData: {fileID: 11400000, guid: 70edc5bb76293504297e365485b6bbb4, type: 2}
+        Duration: 2
+        ApplyChance: 1
+        StatScaleType: 0
+        StatMultiplier: 0
+    - rid: 7481024980550680708
+      type: {class: ApplyStatusEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 2
+        EffectData: {fileID: 11400000, guid: d909d980d671ce249a8097f955ab6991, type: 2}
+        Duration: 2
+        ApplyChance: 1
+        StatScaleType: 0
+        StatMultiplier: 0
+    - rid: 7481024980550680709
+      type: {class: ApplyStatusEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 2
+        EffectData: {fileID: 11400000, guid: 70edc5bb76293504297e365485b6bbb4, type: 2}
+        Duration: 2
+        ApplyChance: 1
+        StatScaleType: 0
+        StatMultiplier: 0
+    - rid: 7481024980550680710
+      type: {class: ApplyStatusEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 2
+        EffectData: {fileID: 11400000, guid: d909d980d671ce249a8097f955ab6991, type: 2}
+        Duration: 2
+        ApplyChance: 1
+        StatScaleType: 0
+        StatMultiplier: 0
+    - rid: 7481024980550680711
+      type: {class: ApplyStatusEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 2
+        EffectData: {fileID: 11400000, guid: 70edc5bb76293504297e365485b6bbb4, type: 2}
+        Duration: 2
+        ApplyChance: 1
+        StatScaleType: 0
+        StatMultiplier: 0
+    - rid: 7481024980550680712
+      type: {class: ApplyStatusEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 2
+        EffectData: {fileID: 11400000, guid: 4a1401127172fe94f95fec9a2950690a, type: 2}
+        Duration: 2
+        ApplyChance: 1
+        StatScaleType: 0
+        StatMultiplier: 0
+    - rid: 7481024980550680713
+      type: {class: ApplyStatusEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 2
+        EffectData: {fileID: 11400000, guid: d909d980d671ce249a8097f955ab6991, type: 2}
+        Duration: 3
+        ApplyChance: 1
+        StatScaleType: 0
+        StatMultiplier: 0
+    - rid: 7481024980550680714
+      type: {class: ApplyStatusEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 2
+        EffectData: {fileID: 11400000, guid: 70edc5bb76293504297e365485b6bbb4, type: 2}
+        Duration: 3
+        ApplyChance: 1
+        StatScaleType: 0
+        StatMultiplier: 0

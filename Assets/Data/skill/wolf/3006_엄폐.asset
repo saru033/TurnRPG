@@ -1,0 +1,118 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7166cb7f5dfe6a84cbbfd47fcd0f00ad, type: 3}
+  m_Name: "3006_\uC5C4\uD3D0"
+  m_EditorClassIdentifier: Assembly-CSharp::TurnRPG.SkillSystem.SkillData
+  SkillID: 3006
+  SkillName: "\uC5C4\uD3D0"
+  SkillIcon: {fileID: -9105390452734725213, guid: 401c595f02fd7684eb9cd1b052b2fd82, type: 3}
+  Type: 2
+  SlotIndex: 1
+  EquipRestriction: 4
+  RequiredAnimationTrigger: 
+  UltimateCutsceneClip: {fileID: 0}
+  LevelDatas:
+  - Description: "\uC790\uC2E0\uC758 \uD134\uC774 \uB05D\uB0A0 \uB54C 1\uD134\uAC04
+      \uC740\uC2E0\uC744 \uBC1C\uC0DD\uC2DC\uD0B5\uB2C8\uB2E4."
+    Cooldown: 0
+    TargetType: 0
+    PassiveTrigger: 64
+    ConstantEffects: []
+    Effects:
+    - rid: 7481024980550680856
+  - Description: "\uC804\uD22C \uC2DC\uC791\uC2DC \uC790\uC2E0\uC758 \uACF5\uACA9\uB825\uC774
+      20% \uC99D\uAC00\uD569\uB2C8\uB2E4. \uC790\uC2E0\uC758 \uD134\uC774 \uB05D\uB0A0
+      \uB54C 1\uD134\uAC04 \uC740\uC2E0\uC744 \uBC1C\uC0DD\uC2DC\uD0B5\uB2C8\uB2E4."
+    Cooldown: 0
+    TargetType: 0
+    PassiveTrigger: 64
+    ConstantEffects:
+    - rid: 7481024980550680857
+    Effects:
+    - rid: 7481024980550680856
+  - Description: "\uC804\uD22C \uC2DC\uC791\uC2DC \uC790\uC2E0\uC758 \uACF5\uACA9\uB825
+      , \uC18D\uB3C4\uAC00 20% \uC99D\uAC00\uD569\uB2C8\uB2E4. \uC790\uC2E0\uC758
+      \uD134\uC774 \uB05D\uB0A0 \uB54C 1\uD134\uAC04 \uC740\uC2E0\uC744 \uBC1C\uC0DD\uC2DC\uD0B5\uB2C8\uB2E4."
+    Cooldown: 0
+    TargetType: 0
+    PassiveTrigger: 64
+    ConstantEffects:
+    - rid: 7481024980550680857
+    - rid: 7481024980550680858
+    Effects:
+    - rid: 7481024980550680856
+  - Description: "\uC804\uD22C \uC2DC\uC791\uC2DC \uC544\uAD70\uC758 \uACF5\uACA9\uB825\uC774
+      20% \uC99D\uAC00\uD558\uACE0 , \uC790\uC2E0\uC758 \uC18D\uB3C4\uAC00 20% \uC99D\uAC00\uD569\uB2C8\uB2E4.
+      \uC790\uC2E0\uC758 \uD134\uC774 \uB05D\uB0A0 \uB54C 1\uD134\uAC04 \uC740\uC2E0\uC744
+      \uBC1C\uC0DD\uC2DC\uD0B5\uB2C8\uB2E4."
+    Cooldown: 0
+    TargetType: 0
+    PassiveTrigger: 64
+    ConstantEffects:
+    - rid: 7481024980550680859
+    - rid: 7481024980550680858
+    Effects:
+    - rid: 7481024980550680856
+  - Description: "\uC804\uD22C \uC2DC\uC791\uC2DC \uC790\uC2E0\uC758 \uACF5\uACA9\uB825\uC774
+      20% \uC99D\uAC00\uD558\uACE0 , \uC544\uAD70\uC758 \uC18D\uB3C4\uAC00 20% \uC99D\uAC00\uD569\uB2C8\uB2E4.
+      \uC790\uC2E0\uC758 \uD134\uC774 \uB05D\uB0A0 \uB54C 1\uD134\uAC04 \uC740\uC2E0\uC744
+      \uBC1C\uC0DD\uC2DC\uD0B5\uB2C8\uB2E4."
+    Cooldown: 0
+    TargetType: 0
+    PassiveTrigger: 64
+    ConstantEffects:
+    - rid: 7481024980550680860
+    - rid: 7481024980550680861
+    Effects:
+    - rid: 7481024980550680856
+  references:
+    version: 2
+    RefIds:
+    - rid: 7481024980550680856
+      type: {class: ApplyStatusEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 1
+        EffectData: {fileID: 11400000, guid: 784c459373dd0a54b8846d77a80c9586, type: 2}
+        Duration: 1
+        ApplyChance: 1
+        StatScaleType: 0
+        StatMultiplier: 0
+    - rid: 7481024980550680857
+      type: {class: PassiveStatBoostEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 1
+        TargetStat: atk
+        PercentAmount: 0.2
+    - rid: 7481024980550680858
+      type: {class: PassiveStatBoostEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 1
+        TargetStat: spd
+        PercentAmount: 0.2
+    - rid: 7481024980550680859
+      type: {class: PassiveStatBoostEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 2
+        TargetStat: atk
+        PercentAmount: 0.2
+    - rid: 7481024980550680860
+      type: {class: PassiveStatBoostEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 1
+        TargetStat: atk
+        PercentAmount: 0.2
+    - rid: 7481024980550680861
+      type: {class: PassiveStatBoostEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 2
+        TargetStat: spd
+        PercentAmount: 0.2

@@ -55,6 +55,14 @@ public class MapUI : MonoBehaviour
     float hubHeight;
     float edgeThickness;
 
+
+
+    // -------------------------------------------------------
+    // 실제로 불러올 게임 패널
+    // -------------------------------------------------------
+    [Header("Game Panel")]
+    public GameObject BattlePanel;
+
     void ComputeLayout()
     {
         // panelRect가 없으면 Screen 높이로 fallback
@@ -310,7 +318,8 @@ public class MapUI : MonoBehaviour
         switch(currentNode.Type)
         {
             case NodeType.Normal:
-                UnityEngine.Debug.Log("[MapUI] 일반 노드");
+                BattlePanel.SetActive(true);
+                gameObject.SetActive(false);
                 break;
             case NodeType.Elite:
                 UnityEngine.Debug.Log("[MapUI] 엘리트 노드");

@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -9,6 +9,23 @@ public class Actiongaugesystem : MonoBehaviour
     private Queue<BattleCharacter> _readyQueue = new ();
 
     public int ReadyCount => _readyQueue.Count;
+
+    // -------------------------------------------------------
+    // 강제 추가 턴 부여 (큐 최상단 삽입)
+    // -------------------------------------------------------
+    public void InsertFront(BattleCharacter character)
+    {
+        character.ActionGauge = MaxGauge;
+        
+        // C# 기본 Queue는 앞부분 삽입이 불가능하므로 List로 변환 후 재조립
+        var tempList = _readyQueue.ToList();
+        
+        // 이미 큐에 있다면 중복 제거 (기존 위치에서 빼고 맨 앞으로)
+        tempList.Remove(character);
+        
+        tempList.Insert(0, character);
+        _readyQueue = new Queue<BattleCharacter>(tempList);
+    }
 
     // -------------------------------------------------------
     // 다음 행동 캐릭터 결정
