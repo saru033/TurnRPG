@@ -24,7 +24,7 @@ MonoBehaviour:
   - Description: "\uC790\uC2E0\uC758 \uC57D\uD654\uD6A8\uACFC\uB97C 1\uAC1C \uD574\uC81C\uD558\uACE0,
       \uC0DD\uBA85\uB825\uC744 \uD68C\uBCF5\uD569\uB2C8\uB2E4."
     Cooldown: 1
-    TargetType: 2
+    TargetType: 1
     PassiveTrigger: 0
     ConstantEffects: []
     Effects:

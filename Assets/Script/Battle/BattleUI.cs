@@ -15,6 +15,7 @@ public class BattleUI : MonoBehaviour
     [Header("UI Panels")]
     [Tooltip("3스킬 컷씬 연출용 GameObject")]
     public GameObject ultimateCutsceneRoot;
+    public Image ultimateBlackScreen;       // [추가] 3스킬 배경 어두워짐용
     public GameObject portraitPrefab;
     public GameObject skillButtonRoot;
     public Button[] skillButtons;

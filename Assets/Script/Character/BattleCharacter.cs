@@ -14,6 +14,7 @@ public class BattleCharacter
     // -------------------------------------------------------
     public CharacterData Data { get; private set; }
     public Animator Animator { get; private set; }
+    public CharacterView View { get; set; } // [추가] 시각적 뷰 객체 참조
     public GameObject ViewObject { get; private set; } // 캐릭터 이펙트 부착용 등
 
     // -------------------------------------------------------
@@ -44,7 +45,7 @@ public class BattleCharacter
     public List<SkillData> ActiveSkills = new List<SkillData>(3);
     public int[] SkillLevels = new int[3] { 1, 1, 1 }; // 디폴트 1레벨
     public int[] SkillCooldowns = new int[3]; // 현재 남은 쿨타임 턴수
-    
+
     // 이번 턴에 내가 사용한 스킬(차감 방지를 위함)
     public int CastedSkillIndexThisTurn = -1;
 
@@ -101,6 +102,16 @@ public class BattleCharacter
     public void SetViewObject(GameObject obj)
     {
         ViewObject = obj;
+    }
+
+    /// <summary>
+    /// 지정한 이름의 애니메이션 상태가 현재 재생 중인지 확인합니다. (0번 레이어 기준)
+    /// </summary>
+    public bool IsAnimationPlaying(string stateName)
+    {
+        if (Animator == null) return false;
+        var info = Animator.GetCurrentAnimatorStateInfo(0);
+        return info.IsName(stateName);
     }
 
     // -------------------------------------------------------
@@ -165,6 +176,12 @@ public class BattleCharacter
         }
 
         CurrentHp = Mathf.Max(0f, CurrentHp - actualDamage);
+        
+        // 피격 애니메이션 트리거 (데미지가 0보다 클 때만)
+        if (actualDamage > 0 && Animator != null)
+        {
+            Animator.SetTrigger("hit");
+        }
 
         // 반격불가 여부를 이벤트 매니저에게 같이 전달하여 반격이 터지지 않도록 함
         BattleEventManager.TriggerDamageTaken(this, attacker, actualDamage, cannotBeCountered, isEvaded);
@@ -245,16 +262,19 @@ public class BattleCharacter
         for (int i = ActiveStatusEffects.Count - 1; i >= 0; i--)
         {
             var eff = ActiveStatusEffects[i];
-            
+
             // 이번 내 턴에 방금 부여된(스스로 버프를 건) 효과면 턴 유지!
             if (AppliedBuffsThisTurn.Contains(eff)) continue;
 
             eff.RemainingDuration--;
+            BattleEventManager.TriggerStatusEffectChanged(this, eff); // [추가] 수치 변경 알림
+
             if (eff.RemainingDuration <= 0)
             {
                 eff.DestroyVFX();
                 ActiveStatusEffects.RemoveAt(i);
-                BattleEventManager.TriggerStatusEffectChanged(this, eff); // 해제됨 브로드캐스트
+                // 삭제 시에도 알림 (중복 호출되어도 CharacterView에서 삭제 처리됨)
+                BattleEventManager.TriggerStatusEffectChanged(this, eff); 
             }
         }
 
@@ -286,6 +306,9 @@ public class BattleCharacter
             // 이미 있으면 지속시간 갱신 및 (기획에 따라) 수치 덮어씌우기 혹은 높은 쪽 유지 등
             existing.RemainingDuration = Mathf.Max(existing.RemainingDuration, duration);
             if (dynamicValue > existing.DynamicValue) existing.DynamicValue = dynamicValue;
+            
+            // [추가] 갱신 시에도 알림을 주어 UI 숫자 반영
+            BattleEventManager.TriggerStatusEffectChanged(this, existing);
         }
         else
         {
@@ -309,6 +332,7 @@ public class BattleCharacter
             ActiveStatusEffects.Add(newEff);
             AppliedBuffsThisTurn.Add(newEff); // 생존 보장 등록
             BattleEventManager.TriggerStatusEffectChanged(this, newEff);
+            BattleEventManager.TriggerStatusEffectApplied(this, newEff); // 신규 부여 시점 전송
         }
     }
 

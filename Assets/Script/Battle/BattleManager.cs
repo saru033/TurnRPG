@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using DG.Tweening;
 using TurnRPG.SkillSystem;
 using System.Linq;
 
@@ -9,6 +11,7 @@ public class BattleManager : MonoBehaviour
     [Header("References")]
     public BattleUI battleUI;
     public CharacterPlacer characterPlacer;
+    public RectTransform battleBackground; // [추가] 카메라 효과용 배경 RectTransform
 
     [Header("전투 참가 데이터 (테스트용)")]
     public List<CharacterData> initialCharacterDatas;
@@ -24,6 +27,10 @@ public class BattleManager : MonoBehaviour
     Actiongaugesystem gaugeSystem;
     public List<BattleCharacter> allCharacters = new();
     BattleCharacter currentActor;
+
+    // [추가] 줌 효과 상태 관리용
+    private bool _isCurrentlyZoomed = false;
+    private bool _lastZoomedPlayer = false;
 
     void Awake()
     {
@@ -92,7 +99,7 @@ public class BattleManager : MonoBehaviour
 
             // ⭐ 1.5 턴 시작 시스템 발동 (쿨타임 감소, 출혈 피해 등)
             currentActor.OnTurnStart();
-            
+
             // 만약 출혈/화상 등 턴 시작 데미지로 사망했다면 턴 즉시 스킵
             if (!currentActor.IsAlive)
             {
@@ -111,12 +118,19 @@ public class BattleManager : MonoBehaviour
             if (currentActor.IsPlayer)
             {
                 // 2. 아군 턴 — 플레이어 입력 대기
+                if (currentActor.Animator != null) currentActor.Animator.SetBool("isWaiting", true);
+
                 State = BattleState.PlayerTurn;
                 battleUI.SetSkillButtonsVisible(true, currentActor);
                 battleUI.SetSideImageVisible(true, currentActor);
 
                 // OnSkillSelected() 및 타겟 지정 완료 시점까지 대기 (SelectTarget 상태도 포함해 대기)
                 yield return new WaitUntil(() => State != BattleState.PlayerTurn && State != BattleState.SelectTarget);
+
+                if (currentActor.Animator != null) currentActor.Animator.SetBool("isWaiting", false);
+
+                battleUI.SetSkillButtonsVisible(false);
+                battleUI.SetSideImageVisible(false, currentActor);
 
                 // 스킬 코루틴 등 애니메이션 대기
                 yield return new WaitUntil(() => State == BattleState.Idle || State == BattleState.Win || State == BattleState.Lose);
@@ -130,7 +144,7 @@ public class BattleManager : MonoBehaviour
 
                 yield return new WaitForSeconds(0.5f);   // 적 행동 연출 딜레이
                 EnemyAct(currentActor);
-                
+
                 // 적 스킬 사용(코루틴) 대기
                 yield return new WaitUntil(() => State == BattleState.Idle || State == BattleState.Win || State == BattleState.Lose);
             }
@@ -140,10 +154,10 @@ public class BattleManager : MonoBehaviour
 
             // 4. 턴 종료 — 버프 지속시간 차감
             currentActor.OnTurnEnd();
+            if (currentActor.Animator != null) currentActor.Animator.SetBool("isWaiting", false); // 안전장치
+
             gaugeSystem.OnTurnEnd(currentActor);
             battleUI.UpdateGaugePositions(allCharacters);
-            battleUI.SetSkillButtonsVisible(false);
-            battleUI.SetSideImageVisible(false, currentActor);
 
             yield return new WaitForSeconds(0.2f);
         }
@@ -160,6 +174,12 @@ public class BattleManager : MonoBehaviour
     /// skillIndex: 0 = 1스킬, 1 = 2스킬, 2 = 3스킬
     /// </summary>
     private int _selectedSkillIndex = -1;
+    private bool _waitingForImpact = false;
+
+    public void OnAnimationImpact()
+    {
+        _waitingForImpact = false;
+    }
 
     public void OnSkillSelected(int skillIndex)
     {
@@ -168,7 +188,7 @@ public class BattleManager : MonoBehaviour
 
         var skillData = currentActor.ActiveSkills.Count > skillIndex ? currentActor.ActiveSkills[skillIndex] : null;
         if (skillData == null) return;
-        
+
         if (currentActor.SkillCooldowns.Length > skillIndex && currentActor.SkillCooldowns[skillIndex] > 0)
         {
             Debug.LogWarning($"[Battle] {currentActor.Name}의 {skillIndex + 1}번 스킬은 쿨타임 중입니다.");
@@ -240,16 +260,19 @@ public class BattleManager : MonoBehaviour
     IEnumerator ExecuteSkillRoutine(SkillData skillData, int skillIndex, BattleCharacter manualTarget = null)
     {
         Debug.Log($"[Battle] {currentActor.Name} → {skillData.SkillName} 사용 시작");
-        
+
         // 이 스킬을 이번 턴에 썼다고 마킹 (쿨타임 이중차감 방지)
         currentActor.CastedSkillIndexThisTurn = skillIndex;
 
         int level = currentActor.SkillLevels.Length > skillIndex ? currentActor.SkillLevels[skillIndex] : 1;
         var levelData = skillData.LevelDatas != null && skillData.LevelDatas.Count >= level ? skillData.LevelDatas[level - 1] : null;
         
+        // --- 연출용 데이터 준비 ---
+        bool isUltimate = (int)skillData.SlotIndex == 2; // Skill3 (Ultimate)
+
         // --- 1. 타겟 지정 (수동 타겟팅 우선 로직) ---
         BattleCharacter selectedTarget = manualTarget;
-        
+
         // 수동 지정이 안 되었을 경우만 랜덤 fallback (적 AI용)
         if (selectedTarget == null && levelData != null)
         {
@@ -278,46 +301,134 @@ public class BattleManager : MonoBehaviour
         }
 
         // --- 2. 애니메이션 및 컷씬 재생 대기 ---
-        if (!string.IsNullOrEmpty(skillData.RequiredAnimationTrigger) && currentActor.Animator != null)
+        // [추가] 일반 스킬 시전자 진영 포커싱 (3스킬 제외)
+        if (!isUltimate)
         {
-            currentActor.Animator.SetTrigger(skillData.RequiredAnimationTrigger);
-            
-            // 현재 모션이 끝날 때까지 딜레이 대기 (최신 엔진 기능 활용)
-            yield return new WaitForSeconds(0.1f); // 전환 지연시간
-            var stateInfo = currentActor.Animator.GetCurrentAnimatorStateInfo(0);
-            yield return new WaitForSeconds(stateInfo.length);
+            StartCoroutine(SetCameraZoom(currentActor.IsPlayer, true));
         }
 
-        // 컷씬 애니메이터 연동
+        if (!string.IsNullOrEmpty(skillData.RequiredAnimationTrigger) && currentActor.Animator != null)
+        {
+            _waitingForImpact = true; // 대기 시작
+            currentActor.Animator.SetTrigger(skillData.RequiredAnimationTrigger);
+
+            // 타격 시점(Animation Event) 또는 안전 장치( timeout )까지 대기
+            // 0.1s는 초기 애니메이션 전환 시간 확보
+            yield return new WaitForSeconds(0.1f);
+
+            var stateInfo = currentActor.Animator.GetCurrentAnimatorStateInfo(0);
+            float maxWait = stateInfo.length * 0.8f; // 애니메이션의 80% 정도를 최대 대기 시간으로 설정
+            float timer = 0f;
+
+            while (_waitingForImpact && timer < maxWait)
+            {
+                timer += Time.deltaTime;
+                yield return null;
+            }
+
+            // 신호가 왔거나(false) 시간이 다 되었으면(timer >= maxWait) 루프탈출 -> 효과 실행
+
+            // [추가] 일반 스킬 피격자 진영 포커싱 (3스킬 제외)
+            if (!isUltimate && selectedTarget != null)
+            {
+                // 아군이 아군에게 쓰는 경우 등 동일 진영이면 이미 포커싱된 상태 유지됨
+                if (selectedTarget.IsPlayer != currentActor.IsPlayer)
+                {
+                    StartCoroutine(SetCameraZoom(selectedTarget.IsPlayer, true));
+                }
+            }
+        }
+
+        // 컷씬 애니메이터 연동 (컷씬이 있는 경우 컷씬도 기다림)
         if (skillData.UltimateCutsceneClip != null && battleUI.ultimateCutsceneRoot != null)
         {
+            // --- [추가] 컷신 전 연출: 캐릭터 중앙 이동 + 배경 어두워짐 ---
+            Transform originalParent = null;
+            Vector2 originalAnchoredPos = Vector2.zero;
+            Vector3 originalScale = Vector3.one;
+            bool enhancedSequence = false;
+
+            if (currentActor.View != null && currentActor.View.illustration != null && battleUI.ultimateBlackScreen != null)
+            {
+                enhancedSequence = true;
+                var illu = currentActor.View.illustration.rectTransform;
+                originalParent = illu.parent;
+                originalAnchoredPos = illu.anchoredPosition;
+                originalScale = illu.localScale;
+
+                // 검정 배경 활성화 및 초기화
+                battleUI.ultimateBlackScreen.gameObject.SetActive(true);
+                var color = battleUI.ultimateBlackScreen.color;
+                color.a = 0;
+                battleUI.ultimateBlackScreen.color = color;
+
+                // 일러스트를 검정 배경의 자식으로 변경 (이때 worldPositionStays = true로 현재 위치 유지)
+                illu.SetParent(battleUI.ultimateBlackScreen.transform, true);
+
+                // [수정] X축만 중앙(0)으로 이동하고 Y축은 현재 위치 유지
+                Vector2 targetPos = new Vector2(0, illu.anchoredPosition.y);
+
+                // 연출 실행 (0.4초, 1.2배 확대)
+                Sequence seq = DOTween.Sequence();
+                seq.Join(battleUI.ultimateBlackScreen.DOFade(1f, 0.4f));
+                seq.Join(illu.DOAnchorPos(targetPos, 0.4f));
+                seq.Join(illu.DOScale(originalScale * 1.2f, 0.4f));
+
+                yield return seq.WaitForCompletion();
+            }
+
+            // --- 기존 컷신 재생 ---
             battleUI.ultimateCutsceneRoot.SetActive(true);
             var anim = battleUI.ultimateCutsceneRoot.GetComponentInChildren<Animator>();
             if (anim != null)
             {
                 anim.Play(skillData.UltimateCutsceneClip.name);
-                yield return new WaitForSeconds(skillData.UltimateCutsceneClip.length);
+
+                // 컷신이 화면을 다 가릴 즈음 (약 0.1~0.2초 후) 배경과 캐릭터를 원래대로 복귀
+                if (enhancedSequence)
+                {
+                    yield return new WaitForSeconds(0.15f);
+                    if (currentActor.View != null)
+                    {
+                        var illu = currentActor.View.illustration.rectTransform;
+                        illu.SetParent(originalParent, true);
+                        illu.anchoredPosition = originalAnchoredPos;
+                        illu.localScale = originalScale;
+                        battleUI.ultimateBlackScreen.gameObject.SetActive(false);
+                    }
+                    yield return new WaitForSeconds(Mathf.Max(0, skillData.UltimateCutsceneClip.length - 0.15f));
+                }
+                else
+                {
+                    yield return new WaitForSeconds(skillData.UltimateCutsceneClip.length);
+                }
             }
             battleUI.ultimateCutsceneRoot.SetActive(false);
         }
         else if (string.IsNullOrEmpty(skillData.RequiredAnimationTrigger))
         {
-            // 컷씬도 애니메이션도 없을 경우만 기본 대기
+            // 컷씬도 애니메이션도 없을 경우만 기본 대기 (즉시 발동과 유사)
+            // 비공격 스킬(버프 등) 타겟 진영 포커싱 추가
+            if (!isUltimate && selectedTarget != null)
+            {
+                StartCoroutine(SetCameraZoom(selectedTarget.IsPlayer, true));
+            }
             yield return new WaitForSeconds(0.4f);
         }
 
         // --- 3. 이펙트(피해/버프) 체인 실행 ---
+        // (여기가 실제 데미지가 들어가는 시점!)
         if (levelData != null)
         {
             currentActor.SkillCooldowns[skillIndex] = levelData.Cooldown;
-            
+
             if (levelData.Effects != null)
             {
                 foreach (var eff in levelData.Effects)
                 {
                     if (eff != null)
                     {
-                        if (!eff.Execute(currentActor, selectedTarget)) break; 
+                        if (!eff.Execute(currentActor, selectedTarget)) break;
                     }
                 }
             }
@@ -325,12 +436,54 @@ public class BattleManager : MonoBehaviour
 
         BattleEventManager.TriggerSkillUsed(currentActor, skillData);
 
+        // --- 4. 모든 애니메이션(공격자 및 피격자) 종료 대기 ---
+        // 최소한의 딜레이 확보 (애니메이션 상태 전환 대기)
+        yield return new WaitForSeconds(0.2f);
+
+        float turnEndTimeout = 2.0f;
+        while (turnEndTimeout > 0)
+        {
+            bool anyBusy = false;
+
+            // 1. 공격자(시전자)가 여전히 액션 중인지 체크
+            if (!string.IsNullOrEmpty(skillData.RequiredAnimationTrigger))
+            {
+                if (currentActor.IsAnimationPlaying(skillData.RequiredAnimationTrigger))
+                    anyBusy = true;
+            }
+
+            // 2. 모든 캐릭터 중 현재 'Hit' 애니메이션을 재생 중인 캐릭터가 있는지 체크
+            foreach (var bc in allCharacters)
+            {
+                if (bc.IsAlive && bc.IsAnimationPlaying("hit"))
+                {
+                    anyBusy = true;
+                    break;
+                }
+            }
+
+            if (!anyBusy) break;
+
+            turnEndTimeout -= Time.deltaTime;
+            yield return null;
+        }
+
+        // 약간의 여유 딜레이 후 종료
+        yield return new WaitForSeconds(0.2f);
+
+        // [추가] 일반 스킬 진영 포커싱 해제 (0.4초)
+        if (!isUltimate)
+        {
+            StartCoroutine(SetCameraZoom(true, false));
+            yield return new WaitForSeconds(0.4f);
+        }
+
         // 전투가 아예 끝났는지 검사
-        if (IsOver()) 
+        if (IsOver())
         {
             OnBattleEnd();
         }
-        else 
+        else
         {
             State = BattleState.Idle;   // 턴 루프에게 완전히 끝났음을 알림
         }
@@ -343,7 +496,7 @@ public class BattleManager : MonoBehaviour
     {
         int selectedIndex = 0;
         SkillData selectedSkill = null;
-        
+
         // 간단한 AI: 강한 스킬(인덱스 2 -> 1 -> 0) 우선순위 검사
         for (int i = enemy.ActiveSkills.Count - 1; i >= 0; i--)
         {
@@ -384,4 +537,99 @@ public class BattleManager : MonoBehaviour
         battleUI.SetSkillButtonsVisible(false);
     }
 
+    // -------------------------------------------------------
+    // [추가] 배경 조작을 통한 카메라 줌 연출 고도화
+    // -------------------------------------------------------
+    private IEnumerator SetCameraZoom(bool isPlayer, bool zoom, float duration = 0.4f)
+    {
+        if (battleBackground == null) yield break;
+
+        if (zoom)
+        {
+            Vector2 targetPivot = isPlayer ? new Vector2(0f, 0f) : new Vector2(1f, 0f);
+
+            if (!_isCurrentlyZoomed)
+            {
+                // [Phase 1/3] 처음 줌인 시작
+                battleBackground.DOKill();
+                
+                // 피벗 설정 시 위치 점프 방지 (하지만 오프셋을 0으로 맞출 것이므로 초기 위치만 잡아줌)
+                SetPivotCompensated(battleBackground, targetPivot);
+                
+                // 꼭짓점 고정 (0으로 보정)
+                battleBackground.offsetMin = Vector2.zero;
+                battleBackground.offsetMax = Vector2.zero;
+                
+                // 스케일 증가
+                battleBackground.DOScale(Vector3.one * 1.2f, duration).SetEase(Ease.OutQuart);
+                
+                _isCurrentlyZoomed = true;
+                _lastZoomedPlayer = isPlayer;
+            }
+            else if (_lastZoomedPlayer != isPlayer)
+            {
+                // [Phase 2-1/4-1] 아군 <-> 적군 전환 (패닝)
+                battleBackground.DOKill();
+                
+                // 1. 현재 피벗(예: 좌하단)을 유지한 상태에서, 목표 진영(예: 우하단)이 화면에 들어오도록 오프셋 계산
+                // 현재 스케일(1.2) 상태에서 반대쪽 끝으로 가려면 부모 너비의 20%만큼 이동해야 함
+                // Stretch-Stretch 앵커이므로, 피벗이 (0,0)일 때 (1,0)을 보려면 x를 -0.2 * width 만큼 밀어야 함
+                float targetOffsetX = isPlayer ? 0f : -(battleBackground.rect.width * 0.2f);
+                if (battleBackground.pivot.x == 1f) // 현재 피벗이 우하단이면 반대
+                    targetOffsetX = isPlayer ? (battleBackground.rect.width * 0.2f) : 0f;
+
+                Vector2 targetOffsetMin = new Vector2(targetOffsetX, 0f);
+                Vector2 targetOffsetMax = new Vector2(targetOffsetX, 0f);
+
+                // 2. 부드럽게 패닝 시작
+                DOTween.To(() => battleBackground.offsetMin, x => battleBackground.offsetMin = x, targetOffsetMin, duration).SetEase(Ease.OutQuart);
+                yield return DOTween.To(() => battleBackground.offsetMax, x => battleBackground.offsetMax = x, targetOffsetMax, duration)
+                    .SetEase(Ease.OutQuart)
+                    .WaitForCompletion();
+                
+                // 3. 이동이 끝난 후, 피벗을 목표 진영으로 갈아끼우고 오프셋 0으로 동기화 (점프 방지)
+                SetPivotCompensated(battleBackground, targetPivot);
+                battleBackground.offsetMin = Vector2.zero;
+                battleBackground.offsetMax = Vector2.zero;
+                
+                _lastZoomedPlayer = isPlayer;
+            }
+            // 같은 진영이면(_lastZoomedPlayer == isPlayer) 아무것도 하지 않음 (유지)
+        }
+        else
+        {
+            // [Phase 2/4] 원상 복구 (줌 아웃)
+            if (_isCurrentlyZoomed)
+            {
+                battleBackground.DOKill();
+                
+                // 1. 스케일을 1로 부드럽게 변경
+                yield return battleBackground.DOScale(Vector3.one, duration).SetEase(Ease.OutQuart).WaitForCompletion();
+                
+                // 2. 피벗 0.5, 0.5 복구 및 위치 초기화
+                SetPivotCompensated(battleBackground, new Vector2(0.5f, 0.5f));
+                battleBackground.offsetMin = Vector2.zero;
+                battleBackground.offsetMax = Vector2.zero;
+                battleBackground.anchoredPosition = Vector2.zero;
+                
+                _isCurrentlyZoomed = false;
+            }
+        }
+
+        yield return null;
+    }
+
+    // 피벗 변경 시 위치가 튀지 않도록 보정하는 유틸리티
+    private void SetPivotCompensated(RectTransform rectTransform, Vector2 pivot)
+    {
+        Vector2 size = rectTransform.rect.size;
+        Vector2 deltaPivot = rectTransform.pivot - pivot;
+        Vector3 deltaPosition = new Vector3(deltaPivot.x * size.x, deltaPivot.y * size.y, 0f);
+        
+        deltaPosition.x *= rectTransform.localScale.x;
+        deltaPosition.y *= rectTransform.localScale.y;
+
+        rectTransform.pivot = pivot;
+        rectTransform.localPosition -= deltaPosition;
+    }
 }

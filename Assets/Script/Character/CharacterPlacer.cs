@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -29,8 +29,8 @@ public class CharacterPlacer : MonoBehaviour
     // Runtime
     // -------------------------------------------------------
     // 슬롯 인덱스(0~2) → 스폰된 GameObject
-    Dictionary<int, GameObject> _playerSlots = new ();
-    Dictionary<int, GameObject> _enemySlots = new ();
+    Dictionary<int, GameObject> _playerSlots = new();
+    Dictionary<int, GameObject> _enemySlots = new();
 
     // -------------------------------------------------------
     // Public API
@@ -66,8 +66,8 @@ public class CharacterPlacer : MonoBehaviour
             }
 
             // CharacterData의 프리팹 사용, 없으면 fallback
-            GameObject prefabToUse = c.Data.characterPrefab != null 
-                ? c.Data.characterPrefab 
+            GameObject prefabToUse = c.Data.characterPrefab != null
+                ? c.Data.characterPrefab
                 : characterPrefab;
 
             var go = Instantiate(prefabToUse, panelRect);
@@ -77,11 +77,11 @@ public class CharacterPlacer : MonoBehaviour
 
             //나중에 제어를 위해 애니메이터 연결
             var animator = go.GetComponent<Animator>();
-    if (animator == null)
-        animator = go.GetComponentInChildren<Animator>();
+            if (animator == null)
+                animator = go.GetComponentInChildren<Animator>();
 
-    // BattleCharacter에 Animator 연결
-    c.SetAnimator(animator);
+            // BattleCharacter에 Animator 연결
+            c.SetAnimator(animator);
 
 
             // pivot (0.5, 0) 강제 설정
@@ -107,7 +107,10 @@ public class CharacterPlacer : MonoBehaviour
             // CharacterView 초기화
             var view = go.GetComponent<CharacterView>();
             if (!object.ReferenceEquals(view, null))
+            {
                 view.Init(c);
+                c.View = view; // [추가] BattleCharacter에 View 연결
+            }
 
             if (isPlayer)
             {
