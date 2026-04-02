@@ -17,6 +17,6 @@ MonoBehaviour:
   EffectName: "\uBCF4\uD638\uB9C9"
   Description: "\uCD94\uAC00 \uC0DD\uBA85\uB825\uC744 \uC81C\uACF5\uBC1B\uC2B5\uB2C8\uB2E4."
   Icon: {fileID: 3467606861616753026, guid: 6d7cbc1b559e68744983c25a91071209, type: 3}
-  VFXPrefab: {fileID: 0}
+  VFXPrefab: {fileID: 7399119334063972450, guid: f27293baded9e324cba859dde22f2352, type: 3}
   KeepVFXAttached: 0
   PrimaryValue: 0

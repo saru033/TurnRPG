@@ -96,7 +96,21 @@ namespace TurnRPG.SkillSystem.Effects
 
             foreach (var t in actualTargets)
             {
-                t.ActionGauge = Mathf.Clamp(t.ActionGauge + Amount, 0f, 100f);
+                // [추가] 빗나감 체크 (행동 게이지 감소는 공격이 적중했을 때만 발생)
+                if (Amount < 0 && t.LastReceivedAttackEvaded)
+                {
+                    Debug.Log($"{t.Name}의 행동 게이지 감소가 공격 빗나감으로 인해 무시되었습니다.");
+                    continue;
+                }
+
+                if (t.ActionGaugeSystem != null)
+                {
+                    t.ActionGaugeSystem.ModifyGauge(t, Amount);
+                }
+                else
+                {
+                    t.ActionGauge = Mathf.Clamp(t.ActionGauge + Amount, 0f, 100f);
+                }
 
                 if (Amount > 0)
                     Debug.Log($"{t.Name}의 행동 게이지가 {Amount}만큼 증가했습니다.");
@@ -104,7 +118,7 @@ namespace TurnRPG.SkillSystem.Effects
                     Debug.Log($"{t.Name}의 행동 게이지가 {-Amount}만큼 감소했습니다.");
             }
 
-            return actualTargets.Count > 0;
+            return true;
         }
     }
 
@@ -124,6 +138,13 @@ namespace TurnRPG.SkillSystem.Effects
 
             foreach (var t in actualTargets)
             {
+                // [추가] 빗나감 체크 (쿨타임 증가는 공격이 적중했을 때만 발생)
+                if (TurnAmount > 0 && t.LastReceivedAttackEvaded)
+                {
+                    Debug.Log($"{t.Name}의 쿨타임 증가가 공격 빗나감으로 인해 무시되었습니다.");
+                    continue;
+                }
+
                 // 모든 장착 스킬 쿨타임 변경 (궁극기는 제외할지 여부는 별도 처리 가능)
                 for (int i = 0; i < t.SkillCooldowns.Length; i++)
                 {
@@ -134,7 +155,7 @@ namespace TurnRPG.SkillSystem.Effects
                 }
                 Debug.Log($"{t.Name}의 쿨타임이 {TurnAmount}턴 변경되었습니다.");
             }
-            return actualTargets.Count > 0;
+            return true;
         }
     }
 
@@ -148,14 +169,23 @@ namespace TurnRPG.SkillSystem.Effects
         public override bool Execute(BattleCharacter caster, BattleCharacter target)
         {
             var actualTargets = EffectTargetHelper.GetActualTargets(caster, target, TargetType);
-            var gaugeSystem = Object.FindObjectOfType<Actiongaugesystem>();
-
             foreach (var t in actualTargets)
             {
                 // 추가 턴: 행동 게이지를 100으로 만들고, 턴 큐의 맨 앞으로 강제 삽입!
-                if (gaugeSystem != null)
+                if (t.ActionGaugeSystem != null)
                 {
-                    gaugeSystem.InsertFront(t);
+                    t.ActionGaugeSystem.InsertFront(t);
+
+                    // 시각 이펙트(VFX) 처리
+                    if (BattleVFXManager.Instance != null)
+                        BattleVFXManager.Instance.SpawnVFX(VFXType.ExtraTurn, t.View.RetHitbox());
+
+                    // 자신에 턴에 자신에게 추가턴 부여시 TunrEnd 함수로 행동게이지 0으로 가있는 버그 해소용 장치
+                    if (caster == t)
+                    {
+                        t.isExtraTurnSelf = true;
+                    }
+
                     Debug.Log($"{t.Name}이(가) 추가 턴을 획득하여 큐 맨 앞에 배치되었습니다!");
                 }
                 else
@@ -163,7 +193,7 @@ namespace TurnRPG.SkillSystem.Effects
                     t.ActionGauge = 100f; // 보험용
                 }
             }
-            return actualTargets.Count > 0;
+            return true;
         }
     }
 
@@ -355,14 +385,14 @@ namespace TurnRPG.SkillSystem.Effects
 
         [Tooltip("기준 체력 퍼센트 (예: 0.5 = 50%)")]
         [Range(0f, 1f)] public float ThresholdPercent = 0.3f;
-        
+
         [Tooltip("이하면 참인가? (체크 해제 시 이상이면 참)")]
         public bool IsBelow = true;
 
         public override bool Execute(BattleCharacter caster, BattleCharacter target)
         {
             var actualTargets = EffectTargetHelper.GetActualTargets(caster, target, TargetType);
-            
+
             foreach (var t in actualTargets)
             {
                 if (t == null || !t.IsAlive) continue;
@@ -372,7 +402,7 @@ namespace TurnRPG.SkillSystem.Effects
 
                 if (conditionMet)
                 {
-                    Debug.Log($"[필터 패스] {t.Name}의 체력이 {(currentPct*100):F1}%로 기준치({(ThresholdPercent*100):F1}%) {(IsBelow ? "이하" : "이상")} 조건을 만족했습니다.");
+                    Debug.Log($"[필터 패스] {t.Name}의 체력이 {(currentPct * 100):F1}%로 기준치({(ThresholdPercent * 100):F1}%) {(IsBelow ? "이하" : "이상")} 조건을 만족했습니다.");
                     return true; // 한 명이라도 만족하면 체인 통과!
                 }
             }
@@ -486,7 +516,7 @@ namespace TurnRPG.SkillSystem.Effects
         public override bool Execute(BattleCharacter caster, BattleCharacter target)
         {
             var actualTargets = EffectTargetHelper.GetActualTargets(caster, target, TargetType);
-            
+
             foreach (var t in actualTargets)
             {
                 if (t == null || !t.IsAlive) continue;
@@ -496,14 +526,14 @@ namespace TurnRPG.SkillSystem.Effects
 
                 bool conditionMet = IsBelow ? (count <= ThresholdCount) : (count >= ThresholdCount);
 
-                if (conditionMet) 
+                if (conditionMet)
                 {
                     // 지정된 타겟(들) 중 하나라도 조건을 만족하면 무조건 체인을 이어갑니다.
                     Debug.Log($"[필터 패스] {t.Name}의 {Category} 개수가 {count}개로 조건을 만족했습니다!");
                     return true;
                 }
             }
-            
+
             // 모든 타겟이 조건을 만족하지 못하면 체인을 끊습니다.
             Debug.Log($"[필터 정지] 조건을 만족하는 대상이 없습니다 ({Category} 개수 기준 {ThresholdCount}개 {(IsBelow ? "이하" : "이상")})");
             return false;

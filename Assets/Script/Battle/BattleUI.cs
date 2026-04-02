@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
 using System.Linq;
+using TurnRPG.SkillSystem;
 
 public class BattleUI : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class BattleUI : MonoBehaviour
     public GameObject skillButtonRoot;
     public Button[] skillButtons;
     public RectTransform ImgAreaRect;
+    public Image HPBarImage;
+    public TextMeshProUGUI HPText;
     public RectTransform select_SkillRect;
 
     // -------------------------------------------------------
@@ -139,6 +142,11 @@ public class BattleUI : MonoBehaviour
             ImgAreaRect.pivot = new Vector2(0f, 0f);
 
             ImgAreaRect.sizeDelta = new Vector2(areaW, areaH);
+
+            // [추가] 자식 오브젝트들도 해상도(1080p 기준)에 맞춰 같은 비율로 스케일링
+            float scaleFactor = _panelH / 1080f;
+            if (HPBarImage != null) HPBarImage.rectTransform.localScale = new Vector3(scaleFactor, scaleFactor, 1f);
+            if (HPText != null) HPText.rectTransform.localScale = new Vector3(scaleFactor, scaleFactor, 1f);
         }
 
 
@@ -249,7 +257,7 @@ public class BattleUI : MonoBehaviour
     public void UpdateGaugePositions(List<BattleCharacter> chars)
     {
         for (int i = 0; i < portraits.Count && i < characters.Count; i++)
-            portraits[i].UpdatePosition(gaugeBarRect);
+            portraits[i].UpdatePosition(gaugeBarRect, 0.2f);
 
 
         // ActionGauge 높을수록 앞에(SiblingIndex 높게)
@@ -270,6 +278,19 @@ public class BattleUI : MonoBehaviour
     {
         for (int i = 0; i < characters.Count; i++)
             portraits[i].SetHighlight(object.ReferenceEquals(characters[i], actor));
+    }
+
+    /// <summary>
+    /// [추가] 캐릭터에 해당하는 포트레이트 아이콘을 반환합니다.
+    /// </summary>
+    public GaugePortrait GetPortrait(BattleCharacter actor)
+    {
+        for (int i = 0; i < characters.Count; i++)
+        {
+            if (object.ReferenceEquals(characters[i], actor))
+                return portraits[i];
+        }
+        return null;
     }
 
     // -------------------------------------------------------
@@ -298,11 +319,21 @@ public class BattleUI : MonoBehaviour
                     var img = btn.GetComponent<Image>();
                     float cd = (actor.SkillCooldowns.Length > i) ? actor.SkillCooldowns[i] : 0;
 
+                    // 침묵(Silence) 상태 체크
+                    bool isSilenced = actor.HasStatusEffect(StatusEffectType.Silence);
+
                     Transform coolTimeObj = btn.transform.Find("CoolTime");
                     if (coolTimeObj != null)
                     {
                         var textObj = coolTimeObj.GetComponentInChildren<TextMeshProUGUI>();
-                        if (cd > 0)
+
+                        if (isSilenced && i > 0)
+                        {
+                            // [추가] 침묵 상태에서 2, 3번 스킬 비표시
+                            coolTimeObj.gameObject.SetActive(true);
+                            if (textObj != null) textObj.text = "사용 불가";
+                        }
+                        else if (cd > 0)
                         {
                             coolTimeObj.gameObject.SetActive(true);
                             if (textObj != null) textObj.text = cd.ToString("F0");
@@ -314,7 +345,8 @@ public class BattleUI : MonoBehaviour
                         }
                     }
 
-                    if (skill == null || cd > 0)
+                    // 침묵 상태에서는 2, 3번 스킬(i > 0) 버튼도 비활성화
+                    if (skill == null || cd > 0 || (isSilenced && i > 0))
                     {
                         btn.interactable = false;
                         img.color = new Color(0.5f, 0.5f, 0.5f, 1f);
@@ -339,7 +371,14 @@ public class BattleUI : MonoBehaviour
             // 오른쪽 바깥으로 슬라이드 후 비활성화
             rt.DOAnchorPosX(areaW, 0.15f)
               .SetEase(Ease.InCubic)
-              .OnComplete(() => { skillButtonRoot.SetActive(false); select_SkillRect.gameObject.SetActive(false); });
+              .OnComplete(() =>
+              {
+                  skillButtonRoot.SetActive(false);
+
+                  MoveSkillSelectIndicator(0);
+
+                  select_SkillRect.gameObject.SetActive(false);
+              });
         }
     }
 
@@ -395,8 +434,10 @@ public class BattleUI : MonoBehaviour
                 imgRt.pivot = new Vector2(0f, 0f);
                 imgRt.sizeDelta = new Vector2(w, h);
                 imgRt.anchoredPosition = Vector2.zero; // 왼쪽 하단 기준
-
             }
+
+            ImgSideHpUpdate(actor);
+
             // 왼쪽 바깥에서 시작해서 제자리로 슬라이드
             ImgAreaRect.gameObject.SetActive(true);
             rt.anchoredPosition = new Vector2(-areaW, rt.anchoredPosition.y);
@@ -409,5 +450,13 @@ public class BattleUI : MonoBehaviour
               .SetEase(Ease.InCubic)
               .OnComplete(() => ImgAreaRect.gameObject.SetActive(false));
         }
+    }
+
+    public void ImgSideHpUpdate(BattleCharacter character)
+    {
+        if (HPBarImage == null || HPText == null) return;
+
+        HPBarImage.fillAmount = character.CurrentHp / character.MaxHp;
+        HPText.text = $"{(int)character.CurrentHp} / {character.MaxHp}";
     }
 }

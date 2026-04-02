@@ -21,18 +21,37 @@ MonoBehaviour:
   RequiredAnimationTrigger: attack
   UltimateCutsceneClip: {fileID: 0}
   LevelDatas:
-  - Description: "\uC801 \uC804\uCCB4\uB97C \uACF5\uACA9\uD574 \uAC15\uD654\uD6A8\uACFC\uB97C
-      \uC804\uBD80 \uC81C\uAC70\uD569\uB2C8\uB2E4."
+  - Description: "\uC801 \uC804\uCCB4\uB97C \uACF5\uACA9\uD574 1\uD134\uAC04 \uAE30\uC808\uC744
+      \uBD80\uC5EC\uD569\uB2C8\uB2E4."
     Cooldown: 4
     TargetType: 3
     PassiveTrigger: 0
     ConstantEffects: []
     Effects:
     - rid: 7481024980550680893
-    - rid: 7481025007161442376
+    - rid: 6423180953482428483
+    - rid: 6423180953482428485
   references:
     version: 2
     RefIds:
+    - rid: 6423180953482428483
+      type: {class: ApplyStatusEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 1
+        EffectData: {fileID: 11400000, guid: e17a7293695f05f498cc5de823b3f6ad, type: 2}
+        Duration: 10
+        ApplyChance: 1
+        StatScaleType: 0
+        StatMultiplier: 0
+    - rid: 6423180953482428485
+      type: {class: ApplyStatusEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 3
+        EffectData: {fileID: 11400000, guid: 2b34530af4e568b4a968d103d8e0b225, type: 2}
+        Duration: 10
+        ApplyChance: 1
+        StatScaleType: 0
+        StatMultiplier: 0
     - rid: 7481024980550680893
       type: {class: DamageEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
       data:
@@ -41,9 +60,3 @@ MonoBehaviour:
         Penetration: 0
         CannotBeCountered: 0
         AlwaysHit: 0
-    - rid: 7481025007161442376
-      type: {class: CleanseEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
-      data:
-        TargetType: 3
-        TargetCategory: 0
-        Count: 10

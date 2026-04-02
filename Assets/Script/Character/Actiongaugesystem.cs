@@ -1,12 +1,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using DG.Tweening;
 
 public class Actiongaugesystem : MonoBehaviour
 {
     public const float MaxGauge = 100f;
 
-    private Queue<BattleCharacter> _readyQueue = new ();
+    private Queue<BattleCharacter> _readyQueue = new();
 
     public int ReadyCount => _readyQueue.Count;
 
@@ -16,13 +17,12 @@ public class Actiongaugesystem : MonoBehaviour
     public void InsertFront(BattleCharacter character)
     {
         character.ActionGauge = MaxGauge;
-        
         // C# 기본 Queue는 앞부분 삽입이 불가능하므로 List로 변환 후 재조립
         var tempList = _readyQueue.ToList();
-        
+
         // 이미 큐에 있다면 중복 제거 (기존 위치에서 빼고 맨 앞으로)
         tempList.Remove(character);
-        
+
         tempList.Insert(0, character);
         _readyQueue = new Queue<BattleCharacter>(tempList);
     }
@@ -77,7 +77,7 @@ public class Actiongaugesystem : MonoBehaviour
                 fastest.ActionGauge = MaxGauge;
 
 
-            
+
 
             var reached = alive
                 .Where(c => !object.ReferenceEquals(c, null) && c.ActionGauge >= MaxGauge - 0.5f)
@@ -109,7 +109,7 @@ public class Actiongaugesystem : MonoBehaviour
     {
         if (_readyQueue.Count == 0) return null;
         var c = _readyQueue.Dequeue();
-        
+
         return object.ReferenceEquals(c, null) ? null : c;
     }
 
@@ -118,6 +118,12 @@ public class Actiongaugesystem : MonoBehaviour
     // -------------------------------------------------------
     public void OnTurnEnd(BattleCharacter character)
     {
+        if (character.isExtraTurnSelf)
+        {
+            character.isExtraTurnSelf = false;
+            return;
+        }
+
         character.ActionGauge = 0f;
     }
 
@@ -127,11 +133,38 @@ public class Actiongaugesystem : MonoBehaviour
     public void ModifyGauge(BattleCharacter character, float delta)
     {
         character.ActionGauge = Mathf.Clamp(character.ActionGauge + delta, 0f, MaxGauge);
+
+        // [연출] 포트레이트 애니메이션
+        AnimatePortrait(character);
     }
 
     public void SetGaugeRatio(BattleCharacter character, float ratio)
     {
         character.ActionGauge = Mathf.Clamp01(ratio) * MaxGauge;
+
+        // [연출] 포트레이트 애니메이션
+        AnimatePortrait(character);
+    }
+
+    private void AnimatePortrait(BattleCharacter character)
+    {
+        if (BattleManager.Instance == null || BattleManager.Instance.battleUI == null) return;
+
+        var portrait = BattleManager.Instance.battleUI.GetPortrait(character);
+        if (portrait != null)
+        {
+            // 1. 게이지 위치 조절 (0.2초 동안 부드럽게 이동)
+            portrait.UpdatePosition(BattleManager.Instance.battleUI.gaugeBarRect, 0.4f);
+
+            // 2. 아이콘 펄스 연출 (1.2배로 커졌다가 다시 1배로 복구)
+            // 위치 트윈(AnchorPos)과 겹치지 않도록 Scale만 제어
+            portrait.transform.DOScale(Vector3.one * 1.5f, 0.2f)
+                .SetEase(Ease.OutQuad)
+                .OnComplete(() =>
+                {
+                    portrait.transform.DOScale(Vector3.one, 0.2f).SetEase(Ease.InQuad);
+                });
+        }
     }
 
     // -------------------------------------------------------

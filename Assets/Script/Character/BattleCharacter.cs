@@ -35,11 +35,25 @@ public class BattleCharacter
     public float CritChance;     // 치명 확률 (0~1)
     public float CritDamage;     // 치명 피해 배율 (예: 1.5 = 150%)
     public float EvasionRate;    // 회피율 (0~1)
+    public float AccuracyRate;   // 명중률 (0~1)
+
+    // -------------------------------------------------------
+    // 원본 스탯 (버프/디버프 계산의 기준점)
+    // -------------------------------------------------------
+    public float BaseMaxHp;
+    public float BaseAttack;
+    public float BaseDefense;
+    public float BaseSpeed;
+    public float BaseCritChance;
+    public float BaseCritDamage;
+    public float BaseEvasionRate;
+    public float BaseAccuracyRate;
 
     // -------------------------------------------------------
     // 행동게이지 및 스킬 세팅
     // -------------------------------------------------------
     public float ActionGauge;    // 현재 게이지 (0 ~ 100)
+    public Actiongaugesystem ActionGaugeSystem { get; set; } // [추가] 게이지 시스템 참조
 
     // 최대 3개의 스킬 슬롯 유지
     public List<SkillData> ActiveSkills = new List<SkillData>(3);
@@ -61,7 +75,11 @@ public class BattleCharacter
     // -------------------------------------------------------
     // 상태
     // -------------------------------------------------------
+    public bool LastReceivedAttackEvaded; // [추가] 마지막으로 받은 공격의 회피 여부
     public bool IsAlive => CurrentHp > 0f;
+
+
+    public bool isExtraTurnSelf = false;
 
     // -------------------------------------------------------
     // 생성자 (ScriptableObject 원본 데이터로 생성)
@@ -72,13 +90,18 @@ public class BattleCharacter
         ID = data.ID;
         Name = data.CharacterName;
         IsPlayer = data.isPlayer;
-        MaxHp = data.MaxHp;
-        Attack = data.Attack;
+
+        // 원본 및 현재 스탯 초기화
+        BaseMaxHp = MaxHp = data.MaxHp;
+        BaseAttack = Attack = data.Attack;
         CurrentHp = data.MaxHp;
-        Defense = data.Defense;
-        Speed = data.Speed;
-        CritChance = data.CritChance;
-        CritDamage = data.CritDamage;
+        BaseDefense = Defense = data.Defense;
+        BaseSpeed = Speed = data.Speed;
+        BaseCritChance = CritChance = data.CritChance;
+        BaseCritDamage = CritDamage = data.CritDamage;
+        BaseEvasionRate = EvasionRate = data.Evasion;
+        BaseAccuracyRate = AccuracyRate = data.Accuracy;
+
         ActionGauge = 0f;
 
         // 시작 스킬 장착 (최대 3슬롯)
@@ -117,8 +140,11 @@ public class BattleCharacter
     // -------------------------------------------------------
     // 피해 및 회복 계산
     // -------------------------------------------------------
-    public float TakeDamage(float rawDamage, BattleCharacter attacker = null, float penetration = 0f, bool alwaysHit = false, bool cannotBeCountered = false)
+    public float TakeDamage(float rawDamage, BattleCharacter attacker = null, float penetration = 0f, bool isEvaded = false, bool cannotBeCountered = false, bool isCritical = false)
     {
+        // 빗나감 상태 저장 (이후 스킬 체인의 디버프 적용 여부 판단용)
+        LastReceivedAttackEvaded = isEvaded;
+
         if (HasStatusEffect(StatusEffectType.Invincible))
         {
             Debug.Log($"{Name} 무적 상태! 데미지 0");
@@ -128,17 +154,14 @@ public class BattleCharacter
         if (HasStatusEffect(StatusEffectType.SkillDmgNullify))
         {
             Debug.Log($"{Name} 스킬 데미지 1회 무효화!");
-            // TODO: 버프 해제 로직 추가 필요
+            RemoveStatusEffect(StatusEffectType.SkillDmgNullify);
             return 0;
         }
 
-        bool isEvaded = false;
-        // 1. 회피 체크 (무조건 적중이 아닐 때)
-        if (!alwaysHit && Random.value < EvasionRate)
+        // 1. 회피 체크 (외부에서 판정된 isEvaded 사용)
+        if (isEvaded)
         {
-            isEvaded = true;
-            Debug.Log($"{Name} 회피 성공! (피해 감소)");
-            rawDamage *= 0.5f; // 회피 시 통상 데미지 50% 감소 및 빗나감 판정
+            Debug.Log($"{Name} 회피 성공! (이미 외부에서 피해가 50% 감소됨)");
             // 추가로 이벤트 쏴서 팝업창에 '빗나감' 처리 가능
         }
 
@@ -176,7 +199,20 @@ public class BattleCharacter
         }
 
         CurrentHp = Mathf.Max(0f, CurrentHp - actualDamage);
-        
+
+        // [추가] 수면 상태 해제 (데미지가 0보다 클 때)
+        if (actualDamage > 0 && HasStatusEffect(StatusEffectType.Sleep))
+        {
+            RemoveStatusEffect(StatusEffectType.Sleep);
+        }
+
+        // [추가] 내가 현재 턴 캐릭터인 경우 사이드 UI HP 실시간 업데이트
+        var bm = BattleManager.Instance;
+        if (bm != null && bm.battleUI != null && bm.currentActor == this)
+        {
+            bm.battleUI.ImgSideHpUpdate(this);
+        }
+
         // 피격 애니메이션 트리거 (데미지가 0보다 클 때만)
         if (actualDamage > 0 && Animator != null)
         {
@@ -184,7 +220,8 @@ public class BattleCharacter
         }
 
         // 반격불가 여부를 이벤트 매니저에게 같이 전달하여 반격이 터지지 않도록 함
-        BattleEventManager.TriggerDamageTaken(this, attacker, actualDamage, cannotBeCountered, isEvaded);
+        BattleEventManager.TriggerDamageTaken(this, attacker, actualDamage, cannotBeCountered, isEvaded, isCritical);
+
 
         return actualDamage;
     }
@@ -239,12 +276,20 @@ public class BattleCharacter
         {
             if (eff.Type == StatusEffectType.Bleed || eff.Type == StatusEffectType.Burn)
             {
-                TakeDamage(eff.DynamicValue);
+                TakeDamage(eff.DynamicValue, isCritical: false);
                 Debug.Log($"{Name} : {eff.Type} 피해로 {eff.DynamicValue} 데미지를 받음!");
             }
         }
 
+        // 자동 회복
+        if (HasStatusEffect(StatusEffectType.AutoHeal))
+        {
+            Heal(MaxHp * 0.15f);
+            Debug.Log($"{Name} : 자동 회복 효과로 {MaxHp * 0.15f}만큼 회복!");
+        }
+
         BattleEventManager.TriggerTurnStarted(this);
+        UpdateControlAnimator(); // [추가] 턴 시작 시 기절/수면 체크
     }
 
     public void OnTurnEnd()
@@ -274,11 +319,15 @@ public class BattleCharacter
                 eff.DestroyVFX();
                 ActiveStatusEffects.RemoveAt(i);
                 // 삭제 시에도 알림 (중복 호출되어도 CharacterView에서 삭제 처리됨)
-                BattleEventManager.TriggerStatusEffectChanged(this, eff); 
+                BattleEventManager.TriggerStatusEffectChanged(this, eff);
             }
         }
 
+        // 상태이상 변화가 있었으므로 스탯 재산정
+        RefreshStats();
+
         BattleEventManager.TriggerTurnEnded(this);
+        UpdateControlAnimator(); // [추가] 턴 종료 시 기절/수면 체크
     }
 
     // -------------------------------------------------------
@@ -300,13 +349,17 @@ public class BattleCharacter
             return;
         }
 
+        // 동일 계열 상위/하위 버프 체크 및 교체 로직
+        // 예: 공증(AtkUp50)이 있는데 공증대(AtkUp70)가 들어오면 기존 것을 지운다.
+        HandleBuffUpgrade(data.EffectType);
+
         var existing = ActiveStatusEffects.FirstOrDefault(e => e.Type == data.EffectType);
         if (existing != null)
         {
             // 이미 있으면 지속시간 갱신 및 (기획에 따라) 수치 덮어씌우기 혹은 높은 쪽 유지 등
             existing.RemainingDuration = Mathf.Max(existing.RemainingDuration, duration);
             if (dynamicValue > existing.DynamicValue) existing.DynamicValue = dynamicValue;
-            
+
             // [추가] 갱신 시에도 알림을 주어 UI 숫자 반영
             BattleEventManager.TriggerStatusEffectChanged(this, existing);
         }
@@ -317,16 +370,9 @@ public class BattleCharacter
             // 시각 이펙트(VFX) 처리
             if (data.VFXPrefab != null && ViewObject != null)
             {
-                GameObject vfx = Object.Instantiate(data.VFXPrefab, ViewObject.transform.position, Quaternion.identity);
-                if (data.KeepVFXAttached)
-                {
-                    vfx.transform.SetParent(ViewObject.transform);
-                    newEff.SpawnedVFX = vfx;
-                }
-                else
-                {
-                    Object.Destroy(vfx, 2f); // 임시 삭제
-                }
+                // StatusEffect 생성자에 VFX 생성을 맡기거나 여기서 수동 생성 후 할당
+                GameObject vfx = Object.Instantiate(data.VFXPrefab, ViewObject.transform.position, Quaternion.identity, ViewObject.transform);
+                newEff.SpawnedVFX = vfx;
             }
 
             ActiveStatusEffects.Add(newEff);
@@ -334,9 +380,113 @@ public class BattleCharacter
             BattleEventManager.TriggerStatusEffectChanged(this, newEff);
             BattleEventManager.TriggerStatusEffectApplied(this, newEff); // 신규 부여 시점 전송
         }
+
+        // 스탯 변동 버프일 수 있으므로 재산정
+        RefreshStats();
+        UpdateControlAnimator(); // [추가] 신규 효과 부여 시 기절/수면 체크
     }
 
-    public void RemoveStatusEffects(StatusEffectCategory category, int count)
+    /// <summary>
+    /// 동일 계열의 버프가 이미 있을 때, 새로 들어오는 버프의 종류에 따라 기존 버프를 제거하거나 무시하는 로직
+    /// </summary>
+    private void HandleBuffUpgrade(StatusEffectType newType)
+    {
+        // 공격력 증가 계열 예시
+        if (newType == StatusEffectType.AtkUp50 || newType == StatusEffectType.AtkUp70)
+        {
+            // 아예 같은 타입은 ApplyStatusEffect 본문에서 지속시간 갱신으로 처리하므로,
+            // 여기서는 '서로 다른' 공증/공증대 중첩을 막기 위해 다른 쪽을 찾아 제거함.
+            var targetType = (newType == StatusEffectType.AtkUp50) ? StatusEffectType.AtkUp70 : StatusEffectType.AtkUp50;
+            var other = ActiveStatusEffects.FirstOrDefault(e => e.Type == targetType);
+            if (other != null)
+            {
+                // 강한 것 위주 유지
+                if (newType == StatusEffectType.AtkUp50 && other.Type == StatusEffectType.AtkUp70) return;
+
+                other.DestroyVFX();
+                ActiveStatusEffects.Remove(other);
+                BattleEventManager.TriggerStatusEffectChanged(this, other);
+            }
+        }
+
+        // 방어력 증가 계열
+        if (newType == StatusEffectType.DefUp50 || newType == StatusEffectType.DefUp70)
+        {
+            var targetType = (newType == StatusEffectType.DefUp50) ? StatusEffectType.DefUp70 : StatusEffectType.DefUp50;
+            var other = ActiveStatusEffects.FirstOrDefault(e => e.Type == targetType);
+            if (other != null)
+            {
+                if (newType == StatusEffectType.DefUp50 && other.Type == StatusEffectType.DefUp70) return;
+                other.DestroyVFX();
+                ActiveStatusEffects.Remove(other);
+                BattleEventManager.TriggerStatusEffectChanged(this, other);
+            }
+        }
+    }
+
+    /// <summary>
+    /// 현재 활성화된 모든 상태이상을 체크하여 실시간 스탯을 다시 계산합니다.
+    /// </summary>
+    public void RefreshStats()
+    {
+        // 1. 배율 및 합산값 초기화
+        float atkMod = 0f;
+        float defMod = 0f;
+        float speedMod = 0f;
+        float critChanceMod = 0f;
+        float critDmgMod = 0f;
+        float accuracyMod = 0f;
+        float evasionMod = 0f;
+
+        // 2. 모든 효과 순회하며 합산
+        foreach (var eff in ActiveStatusEffects)
+        {
+            switch (eff.Type)
+            {
+                case StatusEffectType.AtkUp50:
+                case StatusEffectType.AtkUp70:
+                    atkMod += eff.PrimaryValue; break;
+                case StatusEffectType.AtkDown50:
+                    atkMod -= eff.PrimaryValue; break;
+
+                case StatusEffectType.DefUp50:
+                case StatusEffectType.DefUp70:
+                    defMod += eff.PrimaryValue; break;
+                case StatusEffectType.DefDown50:
+                    defMod -= eff.PrimaryValue; break;
+
+                case StatusEffectType.SpeedUp50: speedMod += eff.PrimaryValue; break;
+                case StatusEffectType.SpeedDown50: speedMod -= eff.PrimaryValue; break;
+
+                case StatusEffectType.CritChanceUp50: critChanceMod += eff.PrimaryValue; break;
+                case StatusEffectType.CritDmgUp50: critDmgMod += eff.PrimaryValue; break;
+
+                case StatusEffectType.Accuracy50: accuracyMod += eff.PrimaryValue; break;
+                case StatusEffectType.AccuracyDown50: accuracyMod -= eff.PrimaryValue; break;
+
+                case StatusEffectType.Evasion50: evasionMod += eff.PrimaryValue; break;
+            }
+        }
+
+        // 3. 최종 스탯 적용 (합연산 방식)
+        Attack = BaseAttack * (1f + atkMod);
+        Defense = BaseDefense * (1f + defMod);
+        Speed = BaseSpeed * (1f + speedMod);
+        CritChance = BaseCritChance + critChanceMod;
+        CritDamage = BaseCritDamage + critDmgMod;     // 치명 피해 배율 계산
+        AccuracyRate = BaseAccuracyRate + accuracyMod;
+        EvasionRate = BaseEvasionRate + evasionMod;
+
+        // 속도가 변했으면 행동게이지 시스템에도 알려줘야 할 수 있음
+        if (ActionGaugeSystem != null)
+        {
+            // Speed 값이 바뀌었으므로 게이지 증가량 등에 즉시 반영됨
+        }
+
+        Debug.Log($"{Name} 스탯 재계산 완료! (공: {Attack}, 방: {Defense}, 속: {Speed}, 치확 : {CritChance}, 치피: {CritDamage})");
+    }
+
+    public int RemoveStatusEffects(StatusEffectCategory category, int count)
     {
         int removed = 0;
         for (int i = ActiveStatusEffects.Count - 1; i >= 0; i--)
@@ -349,8 +499,46 @@ public class BattleCharacter
                 BattleEventManager.TriggerStatusEffectChanged(this, eff);
 
                 removed++;
+
                 if (removed >= count) break;
             }
         }
+
+        // 해제 시에도 스탯 재산정
+        if (removed > 0)
+        {
+            RefreshStats();
+            UpdateControlAnimator(); // [추가] 효과 해제 시 기절/수면 체크
+        }
+        return removed;
+    }
+
+    /// <summary>
+    /// [추가] 특정 타입의 상태이상을 즉시 제거합니다. (수면 해제 등)
+    /// </summary>
+    public void RemoveStatusEffect(StatusEffectType type)
+    {
+        var eff = ActiveStatusEffects.FirstOrDefault(e => e.Type == type);
+        if (eff != null)
+        {
+            eff.DestroyVFX();
+            ActiveStatusEffects.Remove(eff);
+            BattleEventManager.TriggerStatusEffectChanged(this, eff);
+
+            RefreshStats();
+            UpdateControlAnimator();
+        }
+    }
+
+    /// <summary>
+    /// [추가] 기절/수면 상태에 따라 애니메이션 파라미터 isStuning을 제어합니다.
+    /// </summary>
+    private void UpdateControlAnimator()
+    {
+        if (Animator == null) return;
+
+        // 기절(Stun) 혹은 수면(Sleep) 상태인 경우 isStuning = true
+        bool isStuning = HasStatusEffect(StatusEffectType.Stun) || HasStatusEffect(StatusEffectType.Sleep);
+        Animator.SetBool("isStuning", isStuning);
     }
 }

@@ -15,6 +15,10 @@ public class CharacterData : ScriptableObject
     public float Speed = 100f;
     [Range(0f, 1f)] public float CritChance = 0.15f;
     public float CritDamage = 1.5f;
+    public float Evasion = 0.0f;
+    public float Accuracy = 1.0f;
+
+
 
     [Header("비주얼 및 UI 자원")]
     [Tooltip("전신 일러스트 혹은 메인 이미지")]

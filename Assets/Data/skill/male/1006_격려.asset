@@ -16,7 +16,6 @@ MonoBehaviour:
   SkillName: "\uACA9\uB824"
   SkillIcon: {fileID: 1284117627236185218, guid: e4616979001df2749aec550e6edeb2eb, type: 3}
   Type: 1
-  PassiveTrigger: 0
   SlotIndex: 1
   EquipRestriction: 1
   RequiredAnimationTrigger: skill
@@ -27,6 +26,8 @@ MonoBehaviour:
       \uBD80\uC5EC\uB429\uB2C8\uB2E4."
     Cooldown: 4
     TargetType: 1
+    PassiveTrigger: 0
+    ConstantEffects: []
     Effects:
     - rid: 7481024980550680699
     - rid: 7481024980550680700
@@ -35,6 +36,8 @@ MonoBehaviour:
       \uCD94\uAC00\uD134\uC774 \uBD80\uC5EC\uB429\uB2C8\uB2E4."
     Cooldown: 4
     TargetType: 1
+    PassiveTrigger: 0
+    ConstantEffects: []
     Effects:
     - rid: 7481024980550680699
     - rid: 7481024980550680701
@@ -44,6 +47,8 @@ MonoBehaviour:
       \uCD94\uAC00\uD134\uC774 \uBD80\uC5EC\uB429\uB2C8\uB2E4."
     Cooldown: 4
     TargetType: 5
+    PassiveTrigger: 0
+    ConstantEffects: []
     Effects:
     - rid: 7481024980550680708
     - rid: 7481024980550680709
@@ -54,6 +59,8 @@ MonoBehaviour:
       \uBD80\uC5EC\uB429\uB2C8\uB2E4."
     Cooldown: 4
     TargetType: 5
+    PassiveTrigger: 0
+    ConstantEffects: []
     Effects:
     - rid: 7481024980550680710
     - rid: 7481024980550680711
@@ -64,6 +71,8 @@ MonoBehaviour:
       \uCD94\uAC00\uD134\uC774 \uBD80\uC5EC\uB429\uB2C8\uB2E4."
     Cooldown: 4
     TargetType: 5
+    PassiveTrigger: 0
+    ConstantEffects: []
     Effects:
     - rid: 7481024980550680713
     - rid: 7481024980550680714

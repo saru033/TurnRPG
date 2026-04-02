@@ -38,15 +38,46 @@ namespace TurnRPG.SkillSystem.Effects
                 // 추가: 각종 데미지 증가, 공격력 증가 버프 적용 및 체크
                 float baseDamage = caster.Attack * DamageMultiplier;
 
-                // 데미지 계산 및 치명타 판정 (개선된 BattleCharacter 메서드 호출 가정)
-                var (finalDamage, isCrit) = caster.CalcDamage(baseDamage);
+                bool isEvaded = false;
+                float finalDamage = 0f;
+                bool isCrit = false;
+
+                // [변경] 시전자의 명중률(Accuracy)과 대상의 회피율(Evasion)을 함께 고려하여 적중 판정
+                float hitChance = caster.AccuracyRate - t.EvasionRate;
+
+                // 1. 적중 판정 (AlwaysHit이거나 수면 중인 경우 무시하고 100% 적중)
+                if (!AlwaysHit && !isSleeping && Random.value > hitChance)
+                {
+                    isEvaded = true;
+                    finalDamage = baseDamage * 0.5f; // 빗나감 시 50% 피해
+                    isCrit = false;                  // [중요] 빗나감 발생 시 절대 치명타가 터질 수 없음
+                }
+                else
+                {
+                    // 2. 적중 시 치명타 및 데미지 계산
+                    isEvaded = false;
+
+                    if (isSleeping)
+                    {
+                        // 수면 중이면 확정 치명타 (캐스터의 치명 피해 배율 사용)
+                        finalDamage = baseDamage * caster.CritDamage;
+                        isCrit = true;
+                    }
+                    else
+                    {
+                        var result = caster.CalcDamage(baseDamage);
+                        finalDamage = result.damage;
+                        isCrit = result.isCrit;
+                    }
+                }
 
                 // 확장된 파라미터로 데미지 적용
-                t.TakeDamage(finalDamage, attacker: caster, penetration: Penetration, alwaysHit: AlwaysHit, cannotBeCountered: CannotBeCountered);
+                t.TakeDamage(finalDamage, attacker: caster, penetration: Penetration, isEvaded: isEvaded, cannotBeCountered: CannotBeCountered, isCritical: isCrit);
 
                 hitAnyone = true;
             }
-            return hitAnyone;
+            // [변경] 타겟피격 여부와 상관없이 항상 true 반환 (스킬 체인 유지)
+            return true;
         }
     }
 
@@ -83,7 +114,8 @@ namespace TurnRPG.SkillSystem.Effects
                 healedAnyone = true;
             }
 
-            return healedAnyone;
+            // [변경] 항상 true 반환 (스킬 체인 유지)
+            return true;
         }
     }
 
@@ -92,7 +124,7 @@ namespace TurnRPG.SkillSystem.Effects
     {
         [Tooltip("누구를 부활시킬 것인가 (단일 죽은 대상 = Target, 전체 = AllDeadAllies)")]
         public EffectTargetType TargetType = EffectTargetType.AllDeadAllies;
-        
+
         [Tooltip("부활 시 몇 %의 생명력으로 부활시킬지? (예: 0.25 = 25%)")]
         [Range(0f, 1f)] public float RevivalHpPercent = 0.25f;
 
@@ -107,22 +139,26 @@ namespace TurnRPG.SkillSystem.Effects
                 if (t != null && !t.IsAlive)
                 {
                     float reviveHp = t.MaxHp * RevivalHpPercent;
-                    
+
                     // 기존에 걸려있던 각종 해로운 상태이상이나 버프 모두 지우기
                     t.ActiveStatusEffects.Clear();
-                    
+
                     // 행동 게이지 0 초기화 (부활 시 기본 국룰, 기획에 따라 변경 가능)
-                    t.ActionGauge = 0f;
+                    if (t.ActionGaugeSystem != null)
+                        t.ActionGaugeSystem.SetGaugeRatio(t, 0f);
+                    else
+                        t.ActionGauge = 0f;
 
                     // 체력 상승 (자동으로 IsAlive가 true가 됨)
-                    t.CurrentHp = reviveHp; 
+                    t.CurrentHp = reviveHp;
 
                     Debug.Log($"[부활!] {t.Name}이(가) 체력 {reviveHp}으로 부활했습니다!");
                     revivedAnyone = true;
                 }
             }
 
-            return revivedAnyone;
+            // [변경] 항상 true 반환 (스킬 체인 유지)
+            return true;
         }
     }
 }

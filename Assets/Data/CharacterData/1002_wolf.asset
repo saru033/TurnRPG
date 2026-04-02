@@ -21,6 +21,8 @@ MonoBehaviour:
   Speed: 114
   CritChance: 0.15
   CritDamage: 1.5
+  Evasion: 0
+  Accuracy: 1
   illustration: {fileID: -3711777211424753836, guid: 03472910abf477c4a8a825d73cc176b5, type: 3}
   iconImage: {fileID: -2709049306981680734, guid: 89276d62f762d6f42a0d0bde0b5903ac, type: 3}
   sideImage: {fileID: 1392125930721133797, guid: 23cc8bb79b19f0440af14328209f5b6e, type: 3}

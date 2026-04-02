@@ -24,15 +24,15 @@ namespace TurnRPG.SkillSystem
     [System.Flags]
     public enum PassiveTriggerType
     {
-        None                 = 0,
+        None = 0,
         OnBasicAttackExecute = 1 << 0,  // 내 평타 공격 시 (추가타)
-        OnAllyAttacked       = 1 << 1,  // 나를 제외한 아군 피격 시 (협공/커버)
-        OnSelfAttacked       = 1 << 2,  // 내 피격 시 (반격)
-        OnTurnStart          = 1 << 3,  // 턴 시작 시
-        OnTurnEnd            = 1 << 4,  // (누군가의) 턴 종료 시
-        OnAoEAttacked        = 1 << 5,  // 전체 광역 공격 피격 시
-        OnSelfTurnEnd        = 1 << 6,  // 내 턴 종료 시
-        OnEnemyNonAttackSkill= 1 << 7   // 적이 공격이 아닌 스킬(NonAttack) 사용 시
+        OnAllyAttacked = 1 << 1,  // 나를 제외한 아군 피격 시 (협공/커버)
+        OnSelfAttacked = 1 << 2,  // 내 피격 시 (반격)
+        OnTurnStart = 1 << 3,  // 턴 시작 시
+        OnTurnEnd = 1 << 4,  // (누군가의) 턴 종료 시
+        OnAoEAttacked = 1 << 5,  // 전체 광역 공격 피격 시
+        OnSelfTurnEnd = 1 << 6,  // 내 턴 종료 시
+        OnEnemyNonAttackSkill = 1 << 7   // 적이 공격이 아닌 스킬(NonAttack) 사용 시
     }
 
     public enum SkillSlotIndex

@@ -26,6 +26,12 @@ namespace TurnRPG.SkillSystem
         public GameObject hitAllyVFXPrefab; // [추가] 아군용 타격 VFX (미설정 시 기본 prefab 반전 사용)
         public GameObject buffVFXPrefab;
         public GameObject debuffVFXPrefab;
+        public GameObject extraTurnEffect;
+        public GameObject healVFXPrefab;
+        public GameObject shieldVFXPrefab;
+        public GameObject removeBuffVFXPrefab;
+        public GameObject removeDebuffVFXPrefab;
+        
 
         private void Awake()
         {
@@ -60,6 +66,21 @@ namespace TurnRPG.SkillSystem
                 case VFXType.Debuff:
                     prefab = debuffVFXPrefab;
                     break;
+                case VFXType.ExtraTurn:
+                    prefab = extraTurnEffect;
+                    break;
+                case VFXType.Heal:
+                    prefab = healVFXPrefab;
+                    break;
+                case VFXType.Shield:
+                    prefab = shieldVFXPrefab;
+                    break;
+                case VFXType.RemoveBuff:
+                    prefab = removeBuffVFXPrefab;
+                    break;
+                case VFXType.RemoveDebuff:
+                    prefab = removeDebuffVFXPrefab;
+                    break;
             }
 
             if (prefab != null)
@@ -88,6 +109,11 @@ namespace TurnRPG.SkillSystem
     {
         Hit,
         Buff,
-        Debuff
+        Debuff,
+        ExtraTurn,
+        Heal,
+        Shield,
+        RemoveBuff,
+        RemoveDebuff
     }
 }

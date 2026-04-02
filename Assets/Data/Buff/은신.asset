@@ -18,6 +18,6 @@ MonoBehaviour:
   Description: "\uACF5\uACA9\uC758 \uB300\uC0C1\uC73C\uB85C \uC9C0\uC815\uB418\uC9C0
     \uC54A\uC2B5\uB2C8\uB2E4. \uD53C\uACA9\uC2DC \uD574\uC81C\uB429\uB2C8\uB2E4."
   Icon: {fileID: 8102909676549752682, guid: 6d7cbc1b559e68744983c25a91071209, type: 3}
-  VFXPrefab: {fileID: 0}
+  VFXPrefab: {fileID: 7385242295071387563, guid: 337c1b04bcab2ef4e85eac2dbd50d1ee, type: 3}
   KeepVFXAttached: 0
   PrimaryValue: 0

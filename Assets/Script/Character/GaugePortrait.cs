@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
@@ -29,8 +29,8 @@ public class GaugePortrait : MonoBehaviour
     bool _initialized = false;
 
 
-RectTransform _rt;
-public RectTransform RectTransform => _rt ??= GetComponent<RectTransform>();
+    RectTransform _rt;
+    public RectTransform RectTransform => _rt ??= GetComponent<RectTransform>();
     // -------------------------------------------------------
     // 초기화
     // -------------------------------------------------------
@@ -42,9 +42,9 @@ public RectTransform RectTransform => _rt ??= GetComponent<RectTransform>();
         _initialized = true;
 
         // 앵커/피벗을 바 상단 기준으로 설정
-    RectTransform.anchorMin = new Vector2(0.5f, 1f);
-    RectTransform.anchorMax = new Vector2(0.5f, 1f);
-    RectTransform.pivot = new Vector2(0.5f, 0.5f);
+        RectTransform.anchorMin = new Vector2(0.5f, 1f);
+        RectTransform.anchorMax = new Vector2(0.5f, 1f);
+        RectTransform.pivot = new Vector2(0.5f, 0.5f);
 
         if (nameLabel != null)
             nameLabel.text = c.Name.Length > 2 ? c.Name[..2] : c.Name;
@@ -58,7 +58,7 @@ public RectTransform RectTransform => _rt ??= GetComponent<RectTransform>();
     // -------------------------------------------------------
     // 위치 갱신
     // -------------------------------------------------------
-    public void UpdatePosition(RectTransform barRect)
+    public void UpdatePosition(RectTransform barRect, float time)
     {
         if (!_initialized)
         {
@@ -77,13 +77,13 @@ public RectTransform RectTransform => _rt ??= GetComponent<RectTransform>();
 
         // 진행 중인 트윈 취소 후 새 트윈 시작
         rt.DOKill();
-        rt.DOAnchorPosY(posY, 0.2f).SetEase(Ease.OutCubic);
+        rt.DOAnchorPosY(posY, time).SetEase(Ease.OutCubic);
     }
 
     // -------------------------------------------------------
     // 하이라이트
     // -------------------------------------------------------
-     public void SetHighlight(bool on)
+    public void SetHighlight(bool on)
     {
         if (highlightRing != null)
         {

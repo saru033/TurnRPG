@@ -19,6 +19,8 @@ namespace TurnRPG.SkillSystem
         // ✅ 방금 추가된 핵심! (보호막 체력, 출혈 데미지 등 시전 당시에 결정되는 가변수치)
         public float DynamicValue { get; set; } 
 
+
+        // 버프/디버프 생성
         public StatusEffect(StatusEffectData data, int duration, float dynamicValue = 0f)
         {
             Data = data;

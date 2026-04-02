@@ -83,27 +83,17 @@ public class CharacterView : MonoBehaviour, IPointerClickHandler
         BattleEventManager.OnHealed -= HandleHealed;
     }
 
-    private void HandleDamageTaken(BattleCharacter victim, BattleCharacter attacker, float damage, bool cannotBe, bool isEvaded)
+    private void HandleDamageTaken(BattleCharacter victim, BattleCharacter attacker, float damage, bool cannotBeCountered, bool isEvaded, bool isCritical)
     {
         if (victim != _character) return;
 
         UpdateHp();
 
-        // 회피 시 텍스트 팝업
-        if (isEvaded)
-        {
-            if (damageText != null)
-            {
-                damageText.gameObject.SetActive(true);
-                damageText.text = "Miss!";
-                damageText.color = Color.gray;
-            }
-        }
-        else
-        {
-            // 우선 일반 데미지 연출 수행
-            ShowDamage(damage, false);
+        // 회피 여부에 상관없이 항상 데미지 연출 수행 (isEvaded 전달)
+        ShowDamage(damage, isCritical, isEvaded);
 
+        if (!isEvaded)
+        {
             // [추가] 시전자가 있는 직접 타격인 경우 공용 타격 VFX 생성
             if (damage > 0 && attacker != null && BattleVFXManager.Instance != null)
             {
@@ -177,6 +167,7 @@ public class CharacterView : MonoBehaviour, IPointerClickHandler
             BattleVFXManager.Instance.SpawnVFX(VFXType.Debuff, spawnTarget);
             Debug.Log($"[VFX] Debuff VFX spawned on {_character.Name} ({effect.Type})");
         }
+
     }
 
     // -------------------------------------------------------
@@ -201,15 +192,22 @@ public class CharacterView : MonoBehaviour, IPointerClickHandler
     // -------------------------------------------------------
     // 데미지 텍스트 표시
     // -------------------------------------------------------
-    public void ShowDamage(float damage, bool isCrit)
+    public void ShowDamage(float damage, bool isCrit, bool isEvaded = false)
     {
         if (damageText == null) return;
 
         damageText.gameObject.SetActive(true);
-        damageText.text = isCrit
-            ? $"<b>{Mathf.RoundToInt(damage)}!</b>"
-            : Mathf.RoundToInt(damage).ToString();
-        damageText.color = isCrit ? Color.yellow : Color.white;
+        string dmgStr = isCrit ? $"<b>{Mathf.RoundToInt(damage)}!</b>" : Mathf.RoundToInt(damage).ToString();
+        damageText.text = isEvaded ? $"Miss! {dmgStr}" : dmgStr;
+
+        if (isEvaded)
+        {
+            damageText.color = Color.gray;
+        }
+        else
+        {
+            damageText.color = isCrit ? Color.yellow : Color.white;
+        }
 
         StopCoroutine(nameof(FadeOutDamageText));
         StartCoroutine(nameof(FadeOutDamageText));
@@ -250,5 +248,12 @@ public class CharacterView : MonoBehaviour, IPointerClickHandler
         seq.Append(illustration.DOColor(Color.white, 0.1f)); // 원래색(하양)으로 복구
 
         seq.Play();
+    }
+
+
+    // 외부에서 피격 위치를 가져오기 위한 함수
+    public Transform RetHitbox(){
+        Transform spawnTarget = hitbox != null ? hitbox.transform : (illustration != null ? illustration.transform : this.transform);
+        return spawnTarget;
     }
 }

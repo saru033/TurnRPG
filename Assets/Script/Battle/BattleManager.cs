@@ -26,7 +26,7 @@ public class BattleManager : MonoBehaviour
 
     Actiongaugesystem gaugeSystem;
     public List<BattleCharacter> allCharacters = new();
-    BattleCharacter currentActor;
+    public BattleCharacter currentActor;
 
     // [추가] 줌 효과 상태 관리용
     private bool _isCurrentlyZoomed = false;
@@ -54,20 +54,22 @@ public class BattleManager : MonoBehaviour
         // ScriptableObject(CharacterData) 리스트를 기반으로 런타임 캐릭터 생성
         allCharacters = new List<BattleCharacter>();
 
+        // Actiongaugesystem은 MonoBehaviour이므로 컴포넌트 방식으로 초기화
+        gaugeSystem = GetComponent<Actiongaugesystem>();
+        if (gaugeSystem == null) gaugeSystem = gameObject.AddComponent<Actiongaugesystem>();
+
         if (initialCharacterDatas != null && initialCharacterDatas.Count > 0)
         {
             foreach (var data in initialCharacterDatas)
             {
                 if (data != null)
-                    allCharacters.Add(new BattleCharacter(data));
+                {
+                    var bc = new BattleCharacter(data);
+                    bc.ActionGaugeSystem = gaugeSystem; // [추가] 시스템 참조 연결
+                    allCharacters.Add(bc);
+                }
             }
         }
-        else
-        {
-            Debug.LogWarning("[BattleManager] initialCharacterDatas가 비어있습니다. 에디터에서 할당해주세요.");
-        }
-
-        gaugeSystem = new Actiongaugesystem();
 
         battleUI.Init(allCharacters);
         battleUI.SetSkillButtonsVisible(false);
@@ -100,6 +102,17 @@ public class BattleManager : MonoBehaviour
             // ⭐ 1.5 턴 시작 시스템 발동 (쿨타임 감소, 출혈 피해 등)
             currentActor.OnTurnStart();
 
+            // [추가] 기절(Stun) 또는 수면(Sleep) 체크
+            bool isSkipTurn = currentActor.HasStatusEffect(StatusEffectType.Stun) || currentActor.HasStatusEffect(StatusEffectType.Sleep);
+            if (isSkipTurn)
+            {
+                Debug.Log($"{currentActor.Name} : 기절/수면 상태로 인해 턴을 스킵합니다.");
+                yield return new WaitForSeconds(0.5f);
+                currentActor.OnTurnEnd();
+                gaugeSystem.OnTurnEnd(currentActor);
+                continue;
+            }
+
             // 만약 출혈/화상 등 턴 시작 데미지로 사망했다면 턴 즉시 스킵
             if (!currentActor.IsAlive)
             {
@@ -130,7 +143,6 @@ public class BattleManager : MonoBehaviour
                 if (currentActor.Animator != null) currentActor.Animator.SetBool("isWaiting", false);
 
                 battleUI.SetSkillButtonsVisible(false);
-                battleUI.SetSideImageVisible(false, currentActor);
 
                 // 스킬 코루틴 등 애니메이션 대기
                 yield return new WaitUntil(() => State == BattleState.Idle || State == BattleState.Win || State == BattleState.Lose);
@@ -154,6 +166,7 @@ public class BattleManager : MonoBehaviour
 
             // 4. 턴 종료 — 버프 지속시간 차감
             currentActor.OnTurnEnd();
+            battleUI.SetSideImageVisible(false, currentActor);
             if (currentActor.Animator != null) currentActor.Animator.SetBool("isWaiting", false); // 안전장치
 
             gaugeSystem.OnTurnEnd(currentActor);
@@ -266,7 +279,7 @@ public class BattleManager : MonoBehaviour
 
         int level = currentActor.SkillLevels.Length > skillIndex ? currentActor.SkillLevels[skillIndex] : 1;
         var levelData = skillData.LevelDatas != null && skillData.LevelDatas.Count >= level ? skillData.LevelDatas[level - 1] : null;
-        
+
         // --- 연출용 데이터 준비 ---
         bool isUltimate = (int)skillData.SlotIndex == 2; // Skill3 (Ultimate)
 
@@ -428,6 +441,8 @@ public class BattleManager : MonoBehaviour
                 {
                     if (eff != null)
                     {
+                        // [설계] Execute가 false를 반환하는 경우는 '조건부 필터'에 의해 이후 체인을 중단해야 할 때 뿐입니다.
+                        // 단순한 저항이나 빗나감은 Execute 내부에서 true를 반환하여 체인이 유지되도록 구현되어 있습니다.
                         if (!eff.Execute(currentActor, selectedTarget)) break;
                     }
                 }
@@ -494,14 +509,22 @@ public class BattleManager : MonoBehaviour
     // -------------------------------------------------------
     void EnemyAct(BattleCharacter enemy)
     {
+        if (enemy == null || !enemy.IsAlive) return;
+
         int selectedIndex = 0;
         SkillData selectedSkill = null;
+
+        // [추가] 침묵(Silence) 상태 체크
+        bool isSilenced = enemy.HasStatusEffect(StatusEffectType.Silence);
 
         // 간단한 AI: 강한 스킬(인덱스 2 -> 1 -> 0) 우선순위 검사
         for (int i = enemy.ActiveSkills.Count - 1; i >= 0; i--)
         {
             if (enemy.ActiveSkills[i] != null && enemy.SkillCooldowns[i] <= 0)
             {
+                // 침묵 상태일 경우 1번 스킬(인덱스 0)만 선택 가능
+                if (isSilenced && i > 0) continue;
+
                 selectedIndex = i;
                 selectedSkill = enemy.ActiveSkills[i];
                 break;
@@ -552,17 +575,17 @@ public class BattleManager : MonoBehaviour
             {
                 // [Phase 1/3] 처음 줌인 시작
                 battleBackground.DOKill();
-                
+
                 // 피벗 설정 시 위치 점프 방지 (하지만 오프셋을 0으로 맞출 것이므로 초기 위치만 잡아줌)
                 SetPivotCompensated(battleBackground, targetPivot);
-                
+
                 // 꼭짓점 고정 (0으로 보정)
                 battleBackground.offsetMin = Vector2.zero;
                 battleBackground.offsetMax = Vector2.zero;
-                
+
                 // 스케일 증가
                 battleBackground.DOScale(Vector3.one * 1.2f, duration).SetEase(Ease.OutQuart);
-                
+
                 _isCurrentlyZoomed = true;
                 _lastZoomedPlayer = isPlayer;
             }
@@ -570,7 +593,7 @@ public class BattleManager : MonoBehaviour
             {
                 // [Phase 2-1/4-1] 아군 <-> 적군 전환 (패닝)
                 battleBackground.DOKill();
-                
+
                 // 1. 현재 피벗(예: 좌하단)을 유지한 상태에서, 목표 진영(예: 우하단)이 화면에 들어오도록 오프셋 계산
                 // 현재 스케일(1.2) 상태에서 반대쪽 끝으로 가려면 부모 너비의 20%만큼 이동해야 함
                 // Stretch-Stretch 앵커이므로, 피벗이 (0,0)일 때 (1,0)을 보려면 x를 -0.2 * width 만큼 밀어야 함
@@ -586,12 +609,12 @@ public class BattleManager : MonoBehaviour
                 yield return DOTween.To(() => battleBackground.offsetMax, x => battleBackground.offsetMax = x, targetOffsetMax, duration)
                     .SetEase(Ease.OutQuart)
                     .WaitForCompletion();
-                
+
                 // 3. 이동이 끝난 후, 피벗을 목표 진영으로 갈아끼우고 오프셋 0으로 동기화 (점프 방지)
                 SetPivotCompensated(battleBackground, targetPivot);
                 battleBackground.offsetMin = Vector2.zero;
                 battleBackground.offsetMax = Vector2.zero;
-                
+
                 _lastZoomedPlayer = isPlayer;
             }
             // 같은 진영이면(_lastZoomedPlayer == isPlayer) 아무것도 하지 않음 (유지)
@@ -602,16 +625,16 @@ public class BattleManager : MonoBehaviour
             if (_isCurrentlyZoomed)
             {
                 battleBackground.DOKill();
-                
+
                 // 1. 스케일을 1로 부드럽게 변경
                 yield return battleBackground.DOScale(Vector3.one, duration).SetEase(Ease.OutQuart).WaitForCompletion();
-                
+
                 // 2. 피벗 0.5, 0.5 복구 및 위치 초기화
                 SetPivotCompensated(battleBackground, new Vector2(0.5f, 0.5f));
                 battleBackground.offsetMin = Vector2.zero;
                 battleBackground.offsetMax = Vector2.zero;
                 battleBackground.anchoredPosition = Vector2.zero;
-                
+
                 _isCurrentlyZoomed = false;
             }
         }
@@ -625,7 +648,7 @@ public class BattleManager : MonoBehaviour
         Vector2 size = rectTransform.rect.size;
         Vector2 deltaPivot = rectTransform.pivot - pivot;
         Vector3 deltaPosition = new Vector3(deltaPivot.x * size.x, deltaPivot.y * size.y, 0f);
-        
+
         deltaPosition.x *= rectTransform.localScale.x;
         deltaPosition.y *= rectTransform.localScale.y;
 
