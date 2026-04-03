@@ -42,6 +42,9 @@ namespace TurnRPG.SkillSystem.Effects
                 float finalDamage = 0f;
                 bool isCrit = false;
 
+                // [변경] 수면(Sleep) 체크: 수면 중이면 반드시 적중하고 반드시 치명타가 터짐
+                bool isSleeping = t.HasStatusEffect(StatusEffectType.Sleep);
+
                 // [변경] 시전자의 명중률(Accuracy)과 대상의 회피율(Evasion)을 함께 고려하여 적중 판정
                 float hitChance = caster.AccuracyRate - t.EvasionRate;
 
@@ -65,14 +68,28 @@ namespace TurnRPG.SkillSystem.Effects
                     }
                     else
                     {
-                        var result = caster.CalcDamage(baseDamage);
+                        bool isCriResist = false;
+                        if (t.HasStatusEffect(StatusEffectType.CritResist))
+                            isCriResist = true;
+
+
+
+                        var result = caster.CalcDamage(baseDamage, isCriResist);
                         finalDamage = result.damage;
                         isCrit = result.isCrit;
                     }
                 }
 
                 // 확장된 파라미터로 데미지 적용
-                t.TakeDamage(finalDamage, attacker: caster, penetration: Penetration, isEvaded: isEvaded, cannotBeCountered: CannotBeCountered, isCritical: isCrit);
+                float actualDamage = t.TakeDamage(finalDamage, attacker: caster, penetration: Penetration, isEvaded: isEvaded, cannotBeCountered: CannotBeCountered, isCritical: isCrit);
+
+                if (caster.HasStatusEffect(StatusEffectType.LifeSteal))
+                {
+                    caster.Heal(actualDamage * 0.25f);
+
+                    if (BattleVFXManager.Instance != null)
+                        BattleVFXManager.Instance.SpawnVFX(VFXType.Heal, caster.View.RetHitbox());
+                }
 
                 hitAnyone = true;
             }
@@ -111,6 +128,12 @@ namespace TurnRPG.SkillSystem.Effects
 
                 float healAmount = BasedOnTargetMaxHp ? t.MaxHp * HealPercent : caster.MaxHp * HealPercent;
                 t.Heal(healAmount);
+
+                // 시각 이펙트(VFX) 처리
+                if (BattleVFXManager.Instance != null)
+                    BattleVFXManager.Instance.SpawnVFX(VFXType.Heal, t.View.RetHitbox());
+
+
                 healedAnyone = true;
             }
 

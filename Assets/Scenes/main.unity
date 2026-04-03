@@ -1732,6 +1732,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1a434be0432ce7044b6ab4c69101e1f3, type: 2}
   - {fileID: 11400000, guid: 5cbd1b082e2168b48b3c9fc301d55739, type: 2}
   - {fileID: 11400000, guid: c97e2339cba626643af8e358210f4e2c, type: 2}
+  - {fileID: 11400000, guid: 954467a37358fd941b3d065e2cc006dc, type: 2}
 --- !u!114 &753443264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1775,6 +1776,7 @@ MonoBehaviour:
   shieldVFXPrefab: {fileID: 7399119334063972450, guid: f27293baded9e324cba859dde22f2352, type: 3}
   removeBuffVFXPrefab: {fileID: 4237712116273916667, guid: aeb4dcf3c62ab2644bf50271bc796ec4, type: 3}
   removeDebuffVFXPrefab: {fileID: 6113553851235771463, guid: 6735744f0c7aead47968f24bb0b4a379, type: 3}
+  extraMoveVFXPrefab: {fileID: 940657747442995537, guid: 0e86c25ab1ce3e34899ae1a81a05269e, type: 3}
 --- !u!1 &782365077
 GameObject:
   m_ObjectHideFlags: 0
@@ -2726,7 +2728,7 @@ Animator:
   m_GameObject: {fileID: 1460857777}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c21680400cbb5044793a9dd7de017dfb, type: 2}
+  m_Controller: {fileID: 9100000, guid: 80ff4f790b90835478e1009fa0be13f7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

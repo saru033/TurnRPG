@@ -31,7 +31,10 @@ MonoBehaviour:
     - rid: 7481024980550680792
     - rid: 7481024980550680793
     - rid: 7481024980550680794
-    Effects: []
+    Effects:
+    - rid: 6423180961368244290
+    - rid: 6423180961368244291
+    - rid: 6423180961368244292
   - Description: "\uC801 \uD55C\uBA85\uC744 \uACF5\uACA9 \uD569\uB2C8\uB2E4. \uB300\uC0C1\uC758
       \uC57D\uD654\uD6A8\uACFC\uAC00 4\uAC1C \uC774\uC0C1\uC774\uB77C\uBA74 \uCD94\uAC00
       \uD134\uC774 \uBC1C\uC0DD\uD569\uB2C8\uB2E4."
@@ -88,6 +91,25 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
+    - rid: 6423180961368244290
+      type: {class: DamageEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 0
+        DamageMultiplier: 1.5
+        Penetration: 0
+        CannotBeCountered: 0
+        AlwaysHit: 0
+    - rid: 6423180961368244291
+      type: {class: CheckStatusEffectCountConditionEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 0
+        Category: 1
+        ThresholdCount: 5
+        IsBelow: 0
+    - rid: 6423180961368244292
+      type: {class: ExtraTurnEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 1
     - rid: 7481024980550680792
       type: {class: DamageEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
       data:

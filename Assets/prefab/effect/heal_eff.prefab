@@ -88,13 +88,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fa06e96a5ba06f4b8432c7c135f45f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectController
-  effectType: 1
+  effectType: 0
   fadeInDuration: 0.2
   holdDuration: 0.3
   fadeOutDuration: 0.1
   loopFadeInDuration: 0.3
   loopFadeOutDuration: 0.5
   rotationSpeed: -10
-  targetAlpha: 0.8
+  targetAlpha: 0.2
   fadeInEase: 6
   fadeOutEase: 5

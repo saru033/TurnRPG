@@ -30,9 +30,19 @@ MonoBehaviour:
     Effects:
     - rid: 7481024980550680891
     - rid: 7481024980550680892
+    - rid: 6423180976967123011
   references:
     version: 2
     RefIds:
+    - rid: 6423180976967123011
+      type: {class: ApplyStatusEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 1
+        EffectData: {fileID: 11400000, guid: b9164bc6673623f49908436bbea24036, type: 2}
+        Duration: 10
+        ApplyChance: 1
+        StatScaleType: 0
+        StatMultiplier: 0
     - rid: 7481024980550680891
       type: {class: CleanseEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
       data:

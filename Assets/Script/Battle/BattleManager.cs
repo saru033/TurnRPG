@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using DG.Tweening;
 using TurnRPG.SkillSystem;
 using System.Linq;
+using UnityEngine.Rendering;
+using System;
 
 public class BattleManager : MonoBehaviour
 {
@@ -31,6 +33,14 @@ public class BattleManager : MonoBehaviour
     // [추가] 줌 효과 상태 관리용
     private bool _isCurrentlyZoomed = false;
     private bool _lastZoomedPlayer = false;
+
+
+    private Queue<IEnumerator> extraActionQueue = new Queue<IEnumerator>();
+
+    public void EnqueueExtraAction(IEnumerator action)
+    {
+        extraActionQueue.Enqueue(action);
+    }
 
     void Awake()
     {
@@ -103,7 +113,7 @@ public class BattleManager : MonoBehaviour
             currentActor.OnTurnStart();
 
             // [추가] 기절(Stun) 또는 수면(Sleep) 체크
-            bool isSkipTurn = currentActor.HasStatusEffect(StatusEffectType.Stun) || currentActor.HasStatusEffect(StatusEffectType.Sleep);
+            bool isSkipTurn = currentActor.HasStatusEffect(TurnRPG.SkillSystem.StatusEffectType.Stun) || currentActor.HasStatusEffect(TurnRPG.SkillSystem.StatusEffectType.Sleep);
             if (isSkipTurn)
             {
                 Debug.Log($"{currentActor.Name} : 기절/수면 상태로 인해 턴을 스킵합니다.");
@@ -163,6 +173,14 @@ public class BattleManager : MonoBehaviour
 
             // 승패 결판 났으면 턴 넘기지 않고 종료
             if (State == BattleState.Win || State == BattleState.Lose) break;
+
+
+            while (extraActionQueue.Count > 0)
+            {
+                var action = extraActionQueue.Dequeue();
+                yield return StartCoroutine(action);
+            }
+
 
             // 4. 턴 종료 — 버프 지속시간 차감
             currentActor.OnTurnEnd();
@@ -255,6 +273,13 @@ public class BattleManager : MonoBehaviour
             return;
         }
 
+        // --- [추가] 은신(Stealth) 타겟팅 검사 ---
+        if (!target.CanBeTargetedBy(currentActor, allCharacters))
+        {
+            Debug.Log($"[Battle] {target.Name}은(는) 은신 중이라 타겟으로 지정할 수 없습니다!");
+            return;
+        }
+
         // 실행
         int executionIndex = _selectedSkillIndex;
         _selectedSkillIndex = -1; // 리셋
@@ -269,6 +294,123 @@ public class BattleManager : MonoBehaviour
     {
         // OnCharacterClicked 으로 일원화되어 사용하지 않음.
     }
+
+
+    public IEnumerator CounterAttackRoutine(BattleCharacter attacker, BattleCharacter target)
+    {
+        var skillData = attacker.ActiveSkills.Count > 0 ? attacker.ActiveSkills[0] : null;
+        if (skillData == null) yield break;
+
+        int skillIndex = 0;
+        int level = attacker.SkillLevels.Length > skillIndex ? attacker.SkillLevels[skillIndex] : 1;
+        var levelData = skillData.LevelDatas != null && skillData.LevelDatas.Count >= level
+            ? skillData.LevelDatas[level - 1] : null;
+
+        // --- 애니메이션 재생 및 타격 시점 대기 ---
+        if (!string.IsNullOrEmpty(skillData.RequiredAnimationTrigger) && attacker.Animator != null)
+        {
+            yield return new WaitForSeconds(1.0f);
+
+            // idle 상태까지 대기
+            float idleTimeout = 3.0f;
+            while (idleTimeout > 0)
+            {
+                var currentState = target.Animator.GetCurrentAnimatorStateInfo(0);
+                if (!currentState.IsName("attack") && !currentState.IsTag("hit"))
+                    break;
+
+                idleTimeout -= Time.deltaTime;
+                yield return null;
+            }
+
+            StartCoroutine(SetCameraZoom(attacker.IsPlayer, true));
+
+
+            // 반격 이펙트 출력
+            if (BattleVFXManager.Instance != null)
+                BattleVFXManager.Instance.SpawnVFX(VFXType.extraMove, attacker.View.RetHitbox());
+
+
+            _waitingForImpact = true;
+            attacker.Animator.SetTrigger(skillData.RequiredAnimationTrigger);
+
+            yield return new WaitForSeconds(0.1f);
+
+            var stateInfo = attacker.Animator.GetCurrentAnimatorStateInfo(0);
+            float maxWait = stateInfo.length * 0.8f;
+            float timer = 0f;
+
+            while (_waitingForImpact && timer < maxWait)
+            {
+                timer += Time.deltaTime;
+                yield return null;
+            }
+
+            // 피격자 진영 포커싱
+            if (target != null && target.IsPlayer != attacker.IsPlayer)
+            {
+                StartCoroutine(SetCameraZoom(target.IsPlayer, true));
+            }
+        }
+        else
+        {
+            yield return new WaitForSeconds(0.4f);
+        }
+
+        // --- 실제 효과 실행 ---
+        if (levelData != null)
+        {
+            if (levelData.Effects != null)
+            {
+                foreach (var eff in levelData.Effects)
+                {
+                    if (eff != null)
+                    {
+                        if (!eff.Execute(attacker, target)) break;
+                    }
+                }
+            }
+        }
+
+        BattleEventManager.TriggerSkillUsed(attacker, skillData);
+
+        // --- 4. 애니메이션 종료 대기 ---
+        yield return new WaitForSeconds(0.2f);
+
+        float timeout = 2.0f;
+        while (timeout > 0)
+        {
+            bool anyBusy = false;
+
+            if (!string.IsNullOrEmpty(skillData.RequiredAnimationTrigger))
+                if (attacker.IsAnimationPlaying(skillData.RequiredAnimationTrigger))
+                    anyBusy = true;
+
+            foreach (var bc in allCharacters)
+            {
+                if (bc.IsAlive && bc.IsAnimationPlaying("hit"))
+                {
+                    anyBusy = true;
+                    break;
+                }
+            }
+
+            if (!anyBusy) break;
+
+            timeout -= Time.deltaTime;
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(0.2f);
+
+        // --- 5. 카메라 복귀 ---
+        StartCoroutine(SetCameraZoom(true, false));
+        yield return new WaitForSeconds(0.4f);
+
+
+    }
+
+
 
     IEnumerator ExecuteSkillRoutine(SkillData skillData, int skillIndex, BattleCharacter manualTarget = null)
     {
@@ -296,13 +438,20 @@ public class BattleManager : MonoBehaviour
                 case SkillTargetType.RandomEnemy:
                     var aliveEnemies = allCharacters.Where(c => c.IsAlive && c.IsPlayer != currentActor.IsPlayer).ToList();
                     if (aliveEnemies.Count > 0)
-                        selectedTarget = aliveEnemies[Random.Range(0, aliveEnemies.Count)];
+                    {
+                        // [추가] 은신 필터링: 은신하지 않은 적이 있다면 그들 중에서 고르고, 전원 은신이면 전체에서 고름
+                        var targetableEnemies = aliveEnemies.Where(c => c.CanBeTargetedBy(currentActor, allCharacters)).ToList();
+                        if (targetableEnemies.Count > 0)
+                            selectedTarget = targetableEnemies[UnityEngine.Random.Range(0, targetableEnemies.Count)];
+                        else
+                            selectedTarget = aliveEnemies[UnityEngine.Random.Range(0, aliveEnemies.Count)];
+                    }
                     break;
                 case SkillTargetType.SingleAlly:
                 case SkillTargetType.AllAllies:
                     var aliveAllies = allCharacters.Where(c => c.IsAlive && c.IsPlayer == currentActor.IsPlayer).ToList();
                     if (aliveAllies.Count > 0)
-                        selectedTarget = aliveAllies[Random.Range(0, aliveAllies.Count)];
+                        selectedTarget = aliveAllies[UnityEngine.Random.Range(0, aliveAllies.Count)];
                     break;
                 case SkillTargetType.Self:
                     selectedTarget = currentActor;

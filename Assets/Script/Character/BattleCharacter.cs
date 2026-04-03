@@ -140,7 +140,7 @@ public class BattleCharacter
     // -------------------------------------------------------
     // 피해 및 회복 계산
     // -------------------------------------------------------
-    public float TakeDamage(float rawDamage, BattleCharacter attacker = null, float penetration = 0f, bool isEvaded = false, bool cannotBeCountered = false, bool isCritical = false)
+    public float TakeDamage(float rawDamage, BattleCharacter attacker = null, float penetration = 0f, bool isEvaded = false, bool cannotBeCountered = false, bool isCritical = false, bool isBurn = false)
     {
         // 빗나감 상태 저장 (이후 스킬 체인의 디버프 적용 여부 판단용)
         LastReceivedAttackEvaded = isEvaded;
@@ -151,7 +151,7 @@ public class BattleCharacter
             return 0;
         }
 
-        if (HasStatusEffect(StatusEffectType.SkillDmgNullify))
+        if (HasStatusEffect(StatusEffectType.SkillDmgNullify) && !isBurn)
         {
             Debug.Log($"{Name} 스킬 데미지 1회 무효화!");
             RemoveStatusEffect(StatusEffectType.SkillDmgNullify);
@@ -219,12 +219,36 @@ public class BattleCharacter
             Animator.SetTrigger("hit");
         }
 
+        // [추가] 은신(Stealth) 해제 로직: 화상/출혈이 아니고, 1 이상의 실제 피해를 입었을 때 해제
+        if (!isBurn && actualDamage > 0 && HasStatusEffect(TurnRPG.SkillSystem.StatusEffectType.Stealth))
+        {
+            Debug.Log($"{Name} : 피해를 입어 은신이 해제되었습니다.");
+            RemoveStatusEffect(TurnRPG.SkillSystem.StatusEffectType.Stealth);
+        }
+
         // 반격불가 여부를 이벤트 매니저에게 같이 전달하여 반격이 터지지 않도록 함
         BattleEventManager.TriggerDamageTaken(this, attacker, actualDamage, cannotBeCountered, isEvaded, isCritical);
 
 
+
+        // 출혈,화상으로 데미지를 입은게 아니고 , 기절/수면이 없고, 반격 버프가 있고 , 공격이 반격 불가가 아닌 경우, 공격자가 현재 턴인 경우
+        if (!isBurn && !cannotBeCountered && !HasStatusEffect(StatusEffectType.Stun) && !HasStatusEffect(StatusEffectType.Sleep) && HasStatusEffect(StatusEffectType.CounterAttack) && attacker != null && attacker == BattleManager.Instance.currentActor)
+        {
+            //반격
+            CounterAttack(attacker);
+        }
+
+
+
         return actualDamage;
     }
+
+
+    public void CounterAttack(BattleCharacter target)
+    {
+        BattleManager.Instance.EnqueueExtraAction(BattleManager.Instance.CounterAttackRoutine(this, target));
+    }
+
 
     public void Heal(float amount)
     {
@@ -234,9 +258,16 @@ public class BattleCharacter
         BattleEventManager.TriggerHealed(this, amount);
     }
 
-    public (float damage, bool isCrit) CalcDamage(float baseDamage)
+    public (float damage, bool isCrit) CalcDamage(float baseDamage, bool isCriResist = false)
     {
-        bool isCrit = Random.value < CritChance;
+        bool isCrit;
+        if (isCriResist)
+            isCrit = Random.value < CritChance - 0.5f;
+
+        else
+            isCrit = Random.value < CritChance;
+
+
         float finalDamage = isCrit ? baseDamage * CritDamage : baseDamage;
         return (finalDamage, isCrit);
     }
@@ -276,7 +307,7 @@ public class BattleCharacter
         {
             if (eff.Type == StatusEffectType.Bleed || eff.Type == StatusEffectType.Burn)
             {
-                TakeDamage(eff.DynamicValue, isCritical: false);
+                TakeDamage(eff.DynamicValue, isCritical: false, isBurn: true);
                 Debug.Log($"{Name} : {eff.Type} 피해로 {eff.DynamicValue} 데미지를 받음!");
             }
         }
@@ -540,5 +571,34 @@ public class BattleCharacter
         // 기절(Stun) 혹은 수면(Sleep) 상태인 경우 isStuning = true
         bool isStuning = HasStatusEffect(StatusEffectType.Stun) || HasStatusEffect(StatusEffectType.Sleep);
         Animator.SetBool("isStuning", isStuning);
+    }
+
+    // -------------------------------------------------------
+    // 타겟팅 관련 로직 (은신 등)
+    // -------------------------------------------------------
+    /// <summary>
+    /// 공격자(attacker)가 이 캐릭터를 단일 타겟으로 삼을 수 있는지 확인합니다.
+    /// (은신: 적군 중 은신하지 않은 자가 있다면 타겟팅 불가)
+    /// </summary>
+    public bool CanBeTargetedBy(BattleCharacter attacker, List<BattleCharacter> allCharacters)
+    {
+        // 아군끼리는 항상 타겟팅 가능 (버프/힐 용도)
+        if (this.IsPlayer == attacker.IsPlayer) return true;
+
+        // 은신 중이 아니라면 적군도 항상 타겟팅 가능
+        if (!HasStatusEffect(TurnRPG.SkillSystem.StatusEffectType.Stealth)) return true;
+
+        // 은신 중인 캐릭터인 경우:
+        // 같은 팀원 중 '은신이 아니고(NOT Stealthed)' + '살아있는(Alive)' 캐릭터가 한 명이라도 있는지 체크
+        bool anyOtherNonStealthAlive = allCharacters.Any(c =>
+            c != this &&
+            c.IsAlive &&
+            c.IsPlayer == this.IsPlayer &&
+            !c.HasStatusEffect(TurnRPG.SkillSystem.StatusEffectType.Stealth)
+        );
+
+        // 다른 타겟팅 가능한(은신 아닌) 적이 있다면, 나는 타겟이 될 수 없음
+        // 만약 모든 적이 은신 중이라면(anyOtherNonStealthAlive == false) 선택 가능
+        return !anyOtherNonStealthAlive;
     }
 }

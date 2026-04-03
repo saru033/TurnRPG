@@ -31,7 +31,7 @@ namespace TurnRPG.SkillSystem
         public GameObject shieldVFXPrefab;
         public GameObject removeBuffVFXPrefab;
         public GameObject removeDebuffVFXPrefab;
-        
+        public GameObject extraMoveVFXPrefab;
 
         private void Awake()
         {
@@ -81,6 +81,9 @@ namespace TurnRPG.SkillSystem
                 case VFXType.RemoveDebuff:
                     prefab = removeDebuffVFXPrefab;
                     break;
+                case VFXType.extraMove:
+                    prefab = extraMoveVFXPrefab;
+                    break;
             }
 
             if (prefab != null)
@@ -114,6 +117,7 @@ namespace TurnRPG.SkillSystem
         Heal,
         Shield,
         RemoveBuff,
-        RemoveDebuff
+        RemoveDebuff,
+        extraMove
     }
 }

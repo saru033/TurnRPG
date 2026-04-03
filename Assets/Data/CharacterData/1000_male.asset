@@ -19,7 +19,7 @@ MonoBehaviour:
   Attack: 115
   Defense: 89
   Speed: 98
-  CritChance: 0.15
+  CritChance: 1
   CritDamage: 1.5
   Evasion: 0
   Accuracy: 1
@@ -29,5 +29,5 @@ MonoBehaviour:
   characterPrefab: {fileID: 9213099258232346730, guid: 5dc7fab655d4942448f26fdd241d19bb, type: 3}
   StartingSkills:
   - {fileID: 11400000, guid: ddbdfddbc0efd1d49a57529a47775ce2, type: 2}
-  - {fileID: 11400000, guid: a5f85646d836b674fb1b70b6f8e3a2dc, type: 2}
-  - {fileID: 11400000, guid: b5ef3bdee7561c342a8df64f230f7591, type: 2}
+  - {fileID: 11400000, guid: 93f3f346076b0094d80fa9f576e78151, type: 2}
+  - {fileID: 11400000, guid: f0e5b50d18aca984f8f5157500138d13, type: 2}

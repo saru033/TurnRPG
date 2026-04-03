@@ -89,9 +89,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectController
   effectType: 0
-  fadeInDuration: 0.1
-  holdDuration: 0.2
-  fadeOutDuration: 0.1
+  fadeInDuration: 0.05
+  holdDuration: 0.1
+  fadeOutDuration: 0.05
   loopFadeInDuration: 0.3
   loopFadeOutDuration: 0.5
   rotationSpeed: -10

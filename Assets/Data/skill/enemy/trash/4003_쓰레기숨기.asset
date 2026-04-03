@@ -10,42 +10,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7166cb7f5dfe6a84cbbfd47fcd0f00ad, type: 3}
-  m_Name: "4002_\uC4F0\uB808\uAE30 \uB300\uD3ED\uBC1C"
+  m_Name: "4003_\uC4F0\uB808\uAE30\uC228\uAE30"
   m_EditorClassIdentifier: Assembly-CSharp::TurnRPG.SkillSystem.SkillData
-  SkillID: 4002
-  SkillName: "\uC4F0\uB808\uAE30 \uB300\uD3ED\uBC1C"
+  SkillID: 4003
+  SkillName: "\uB044\uB808\uAE30 \uC228\uAE30"
   SkillIcon: {fileID: 1372627480461126414, guid: 401c595f02fd7684eb9cd1b052b2fd82, type: 3}
-  Type: 0
-  SlotIndex: 2
+  Type: 1
+  SlotIndex: 0
   EquipRestriction: 8
   RequiredAnimationTrigger: attack
   UltimateCutsceneClip: {fileID: 0}
   LevelDatas:
   - Description: "\uC801 \uC804\uCCB4\uB97C \uACF5\uACA9\uD574 1\uD134\uAC04 \uAE30\uC808\uC744
       \uBD80\uC5EC\uD569\uB2C8\uB2E4."
-    Cooldown: 4
-    TargetType: 3
+    Cooldown: 0
+    TargetType: 2
     PassiveTrigger: 0
     ConstantEffects: []
     Effects:
-    - rid: 7481024980550680893
-    - rid: 6423180953482428485
+    - rid: 6423180976967123015
   references:
     version: 2
     RefIds:
-    - rid: 6423180953482428485
-      type: {class: ApplyStatusEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
-      data:
-        TargetType: 2
-        EffectData: {fileID: 11400000, guid: e370c1c3979598b45bebe80711df683a, type: 2}
-        Duration: 10
-        ApplyChance: 1
-        StatScaleType: 0
-        StatMultiplier: 0
-    - rid: 7481024980550680893
+    - rid: 6423180976967123015
       type: {class: DamageEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
       data:
-        TargetType: 3
+        TargetType: 0
         DamageMultiplier: 1
         Penetration: 0
         CannotBeCountered: 0
