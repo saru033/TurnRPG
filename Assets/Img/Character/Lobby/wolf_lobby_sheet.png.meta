@@ -1,0 +1,1068 @@
+fileFormatVersion: 2
+guid: 578a3ba3fe0174b49be925d2fcfd77fd
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5774988899195761291
+    second: wolf_lobby_sheet_0
+  - first:
+      213: -8749925990157795359
+    second: wolf_lobby_sheet_1
+  - first:
+      213: 9020685574206404833
+    second: wolf_lobby_sheet_2
+  - first:
+      213: -2210893652595883647
+    second: wolf_lobby_sheet_3
+  - first:
+      213: 8500657297703595287
+    second: wolf_lobby_sheet_4
+  - first:
+      213: -6569126759820342001
+    second: wolf_lobby_sheet_5
+  - first:
+      213: -8357495738472808025
+    second: wolf_lobby_sheet_6
+  - first:
+      213: 8660338701090242893
+    second: wolf_lobby_sheet_7
+  - first:
+      213: -6581356900250904406
+    second: wolf_lobby_sheet_8
+  - first:
+      213: 2840969715943489622
+    second: wolf_lobby_sheet_9
+  - first:
+      213: 4124360902631365070
+    second: wolf_lobby_sheet_10
+  - first:
+      213: -5596281300942078964
+    second: wolf_lobby_sheet_11
+  - first:
+      213: 8790853739049836161
+    second: wolf_lobby_sheet_12
+  - first:
+      213: 3416148980472981550
+    second: wolf_lobby_sheet_13
+  - first:
+      213: -1748225567685608267
+    second: wolf_lobby_sheet_14
+  - first:
+      213: -3678762274078846059
+    second: wolf_lobby_sheet_15
+  - first:
+      213: -7163455325086249685
+    second: wolf_lobby_sheet_16
+  - first:
+      213: -1798427700094797045
+    second: wolf_lobby_sheet_17
+  - first:
+      213: -4582289983849120111
+    second: wolf_lobby_sheet_18
+  - first:
+      213: -3366087735104042316
+    second: wolf_lobby_sheet_19
+  - first:
+      213: -1740873186553412267
+    second: wolf_lobby_sheet_20
+  - first:
+      213: 9057238607259141937
+    second: wolf_lobby_sheet_21
+  - first:
+      213: 5557020905428828506
+    second: wolf_lobby_sheet_22
+  - first:
+      213: 8924360257431703808
+    second: wolf_lobby_sheet_23
+  - first:
+      213: 8823130704676733402
+    second: wolf_lobby_sheet_24
+  - first:
+      213: 972228877222607097
+    second: wolf_lobby_sheet_25
+  - first:
+      213: 3958543041983875964
+    second: wolf_lobby_sheet_26
+  - first:
+      213: 3791502695488441024
+    second: wolf_lobby_sheet_27
+  - first:
+      213: -741296543483677201
+    second: wolf_lobby_sheet_28
+  - first:
+      213: 1340189115906508204
+    second: wolf_lobby_sheet_29
+  - first:
+      213: -8383262147196069313
+    second: wolf_lobby_sheet_30
+  - first:
+      213: 3256127153559047142
+    second: wolf_lobby_sheet_31
+  - first:
+      213: 1263580467631910936
+    second: wolf_lobby_sheet_32
+  - first:
+      213: 5526520611652592851
+    second: wolf_lobby_sheet_33
+  - first:
+      213: -3726024807052702452
+    second: wolf_lobby_sheet_34
+  - first:
+      213: 8233851089297360554
+    second: wolf_lobby_sheet_35
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: wolf_lobby_sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3020
+        width: 424
+        height: 604
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57dcc91813e1bdfa0800000000000000
+      internalID: -5774988899195761291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_lobby_sheet_1
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 3020
+        width: 424
+        height: 604
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1efbfa9cba4029680800000000000000
+      internalID: -8749925990157795359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_lobby_sheet_2
+      rect:
+        serializedVersion: 2
+        x: 848
+        y: 3020
+        width: 424
+        height: 604
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e830117cb9ef2d70800000000000000
+      internalID: 9020685574206404833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_lobby_sheet_3
+      rect:
+        serializedVersion: 2
+        x: 1272
+        y: 3020
+        width: 424
+        height: 604
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1814bd0dfe35151e0800000000000000
+      internalID: -2210893652595883647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_lobby_sheet_4
+      rect:
+        serializedVersion: 2
+        x: 1696
+        y: 3020
+        width: 424
+        height: 604
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71d64fa16c668f570800000000000000
+      internalID: 8500657297703595287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_lobby_sheet_5
+      rect:
+        serializedVersion: 2
+        x: 2120
+        y: 3020
+        width: 424
+        height: 604
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0d45644406c5d4a0800000000000000
+      internalID: -6569126759820342001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_lobby_sheet_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2416
+        width: 424
+        height: 604
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a1cc70e7e5340c80800000000000000
+      internalID: -8357495738472808025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_lobby_sheet_7
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 2416
+        width: 424
+        height: 604
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d414d090a24bf2870800000000000000
+      internalID: 8660338701090242893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_lobby_sheet_8
+      rect:
+        serializedVersion: 2
+        x: 848
+        y: 2416
+        width: 424
+        height: 604
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa89a7cc4c25aa4a0800000000000000
+      internalID: -6581356900250904406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_lobby_sheet_9
+      rect:
+        serializedVersion: 2
+        x: 1272
+        y: 2416
+        width: 424
+        height: 604
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 650447097e62d6720800000000000000
+      internalID: 2840969715943489622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_lobby_sheet_10
+      rect:
+        serializedVersion: 2
+        x: 1696
+        y: 2416
+        width: 424
+        height: 604
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec91ade936cac3930800000000000000
+      internalID: 4124360902631365070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_lobby_sheet_11
+      rect:
+        serializedVersion: 2
+        x: 2120
+        y: 2416
+        width: 424
+        height: 604
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0cbf22aec30652b0800000000000000
+      internalID: -5596281300942078964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_lobby_sheet_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1812
+        width: 424
+        height: 604
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18eda7456e26ff970800000000000000
+      internalID: 8790853739049836161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_lobby_sheet_13
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 1812
+        width: 424
+        height: 604
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e28a7e0f569986f20800000000000000
+      internalID: 3416148980472981550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_lobby_sheet_14
+      rect:
+        serializedVersion: 2
+        x: 848
+        y: 1812
+        width: 424
+        height: 604
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5bcf7d2db1e0db7e0800000000000000
+      internalID: -1748225567685608267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_lobby_sheet_15
+      rect:
+        serializedVersion: 2
+        x: 1272
+        y: 1812
+        width: 424
+        height: 604
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5931c60e33962fcc0800000000000000
+      internalID: -3678762274078846059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_lobby_sheet_16
+      rect:
+        serializedVersion: 2
+        x: 1696
+        y: 1812
+        width: 424
+        height: 604
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2d8adfd55b469c90800000000000000
+      internalID: -7163455325086249685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_lobby_sheet_17
+      rect:
+        serializedVersion: 2
+        x: 2120
+        y: 1812
+        width: 424
+        height: 604
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0b70a50983ba07e0800000000000000
+      internalID: -1798427700094797045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_lobby_sheet_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1208
+        width: 424
+        height: 604
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19eb7d6a98f6860c0800000000000000
+      internalID: -4582289983849120111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_lobby_sheet_19
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 1208
+        width: 424
+        height: 604
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ba035a0a014941d0800000000000000
+      internalID: -3366087735104042316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_lobby_sheet_20
+      rect:
+        serializedVersion: 2
+        x: 848
+        y: 1208
+        width: 424
+        height: 604
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5554b747f0d27d7e0800000000000000
+      internalID: -1740873186553412267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_lobby_sheet_21
+      rect:
+        serializedVersion: 2
+        x: 1272
+        y: 1208
+        width: 424
+        height: 604
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13782a7a686c1bd70800000000000000
+      internalID: 9057238607259141937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_lobby_sheet_22
+      rect:
+        serializedVersion: 2
+        x: 1696
+        y: 1208
+        width: 424
+        height: 604
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a51418532118e1d40800000000000000
+      internalID: 5557020905428828506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_lobby_sheet_23
+      rect:
+        serializedVersion: 2
+        x: 2120
+        y: 1208
+        width: 424
+        height: 604
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00194dfee52b9db70800000000000000
+      internalID: 8924360257431703808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_lobby_sheet_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 604
+        width: 424
+        height: 604
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad1491301ae027a70800000000000000
+      internalID: 8823130704676733402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_lobby_sheet_25
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 604
+        width: 424
+        height: 604
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f8fa33430d0e7d00800000000000000
+      internalID: 972228877222607097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_lobby_sheet_26
+      rect:
+        serializedVersion: 2
+        x: 848
+        y: 604
+        width: 424
+        height: 604
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7b0b856ce19fe630800000000000000
+      internalID: 3958543041983875964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_lobby_sheet_27
+      rect:
+        serializedVersion: 2
+        x: 1272
+        y: 604
+        width: 424
+        height: 604
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ca46810d9f1e9430800000000000000
+      internalID: 3791502695488441024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_lobby_sheet_28
+      rect:
+        serializedVersion: 2
+        x: 1696
+        y: 604
+        width: 424
+        height: 604
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe53e64a8b266b5f0800000000000000
+      internalID: -741296543483677201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_lobby_sheet_29
+      rect:
+        serializedVersion: 2
+        x: 2120
+        y: 604
+        width: 424
+        height: 604
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca5c37976ee499210800000000000000
+      internalID: 1340189115906508204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_lobby_sheet_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 424
+        height: 604
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3a56695e7ba8ab80800000000000000
+      internalID: -8383262147196069313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_lobby_sheet_31
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 0
+        width: 424
+        height: 604
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6eb046bf466103d20800000000000000
+      internalID: 3256127153559047142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_lobby_sheet_32
+      rect:
+        serializedVersion: 2
+        x: 848
+        y: 0
+        width: 424
+        height: 604
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81072569db3298110800000000000000
+      internalID: 1263580467631910936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_lobby_sheet_33
+      rect:
+        serializedVersion: 2
+        x: 1272
+        y: 0
+        width: 424
+        height: 604
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d46d6d273522bc40800000000000000
+      internalID: 5526520611652592851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_lobby_sheet_34
+      rect:
+        serializedVersion: 2
+        x: 1696
+        y: 0
+        width: 424
+        height: 604
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0d8457ed208a4cc0800000000000000
+      internalID: -3726024807052702452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_lobby_sheet_35
+      rect:
+        serializedVersion: 2
+        x: 2120
+        y: 0
+        width: 424
+        height: 604
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa6480fd0f3844270800000000000000
+      internalID: 8233851089297360554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 6824f201b7c549647b21a6128e2cd0a7
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":6.0,"y":6.0},"gridSpriteSize":{"x":424.0,"y":604.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      wolf_lobby_sheet_0: -5774988899195761291
+      wolf_lobby_sheet_1: -8749925990157795359
+      wolf_lobby_sheet_10: 4124360902631365070
+      wolf_lobby_sheet_11: -5596281300942078964
+      wolf_lobby_sheet_12: 8790853739049836161
+      wolf_lobby_sheet_13: 3416148980472981550
+      wolf_lobby_sheet_14: -1748225567685608267
+      wolf_lobby_sheet_15: -3678762274078846059
+      wolf_lobby_sheet_16: -7163455325086249685
+      wolf_lobby_sheet_17: -1798427700094797045
+      wolf_lobby_sheet_18: -4582289983849120111
+      wolf_lobby_sheet_19: -3366087735104042316
+      wolf_lobby_sheet_2: 9020685574206404833
+      wolf_lobby_sheet_20: -1740873186553412267
+      wolf_lobby_sheet_21: 9057238607259141937
+      wolf_lobby_sheet_22: 5557020905428828506
+      wolf_lobby_sheet_23: 8924360257431703808
+      wolf_lobby_sheet_24: 8823130704676733402
+      wolf_lobby_sheet_25: 972228877222607097
+      wolf_lobby_sheet_26: 3958543041983875964
+      wolf_lobby_sheet_27: 3791502695488441024
+      wolf_lobby_sheet_28: -741296543483677201
+      wolf_lobby_sheet_29: 1340189115906508204
+      wolf_lobby_sheet_3: -2210893652595883647
+      wolf_lobby_sheet_30: -8383262147196069313
+      wolf_lobby_sheet_31: 3256127153559047142
+      wolf_lobby_sheet_32: 1263580467631910936
+      wolf_lobby_sheet_33: 5526520611652592851
+      wolf_lobby_sheet_34: -3726024807052702452
+      wolf_lobby_sheet_35: 8233851089297360554
+      wolf_lobby_sheet_4: 8500657297703595287
+      wolf_lobby_sheet_5: -6569126759820342001
+      wolf_lobby_sheet_6: -8357495738472808025
+      wolf_lobby_sheet_7: 8660338701090242893
+      wolf_lobby_sheet_8: -6581356900250904406
+      wolf_lobby_sheet_9: 2840969715943489622
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
