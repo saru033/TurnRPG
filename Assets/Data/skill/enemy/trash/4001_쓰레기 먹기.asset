@@ -15,43 +15,42 @@ MonoBehaviour:
   SkillID: 4001
   SkillName: "\uC4F0\uB808\uAE30 \uBA39\uAE30"
   SkillIcon: {fileID: 1372627480461126414, guid: 401c595f02fd7684eb9cd1b052b2fd82, type: 3}
-  Type: 1
+  Type: 2
   SlotIndex: 1
   EquipRestriction: 8
-  RequiredAnimationTrigger: skill
+  RequiredAnimationTrigger: 
   UltimateCutsceneClip: {fileID: 0}
   LevelDatas:
-  - Description: "\uC790\uC2E0\uC758 \uC57D\uD654\uD6A8\uACFC\uB97C 1\uAC1C \uD574\uC81C\uD558\uACE0,
-      \uC0DD\uBA85\uB825\uC744 \uD68C\uBCF5\uD569\uB2C8\uB2E4."
-    Cooldown: 1
-    TargetType: 1
+  - Description: "\uC804\uD22C \uC2DC\uC791\uC2DC \uC790\uC2E0\uC5D0\uAC8C 2\uD134\uAC04
+      \uBB34\uC801\uC744 \uBD80\uC5EC\uD569\uB2C8\uB2E4. \uC544\uAD70 \uC804\uCCB4\uC758
+      \uD589\uB3D9\uAC8C\uC774\uC9C0\uB97C 50% \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
+    Cooldown: 0
+    TargetType: 0
     PassiveTrigger: 0
-    ConstantEffects: []
+    ConstantEffects:
+    - rid: 6423181022063755340
     Effects:
-    - rid: 7481024980550680891
-    - rid: 7481024980550680892
-    - rid: 6423180976967123011
+    - rid: 6423181022063755339
+    - rid: 6423181022063755341
   references:
     version: 2
     RefIds:
-    - rid: 6423180976967123011
+    - rid: 6423181022063755339
+      type: {class: ActionGaugeEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 2
+        Amount: 10
+    - rid: 6423181022063755340
       type: {class: ApplyStatusEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
       data:
         TargetType: 1
-        EffectData: {fileID: 11400000, guid: b9164bc6673623f49908436bbea24036, type: 2}
-        Duration: 10
+        EffectData: {fileID: 11400000, guid: 7cc32564e8a0f824ab814c0b8caba0b1, type: 2}
+        Duration: 2
         ApplyChance: 1
         StatScaleType: 0
         StatMultiplier: 0
-    - rid: 7481024980550680891
-      type: {class: CleanseEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+    - rid: 6423181022063755341
+      type: {class: ActionGaugeEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
       data:
-        TargetType: 1
-        TargetCategory: 1
-        Count: 1
-    - rid: 7481024980550680892
-      type: {class: HealEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
-      data:
-        TargetType: 1
-        HealPercent: 0.5
-        BasedOnTargetMaxHp: 1
+        TargetType: 2
+        Amount: 50

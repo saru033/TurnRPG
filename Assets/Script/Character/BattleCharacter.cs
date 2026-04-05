@@ -104,14 +104,14 @@ public class BattleCharacter
 
         ActionGauge = 0f;
 
-        // 시작 스킬 장착 (최대 3슬롯)
+        // 시작 스킬 장착 (데이터의 SlotIndex 기반으로 제 자리에 장착)
         if (data.StartingSkills != null)
         {
-            for (int i = 0; i < data.StartingSkills.Count && i < 3; i++)
+            foreach (var skillSO in data.StartingSkills)
             {
-                if (data.StartingSkills[i] != null)
+                if (skillSO != null)
                 {
-                    EquipSkill(i, data.StartingSkills[i], 1); // 1레벨 기본 장착
+                    EquipSkill((int)skillSO.SlotIndex, skillSO, 1); // 1레벨 기본 장착
                 }
             }
         }
@@ -171,7 +171,7 @@ public class BattleCharacter
         float actualDamage = rawDamage * (1f - reduction);
 
         // 상시 피해 감소 패시브 적용 (투기장 체르미아 효과 등)
-        actualDamage *= (1f - Mathf.Clamp01(PassiveDamageReduction));
+        actualDamage *= 1f - Mathf.Clamp01(PassiveDamageReduction);
 
         actualDamage = Mathf.Max(1f, actualDamage);   // 최소 1 피해
 

@@ -307,13 +307,13 @@ namespace TurnRPG.SkillSystem.Effects
                 if (t == null) continue;
 
                 string stat = TargetStat.ToLower();
-                if (stat.Contains("def")) t.Defense *= (1f + PercentAmount);
-                else if (stat.Contains("atk")) t.Attack *= (1f + PercentAmount);
-                else if (stat.Contains("hp")) t.MaxHp *= (1f + PercentAmount);
-                else if (stat.Contains("spd")) t.Speed *= (1f + PercentAmount);
-                else if (stat.Contains("critchance")) t.CritChance += PercentAmount;
-                else if (stat.Contains("critdmg") || stat.Contains("critdamage")) t.CritDamage += PercentAmount;
-                else if (stat.Contains("evasion")) t.EvasionRate += PercentAmount;
+                if (stat.Contains("def")) t.BaseDefense *= (1f + PercentAmount);
+                else if (stat.Contains("atk")) t.BaseAttack *= (1f + PercentAmount);
+                else if (stat.Contains("hp")) t.BaseMaxHp *= (1f + PercentAmount);
+                else if (stat.Contains("spd")) t.BaseSpeed *= (1f + PercentAmount);
+                else if (stat.Contains("critchance")) t.BaseCritChance += PercentAmount;
+                else if (stat.Contains("critdmg") || stat.Contains("critdamage")) t.BaseCritDamage += PercentAmount;
+                else if (stat.Contains("evasion")) t.BaseEvasionRate += PercentAmount;
 
                 executed = true;
             }

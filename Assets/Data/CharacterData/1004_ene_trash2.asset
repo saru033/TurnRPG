@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 105c21214ebaa0a4ba836d3b14b5e4e2, type: 3}
   m_Name: 1004_ene_trash2
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
-  ID: 1003
+  ID: 1004
   CharacterName: Enemy_trash
   isPlayer: 0
   MaxHp: 4870
@@ -28,4 +28,5 @@ MonoBehaviour:
   sideImage: {fileID: -7636694935251246727, guid: 7c7405ae2e004234aa55c571d7a22c2d, type: 3}
   characterPrefab: {fileID: 6008314446264759706, guid: 72ff3ac32bc5e454e9e61f0596e1de2e, type: 3}
   StartingSkills:
-  - {fileID: 11400000, guid: 797f9229cf8973b4f866df84b2934b5d, type: 2}
+  - {fileID: 11400000, guid: c022741f726403c40b9bfbba69eb5324, type: 2}
+  - {fileID: 11400000, guid: 768864dcc112e3847b7613489af23d51, type: 2}

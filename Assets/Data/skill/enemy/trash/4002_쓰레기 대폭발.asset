@@ -46,7 +46,7 @@ MonoBehaviour:
       type: {class: DamageEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
       data:
         TargetType: 3
-        DamageMultiplier: 1
+        DamageMultiplier: 0.5
         Penetration: 0
         CannotBeCountered: 0
         AlwaysHit: 0

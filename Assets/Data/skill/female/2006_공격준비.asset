@@ -16,7 +16,6 @@ MonoBehaviour:
   SkillName: "\uACF5\uACA9 \uC900\uBE44"
   SkillIcon: {fileID: 6483172485400903665, guid: d2e4857c263b66c4ab9a5b30da4dae0a, type: 3}
   Type: 2
-  PassiveTrigger: 0
   SlotIndex: 1
   EquipRestriction: 2
   RequiredAnimationTrigger: 
@@ -26,6 +25,7 @@ MonoBehaviour:
       \uACF5\uACA9\uB825\uC744 10% \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
     Cooldown: 0
     TargetType: 0
+    PassiveTrigger: 0
     ConstantEffects:
     - rid: 7481024980550680779
     Effects: []
@@ -33,6 +33,7 @@ MonoBehaviour:
       \uACF5\uACA9\uB825 , \uCE58\uBA85\uD0C0 \uD53C\uD574\uB97C 10% \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
     Cooldown: 0
     TargetType: 0
+    PassiveTrigger: 0
     ConstantEffects:
     - rid: 7481024980550680779
     - rid: 7481024980550680780
@@ -41,6 +42,7 @@ MonoBehaviour:
       \uACF5\uACA9\uB825 , \uCE58\uBA85\uD0C0 \uD53C\uD574\uB97C 15% \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
     Cooldown: 0
     TargetType: 0
+    PassiveTrigger: 0
     ConstantEffects:
     - rid: 7481024980550680781
     - rid: 7481024980550680782
@@ -49,6 +51,7 @@ MonoBehaviour:
       , \uCE58\uBA85\uD0C0 \uD53C\uD574\uB97C 50% \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
     Cooldown: 0
     TargetType: 0
+    PassiveTrigger: 0
     ConstantEffects:
     - rid: 7481024980550680783
     - rid: 7481024980550680784
@@ -57,6 +60,7 @@ MonoBehaviour:
       \uACF5\uACA9\uB825 , \uCE58\uBA85\uD0C0 \uD53C\uD574\uB97C 25% \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
     Cooldown: 0
     TargetType: 0
+    PassiveTrigger: 0
     ConstantEffects:
     - rid: 7481024980550680785
     - rid: 7481024980550680786

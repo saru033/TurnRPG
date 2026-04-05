@@ -53,13 +53,13 @@ public class BattleManager : MonoBehaviour
     IEnumerator Start()
     {
         yield return null;   // UI Layout 계산 완료 대기
-        InitBattle();
+        yield return StartCoroutine(InitBattle());
     }
 
     // -------------------------------------------------------
     // 초기화 (나중에 Stage/캐릭터 데이터에서 받아올 부분)
     // -------------------------------------------------------
-    void InitBattle()
+    IEnumerator InitBattle()
     {
         // ScriptableObject(CharacterData) 리스트를 기반으로 런타임 캐릭터 생성
         allCharacters = new List<BattleCharacter>();
@@ -88,6 +88,47 @@ public class BattleManager : MonoBehaviour
 
         if (!object.ReferenceEquals(characterPlacer, null))
             characterPlacer.PlaceCharacters(allCharacters);
+
+        // --- [수정] 전투 시작 시 상시 패시브 연출 및 적용 ---
+        foreach (var bc in allCharacters)
+        {
+            for (int i = 0; i < bc.ActiveSkills.Count; i++)
+            {
+                var skill = bc.ActiveSkills[i];
+                if (skill == null) continue;
+
+                int level = bc.SkillLevels[i];
+                if (skill.LevelDatas == null || skill.LevelDatas.Count < level) continue;
+
+                var levelData = skill.LevelDatas[level - 1];
+                if (levelData.ConstantEffects == null || levelData.ConstantEffects.Count == 0) continue;
+
+                // 연출(애니메이션/컷신)이 있는 경우 큐에 추가
+                if (!string.IsNullOrEmpty(skill.RequiredAnimationTrigger) || skill.UltimateCutsceneClip != null)
+                {
+                    EnqueueExtraAction(ExecuteConstantPassivesRoutine(bc, skill, level));
+                }
+                else
+                {
+                    // 연출이 없으면 즉시 실행
+                    foreach (var eff in levelData.ConstantEffects)
+                    {
+                        if (eff != null)
+                        {
+                            Debug.Log($"[Passive-Silent] {bc.Name}의 {skill.SkillName} 상시 효과 즉시 적용");
+                            eff.Execute(bc, bc);
+                        }
+                    }
+                    bc.RefreshStats();
+                }
+            }
+        }
+
+        // 큐에 쌓인 패시브 연출들을 순차적으로 모두 실행
+        while (extraActionQueue.Count > 0)
+        {
+            yield return StartCoroutine(extraActionQueue.Dequeue());
+        }
 
         State = BattleState.Idle;
         StartCoroutine(TurnLoop());
@@ -411,6 +452,143 @@ public class BattleManager : MonoBehaviour
     }
 
 
+
+    /// <summary>
+    /// 전투 시작 시 연출이 포함된 상시 패시브를 실행하는 루틴입니다.
+    /// </summary>
+    public IEnumerator ExecuteConstantPassivesRoutine(BattleCharacter character, SkillData skill, int level)
+    {
+        Debug.Log($"[Passive-Show] {character.Name} → {skill.SkillName} 패시브 연출 시작");
+
+        var levelData = skill.LevelDatas != null && skill.LevelDatas.Count >= level 
+                        ? skill.LevelDatas[level - 1] : null;
+
+        bool isUltimate = (int)skill.SlotIndex == 2;
+
+        // --- 1. 카메라 줌 및 캐릭터 하이라이트 ---
+        if (!isUltimate)
+        {
+            StartCoroutine(SetCameraZoom(character.IsPlayer, true));
+            yield return new WaitForSeconds(0.2f);
+        }
+        battleUI.HighlightActor(character);
+        battleUI.SetSideImageVisible(true, character);
+
+        // --- 2. 컷신 재생 (있는 경우) ---
+        if (skill.UltimateCutsceneClip != null && battleUI.ultimateCutsceneRoot != null)
+        {
+            // [ExecuteSkillRoutine의 컷신 로직 재사용]
+            Transform originalParent = null;
+            Vector2 originalAnchoredPos = Vector2.zero;
+            Vector3 originalScale = Vector3.one;
+            bool enhancedSequence = false;
+
+            if (character.View != null && character.View.illustration != null && battleUI.ultimateBlackScreen != null)
+            {
+                enhancedSequence = true;
+                var illu = character.View.illustration.rectTransform;
+                originalParent = illu.parent;
+                originalAnchoredPos = illu.anchoredPosition;
+                originalScale = illu.localScale;
+
+                battleUI.ultimateBlackScreen.gameObject.SetActive(true);
+                battleUI.ultimateBlackScreen.color = new Color(0, 0, 0, 0);
+
+                illu.SetParent(battleUI.ultimateBlackScreen.transform, true);
+                Vector2 targetPos = new Vector2(0, illu.anchoredPosition.y);
+
+                Sequence seq = DOTween.Sequence();
+                seq.Join(battleUI.ultimateBlackScreen.DOFade(1f, 0.4f));
+                seq.Join(illu.DOAnchorPos(targetPos, 0.4f));
+                seq.Join(illu.DOScale(originalScale * 1.2f, 0.4f));
+
+                yield return seq.WaitForCompletion();
+            }
+
+            battleUI.ultimateCutsceneRoot.SetActive(true);
+            var anim = battleUI.ultimateCutsceneRoot.GetComponentInChildren<Animator>();
+            if (anim != null)
+            {
+                anim.Play(skill.UltimateCutsceneClip.name);
+                if (enhancedSequence)
+                {
+                    yield return new WaitForSeconds(0.15f);
+                    if (character.View != null)
+                    {
+                        var illu = character.View.illustration.rectTransform;
+                        illu.SetParent(originalParent, true);
+                        illu.anchoredPosition = originalAnchoredPos;
+                        illu.localScale = originalScale;
+                        battleUI.ultimateBlackScreen.gameObject.SetActive(false);
+                    }
+                    yield return new WaitForSeconds(Mathf.Max(0, skill.UltimateCutsceneClip.length - 0.15f));
+                }
+                else
+                {
+                    yield return new WaitForSeconds(skill.UltimateCutsceneClip.length);
+                }
+            }
+            battleUI.ultimateCutsceneRoot.SetActive(false);
+        }
+
+        // --- 3. 애니메이션 재생 및 타격 시점 대기 ---
+        if (!string.IsNullOrEmpty(skill.RequiredAnimationTrigger) && character.Animator != null)
+        {
+            _waitingForImpact = true;
+            character.Animator.SetTrigger(skill.RequiredAnimationTrigger);
+
+            yield return new WaitForSeconds(0.1f);
+
+            var stateInfo = character.Animator.GetCurrentAnimatorStateInfo(0);
+            float maxWait = stateInfo.length * 0.8f;
+            float timer = 0f;
+
+            while (_waitingForImpact && timer < maxWait)
+            {
+                timer += Time.deltaTime;
+                yield return null;
+            }
+        }
+        else
+        {
+            yield return new WaitForSeconds(0.5f);
+        }
+
+        // --- 4. 실제 효과 실행 ---
+        if (levelData != null && levelData.ConstantEffects != null)
+        {
+            foreach (var eff in levelData.ConstantEffects)
+            {
+                if (eff != null) eff.Execute(character, character);
+            }
+            character.RefreshStats();
+        }
+
+        // --- 5. 애니메이션 종료 대기 및 복귀 ---
+        yield return new WaitForSeconds(0.3f);
+        
+        float timeout = 2.0f;
+        while (timeout > 0)
+        {
+            bool anyBusy = false;
+            if (!string.IsNullOrEmpty(skill.RequiredAnimationTrigger))
+                if (character.IsAnimationPlaying(skill.RequiredAnimationTrigger))
+                    anyBusy = true;
+
+            if (!anyBusy) break;
+            timeout -= Time.deltaTime;
+            yield return null;
+        }
+
+        battleUI.SetSideImageVisible(false, character);
+        if (!isUltimate)
+        {
+            StartCoroutine(SetCameraZoom(true, false));
+            yield return new WaitForSeconds(0.4f);
+        }
+
+        Debug.Log($"[Passive-Show] {character.Name} 패시브 연출 종료");
+    }
 
     IEnumerator ExecuteSkillRoutine(SkillData skillData, int skillIndex, BattleCharacter manualTarget = null)
     {

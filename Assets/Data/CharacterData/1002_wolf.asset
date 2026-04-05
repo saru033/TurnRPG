@@ -29,5 +29,5 @@ MonoBehaviour:
   characterPrefab: {fileID: 6008314446264759706, guid: 849df6cc6f4a9d040a87aeed15af2c64, type: 3}
   StartingSkills:
   - {fileID: 11400000, guid: 8cc637272d4abce4abafe83131c520b3, type: 2}
-  - {fileID: 11400000, guid: ae6b97f8f30c9c348a19af11efec64bf, type: 2}
+  - {fileID: 11400000, guid: 2e01a00cfdababd4aaeb5d6099cffe4e, type: 2}
   - {fileID: 11400000, guid: 96e6e9a590a92ac4dbbe8be10add516e, type: 2}
