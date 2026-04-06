@@ -23,17 +23,24 @@ public class CharacterData : ScriptableObject
     [Header("비주얼 및 UI 자원")]
     [Tooltip("전신 일러스트 혹은 메인 이미지")]
     public Sprite illustration;
-    
+
     [Tooltip("행동 게이지에 표시될 작은 아이콘 이미지")]
     public Sprite iconImage;
-    
+
     [Tooltip("자신 턴일 때 나타나는 사이드 컷씬 이미지")]
     public Sprite sideImage;
 
-[Tooltip("캐릭터 프리팹 (Animator 포함)")]
-public GameObject characterPrefab;
+    [Tooltip("캐릭터 프리팹 (Animator 포함)")]
+    public GameObject characterPrefab;
+
+    [System.Serializable]
+    public class SkillSlot
+    {
+        public TurnRPG.SkillSystem.SkillData skillData;
+        public int level = 1;
+    }
 
     [Header("시작 스킬 로스터")]
-    [Tooltip("전투 시작 시 자동으로 장착될 스킬 (최대 3개)")]
-    public System.Collections.Generic.List<TurnRPG.SkillSystem.SkillData> StartingSkills;
+    [Tooltip("전투 시작 시 자동으로 장착될 스킬과 레벨 (최대 3개)")]
+    public System.Collections.Generic.List<SkillSlot> StartingSkills;
 }

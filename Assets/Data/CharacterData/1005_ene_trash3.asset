@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 105c21214ebaa0a4ba836d3b14b5e4e2, type: 3}
-  m_Name: 1004_ene_trash2
+  m_Name: 1005_ene_trash3
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
   ID: 1004
   CharacterName: Enemy_trash
@@ -18,7 +18,7 @@ MonoBehaviour:
   MaxHp: 4870
   Attack: 125
   Defense: 73
-  Speed: 62
+  Speed: 72
   CritChance: 0.15
   CritDamage: 1.5
   Evasion: 0

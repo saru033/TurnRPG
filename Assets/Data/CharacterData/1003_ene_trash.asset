@@ -18,7 +18,7 @@ MonoBehaviour:
   MaxHp: 4870
   Attack: 125
   Defense: 73
-  Speed: 92
+  Speed: 85
   CritChance: 0.15
   CritDamage: 1.5
   Evasion: 0
@@ -28,5 +28,5 @@ MonoBehaviour:
   sideImage: {fileID: -7636694935251246727, guid: 7c7405ae2e004234aa55c571d7a22c2d, type: 3}
   characterPrefab: {fileID: 6008314446264759706, guid: 72ff3ac32bc5e454e9e61f0596e1de2e, type: 3}
   StartingSkills:
-  - {fileID: 11400000, guid: 768864dcc112e3847b7613489af23d51, type: 2}
-  - {fileID: 11400000, guid: c855dc5cd1a118640bcf207036fd2236, type: 2}
+  - skillData: {fileID: 11400000, guid: c855dc5cd1a118640bcf207036fd2236, type: 2}
+    level: 1

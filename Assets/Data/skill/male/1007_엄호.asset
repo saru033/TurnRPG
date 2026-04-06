@@ -16,70 +16,79 @@ MonoBehaviour:
   SkillName: "\uC5C4\uD638"
   SkillIcon: {fileID: 3409985134255107679, guid: e4616979001df2749aec550e6edeb2eb, type: 3}
   Type: 2
-  PassiveTrigger: 2
   SlotIndex: 1
   EquipRestriction: 1
   RequiredAnimationTrigger: 
   UltimateCutsceneClip: {fileID: 0}
   LevelDatas:
-  - Description: "\uC544\uAD70\uC774 \uD53C\uACA9\uC774 \uADF8 \uB300\uC0C1\uC744
-      \uAE30\uBCF8 \uACF5\uACA9 \uC73C\uB85C \uBC18\uACA9\uD569\uB2C8\uB2E4. \uC774\uD6C4
-      \uC790\uC2E0\uC758 \uD589\uB3D9 \uAC8C\uC774\uC9C0\uB97C 10% \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
+  - Description: "\uC544\uAD70\uC774 \uD53C\uACA9\uC774 \uC790\uC2E0\uC758 \uD589\uB3D9
+      \uAC8C\uC774\uC9C0\uB97C 10% \uC99D\uAC00\uC2DC\uD0A8 \uD6C4 \uADF8 \uB300\uC0C1\uC744
+      \uAE30\uBCF8 \uACF5\uACA9 \uC73C\uB85C \uBC18\uACA9\uD569\uB2C8\uB2E4."
     Cooldown: 3
     TargetType: 0
+    PassiveTrigger: 6
     ConstantEffects: []
     Effects:
     - rid: 7481024980550680706
     - rid: 7481024980550680707
-  - Description: "\uC544\uAD70\uC774 \uD53C\uACA9\uC774 \uADF8 \uB300\uC0C1\uC744
-      \uAE30\uBCF8 \uACF5\uACA9 \uC73C\uB85C \uBC18\uACA9\uD574 100% \uD655\uB960\uB85C
-      2\uD134\uAC04 \uACF5\uACA9\uB825 \uAC10\uC18C\uB97C \uBD80\uC5EC\uD569\uB2C8\uB2E4.
-      \uC774\uD6C4 \uC790\uC2E0\uC758 \uD589\uB3D9 \uAC8C\uC774\uC9C0\uB97C 10% \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
+  - Description: "\uC544\uAD70\uC774 \uD53C\uACA9\uC2DC \uC790\uC2E0\uC758 \uD589\uB3D9
+      \uAC8C\uC774\uC9C0\uB97C 10% \uC99D\uAC00\uC2DC\uD0A8 \uD6C4 \uADF8 \uB300\uC0C1\uC5D0\uAC8C 
+      100% \uD655\uB960\uB85C 2\uD134\uAC04 \uACF5\uACA9\uB825 \uAC10\uC18C\uB97C
+      \uBD80\uC5EC\uD55C \uD6C4 \uAE30\uBCF8 \uACF5\uACA9 \uC73C\uB85C \uBC18\uACA9\uD569\uB2C8\uB2E4."
     Cooldown: 3
     TargetType: 0
+    PassiveTrigger: 6
     ConstantEffects: []
     Effects:
     - rid: 7481024980550680706
     - rid: 7481024980550680715
     - rid: 7481024980550680707
-  - Description: "\uC544\uAD70\uC774 \uD53C\uACA9\uC774 \uADF8 \uB300\uC0C1\uC744
-      \uAE30\uBCF8 \uACF5\uACA9 \uC73C\uB85C \uBC18\uACA9\uD574 100% \uD655\uB960\uB85C
-      2\uD134\uAC04 \uACF5\uACA9\uB825 \uAC10\uC18C\uB97C \uBD80\uC5EC\uD569\uB2C8\uB2E4.
-      \uC774\uD6C4 \uC790\uC2E0\uC758 \uD589\uB3D9\uAC8C\uC774\uC9C0\uB97C 10% \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
+  - Description: "\uC544\uAD70\uC774 \uD53C\uACA9\uC2DC \uC790\uC2E0\uC758 \uD589\uB3D9
+      \uAC8C\uC774\uC9C0\uB97C 10% \uC99D\uAC00\uC2DC\uD0A8 \uD6C4 \uADF8 \uB300\uC0C1\uC5D0\uAC8C 
+      100% \uD655\uB960\uB85C 2\uD134\uAC04 \uACF5\uACA9\uB825 \uAC10\uC18C\uB97C
+      \uBD80\uC5EC\uD55C \uD6C4 \uAE30\uBCF8 \uACF5\uACA9 \uC73C\uB85C \uBC18\uACA9\uD569\uB2C8\uB2E4."
     Cooldown: 2
     TargetType: 0
+    PassiveTrigger: 6
     ConstantEffects: []
     Effects:
     - rid: 7481024980550680706
     - rid: 7481024980550680715
     - rid: 7481024980550680717
-  - Description: "\uC544\uAD70\uC774 \uD53C\uACA9\uC774 \uADF8 \uB300\uC0C1\uC744
-      \uAE30\uBCF8 \uACF5\uACA9 \uC73C\uB85C \uBC18\uACA9\uD574 100% \uD655\uB960\uB85C
-      2\uD134\uAC04 \uACF5\uACA9\uB825 \uAC10\uC18C\uB97C \uBD80\uC5EC\uD569\uB2C8\uB2E4.
-      \uC774\uD6C4 \uC790\uC2E0\uACFC \uD53C\uACA9\uB2F9\uD55C \uC544\uAD70\uC758
-      \uD589\uB3D9 \uAC8C\uC774\uC9C0\uB97C 10% \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
+  - Description: "\uC544\uAD70\uC774 \uD53C\uACA9\uC2DC \uC790\uC2E0\uACFC \uD53C\uACA9\uB2F9\uD55C
+      \uC544\uAD70\uC758 \uD589\uB3D9 \uAC8C\uC774\uC9C0\uB97C 10% \uC99D\uAC00\uC2DC\uD0A8
+      \uD6C4 \uADF8 \uB300\uC0C1\uC5D0\uAC8C  100% \uD655\uB960\uB85C 2\uD134\uAC04
+      \uACF5\uACA9\uB825 \uAC10\uC18C\uB97C \uBD80\uC5EC\uD55C \uD6C4 \uAE30\uBCF8
+      \uACF5\uACA9 \uC73C\uB85C \uBC18\uACA9\uD569\uB2C8\uB2E4."
     Cooldown: 3
     TargetType: 0
+    PassiveTrigger: 6
     ConstantEffects: []
     Effects:
     - rid: 7481024980550680706
     - rid: 7481024980550680715
     - rid: 7481024980550680707
     - rid: 7481024980550680716
-  - Description: "\uC544\uAD70\uC774 \uD53C\uACA9\uC774 \uADF8 \uB300\uC0C1\uC744
-      \uAE30\uBCF8 \uACF5\uACA9 \uC73C\uB85C \uBC18\uACA9\uD574 100% \uD655\uB960\uB85C
-      2\uD134\uAC04 \uACF5\uACA9\uB825 \uAC10\uC18C\uB97C \uBD80\uC5EC\uD569\uB2C8\uB2E4.
-      \uC774\uD6C4 \uC790\uC2E0\uC758 \uD589\uB3D9\uAC8C\uC774\uC9C0\uB97C 20% \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
+  - Description: "\uC544\uAD70\uC774 \uD53C\uACA9\uC2DC \uC790\uC2E0\uC758 \uD589\uB3D9
+      \uAC8C\uC774\uC9C0\uB97C 20% \uC99D\uAC00\uC2DC\uD0A8 \uD6C4 \uADF8 \uB300\uC0C1\uC5D0\uAC8C 
+      100% \uD655\uB960\uB85C 2\uD134\uAC04 \uACF5\uACA9\uB825 \uAC10\uC18C\uB97C
+      \uBD80\uC5EC\uD55C \uD6C4 \uAE30\uBCF8 \uACF5\uACA9 \uC73C\uB85C \uBC18\uACA9\uD569\uB2C8\uB2E4."
     Cooldown: 2
     TargetType: 0
+    PassiveTrigger: 6
     ConstantEffects: []
     Effects:
     - rid: 7481024980550680706
     - rid: 7481024980550680715
-    - rid: 7481024980550680707
+    - rid: 6423181046562947145
   references:
     version: 2
     RefIds:
+    - rid: 6423181046562947145
+      type: {class: ActionGaugeEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 1
+        Amount: 20
     - rid: 7481024980550680706
       type: {class: CastBasicSkillEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
       data:
@@ -88,7 +97,7 @@ MonoBehaviour:
       type: {class: ActionGaugeEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
       data:
         TargetType: 1
-        Amount: 20
+        Amount: 10
     - rid: 7481024980550680715
       type: {class: ApplyStatusEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
       data:

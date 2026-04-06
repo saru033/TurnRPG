@@ -35,11 +35,16 @@ public class BattleManager : MonoBehaviour
     private bool _lastZoomedPlayer = false;
 
 
-    private Queue<IEnumerator> extraActionQueue = new Queue<IEnumerator>();
+    private LinkedList<IEnumerator> extraActionQueue = new LinkedList<IEnumerator>();
 
     public void EnqueueExtraAction(IEnumerator action)
     {
-        extraActionQueue.Enqueue(action);
+        extraActionQueue.AddLast(action);
+    }
+
+    public void EnqueueExtraActionFront(IEnumerator action)
+    {
+        extraActionQueue.AddFirst(action);
     }
 
     void Awake()
@@ -76,6 +81,7 @@ public class BattleManager : MonoBehaviour
                 {
                     var bc = new BattleCharacter(data);
                     bc.ActionGaugeSystem = gaugeSystem; // [추가] 시스템 참조 연결
+                    bc.SubscribeEvents(); // [추가] 패시브 이벤트 구독 시작
                     allCharacters.Add(bc);
                 }
             }
@@ -127,7 +133,9 @@ public class BattleManager : MonoBehaviour
         // 큐에 쌓인 패시브 연출들을 순차적으로 모두 실행
         while (extraActionQueue.Count > 0)
         {
-            yield return StartCoroutine(extraActionQueue.Dequeue());
+            var action = extraActionQueue.First.Value;
+            extraActionQueue.RemoveFirst();
+            yield return StartCoroutine(action);
         }
 
         State = BattleState.Idle;
@@ -153,6 +161,9 @@ public class BattleManager : MonoBehaviour
             // ⭐ 1.5 턴 시작 시스템 발동 (쿨타임 감소, 출혈 피해 등)
             currentActor.OnTurnStart();
 
+            // [추가] 턴 시작 시 발동된 패시브 처리
+            yield return StartCoroutine(ProcessExtraActions());
+
             // [추가] 기절(Stun) 또는 수면(Sleep) 체크
             bool isSkipTurn = currentActor.HasStatusEffect(TurnRPG.SkillSystem.StatusEffectType.Stun) || currentActor.HasStatusEffect(TurnRPG.SkillSystem.StatusEffectType.Sleep);
             if (isSkipTurn)
@@ -160,14 +171,19 @@ public class BattleManager : MonoBehaviour
                 Debug.Log($"{currentActor.Name} : 기절/수면 상태로 인해 턴을 스킵합니다.");
                 yield return new WaitForSeconds(0.5f);
                 currentActor.OnTurnEnd();
+
+                // [추가] 스킵 시 발생한 턴 종료 패시브 처리
+                yield return StartCoroutine(ProcessExtraActions());
+
                 gaugeSystem.OnTurnEnd(currentActor);
                 continue;
             }
 
-            // 만약 출혈/화상 등 턴 시작 데미지로 사망했다면 턴 즉시 스킵
+            // 만약 출혈/화상 등 턴 시작 데미지 혹은 패시브로 사망했다면 턴 즉시 스킵
             if (!currentActor.IsAlive)
             {
                 currentActor.OnTurnEnd();
+                yield return StartCoroutine(ProcessExtraActions());
                 gaugeSystem.OnTurnEnd(currentActor);
                 continue;
             }
@@ -215,16 +231,15 @@ public class BattleManager : MonoBehaviour
             // 승패 결판 났으면 턴 넘기지 않고 종료
             if (State == BattleState.Win || State == BattleState.Lose) break;
 
-
-            while (extraActionQueue.Count > 0)
-            {
-                var action = extraActionQueue.Dequeue();
-                yield return StartCoroutine(action);
-            }
-
+            // [수정] 메인 행동 후 발생한 패시브(반격 등) 처리
+            yield return StartCoroutine(ProcessExtraActions());
 
             // 4. 턴 종료 — 버프 지속시간 차감
             currentActor.OnTurnEnd();
+
+            // [추가] 턴 종료 시 발동된 패시브 처리 (자신의 턴 종료 패시브 등)
+            yield return StartCoroutine(ProcessExtraActions());
+
             battleUI.SetSideImageVisible(false, currentActor);
             if (currentActor.Animator != null) currentActor.Animator.SetBool("isWaiting", false); // 안전장치
 
@@ -235,6 +250,19 @@ public class BattleManager : MonoBehaviour
         }
 
         OnBattleEnd();
+    }
+
+    /// <summary>
+    /// 추가 액션 큐(패시브 연출 등)를 모두 비울 때까지 실행합니다.
+    /// </summary>
+    private IEnumerator ProcessExtraActions()
+    {
+        while (extraActionQueue.Count > 0)
+        {
+            var action = extraActionQueue.First.Value;
+            extraActionQueue.RemoveFirst();
+            yield return StartCoroutine(action);
+        }
     }
 
     // -------------------------------------------------------
@@ -460,19 +488,19 @@ public class BattleManager : MonoBehaviour
     {
         Debug.Log($"[Passive-Show] {character.Name} → {skill.SkillName} 패시브 연출 시작");
 
-        var levelData = skill.LevelDatas != null && skill.LevelDatas.Count >= level 
+        var levelData = skill.LevelDatas != null && skill.LevelDatas.Count >= level
                         ? skill.LevelDatas[level - 1] : null;
 
         bool isUltimate = (int)skill.SlotIndex == 2;
 
         // --- 1. 카메라 줌 및 캐릭터 하이라이트 ---
-        if (!isUltimate)
+        if (!isUltimate && !string.IsNullOrEmpty(skill.RequiredAnimationTrigger) && character.Animator != null)
         {
             StartCoroutine(SetCameraZoom(character.IsPlayer, true));
             yield return new WaitForSeconds(0.2f);
         }
-        battleUI.HighlightActor(character);
-        battleUI.SetSideImageVisible(true, character);
+        //battleUI.HighlightActor(character);
+        //battleUI.SetSideImageVisible(true, character);
 
         // --- 2. 컷신 재생 (있는 경우) ---
         if (skill.UltimateCutsceneClip != null && battleUI.ultimateCutsceneRoot != null)
@@ -566,7 +594,189 @@ public class BattleManager : MonoBehaviour
 
         // --- 5. 애니메이션 종료 대기 및 복귀 ---
         yield return new WaitForSeconds(0.3f);
-        
+
+        float timeout = 2.0f;
+        while (timeout > 0)
+        {
+            bool anyBusy = false;
+            if (!string.IsNullOrEmpty(skill.RequiredAnimationTrigger))
+                if (character.IsAnimationPlaying(skill.RequiredAnimationTrigger))
+                    anyBusy = true;
+
+            if (!anyBusy) break;
+            timeout -= Time.deltaTime;
+            yield return null;
+        }
+
+        battleUI.SetSideImageVisible(false, character);
+        if (!isUltimate)
+        {
+            StartCoroutine(SetCameraZoom(true, false));
+            yield return new WaitForSeconds(0.4f);
+        }
+
+        Debug.Log($"[Passive-Show] {character.Name} 패시브 연출 종료");
+    }
+
+    /// <summary>
+    /// 전투 중 발생하는 반응형 패시브를 실행하는 루틴입니다. (연출 포함)
+    /// </summary>
+    public IEnumerator ExecuteReactivePassiveRoutine(BattleCharacter character, SkillData skill, int level, BattleCharacter target, BattleCharacter victim, PassiveTriggerType trigger)
+    {
+        // [추가] 큐에서 막 꺼냈을 때, 다시 한 번 쿨타임을 검사 (광역 공격 등에 의한 중복 발동 방지)
+        int checkIndex = character.ActiveSkills.IndexOf(skill);
+        if (checkIndex >= 0 && character.SkillCooldowns[checkIndex] > 0)
+        {
+            Debug.Log($"[Passive-Skip] {character.Name}의 {skill.SkillName}는 이미 최근 발동으로 인해 쿨타임 중입니다. 실행을 취소합니다.");
+            yield break;
+        }
+
+        //죽어있고 , 기절 , 수면 상태면 패시브 발동 취소
+        if (!character.IsAlive || character.HasStatusEffect(StatusEffectType.Stun) || character.HasStatusEffect(StatusEffectType.Sleep))
+        { yield break; }
+
+
+        Debug.Log($"[Passive-Show] {character.Name} → {skill.SkillName} 패시브 발동 연출 시작");
+
+        var levelData = skill.LevelDatas != null && skill.LevelDatas.Count >= level
+                        ? skill.LevelDatas[level - 1] : null;
+
+        // [추가] 첫 번째 효과가 '조건 체크(IsCondition)'인 경우, 연출과 쿨타임 돌입 전 미리 검사
+        if (levelData != null && levelData.Effects != null && levelData.Effects.Count > 0)
+        {
+            var firstEff = levelData.Effects[0];
+            if (firstEff != null && firstEff.IsCondition)
+            {
+                // 실질적인 타겟은 보통 턴 종료 시점에서는 시전자 자신 혹은 아군 전체이므로, caster와 target을 넘김
+                if (!firstEff.Execute(character, target))
+                {
+                    // 첫 번째 조건이 맞지 않으면 연출과 쿨타임 소모 없이 조용히 종료
+                    yield break;
+                }
+            }
+        }
+
+        bool isUltimate = (int)skill.SlotIndex == 2;
+
+
+        // --- 1. 카메라 줌 및 캐릭터 하이라이트 ---
+        if (!isUltimate && !string.IsNullOrEmpty(skill.RequiredAnimationTrigger) && character.Animator != null)
+        {
+            StartCoroutine(SetCameraZoom(character.IsPlayer, true));
+
+            if (BattleVFXManager.Instance != null)
+                BattleVFXManager.Instance.SpawnVFX(VFXType.extraMove, character.View.RetHitbox());
+
+            yield return new WaitForSeconds(0.2f);
+        }
+
+        // --- 2. 컷신 재생 (있는 경우) ---
+        if (skill.UltimateCutsceneClip != null && battleUI.ultimateCutsceneRoot != null)
+        {
+            Transform originalParent = null;
+            Vector2 originalAnchoredPos = Vector2.zero;
+            Vector3 originalScale = Vector3.one;
+            bool enhancedSequence = false;
+
+            if (character.View != null && character.View.illustration != null && battleUI.ultimateBlackScreen != null)
+            {
+                enhancedSequence = true;
+                var illu = character.View.illustration.rectTransform;
+                originalParent = illu.parent;
+                originalAnchoredPos = illu.anchoredPosition;
+                originalScale = illu.localScale;
+
+                battleUI.ultimateBlackScreen.gameObject.SetActive(true);
+                battleUI.ultimateBlackScreen.color = new Color(0, 0, 0, 0);
+
+                illu.SetParent(battleUI.ultimateBlackScreen.transform, true);
+                Vector2 targetPos = new Vector2(0, illu.anchoredPosition.y);
+
+                Sequence seq = DOTween.Sequence();
+                seq.Join(battleUI.ultimateBlackScreen.DOFade(1f, 0.4f));
+                seq.Join(illu.DOAnchorPos(targetPos, 0.4f));
+                seq.Join(illu.DOScale(originalScale * 1.2f, 0.4f));
+
+                yield return seq.WaitForCompletion();
+            }
+
+            battleUI.ultimateCutsceneRoot.SetActive(true);
+            var anim = battleUI.ultimateCutsceneRoot.GetComponentInChildren<Animator>();
+            if (anim != null)
+            {
+                anim.Play(skill.UltimateCutsceneClip.name);
+                if (enhancedSequence)
+                {
+                    yield return new WaitForSeconds(0.15f);
+                    if (character.View != null)
+                    {
+                        var illu = character.View.illustration.rectTransform;
+                        illu.SetParent(originalParent, true);
+                        illu.anchoredPosition = originalAnchoredPos;
+                        illu.localScale = originalScale;
+                        battleUI.ultimateBlackScreen.gameObject.SetActive(false);
+                    }
+                    yield return new WaitForSeconds(Mathf.Max(0, skill.UltimateCutsceneClip.length - 0.15f));
+                }
+                else
+                {
+                    yield return new WaitForSeconds(skill.UltimateCutsceneClip.length);
+                }
+            }
+            battleUI.ultimateCutsceneRoot.SetActive(false);
+        }
+
+        // --- 3. 애니메이션 재생 및 타격 시점 대기 ---
+        if (!string.IsNullOrEmpty(skill.RequiredAnimationTrigger) && character.Animator != null)
+        {
+            _waitingForImpact = true;
+            character.Animator.SetTrigger(skill.RequiredAnimationTrigger);
+
+            yield return new WaitForSeconds(0.1f);
+
+            var stateInfo = character.Animator.GetCurrentAnimatorStateInfo(0);
+            float maxWait = stateInfo.length * 0.8f;
+            float timer = 0f;
+
+            while (_waitingForImpact && timer < maxWait)
+            {
+                timer += Time.deltaTime;
+                yield return null;
+            }
+        }
+        else
+        {
+            yield return new WaitForSeconds(0.5f);
+        }
+
+        // --- 4. 실제 효과 실행 ---
+        if (levelData != null)
+        {
+            // 쿨타임 적용 (이 스킬 고유의 쿨타임 세팅)
+            int skillIndex = character.ActiveSkills.IndexOf(skill);
+            if (skillIndex >= 0) character.SkillCooldowns[skillIndex] = levelData.Cooldown;
+
+            // Trigger 및 Victim 정보 동기화 (이펙트 내부에서 참조할 수 있도록)
+            BattleEventManager.CurrentExecutingTrigger = trigger;
+            BattleEventManager.LastVictim = victim;
+
+            if (levelData.Effects != null)
+            {
+                foreach (var eff in levelData.Effects)
+                {
+                    if (eff != null)
+                    {
+                        // Caster=나, Target=이벤트를 유발한 주체
+                        if (!eff.Execute(character, target)) break;
+                    }
+                }
+            }
+            character.RefreshStats();
+        }
+
+        // --- 5. 애니메이션 종료 대기 및 복귀 ---
+        yield return new WaitForSeconds(0.3f);
+
         float timeout = 2.0f;
         while (timeout > 0)
         {

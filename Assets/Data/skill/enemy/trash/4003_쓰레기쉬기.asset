@@ -10,30 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7166cb7f5dfe6a84cbbfd47fcd0f00ad, type: 3}
-  m_Name: "4001_\uC4F0\uB808\uAE30 \uBA39\uAE30"
+  m_Name: "4003_\uC4F0\uB808\uAE30\uC26C\uAE30"
   m_EditorClassIdentifier: Assembly-CSharp::TurnRPG.SkillSystem.SkillData
-  SkillID: 4001
-  SkillName: "\uC4F0\uB808\uAE30 \uBA39\uAE30"
+  SkillID: 4003
+  SkillName: "\uC4F0\uB808\uAE30\uC26C\uAE30"
   SkillIcon: {fileID: 1372627480461126414, guid: 401c595f02fd7684eb9cd1b052b2fd82, type: 3}
-  Type: 2
-  SlotIndex: 1
+  Type: 1
+  SlotIndex: 2
   EquipRestriction: 8
   RequiredAnimationTrigger: skill
   UltimateCutsceneClip: {fileID: 0}
   LevelDatas:
-  - Description: "\uC544\uAD70\uC774 \uD53C\uACA9\uC2DC \uC790\uC2E0\uC758 \uD589\uB3D9\uAC8C\uC774\uC9C0\uB97C
-      100\uC99D\uAC00"
-    Cooldown: 1
-    TargetType: 0
-    PassiveTrigger: 2
+  - Description: "\uD328\uC2DC\uBE0C \uD655\uC778\uC6A9 \uB2A5\uB825 \uC5C6\uB294
+      3\uC2A4\uD0AC"
+    Cooldown: 0
+    TargetType: 1
+    PassiveTrigger: 0
     ConstantEffects: []
-    Effects:
-    - rid: 6423181046562947140
+    Effects: []
   references:
     version: 2
-    RefIds:
-    - rid: 6423181046562947140
-      type: {class: ActionGaugeEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
-      data:
-        TargetType: 1
-        Amount: 100
+    RefIds: []

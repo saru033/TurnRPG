@@ -36,9 +36,9 @@ MonoBehaviour:
     - rid: 6423180953482428485
       type: {class: ApplyStatusEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
       data:
-        TargetType: 2
-        EffectData: {fileID: 11400000, guid: e370c1c3979598b45bebe80711df683a, type: 2}
-        Duration: 10
+        TargetType: 3
+        EffectData: {fileID: 11400000, guid: fe117f7d3dfb51345ae52d4d0eafa17b, type: 2}
+        Duration: 1
         ApplyChance: 1
         StatScaleType: 0
         StatMultiplier: 0

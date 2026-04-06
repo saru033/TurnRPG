@@ -15,7 +15,7 @@ MonoBehaviour:
   ID: 1000
   CharacterName: male
   isPlayer: 1
-  MaxHp: 650
+  MaxHp: 20
   Attack: 115
   Defense: 89
   Speed: 98
@@ -28,6 +28,9 @@ MonoBehaviour:
   sideImage: {fileID: 5811013593148057389, guid: 8956ecde244ba124fa540d96c70262be, type: 3}
   characterPrefab: {fileID: 9213099258232346730, guid: 5dc7fab655d4942448f26fdd241d19bb, type: 3}
   StartingSkills:
-  - {fileID: 11400000, guid: ddbdfddbc0efd1d49a57529a47775ce2, type: 2}
-  - {fileID: 11400000, guid: 93f3f346076b0094d80fa9f576e78151, type: 2}
-  - {fileID: 11400000, guid: f0e5b50d18aca984f8f5157500138d13, type: 2}
+  - skillData: {fileID: 11400000, guid: b528f38ac6b853743bca739b7277130a, type: 2}
+    level: 6
+  - skillData: {fileID: 11400000, guid: ddbdfddbc0efd1d49a57529a47775ce2, type: 2}
+    level: 2
+  - skillData: {fileID: 11400000, guid: dd1dcb7c4f910cc428ef6f15c87cadc1, type: 2}
+    level: 4

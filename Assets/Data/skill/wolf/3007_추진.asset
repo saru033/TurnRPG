@@ -56,26 +56,12 @@ MonoBehaviour:
       \uBC18\uACA9\uD569\uB2C8\uB2E4."
     Cooldown: 0
     TargetType: 0
-    PassiveTrigger: 68
+    PassiveTrigger: 320
     ConstantEffects:
     - rid: 7481024980550680864
     Effects:
-    - rid: 7481024980550680865
-    - rid: 7481024980550680863
-  - Description: "\uC804\uD22C \uC2DC\uC791 \uC2DC \uC790\uC2E0\uC758 \uD68C\uD53C\uAC00
-      20% \uC99D\uAC00\uD569\uB2C8\uB2E4. \uC790\uC2E0\uC774 \uD134\uC744 \uC885\uB8CC\uD560
-      \uB54C \uB9C8\uB2E4 \uC544\uAD70 \uC804\uCCB4\uC758 \uD589\uB3D9 \uAC8C\uC774\uC9C0\uB97C
-      10% \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4. \uC790\uC2E0\uC774 \uD53C\uACA9 \uD6C4
-      \uD68C\uD53C\uD588\uB2E4\uBA74 \uAE30\uBCF8\uACF5\uACA9\uC73C\uB85C \uB300\uC0C1\uC744
-      \uBC18\uACA9\uD569\uB2C8\uB2E4."
-    Cooldown: 0
-    TargetType: 0
-    PassiveTrigger: 68
-    ConstantEffects:
-    - rid: 7481024980550680864
-    Effects:
-    - rid: 7481024980550680866
-    - rid: 7481024980550680868
+    - rid: 6423181046562947146
+    - rid: 6423181046562947148
   - Description: "\uC804\uD22C \uC2DC\uC791 \uC2DC \uC544\uAD70\uC758 \uD68C\uD53C\uAC00
       20% \uC99D\uAC00\uD569\uB2C8\uB2E4. \uC790\uC2E0\uC774 \uD134\uC744 \uC885\uB8CC\uD560
       \uB54C \uB9C8\uB2E4 \uC544\uAD70 \uC804\uCCB4\uC758 \uD589\uB3D9 \uAC8C\uC774\uC9C0\uB97C
@@ -90,6 +76,27 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
+    - rid: 6423181046562947146
+      type: {class: TriggerBranchEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        RequiredTrigger: 64
+        BranchEffects:
+        - rid: 6423181046562947147
+    - rid: 6423181046562947147
+      type: {class: ActionGaugeEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 2
+        Amount: 10
+    - rid: 6423181046562947148
+      type: {class: TriggerBranchEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        RequiredTrigger: 256
+        BranchEffects:
+        - rid: 6423181046562947149
+    - rid: 6423181046562947149
+      type: {class: CastBasicSkillEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 0
     - rid: 7481024980550680862
       type: {class: ActionGaugeEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
       data:
@@ -106,36 +113,6 @@ MonoBehaviour:
         TargetType: 1
         TargetStat: evasion
         PercentAmount: 0.2
-    - rid: 7481024980550680865
-      type: {class: CastBasicSkillEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
-      data:
-        TargetType: 0
-    - rid: 7481024980550680866
-      type: {class: TriggerBranchEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
-      data:
-        RequiredTrigger: 16
-        BranchEffects:
-        - rid: 7481024980550680867
-    - rid: 7481024980550680867
-      type: {class: ActionGaugeEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
-      data:
-        TargetType: 2
-        Amount: 10
-    - rid: 7481024980550680868
-      type: {class: TriggerBranchEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
-      data:
-        RequiredTrigger: 4
-        BranchEffects:
-        - rid: 7481024980550680869
-        - rid: 7481024980550680870
-    - rid: 7481024980550680869
-      type: {class: CheckEvadedConditionEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
-      data:
-        RequireEvaded: 1
-    - rid: 7481024980550680870
-      type: {class: CastBasicSkillEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
-      data:
-        TargetType: 0
     - rid: 7481024980550680872
       type: {class: PassiveStatBoostEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
       data:

@@ -18,7 +18,7 @@ MonoBehaviour:
   Type: 2
   SlotIndex: 1
   EquipRestriction: 4
-  RequiredAnimationTrigger: 
+  RequiredAnimationTrigger: attack
   UltimateCutsceneClip: {fileID: 0}
   LevelDatas:
   - Description: "\uC801 \uB204\uAD70\uAC00\uAC00 \uACF5\uACA9\uC774 \uC544\uB2CC

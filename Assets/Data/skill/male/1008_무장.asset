@@ -24,7 +24,7 @@ MonoBehaviour:
   - Description: "\uD53C\uACA9\uC2DC \uBC1B\uB294 \uD53C\uD574\uAC00 20% \uAC10\uC18C\uD569\uB2C8\uB2E4."
     Cooldown: 0
     TargetType: 0
-    PassiveTrigger: 2
+    PassiveTrigger: 0
     ConstantEffects:
     - rid: 7481024980550680718
     Effects: []
@@ -32,7 +32,7 @@ MonoBehaviour:
       \uD53C\uACA9\uC2DC \uBC1B\uB294 \uD53C\uD574\uAC00 20% \uAC10\uC18C\uD569\uB2C8\uB2E4."
     Cooldown: 0
     TargetType: 0
-    PassiveTrigger: 2
+    PassiveTrigger: 0
     ConstantEffects:
     - rid: 7481024980550680718
     - rid: 7481024980550680719
@@ -43,7 +43,7 @@ MonoBehaviour:
       10% \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
     Cooldown: 0
     TargetType: 0
-    PassiveTrigger: 2
+    PassiveTrigger: 4
     ConstantEffects:
     - rid: 7481024980550680718
     - rid: 7481024980550680719
@@ -56,7 +56,7 @@ MonoBehaviour:
       \uC218\uBA74\uC5D0 \uAC78\uB9AC\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4."
     Cooldown: 0
     TargetType: 0
-    PassiveTrigger: 2
+    PassiveTrigger: 4
     ConstantEffects:
     - rid: 7481024980550680718
     - rid: 7481024980550680719
@@ -67,24 +67,23 @@ MonoBehaviour:
   - Description: "\uC804\uD22C \uC2DC\uC791\uC2DC \uBC29\uC5B4\uB825\uC774 20% \uC99D\uAC00\uD569\uB2C8\uB2E4.
       \uD53C\uACA9\uC2DC \uBC1B\uB294 \uD53C\uD574\uAC00 20% \uAC10\uC18C\uD569\uB2C8\uB2E4.
       \uD53C\uACA9 \uD6C4 \uC790\uC2E0\uC758 \uD589\uB3D9\uAC8C\uC774\uC9C0\uB97C
-      10% \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4. \uD53C\uACA9 \uD6C4 \uC790\uC2E0\uC758
-      \uC0DD\uBA85\uB825\uC774 30% \uC774\uD558\uB77C\uBA74 \uC2A4\uD0AC \uCFE8\uD0C0\uC784\uC744
-      \uCD08\uAE30\uD654 \uC2DC\uD0B5\uB2C8\uB2E4."
+      20% \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
     Cooldown: 0
     TargetType: 0
-    PassiveTrigger: 2
+    PassiveTrigger: 4
     ConstantEffects:
     - rid: 7481024980550680718
     - rid: 7481024980550680719
     Effects:
-    - rid: 7481024980550680720
-    - rid: 7481024980550680723
-    - rid: 7481024980550680725
-    - rid: 7481024980550680726
-    - rid: 7481024980550680728
+    - rid: 6423181046562947144
   references:
     version: 2
     RefIds:
+    - rid: 6423181046562947144
+      type: {class: ActionGaugeEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 1
+        Amount: 20
     - rid: 7481024980550680718
       type: {class: PassiveDamageReduceEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
       data:
@@ -111,20 +110,3 @@ MonoBehaviour:
       data:
         TargetType: 1
         ImmuneType: 24
-    - rid: 7481024980550680723
-      type: {class: CheckCurrentHpConditionEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
-      data:
-        ThresholdPercent: 0.3
-        IsBelow: 1
-    - rid: 7481024980550680725
-      type: {class: CheckSkillCooldownEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
-      data:
-        SkillSlotIndex: 2
-    - rid: 7481024980550680726
-      type: {class: ResetSkillCooldownEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
-      data: 
-    - rid: 7481024980550680728
-      type: {class: SetSkillCooldownEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
-      data:
-        SkillSlotIndex: 2
-        CooldownTurns: 5

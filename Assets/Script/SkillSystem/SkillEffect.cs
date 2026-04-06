@@ -9,6 +9,9 @@ namespace TurnRPG.SkillSystem
     [System.Serializable]
     public abstract class SkillEffect
     {
+        // [추가] 이 효과가 실제 무언가를 실행하는 행동인지, 단순 조건 체크(필터)인지 구분
+        public virtual bool IsCondition => false;
+
         // Execute 메서드는 실제 효과가 작동하는 로직
         // true 반환시 성공, false 반환시 무효 처리
         public abstract bool Execute(BattleCharacter caster, BattleCharacter target);

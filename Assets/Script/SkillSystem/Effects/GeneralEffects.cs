@@ -75,6 +75,13 @@ namespace TurnRPG.SkillSystem.Effects
                         }
                     }
                     break;
+                case EffectTargetType.AllDeadAllies:
+                    if (BattleManager.Instance != null && caster != null)
+                    {
+                        var deadAllies = BattleManager.Instance.allCharacters.Where(c => !c.IsAlive && c.IsPlayer == caster.IsPlayer).ToList();
+                        list.AddRange(deadAllies);
+                    }
+                    break;
             }
             return list;
         }
@@ -275,8 +282,12 @@ namespace TurnRPG.SkillSystem.Effects
 
                 Debug.Log($"[패시브 발동!] {caster.Name}이(가) {t.Name}에게 1스킬로 반격/추가타를 날립니다!");
 
-                // BattleManager의 Out-of-Turn 처리 큐(협공 처리기)를 그대로 재사용하여 1스킬 발사 예약
-                BattleEventManager.TriggerDualAttack(caster, t);
+                // BattleManager의 우선순위 연출 큐(Front)에 1스킬 반격 루틴 예약
+                if (BattleManager.Instance != null)
+                {
+                    var routine = BattleManager.Instance.CounterAttackRoutine(caster, t);
+                    BattleManager.Instance.EnqueueExtraActionFront(routine);
+                }
             }
             return actualTargets.Count > 0;
         }
@@ -389,6 +400,8 @@ namespace TurnRPG.SkillSystem.Effects
         [Tooltip("이하면 참인가? (체크 해제 시 이상이면 참)")]
         public bool IsBelow = true;
 
+        public override bool IsCondition => true;
+
         public override bool Execute(BattleCharacter caster, BattleCharacter target)
         {
             var actualTargets = EffectTargetHelper.GetActualTargets(caster, target, TargetType);
@@ -433,6 +446,8 @@ namespace TurnRPG.SkillSystem.Effects
         [Tooltip("검사할 본인의 스킬 슬롯 (0: 1스킬, 1: 2스킬, 2: 3스킬)")]
         public int SkillSlotIndex = 1;
 
+        public override bool IsCondition => true;
+
         public override bool Execute(BattleCharacter caster, BattleCharacter target)
         {
             if (SkillSlotIndex < 0 || SkillSlotIndex >= caster.SkillCooldowns.Length) return false;
@@ -467,33 +482,24 @@ namespace TurnRPG.SkillSystem.Effects
     [System.Serializable]
     public class CheckAllyIncapacitatedConditionEffect : SkillEffect
     {
-        [Tooltip("오직 이 트리거로 발동되었을 때만 아군 행동불가 검사를 수행합니다. 다른 트리거(예: 광역 피격)로 발동 시엔 무조건 통과합니다.")]
-        public PassiveTriggerType OnlyCheckOnTrigger = PassiveTriggerType.OnTurnEnd;
+        public override bool IsCondition => true;
 
         public override bool Execute(BattleCharacter caster, BattleCharacter target)
         {
-            // 만약 현재 시스템이 패시브를 발동시킨 원인이 '지정된 트리거(OnTurnEnd)'가 아니라면?
-            // (즉, 광역 피격 등으로 발동된 거라면) 행동불가 아군이 없어도(검사 생략하고) 무조건 패스!
-            if (OnlyCheckOnTrigger != PassiveTriggerType.None)
-            {
-                if (!BattleEventManager.CurrentExecutingTrigger.HasFlag(OnlyCheckOnTrigger))
-                {
-                    Debug.Log($"[필터 패스] 현재 발동 원인이 {OnlyCheckOnTrigger}가 아니므로, 암묵적으로 체인을 통과시킵니다.");
-                    return true;
-                }
-            }
-
+            // 시전자와 같은 편인 모든 캐릭터 리스트 확보
             var allies = BattleManager.Instance.allCharacters.Where(c => c.IsAlive && c.IsPlayer == caster.IsPlayer);
 
             foreach (var ally in allies)
             {
+                // 기절(Stun) 또는 수면(Sleep) 상태가 하나라도 있는지 체크
                 if (ally.HasStatusEffect(StatusEffectType.Stun) || ally.HasStatusEffect(StatusEffectType.Sleep))
                 {
-                    Debug.Log($"[패시브 시스템] {ally.Name}이(가) 스턴 또는 수면 상태입니다! 조건을 만족하여 스킬 체인을 계속 실행합니다.");
+                    Debug.Log($"[필터 패스] 아군 {ally.Name}이(가) 행동불가 상태입니다. 스킬 체인을 계속 진행합니다.");
                     return true;
                 }
             }
 
+            Debug.Log($"[필터 정지] 행동불가 상태인 아군이 없습니다.");
             return false; // 조건 불만족. 하위 이펙트 실행 정지.
         }
     }
@@ -512,6 +518,8 @@ namespace TurnRPG.SkillSystem.Effects
 
         [Tooltip("이하면 참인가? (체크 해제 시 이상이면 참)")]
         public bool IsBelow = false;
+
+        public override bool IsCondition => true;
 
         public override bool Execute(BattleCharacter caster, BattleCharacter target)
         {
@@ -545,6 +553,8 @@ namespace TurnRPG.SkillSystem.Effects
     {
         [Tooltip("true일 경우 피격 시 회피에 성공했어야만 하위 이펙트를 실행합니다.")]
         public bool RequireEvaded = true;
+
+        public override bool IsCondition => true;
 
         public override bool Execute(BattleCharacter caster, BattleCharacter target)
         {

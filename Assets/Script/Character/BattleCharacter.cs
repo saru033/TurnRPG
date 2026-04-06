@@ -104,14 +104,14 @@ public class BattleCharacter
 
         ActionGauge = 0f;
 
-        // 시작 스킬 장착 (데이터의 SlotIndex 기반으로 제 자리에 장착)
+        // 시작 스킬 장착 (데이터의 SkillSlot 기반으로 레벨과 함께 장착)
         if (data.StartingSkills != null)
         {
-            foreach (var skillSO in data.StartingSkills)
+            foreach (var slot in data.StartingSkills)
             {
-                if (skillSO != null)
+                if (slot != null && slot.skillData != null)
                 {
-                    EquipSkill((int)skillSO.SlotIndex, skillSO, 1); // 1레벨 기본 장착
+                    EquipSkill((int)slot.skillData.SlotIndex, slot.skillData, slot.level);
                 }
             }
         }
@@ -220,16 +220,14 @@ public class BattleCharacter
         }
 
         // [추가] 은신(Stealth) 해제 로직: 화상/출혈이 아니고, 1 이상의 실제 피해를 입었을 때 해제
-        if (!isBurn && actualDamage > 0 && HasStatusEffect(TurnRPG.SkillSystem.StatusEffectType.Stealth))
+        if (!isBurn && actualDamage > 0 && HasStatusEffect(StatusEffectType.Stealth))
         {
             Debug.Log($"{Name} : 피해를 입어 은신이 해제되었습니다.");
-            RemoveStatusEffect(TurnRPG.SkillSystem.StatusEffectType.Stealth);
+            RemoveStatusEffect(StatusEffectType.Stealth);
         }
 
         // 반격불가 여부를 이벤트 매니저에게 같이 전달하여 반격이 터지지 않도록 함
         BattleEventManager.TriggerDamageTaken(this, attacker, actualDamage, cannotBeCountered, isEvaded, isCritical);
-
-
 
         // 출혈,화상으로 데미지를 입은게 아니고 , 기절/수면이 없고, 반격 버프가 있고 , 공격이 반격 불가가 아닌 경우, 공격자가 현재 턴인 경우
         if (!isBurn && !cannotBeCountered && !HasStatusEffect(StatusEffectType.Stun) && !HasStatusEffect(StatusEffectType.Sleep) && HasStatusEffect(StatusEffectType.CounterAttack) && attacker != null && attacker == BattleManager.Instance.currentActor)
@@ -238,17 +236,13 @@ public class BattleCharacter
             CounterAttack(attacker);
         }
 
-
-
         return actualDamage;
     }
-
 
     public void CounterAttack(BattleCharacter target)
     {
         BattleManager.Instance.EnqueueExtraAction(BattleManager.Instance.CounterAttackRoutine(this, target));
     }
-
 
     public void Heal(float amount)
     {
@@ -263,10 +257,8 @@ public class BattleCharacter
         bool isCrit;
         if (isCriResist)
             isCrit = Random.value < CritChance - 0.5f;
-
         else
             isCrit = Random.value < CritChance;
-
 
         float finalDamage = isCrit ? baseDamage * CritDamage : baseDamage;
         return (finalDamage, isCrit);
@@ -574,8 +566,117 @@ public class BattleCharacter
     }
 
     // -------------------------------------------------------
-    // 타겟팅 관련 로직 (은신 등)
+    // 반응형 패시브 이벤트 구독 및 처리
     // -------------------------------------------------------
+
+    /// <summary>
+    /// 전투 중 발생하는 전역 이벤트를 구독합니다. (BattleManager에서 호출)
+    /// </summary>
+    public void SubscribeEvents()
+    {
+        BattleEventManager.OnTurnStarted += HandleOnTurnStarted;
+        BattleEventManager.OnTurnEnded += HandleOnTurnEnded;
+        BattleEventManager.OnDamageTaken += HandleOnDamageTaken;
+        BattleEventManager.OnSkillUsed += HandleOnSkillUsed;
+    }
+
+    /// <summary>
+    /// 전투 종료 시 또는 객체 파괴 시 구독을 해제합니다.
+    /// </summary>
+    public void UnsubscribeEvents()
+    {
+        BattleEventManager.OnTurnStarted -= HandleOnTurnStarted;
+        BattleEventManager.OnTurnEnded -= HandleOnTurnEnded;
+        BattleEventManager.OnDamageTaken -= HandleOnDamageTaken;
+        BattleEventManager.OnSkillUsed -= HandleOnSkillUsed;
+    }
+
+    private void HandleOnTurnStarted(BattleCharacter actor)
+    {
+        // 내 턴이 시작될 때 (OnTurnStart)
+        if (actor == this)
+        {
+            CheckAndQueuePassive(PassiveTriggerType.OnTurnStart, this);
+        }
+    }
+
+    private void HandleOnTurnEnded(BattleCharacter actor)
+    {
+        // 1. 내 턴 종료 트리거 (OnSelfTurnEnd)
+        if (actor == this)
+        {
+            CheckAndQueuePassive(PassiveTriggerType.OnSelfTurnEnd, this);
+        }
+
+        // 2. 누군가의 턴 종료 트리거 (OnTurnEnd) - 나를 포함하여 누군가 턴을 마치면 발동
+        CheckAndQueuePassive(PassiveTriggerType.OnTurnEnd, actor);
+    }
+
+    private void HandleOnDamageTaken(BattleCharacter victim, BattleCharacter attacker, float damage, bool cannotBeCountered, bool isEvaded, bool isCritical)
+    {
+        // 1. 내가 피격되었을 때 (OnSelfAttacked)
+        if (victim == this)
+        {
+            CheckAndQueuePassive(PassiveTriggerType.OnSelfAttacked, attacker);
+
+            // [추가] 회피 성공 시 전용 트리거
+            if (isEvaded)
+            {
+                CheckAndQueuePassive(PassiveTriggerType.OnSelfEvaded, attacker);
+            }
+
+            // [추가] 크리티컬 피격 시 전용 트리거
+            if (isCritical)
+            {
+                CheckAndQueuePassive(PassiveTriggerType.OnSelfCritReceived, attacker);
+            }
+        }
+        // 2. 아군이 피격되었을 때 (OnAllyAttacked) - 나 자신 제외
+        else if (victim.IsPlayer == this.IsPlayer && victim.IsAlive)
+        {
+            CheckAndQueuePassive(PassiveTriggerType.OnAllyAttacked, attacker, victim);
+        }
+    }
+
+    private void HandleOnSkillUsed(BattleCharacter caster, SkillData skill)
+    {
+        // 1. 적군이 비공격 스킬을 사용했을 때 (OnEnemyNonAttackSkill)
+        if (caster.IsPlayer != this.IsPlayer && skill.Type == SkillType.NonAttack)
+        {
+            CheckAndQueuePassive(PassiveTriggerType.OnEnemyNonAttackSkill, caster);
+        }
+    }
+
+    /// <summary>
+    /// 트리거 조건이 충족되는 패시브 스킬이 있는지 검사하고, 있다면 연출 큐에 등록합니다.
+    /// </summary>
+    private void CheckAndQueuePassive(PassiveTriggerType trigger, BattleCharacter target, BattleCharacter victim = null)
+    {
+        for (int i = 0; i < ActiveSkills.Count; i++)
+        {
+            var skill = ActiveSkills[i];
+            if (skill == null || skill.Type != SkillType.Passive) continue;
+
+            int level = SkillLevels[i];
+            if (skill.LevelDatas == null || skill.LevelDatas.Count < level) continue;
+
+            var levelData = skill.LevelDatas[level - 1];
+
+            // 트리거 일치 여부 및 쿨타임 체크 , 살이있고 , 기절,수면 상태가 아닌지 체크
+            if (levelData.PassiveTrigger.HasFlag(trigger) && SkillCooldowns[i] <= 0 && IsAlive && !HasStatusEffect(StatusEffectType.Stun) && !HasStatusEffect(StatusEffectType.Sleep))
+            {
+                Debug.Log($"[Passive-Trigger] {Name}의 {skill.SkillName} 조건 충족! (Trigger: {trigger})");
+
+                // BattleManager의 extraActionQueue에 연출 코루틴 예약
+                if (BattleManager.Instance != null)
+                {
+                    var routine = BattleManager.Instance.ExecuteReactivePassiveRoutine(this, skill, level, target, victim, trigger);
+                    BattleManager.Instance.EnqueueExtraAction(routine);
+                }
+            }
+        }
+    }
+
     /// <summary>
     /// 공격자(attacker)가 이 캐릭터를 단일 타겟으로 삼을 수 있는지 확인합니다.
     /// (은신: 적군 중 은신하지 않은 자가 있다면 타겟팅 불가)
@@ -586,7 +687,7 @@ public class BattleCharacter
         if (this.IsPlayer == attacker.IsPlayer) return true;
 
         // 은신 중이 아니라면 적군도 항상 타겟팅 가능
-        if (!HasStatusEffect(TurnRPG.SkillSystem.StatusEffectType.Stealth)) return true;
+        if (!HasStatusEffect(StatusEffectType.Stealth)) return true;
 
         // 은신 중인 캐릭터인 경우:
         // 같은 팀원 중 '은신이 아니고(NOT Stealthed)' + '살아있는(Alive)' 캐릭터가 한 명이라도 있는지 체크
@@ -594,7 +695,7 @@ public class BattleCharacter
             c != this &&
             c.IsAlive &&
             c.IsPlayer == this.IsPlayer &&
-            !c.HasStatusEffect(TurnRPG.SkillSystem.StatusEffectType.Stealth)
+            !c.HasStatusEffect(StatusEffectType.Stealth)
         );
 
         // 다른 타겟팅 가능한(은신 아닌) 적이 있다면, 나는 타겟이 될 수 없음

@@ -32,7 +32,9 @@ namespace TurnRPG.SkillSystem
         OnTurnEnd = 1 << 4,  // (누군가의) 턴 종료 시
         OnAoEAttacked = 1 << 5,  // 전체 광역 공격 피격 시
         OnSelfTurnEnd = 1 << 6,  // 내 턴 종료 시
-        OnEnemyNonAttackSkill = 1 << 7   // 적이 공격이 아닌 스킬(NonAttack) 사용 시
+        OnEnemyNonAttackSkill = 1 << 7,   // 적이 공격이 아닌 스킬(NonAttack) 사용 시
+        OnSelfEvaded = 1 << 8,           // 자신이 피격 시 회피에 성공했을 때
+        OnSelfCritReceived = 1 << 9     // 자신이 피격 시 크리티컬로 맞았을 때
     }
 
     public enum SkillSlotIndex
