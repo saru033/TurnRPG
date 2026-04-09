@@ -241,6 +241,7 @@ public class BattleCharacter
 
     public void CounterAttack(BattleCharacter target)
     {
+        if (!IsAlive) return;
         BattleManager.Instance.EnqueueExtraAction(BattleManager.Instance.CounterAttackRoutine(this, target));
     }
 
@@ -652,6 +653,8 @@ public class BattleCharacter
     /// </summary>
     private void CheckAndQueuePassive(PassiveTriggerType trigger, BattleCharacter target, BattleCharacter victim = null)
     {
+        if (!IsAlive) return;
+
         for (int i = 0; i < ActiveSkills.Count; i++)
         {
             var skill = ActiveSkills[i];

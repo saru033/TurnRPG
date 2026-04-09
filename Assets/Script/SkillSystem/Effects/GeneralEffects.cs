@@ -227,6 +227,10 @@ namespace TurnRPG.SkillSystem.Effects
         {
             if (target == null || !target.IsAlive) return false;
 
+
+            //자기턴이 아니면 스킵
+            if (caster != BattleManager.Instance.currentActor) return false;
+
             // 1. 배틀 매니저를 통해 전장에 있는 캐릭터 리스트를 즉시 받아옵니다.
             var allChars = BattleManager.Instance != null
                             ? BattleManager.Instance.allCharacters
@@ -255,8 +259,13 @@ namespace TurnRPG.SkillSystem.Effects
             if (helper != null)
             {
                 Debug.Log($"[협공] {caster.Name}이(가) {helper.Name}에게 {target.Name}을(를) 협공하도록 요청했습니다!");
-                // 2. 이벤트 매니저를 통해 배틀 큐에 협공 예약 (혹은 즉시 실행)
-                BattleEventManager.TriggerDualAttack(helper, target);
+                // BattleManager의 우선순위 연출 큐(Front)에 1스킬 반격 루틴 예약
+                if (BattleManager.Instance != null)
+                {
+                    var routine = BattleManager.Instance.CombinationAttackRoutine(helper, target);
+                    BattleManager.Instance.EnqueueExtraActionFront(routine);
+                }
+
                 return true;
             }
 

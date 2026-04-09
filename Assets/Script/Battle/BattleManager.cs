@@ -261,6 +261,8 @@ public class BattleManager : MonoBehaviour
         {
             var action = extraActionQueue.First.Value;
             extraActionQueue.RemoveFirst();
+
+
             yield return StartCoroutine(action);
         }
     }
@@ -367,6 +369,131 @@ public class BattleManager : MonoBehaviour
 
     public IEnumerator CounterAttackRoutine(BattleCharacter attacker, BattleCharacter target)
     {
+        //attker와 target이 죽어 있다면 스킵
+        if (!attacker.IsAlive || !target.IsAlive) yield break;
+
+
+        var skillData = attacker.ActiveSkills.Count > 0 ? attacker.ActiveSkills[0] : null;
+        if (skillData == null) yield break;
+
+        int skillIndex = 0;
+        int level = attacker.SkillLevels.Length > skillIndex ? attacker.SkillLevels[skillIndex] : 1;
+        var levelData = skillData.LevelDatas != null && skillData.LevelDatas.Count >= level
+            ? skillData.LevelDatas[level - 1] : null;
+
+        // --- 애니메이션 재생 및 타격 시점 대기 ---
+        if (!string.IsNullOrEmpty(skillData.RequiredAnimationTrigger) && attacker.Animator != null)
+        {
+            yield return new WaitForSeconds(1.0f);
+
+            // idle 상태까지 대기
+            float idleTimeout = 3.0f;
+            while (idleTimeout > 0)
+            {
+                var currentState = target.Animator.GetCurrentAnimatorStateInfo(0);
+                if (!currentState.IsName("attack") && !currentState.IsTag("hit"))
+                    break;
+
+                idleTimeout -= Time.deltaTime;
+                yield return null;
+            }
+
+            StartCoroutine(SetCameraZoom(attacker.IsPlayer, true));
+
+
+            // 반격 이펙트 출력
+            if (BattleVFXManager.Instance != null)
+                BattleVFXManager.Instance.SpawnVFX(VFXType.extraMove, attacker.View.RetHitbox());
+
+
+            _waitingForImpact = true;
+            attacker.Animator.SetTrigger(skillData.RequiredAnimationTrigger);
+
+            yield return new WaitForSeconds(0.1f);
+
+            var stateInfo = attacker.Animator.GetCurrentAnimatorStateInfo(0);
+            float maxWait = stateInfo.length * 0.8f;
+            float timer = 0f;
+
+            while (_waitingForImpact && timer < maxWait)
+            {
+                timer += Time.deltaTime;
+                yield return null;
+            }
+
+            // 피격자 진영 포커싱
+            if (target != null && target.IsPlayer != attacker.IsPlayer)
+            {
+                StartCoroutine(SetCameraZoom(target.IsPlayer, true));
+            }
+        }
+        else
+        {
+            yield return new WaitForSeconds(0.4f);
+        }
+
+        // --- 실제 효과 실행 ---
+        if (levelData != null)
+        {
+            if (levelData.Effects != null)
+            {
+                foreach (var eff in levelData.Effects)
+                {
+                    if (eff != null)
+                    {
+                        if (!eff.Execute(attacker, target)) break;
+                    }
+                }
+            }
+        }
+
+        BattleEventManager.TriggerSkillUsed(attacker, skillData);
+
+        // --- 4. 애니메이션 종료 대기 ---
+        yield return new WaitForSeconds(0.2f);
+
+        float timeout = 2.0f;
+        while (timeout > 0)
+        {
+            bool anyBusy = false;
+
+            if (!string.IsNullOrEmpty(skillData.RequiredAnimationTrigger))
+                if (attacker.IsAnimationPlaying(skillData.RequiredAnimationTrigger))
+                    anyBusy = true;
+
+            foreach (var bc in allCharacters)
+            {
+                if (bc.IsAlive && bc.IsAnimationPlaying("hit"))
+                {
+                    anyBusy = true;
+                    break;
+                }
+            }
+
+            if (!anyBusy) break;
+
+            timeout -= Time.deltaTime;
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(0.2f);
+
+        // --- 5. 카메라 복귀 ---
+        StartCoroutine(SetCameraZoom(true, false));
+        yield return new WaitForSeconds(0.4f);
+
+
+    }
+
+    ///협공///
+    public IEnumerator CombinationAttackRoutine(BattleCharacter attacker, BattleCharacter target)
+    {
+        //attker와 target이 죽어 있다면 스킵
+        if (!attacker.IsAlive || !target.IsAlive) yield break;
+
+
+
+
         var skillData = attacker.ActiveSkills.Count > 0 ? attacker.ActiveSkills[0] : null;
         if (skillData == null) yield break;
 
@@ -481,11 +608,18 @@ public class BattleManager : MonoBehaviour
 
 
 
+
+
     /// <summary>
     /// 전투 시작 시 연출이 포함된 상시 패시브를 실행하는 루틴입니다.
     /// </summary>
     public IEnumerator ExecuteConstantPassivesRoutine(BattleCharacter character, SkillData skill, int level)
     {
+        //캐릭터가 죽어 있다면 스킵
+        if (!character.IsAlive) yield break;
+
+
+
         Debug.Log($"[Passive-Show] {character.Name} → {skill.SkillName} 패시브 연출 시작");
 
         var levelData = skill.LevelDatas != null && skill.LevelDatas.Count >= level
@@ -623,6 +757,11 @@ public class BattleManager : MonoBehaviour
     /// </summary>
     public IEnumerator ExecuteReactivePassiveRoutine(BattleCharacter character, SkillData skill, int level, BattleCharacter target, BattleCharacter victim, PassiveTriggerType trigger)
     {
+        //attker와 target이 죽어 있다면 스킵
+        if (!character.IsAlive) yield break;
+
+
+
         // [추가] 큐에서 막 꺼냈을 때, 다시 한 번 쿨타임을 검사 (광역 공격 등에 의한 중복 발동 방지)
         int checkIndex = character.ActiveSkills.IndexOf(skill);
         if (checkIndex >= 0 && character.SkillCooldowns[checkIndex] > 0)

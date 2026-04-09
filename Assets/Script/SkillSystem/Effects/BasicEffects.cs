@@ -173,9 +173,9 @@ namespace TurnRPG.SkillSystem.Effects
                     if (BattleVFXManager.Instance != null)
                         BattleVFXManager.Instance.SpawnVFX(VFXType.Heal, t.View.RetHitbox());
 
-                    // [추가] 부활 알림 (UI 갱신 등을 위해 데미지 0짜리 이벤트를 활용하거나 별도 처리 가능)
-                    // 여기서는 간단하게 데미지 이벤트를 0으로 쏘아 UI가 갱신되도록 유도
-                    BattleEventManager.TriggerDamageTaken(t, caster, 0, true, false, false);
+                    // [추가] 부활 알림 (UI 갱신 등을 위해 데미지 0짜리 이벤트를 활용하던 것을 TriggerHealed로 변경)
+                    // 데미지 이벤트를 쓰지 않음으로써 부활 시 반격이 터지는 버그를 방지합니다.
+                    BattleEventManager.TriggerHealed(t, 0);
 
                     Debug.Log($"[부활!] {t.Name}이(가) 체력 {reviveHp}으로 부활했습니다!");
                     revivedAnyone = true;
