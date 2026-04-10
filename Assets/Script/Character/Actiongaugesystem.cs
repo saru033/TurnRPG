@@ -114,7 +114,7 @@ public class Actiongaugesystem : MonoBehaviour
     }
 
     // -------------------------------------------------------
-    // 턴 종료 — 게이지 리셋
+    // 턴 종료
     // -------------------------------------------------------
     public void OnTurnEnd(BattleCharacter character)
     {
@@ -123,7 +123,13 @@ public class Actiongaugesystem : MonoBehaviour
             character.isExtraTurnSelf = false;
             return;
         }
+    }
 
+    // -------------------------------------------------------
+    // 턴 시작
+    // -------------------------------------------------------
+    public void OnTurnStart(BattleCharacter character)
+    {
         character.ActionGauge = 0f;
     }
 

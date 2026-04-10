@@ -18,6 +18,10 @@ public class BattleManager : MonoBehaviour
     [Header("전투 참가 데이터 (테스트용)")]
     public List<CharacterData> initialCharacterDatas;
 
+    [Header("테스트 아이템 (최대 3개)")]
+    public List<SkillData> initialItemDatas;
+    private List<SkillData> currentItems = new();
+
     // -------------------------------------------------------
     // 전투 상태
     // -------------------------------------------------------
@@ -34,6 +38,8 @@ public class BattleManager : MonoBehaviour
     private bool _isCurrentlyZoomed = false;
     private bool _lastZoomedPlayer = false;
 
+
+    public bool isItemUse = false;
 
     private LinkedList<IEnumerator> extraActionQueue = new LinkedList<IEnumerator>();
 
@@ -88,7 +94,17 @@ public class BattleManager : MonoBehaviour
         }
 
         battleUI.Init(allCharacters);
+
+        // --- [추가] 아이템 초기화 ---
+        currentItems.Clear();
+        if (initialItemDatas != null)
+        {
+            currentItems.AddRange(initialItemDatas.Take(3)); // 최대 3개까지만
+        }
+        battleUI.RefreshItemSlots(currentItems);
+
         battleUI.SetSkillButtonsVisible(false);
+        battleUI.SetItemVisible(false);
         battleUI.SetSideImageVisible(false, currentActor);
 
 
@@ -158,8 +174,17 @@ public class BattleManager : MonoBehaviour
                 yield break;
             }
 
+            // [추가] 턴 획득 연출: 100% 지점까지 이동 후 아이콘 숨기기
+            currentActor.ActionGauge = Actiongaugesystem.MaxGauge;
+            battleUI.UpdateGaugePositions(allCharacters);
+            yield return new WaitForSeconds(0.2f);
+            battleUI.SetVisible(currentActor, false);
+
             // ⭐ 1.5 턴 시작 시스템 발동 (쿨타임 감소, 출혈 피해 등)
             currentActor.OnTurnStart();
+
+            // 턴 시작시 행동게이지 초기화 (여기서 실제 값 0으로 리셋)
+            gaugeSystem.OnTurnStart(currentActor);
 
             // [추가] 턴 시작 시 발동된 패시브 처리
             yield return StartCoroutine(ProcessExtraActions());
@@ -189,7 +214,6 @@ public class BattleManager : MonoBehaviour
             }
 
             battleUI.UpdateGaugePositions(allCharacters);
-            battleUI.HighlightActor(currentActor);
 
 
             // 짧은 연출 딜레이
@@ -202,6 +226,7 @@ public class BattleManager : MonoBehaviour
 
                 State = BattleState.PlayerTurn;
                 battleUI.SetSkillButtonsVisible(true, currentActor);
+                battleUI.SetItemVisible(true);
                 battleUI.SetSideImageVisible(true, currentActor);
 
                 // OnSkillSelected() 및 타겟 지정 완료 시점까지 대기 (SelectTarget 상태도 포함해 대기)
@@ -210,6 +235,7 @@ public class BattleManager : MonoBehaviour
                 if (currentActor.Animator != null) currentActor.Animator.SetBool("isWaiting", false);
 
                 battleUI.SetSkillButtonsVisible(false);
+                battleUI.SetItemVisible(false);
 
                 // 스킬 코루틴 등 애니메이션 대기
                 yield return new WaitUntil(() => State == BattleState.Idle || State == BattleState.Win || State == BattleState.Lose);
@@ -219,6 +245,7 @@ public class BattleManager : MonoBehaviour
                 // 3. 적 턴 — 자동 행동
                 State = BattleState.EnemyTurn;
                 battleUI.SetSkillButtonsVisible(false);
+                battleUI.SetItemVisible(false);
                 battleUI.SetSideImageVisible(true, currentActor);
 
                 yield return new WaitForSeconds(0.5f);   // 적 행동 연출 딜레이
@@ -244,7 +271,9 @@ public class BattleManager : MonoBehaviour
             if (currentActor.Animator != null) currentActor.Animator.SetBool("isWaiting", false); // 안전장치
 
             gaugeSystem.OnTurnEnd(currentActor);
+            battleUI.SetVisible(currentActor, true);
             battleUI.UpdateGaugePositions(allCharacters);
+
 
             yield return new WaitForSeconds(0.2f);
         }
@@ -276,6 +305,7 @@ public class BattleManager : MonoBehaviour
     /// skillIndex: 0 = 1스킬, 1 = 2스킬, 2 = 3스킬
     /// </summary>
     private int _selectedSkillIndex = -1;
+    private int _selectedItemIndex = -1;
     private bool _waitingForImpact = false;
 
     public void OnAnimationImpact()
@@ -299,31 +329,64 @@ public class BattleManager : MonoBehaviour
 
         State = BattleState.SelectTarget;
         _selectedSkillIndex = skillIndex;
+        _selectedItemIndex = -1; // 아이템 선택 해제
 
         battleUI.MoveSkillSelectIndicator(skillIndex);
         Debug.Log($"[Battle] {skillData.SkillName} 선택됨! 대상을 클릭해주세요.");
+    }
+
+    public void OnItemSelected(int itemIndex)
+    {
+        if (isItemUse || (State != BattleState.PlayerTurn && State != BattleState.SelectTarget)) return;
+
+        if (currentItems.Count <= itemIndex || currentItems[itemIndex] == null) return;
+
+        State = BattleState.SelectTarget;
+        _selectedItemIndex = itemIndex;
+        _selectedSkillIndex = -1; // 스킬 선택 해제
+
+        battleUI.MoveItemSelectIndicator(itemIndex);
+        Debug.Log($"[Battle] 아이템 {currentItems[itemIndex].SkillName} 선택됨! 대상을 클릭해주세요.");
     }
 
     // UI에서 직접 호출하는 대신 CharacterView 클릭으로 실행
     public void OnCharacterClicked(BattleCharacter target)
     {
         if (State != BattleState.SelectTarget) return;
-        if (_selectedSkillIndex == -1) return;
 
-        var skillData = currentActor.ActiveSkills.Count > _selectedSkillIndex ? currentActor.ActiveSkills[_selectedSkillIndex] : null;
-        if (skillData == null) return;
+        SkillData skillData = null;
+        SkillLevelData levelData = null;
+        bool isItem = false;
 
-        int level = currentActor.SkillLevels[_selectedSkillIndex];
-        var levelData = skillData.LevelDatas != null && skillData.LevelDatas.Count >= level ? skillData.LevelDatas[level - 1] : null;
-        if (levelData == null) return;
+        // --- 1. 선택된 것이 아이템인지 스킬인지 판별 및 데이터 로드 ---
+        if (_selectedItemIndex != -1)
+        {
+            isItem = true;
+            skillData = currentItems.Count > _selectedItemIndex ? currentItems[_selectedItemIndex] : null;
+            if (skillData != null && skillData.LevelDatas != null && skillData.LevelDatas.Count > 0)
+            {
+                levelData = skillData.LevelDatas[0];
+            }
+        }
+        else if (_selectedSkillIndex != -1)
+        {
+            skillData = currentActor.ActiveSkills.Count > _selectedSkillIndex ? currentActor.ActiveSkills[_selectedSkillIndex] : null;
+            if (skillData != null)
+            {
+                int level = currentActor.SkillLevels[_selectedSkillIndex];
+                levelData = skillData.LevelDatas != null && skillData.LevelDatas.Count >= level ? skillData.LevelDatas[level - 1] : null;
+            }
+        }
 
-        // 타겟 유효성 검증
+        if (skillData == null || levelData == null) return;
+
+        // --- 2. 타겟 유효성 검증 (아이템/스킬 공통) ---
         bool isValid = false;
         switch (levelData.TargetType)
         {
             case SkillTargetType.SingleEnemy:
             case SkillTargetType.RandomEnemy:
-            case SkillTargetType.AllEnemies: // 전체 공격도 몬스터를 클릭해야 나가도록 유도
+            case SkillTargetType.AllEnemies:
                 isValid = (target.IsPlayer != currentActor.IsPlayer);
                 break;
             case SkillTargetType.SingleAlly:
@@ -344,20 +407,28 @@ public class BattleManager : MonoBehaviour
             return;
         }
 
-        // --- [추가] 은신(Stealth) 타겟팅 검사 ---
+        // --- 3. 은신(Stealth) 타겟팅 검사 ---
         if (!target.CanBeTargetedBy(currentActor, allCharacters))
         {
             Debug.Log($"[Battle] {target.Name}은(는) 은신 중이라 타겟으로 지정할 수 없습니다!");
             return;
         }
 
-        // 실행
-        int executionIndex = _selectedSkillIndex;
-        _selectedSkillIndex = -1; // 리셋
+        // --- 4. 실행 결정 ---
         battleUI.select_SkillRect.gameObject.SetActive(false); // 인디케이터 숨기기
 
-        State = BattleState.WaitAction;
-        StartCoroutine(ExecuteSkillRoutine(skillData, executionIndex, target));
+        if (isItem)
+        {
+            _selectedItemIndex = -1;
+            StartCoroutine(ExecuteItemRoutine(currentActor, target, skillData));
+        }
+        else
+        {
+            int executionIndex = _selectedSkillIndex;
+            _selectedSkillIndex = -1;
+            State = BattleState.WaitAction;
+            StartCoroutine(ExecuteSkillRoutine(skillData, executionIndex, target));
+        }
     }
 
     // 기존의 OnSkillExecute는 더블클릭 대비용으로 혹시 모르니 남겨두지만 무용지물이 됨
@@ -365,6 +436,162 @@ public class BattleManager : MonoBehaviour
     {
         // OnCharacterClicked 으로 일원화되어 사용하지 않음.
     }
+
+
+    public IEnumerator ExecuteItemRoutine(BattleCharacter character, BattleCharacter target, SkillData skill)
+    {
+        //스킬창 숨기고 사용 불가능하게
+        isItemUse = true;
+        battleUI.SetSkillButtonsVisible(false);
+        battleUI.SetItemVisible(false);
+
+        Debug.Log($"[Item] {character.Name}이 {target.Name} 에게 {skill.SkillName} 아이템 사용");
+
+        var levelData = (skill.LevelDatas != null && skill.LevelDatas.Count > 0)
+                        ? skill.LevelDatas[0] : null;
+
+        bool isUltimate = (int)skill.SlotIndex == 2;
+
+        // --- 1. 카메라 줌 및 캐릭터 하이라이트 ---
+        if (!isUltimate && !string.IsNullOrEmpty(skill.RequiredAnimationTrigger) && character.Animator != null)
+        {
+            StartCoroutine(SetCameraZoom(character.IsPlayer, true));
+            yield return new WaitForSeconds(0.2f);
+        }
+        // --- 스킬 아이콘 제거 및, 터치 방지---
+        //battleUI.SetSideImageVisible(true, character);
+
+        // --- 2. 컷신 재생 (있는 경우) ---
+        if (skill.UltimateCutsceneClip != null && battleUI.ultimateCutsceneRoot != null)
+        {
+            // [ExecuteSkillRoutine의 컷신 로직 재사용]
+            Transform originalParent = null;
+            Vector2 originalAnchoredPos = Vector2.zero;
+            Vector3 originalScale = Vector3.one;
+            bool enhancedSequence = false;
+
+            if (character.View != null && character.View.illustration != null && battleUI.ultimateBlackScreen != null)
+            {
+                enhancedSequence = true;
+                var illu = character.View.illustration.rectTransform;
+                originalParent = illu.parent;
+                originalAnchoredPos = illu.anchoredPosition;
+                originalScale = illu.localScale;
+
+                battleUI.ultimateBlackScreen.gameObject.SetActive(true);
+                battleUI.ultimateBlackScreen.color = new Color(0, 0, 0, 0);
+
+                illu.SetParent(battleUI.ultimateBlackScreen.transform, true);
+                Vector2 targetPos = new Vector2(0, illu.anchoredPosition.y);
+
+                Sequence seq = DOTween.Sequence();
+                seq.Join(battleUI.ultimateBlackScreen.DOFade(1f, 0.4f));
+                seq.Join(illu.DOAnchorPos(targetPos, 0.4f));
+                seq.Join(illu.DOScale(originalScale * 1.2f, 0.4f));
+
+                yield return seq.WaitForCompletion();
+            }
+
+            battleUI.ultimateCutsceneRoot.SetActive(true);
+            var anim = battleUI.ultimateCutsceneRoot.GetComponentInChildren<Animator>();
+            if (anim != null)
+            {
+                anim.Play(skill.UltimateCutsceneClip.name);
+                if (enhancedSequence)
+                {
+                    yield return new WaitForSeconds(0.15f);
+                    if (character.View != null)
+                    {
+                        var illu = character.View.illustration.rectTransform;
+                        illu.SetParent(originalParent, true);
+                        illu.anchoredPosition = originalAnchoredPos;
+                        illu.localScale = originalScale;
+                        battleUI.ultimateBlackScreen.gameObject.SetActive(false);
+                    }
+                    yield return new WaitForSeconds(Mathf.Max(0, skill.UltimateCutsceneClip.length - 0.15f));
+                }
+                else
+                {
+                    yield return new WaitForSeconds(skill.UltimateCutsceneClip.length);
+                }
+            }
+            battleUI.ultimateCutsceneRoot.SetActive(false);
+        }
+
+        // --- 3. 애니메이션 재생 및 타격 시점 대기 ---
+        if (!string.IsNullOrEmpty(skill.RequiredAnimationTrigger) && character.Animator != null)
+        {
+            _waitingForImpact = true;
+            character.Animator.SetTrigger(skill.RequiredAnimationTrigger);
+
+            yield return new WaitForSeconds(0.1f);
+
+            var stateInfo = character.Animator.GetCurrentAnimatorStateInfo(0);
+            float maxWait = stateInfo.length * 0.8f;
+            float timer = 0f;
+
+            while (_waitingForImpact && timer < maxWait)
+            {
+                timer += Time.deltaTime;
+                yield return null;
+            }
+        }
+        else
+        {
+            yield return new WaitForSeconds(0.5f);
+        }
+
+        // --- 4. 실제 효과 실행 ---
+        if (levelData != null && levelData.Effects != null)
+        {
+            foreach (var eff in levelData.Effects)
+            {
+                if (eff != null) eff.Execute(character, target);
+            }
+            character.RefreshStats();
+        }
+
+        // --- 5. 애니메이션 종료 대기 및 복귀 ---
+        yield return new WaitForSeconds(0.3f);
+
+        float timeout = 2.0f;
+        while (timeout > 0)
+        {
+            bool anyBusy = false;
+            if (!string.IsNullOrEmpty(skill.RequiredAnimationTrigger))
+                if (character.IsAnimationPlaying(skill.RequiredAnimationTrigger))
+                    anyBusy = true;
+
+            if (!anyBusy) break;
+            timeout -= Time.deltaTime;
+            yield return null;
+        }
+
+        battleUI.SetSideImageVisible(false, character);
+        if (!isUltimate)
+        {
+            StartCoroutine(SetCameraZoom(true, false));
+            yield return new WaitForSeconds(0.4f);
+        }
+
+        Debug.Log($"[Item] {character.Name} 아이템 사용 연출 종료");
+
+        // --- 아이템 소모 및 UI 갱신 ---
+        if (currentItems.Contains(skill))
+        {
+            currentItems.Remove(skill);
+        }
+        battleUI.RefreshItemSlots(currentItems);
+
+        //스킬창 복구
+        isItemUse = false;
+        battleUI.SetSkillButtonsVisible(true, currentActor);
+        battleUI.SetItemVisible(true);
+        battleUI.SetSideImageVisible(true, currentActor);
+    }
+
+
+
 
 
     public IEnumerator CounterAttackRoutine(BattleCharacter attacker, BattleCharacter target)
@@ -1234,6 +1461,7 @@ public class BattleManager : MonoBehaviour
         bool playerDead = allCharacters.TrueForAll(c => !c.IsPlayer || !c.IsAlive);
         State = playerDead ? BattleState.Lose : BattleState.Win;
         battleUI.SetSkillButtonsVisible(false);
+        battleUI.SetItemVisible(false);
     }
 
     // -------------------------------------------------------

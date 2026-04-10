@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7166cb7f5dfe6a84cbbfd47fcd0f00ad, type: 3}
+  m_Name: "102_\uD3ED\uD0C4"
+  m_EditorClassIdentifier: Assembly-CSharp::TurnRPG.SkillSystem.SkillData
+  SkillID: 102
+  SkillName: "\uD3ED\uD0C4"
+  SkillIcon: {fileID: 5086346030312889025, guid: 0c15f6d4b1e1ff54490192deacb7bcb4, type: 3}
+  Type: 3
+  SlotIndex: 0
+  EquipRestriction: -1
+  RequiredAnimationTrigger: skill
+  UltimateCutsceneClip: {fileID: 0}
+  LevelDatas:
+  - Description: "\uC120\uD0DC\uD55C \uC801 \uCE90\uB9AD\uD130 \uD55C\uBA85\uC5D0\uAC8C
+      \uC2DC\uC804\uC790\uC758 \uACF5\uACA9\uB825\uC5D0 \uBE44\uB840\uD55C \uD53C\uD574\uB97C
+      \uC785\uD799\uB2C8\uB2E4. \uC774 \uACF5\uACA9\uC740 \uBE57\uB098\uAC00\uC9C0
+      \uC54A\uACE0, \uBC18\uACA9\uC774 \uBC1C\uC0DD\uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4."
+    Cooldown: 0
+    TargetType: 2
+    PassiveTrigger: 0
+    ConstantEffects: []
+    Effects:
+    - rid: 6423181136409657412
+  references:
+    version: 2
+    RefIds:
+    - rid: 6423181136409657412
+      type: {class: DamageEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 0
+        DamageMultiplier: 3
+        Penetration: 0
+        CannotBeCountered: 1
+        AlwaysHit: 1

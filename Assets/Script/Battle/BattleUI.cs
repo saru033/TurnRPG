@@ -21,6 +21,12 @@ public class BattleUI : MonoBehaviour
     public GameObject skillButtonRoot;
     public Button[] skillButtons;
     public RectTransform ImgAreaRect;
+    public RectTransform ItemBagRect;
+    [Header("Item Bag Sprites")]
+    [SerializeField] private Sprite bagOpenImg;  // 열린 이미지
+    [SerializeField] private Sprite bagCloseImg; // 닫힌 이미지
+    bool isBagOpen = false;
+    public RectTransform baginsideimgRect;
     public Image HPBarImage;
     public TextMeshProUGUI HPText;
     public RectTransform select_SkillRect;
@@ -272,13 +278,17 @@ public class BattleUI : MonoBehaviour
     }
 
     // -------------------------------------------------------
-    // 하이라이트
+    // 턴 시작시 그 캐릭터의 행동게이지 아이콘 숨기기/보이기
     // -------------------------------------------------------
-    public void HighlightActor(BattleCharacter actor)
+    public void SetVisible(BattleCharacter actor, bool isVisible)
     {
-        for (int i = 0; i < characters.Count; i++)
-            portraits[i].SetHighlight(object.ReferenceEquals(characters[i], actor));
+        var portrait = GetPortrait(actor);
+        if (portrait != null)
+        {
+            portrait.SetVisible(isVisible);
+        }
     }
+
 
     /// <summary>
     /// [추가] 캐릭터에 해당하는 포트레이트 아이콘을 반환합니다.
@@ -398,6 +408,31 @@ public class BattleUI : MonoBehaviour
         //버튼 레이어 변경
         targetParent.SetAsLastSibling();
 
+        // [추가] 색상 변경 (스킬 - 흰색)
+        var img = select_SkillRect.GetComponent<Image>();
+        if (img != null) img.DOColor(Color.white, 0.2f);
+
+        select_SkillRect.DOAnchorPos(Vector2.zero, 0.2f).SetEase(Ease.OutQuad);
+    }
+
+    public void MoveItemSelectIndicator(int itemIndex)
+    {
+        if (select_SkillRect == null || baginsideimgRect == null) return;
+
+        string slotName = $"itemSlot{itemIndex + 1}";
+        Transform targetParent = baginsideimgRect.Find(slotName);
+        if (targetParent == null) return;
+
+        select_SkillRect.gameObject.SetActive(true);
+        select_SkillRect.SetParent(targetParent, true);
+
+        // 레이어 변경
+        targetParent.SetAsLastSibling();
+
+        // [추가] 색상 변경 (아이템 - 초록색)
+        var img = select_SkillRect.GetComponent<Image>();
+        if (img != null) img.DOColor(Color.green, 0.2f);
+
         select_SkillRect.DOAnchorPos(Vector2.zero, 0.2f).SetEase(Ease.OutQuad);
     }
 
@@ -449,6 +484,124 @@ public class BattleUI : MonoBehaviour
             rt.DOAnchorPosX(-areaW, 0.15f)
               .SetEase(Ease.InCubic)
               .OnComplete(() => ImgAreaRect.gameObject.SetActive(false));
+        }
+    }
+
+
+    // -------------------------------------------------------
+    // 아이템 가방 표시/숨김
+    // -------------------------------------------------------
+    public void SetItemVisible(bool visible)
+    {
+        if (ItemBagRect == null) return;
+
+        var rt = ItemBagRect.GetComponent<RectTransform>();
+        if (rt == null) return;
+
+        float areaH = _panelH * skillAreaWidthRatio;
+
+        rt.DOKill();
+
+        if (visible)
+        {
+            // 아래에서 시작해서 제자리로 슬라이드
+            ItemBagRect.gameObject.SetActive(true);
+            rt.anchoredPosition = new Vector2(rt.anchoredPosition.x, -areaH);
+            rt.DOAnchorPosY(0f, 0.2f).SetEase(Ease.OutCubic);
+        }
+        else
+        {
+            // 아래로 슬라이드 후 비활성화
+            rt.DOAnchorPosY(-areaH, 0.15f)
+              .SetEase(Ease.InCubic)
+              .OnComplete(() => ItemBagRect.gameObject.SetActive(false));
+
+
+            //가방이 열려있아면 닫기
+            if (isBagOpen)
+            {
+                SetBagOpen();
+            }
+        }
+    }
+
+
+    // -------------------------------------------------------
+    // 가방 펼치기/접기
+    // -------------------------------------------------------
+    public void SetBagOpen()
+    {
+        if (ItemBagRect == null && bagOpenImg == null && bagCloseImg == null && baginsideimgRect == null) return;
+
+        var rt = baginsideimgRect.GetComponent<RectTransform>();
+        if (rt == null) return;
+
+        float areaH = _panelH * skillAreaWidthRatio;
+
+        rt.DOKill();
+
+        isBagOpen = !isBagOpen;
+
+        if (isBagOpen)
+        {
+            // 아래에서 시작해서 제자리로 슬라이드
+            baginsideimgRect.gameObject.SetActive(true);
+            rt.anchoredPosition = new Vector2(rt.anchoredPosition.x, -areaH);
+            rt.DOAnchorPosY(0f, 0.2f).SetEase(Ease.OutCubic);
+
+            ItemBagRect.GetComponent<Image>().sprite = bagOpenImg;
+
+
+        }
+        else
+        {
+            // 아래로 슬라이드 후 비활성화
+            rt.DOAnchorPosY(-areaH, 0.15f)
+              .SetEase(Ease.InCubic)
+              .OnComplete(() => baginsideimgRect.gameObject.SetActive(false));
+
+            ItemBagRect.GetComponent<Image>().sprite = bagCloseImg;
+        }
+    }
+
+
+
+    // -------------------------------------------------------
+    // 아이템 슬롯 새로고침
+    // -------------------------------------------------------
+    public void RefreshItemSlots(List<SkillData> items)
+    {
+        if (baginsideimgRect == null) return;
+
+        for (int i = 0; i < 3; i++)
+        {
+            string slotName = $"itemSlot{i + 1}";
+            Transform slotTransform = baginsideimgRect.Find(slotName);
+
+            if (slotTransform == null) continue;
+
+            if (i < items.Count && items[i] != null)
+            {
+                slotTransform.gameObject.SetActive(true);
+                Image slotIcon = slotTransform.GetComponent<Image>();
+                if (slotIcon != null)
+                {
+                    slotIcon.sprite = items[i].SkillIcon;
+                }
+
+                // [추가] 아이템 클릭 버튼 리스너 연결
+                Button btn = slotTransform.GetComponent<Button>();
+                if (btn == null) btn = slotTransform.gameObject.AddComponent<Button>();
+
+                int index = i; // 클로저 이슈 방지
+                btn.onClick.RemoveAllListeners();
+                btn.onClick.AddListener(() => BattleManager.Instance.OnItemSelected(index));
+            }
+            else
+            {
+                // 아이템이 없으면 슬롯 비활성화
+                slotTransform.gameObject.SetActive(false);
+            }
         }
     }
 

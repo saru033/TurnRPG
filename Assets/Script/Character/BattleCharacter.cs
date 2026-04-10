@@ -226,14 +226,20 @@ public class BattleCharacter
             RemoveStatusEffect(StatusEffectType.Stealth);
         }
 
-        // 반격불가 여부를 이벤트 매니저에게 같이 전달하여 반격이 터지지 않도록 함
-        BattleEventManager.TriggerDamageTaken(this, attacker, actualDamage, cannotBeCountered, isEvaded, isCritical);
+        // [수정] 아이템 사용 중일 때는 어떠한 패시브 트리거(반격 포함)도 발생시키지 않도록 플래그 전달
+        bool skipTriggers = BattleManager.Instance != null && BattleManager.Instance.isItemUse;
 
-        // 출혈,화상으로 데미지를 입은게 아니고 , 기절/수면이 없고, 반격 버프가 있고 , 공격이 반격 불가가 아닌 경우, 공격자가 현재 턴인 경우
-        if (!isBurn && !cannotBeCountered && !HasStatusEffect(StatusEffectType.Stun) && !HasStatusEffect(StatusEffectType.Sleep) && HasStatusEffect(StatusEffectType.CounterAttack) && attacker != null && attacker == BattleManager.Instance.currentActor)
+        // UI 업데이트를 위해 이벤트는 항상 발생시키되, 아이템 사용 중임을 알림
+        BattleEventManager.TriggerDamageTaken(this, attacker, actualDamage, cannotBeCountered, isEvaded, isCritical, skipTriggers);
+
+        if (!skipTriggers)
         {
-            //반격
-            CounterAttack(attacker);
+            // 출혈,화상으로 데미지를 입은게 아니고 , 기절/수면이 없고, 반격 버프가 있고 , 공격이 반격 불가가 아닌 경우, 공격자가 현재 턴인 경우
+            if (!isBurn && !cannotBeCountered && !HasStatusEffect(StatusEffectType.Stun) && !HasStatusEffect(StatusEffectType.Sleep) && HasStatusEffect(StatusEffectType.CounterAttack) && attacker != null && attacker == BattleManager.Instance.currentActor)
+            {
+                //반격
+                CounterAttack(attacker);
+            }
         }
 
         return actualDamage;
@@ -613,8 +619,11 @@ public class BattleCharacter
         CheckAndQueuePassive(PassiveTriggerType.OnTurnEnd, actor);
     }
 
-    private void HandleOnDamageTaken(BattleCharacter victim, BattleCharacter attacker, float damage, bool cannotBeCountered, bool isEvaded, bool isCritical)
+    private void HandleOnDamageTaken(BattleCharacter victim, BattleCharacter attacker, float damage, bool cannotBeCountered, bool isEvaded, bool isCritical, bool isItem)
     {
+        // [추가] 아이템에 의한 피해인 경우 모든 패시브 발동 로직 스킵 (UI만 업데이트하도록 함)
+        if (isItem) return;
+
         // 1. 내가 피격되었을 때 (OnSelfAttacked)
         if (victim == this)
         {

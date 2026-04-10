@@ -83,7 +83,7 @@ public class CharacterView : MonoBehaviour, IPointerClickHandler
         BattleEventManager.OnHealed -= HandleHealed;
     }
 
-    private void HandleDamageTaken(BattleCharacter victim, BattleCharacter attacker, float damage, bool cannotBeCountered, bool isEvaded, bool isCritical)
+    private void HandleDamageTaken(BattleCharacter victim, BattleCharacter attacker, float damage, bool cannotBeCountered, bool isEvaded, bool isCritical, bool isItem)
     {
         if (victim != _character) return;
 
@@ -252,7 +252,8 @@ public class CharacterView : MonoBehaviour, IPointerClickHandler
 
 
     // 외부에서 피격 위치를 가져오기 위한 함수
-    public Transform RetHitbox(){
+    public Transform RetHitbox()
+    {
         Transform spawnTarget = hitbox != null ? hitbox.transform : (illustration != null ? illustration.transform : this.transform);
         return spawnTarget;
     }

@@ -51,8 +51,6 @@ public class GaugePortrait : MonoBehaviour
 
         if (portraitImage != null)
             portraitImage.color = c.IsPlayer ? playerColor : enemyColor;
-
-        SetHighlight(false);
     }
 
     // -------------------------------------------------------
@@ -80,20 +78,13 @@ public class GaugePortrait : MonoBehaviour
         rt.DOAnchorPosY(posY, time).SetEase(Ease.OutCubic);
     }
 
-    // -------------------------------------------------------
-    // 하이라이트
-    // -------------------------------------------------------
-    public void SetHighlight(bool on)
+    public void SetVisible(bool visible)
     {
-        if (highlightRing != null)
+        if (visible)
         {
-            highlightRing.enabled = on;
-            if (on) highlightRing.color = highlightColor;
+            // 나타날 때 시작 지점(0%)으로 위치를 초기화하여, 이후 갱신 시 슬라이드 연출이 나오도록 함
+            RectTransform.anchoredPosition = new Vector2(RectTransform.anchoredPosition.x, 0f);
         }
-
-        if (on) RectTransform.SetAsLastSibling();
-
-        float targetScale = on ? 1.25f : 1.0f;
-        transform.DOScale(Vector3.one * targetScale, 0.2f).SetEase(Ease.OutBack);
+        gameObject.SetActive(visible);
     }
 }

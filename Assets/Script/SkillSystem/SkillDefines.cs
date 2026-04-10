@@ -18,7 +18,8 @@ namespace TurnRPG.SkillSystem
     {
         Attack,         // 공격형 (데미지를 주로 입힘)
         NonAttack,      // 버프, 힐 등의 비공격형 액티브 스킬
-        Passive         // 턴이나 특정 이벤트에 반응하는 패시브 스킬
+        Passive,         // 턴이나 특정 이벤트에 반응하는 패시브 스킬
+        Item //플레이어의 턴 일 때 , 턴을 소모하지 않고 , 어떠한 패시브나 반격 등의 행위도 발생시키지 않는 행동
     }
 
     [System.Flags]

@@ -20,8 +20,8 @@ namespace TurnRPG.SkillSystem
         public static BattleCharacter LastVictim;
         public static bool LastAttackWasEvaded;
 
-        // victim, attacker, damage, cannotBeCountered, isEvaded, isCritical
-        public static event Action<BattleCharacter, BattleCharacter, float, bool, bool, bool> OnDamageTaken;
+        // victim, attacker, damage, cannotBeCountered, isEvaded, isCritical, isItem
+        public static event Action<BattleCharacter, BattleCharacter, float, bool, bool, bool, bool> OnDamageTaken;
 
         // 협공 요청 이벤트 (협공할 아군, 타겟이 될 적군)
         public static event Action<BattleCharacter, BattleCharacter> OnDualAttackRequested;
@@ -49,11 +49,11 @@ namespace TurnRPG.SkillSystem
             OnTurnEnded?.Invoke(turnOwner);
         }
 
-        public static void TriggerDamageTaken(BattleCharacter victim, BattleCharacter attacker, float floatDamage, bool cannotBeCountered = false, bool isEvaded = false, bool isCritical = false)
+        public static void TriggerDamageTaken(BattleCharacter victim, BattleCharacter attacker, float floatDamage, bool cannotBeCountered = false, bool isEvaded = false, bool isCritical = false, bool isItem = false)
         {
             LastVictim = victim;
             LastAttackWasEvaded = isEvaded;
-            OnDamageTaken?.Invoke(victim, attacker, floatDamage, cannotBeCountered, isEvaded, isCritical);
+            OnDamageTaken?.Invoke(victim, attacker, floatDamage, cannotBeCountered, isEvaded, isCritical, isItem);
         }
 
         public static void TriggerDualAttack(BattleCharacter helperAlly, BattleCharacter targetEnemy)
