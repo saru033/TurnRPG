@@ -610,6 +610,6 @@ public class BattleUI : MonoBehaviour
         if (HPBarImage == null || HPText == null) return;
 
         HPBarImage.fillAmount = character.CurrentHp / character.MaxHp;
-        HPText.text = $"{(int)character.CurrentHp} / {character.MaxHp}";
+        HPText.text = $"{character.CurrentHp:F0} / {character.MaxHp:F0}";
     }
 }

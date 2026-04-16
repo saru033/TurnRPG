@@ -1,0 +1,80 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+/// <summary>
+/// 프로젝트 전체의 게임 데이터 및 상태를 관리하는 싱글톤 매니저입니다.
+/// 아군 3명의 파티 데이터, 인벤토리, 성적 등을 관리하며 씬이 바뀌어도 파괴되지 않습니다.
+/// </summary>
+public class GameManager : MonoBehaviour
+{
+    public static GameManager Instance { get; private set; }
+
+    [Header("아군 파티 관리 (최대 3명)")]
+    // 이 배열이 로비와 전투 씬 사이의 데이터 허브 역할을 함
+    public PlayerCharacterState[] party = new PlayerCharacterState[3];
+
+    [Header("아군 아이템 관리")]
+    public List<TurnRPG.SkillSystem.SkillData> playerItems = new List<TurnRPG.SkillSystem.SkillData>();
+
+    [Header("초기 파티 템플릿 (최초 1회 설정용)")]
+    public CharacterData[] initialTemplates = new CharacterData[3];
+
+    private void Awake()
+    {
+        // 싱글톤 초기화
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+            InitializeParty();
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    /// <summary>
+    /// 게임 시작 시 초기 템플릿을 기반으로 파티 데이터를 초기화합니다.
+    /// </summary>
+    public void InitializeParty()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            if (initialTemplates[i] != null)
+            {
+                party[i] = new PlayerCharacterState(initialTemplates[i]);
+                Debug.Log($"[GameManager] {i+1}번 슬롯 {initialTemplates[i].CharacterName} 초기화 완료");
+            }
+        }
+    }
+
+    // -------------------------------------------------------
+    // 로비에서 활용할 데이터 업데이트 메서드 예시
+    // -------------------------------------------------------
+
+    /// <summary>
+    /// 특정 인덱스의 캐릭터 스탯을 강화합니다.
+    /// </summary>
+    public void AddMaxHp(int partyIndex, float amount)
+    {
+        if (partyIndex >= 0 && partyIndex < 3 && party[partyIndex] != null)
+        {
+            party[partyIndex].currentBaseMaxHp += amount;
+            Debug.Log($"[GameManager] {party[partyIndex].template.CharacterName}의 BaseMaxHp가 {amount}만큼 증가함! (현재: {party[partyIndex].currentBaseMaxHp})");
+        }
+    }
+
+    /// <summary>
+    /// 특정 스킬의 레벨을 변경합니다.
+    /// </summary>
+    public void SetSkillLevel(int partyIndex, int skillSlot, int level)
+    {
+        if (partyIndex >= 0 && partyIndex < 3 && party[partyIndex] != null && skillSlot >= 0 && skillSlot < 3)
+        {
+            party[partyIndex].skillLevels[skillSlot] = level;
+            Debug.Log($"[GameManager] {party[partyIndex].template.CharacterName}의 {skillSlot+1}번 스킬 레벨을 {level}로 변경");
+        }
+    }
+}

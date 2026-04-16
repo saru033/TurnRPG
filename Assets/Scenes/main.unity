@@ -877,7 +877,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &99457305
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1701,6 +1701,7 @@ GameObject:
   - component: {fileID: 266757861}
   - component: {fileID: 266757863}
   - component: {fileID: 266757862}
+  - component: {fileID: 266757864}
   m_Layer: 5
   m_Name: atk_inc_btn
   m_TagString: Untagged
@@ -1765,6 +1766,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 266757860}
   m_CullTransparentMesh: 1
+--- !u!114 &266757864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266757860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad36a8d26a6e1474fbb12c6d88556085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LongPressButton
+  initialDelay: 0.5
+  interval: 0.1
+  onAction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1561844258}
+        m_TargetAssemblyTypeName: CharacterStatePanelOpener, Assembly-CSharp
+        m_MethodName: ChangeAtk
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &299336772
 GameObject:
   m_ObjectHideFlags: 0
@@ -2052,6 +2082,7 @@ GameObject:
   - component: {fileID: 305109800}
   - component: {fileID: 305109802}
   - component: {fileID: 305109801}
+  - component: {fileID: 305109803}
   m_Layer: 5
   m_Name: cridmg_dec_btn
   m_TagString: Untagged
@@ -2116,6 +2147,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 305109799}
   m_CullTransparentMesh: 1
+--- !u!114 &305109803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 305109799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad36a8d26a6e1474fbb12c6d88556085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LongPressButton
+  initialDelay: 0.5
+  interval: 0.1
+  onAction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1561844258}
+        m_TargetAssemblyTypeName: CharacterStatePanelOpener, Assembly-CSharp
+        m_MethodName: ChangeCritDmg
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &337784808
 GameObject:
   m_ObjectHideFlags: 0
@@ -2492,6 +2552,7 @@ GameObject:
   - component: {fileID: 378497204}
   - component: {fileID: 378497206}
   - component: {fileID: 378497205}
+  - component: {fileID: 378497207}
   m_Layer: 5
   m_Name: atk_dec_btn
   m_TagString: Untagged
@@ -2556,6 +2617,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 378497203}
   m_CullTransparentMesh: 1
+--- !u!114 &378497207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378497203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad36a8d26a6e1474fbb12c6d88556085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LongPressButton
+  initialDelay: 0.5
+  interval: 0.1
+  onAction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1561844258}
+        m_TargetAssemblyTypeName: CharacterStatePanelOpener, Assembly-CSharp
+        m_MethodName: ChangeAtk
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &390032752
 GameObject:
   m_ObjectHideFlags: 0
@@ -2645,6 +2735,7 @@ GameObject:
   - component: {fileID: 405720163}
   - component: {fileID: 405720162}
   - component: {fileID: 405720161}
+  - component: {fileID: 405720164}
   m_Layer: 5
   m_Name: Lobby_wolf
   m_TagString: Untagged
@@ -2731,6 +2822,62 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 405720159}
   m_CullTransparentMesh: 1
+--- !u!114 &405720164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405720159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 405720162}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1561844258}
+        m_TargetAssemblyTypeName: CharacterStatePanelOpener, Assembly-CSharp
+        m_MethodName: OpenPanel
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &409636133
 GameObject:
   m_ObjectHideFlags: 0
@@ -3321,6 +3468,7 @@ GameObject:
   - component: {fileID: 541836884}
   - component: {fileID: 541836886}
   - component: {fileID: 541836885}
+  - component: {fileID: 541836887}
   m_Layer: 5
   m_Name: Backbtn
   m_TagString: Untagged
@@ -3385,6 +3533,62 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 541836883}
   m_CullTransparentMesh: 1
+--- !u!114 &541836887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 541836883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 541836885}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1561844258}
+        m_TargetAssemblyTypeName: CharacterStatePanelOpener, Assembly-CSharp
+        m_MethodName: ClosePanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &637369464
 GameObject:
   m_ObjectHideFlags: 0
@@ -3666,7 +3870,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &753443259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3788,17 +3992,12 @@ MonoBehaviour:
   battleUI: {fileID: 753443259}
   characterPlacer: {fileID: 753443264}
   battleBackground: {fileID: 1895041992}
-  initialCharacterDatas:
-  - {fileID: 11400000, guid: 27fa2efda10633947a896260b96f5699, type: 2}
-  - {fileID: 11400000, guid: 1a434be0432ce7044b6ab4c69101e1f3, type: 2}
-  - {fileID: 11400000, guid: 5cbd1b082e2168b48b3c9fc301d55739, type: 2}
+  enemyTemplates:
   - {fileID: 11400000, guid: c97e2339cba626643af8e358210f4e2c, type: 2}
   - {fileID: 11400000, guid: 954467a37358fd941b3d065e2cc006dc, type: 2}
   - {fileID: 11400000, guid: 949e7ecfa99c187479bebaecb66eeb90, type: 2}
-  initialItemDatas:
-  - {fileID: 11400000, guid: 498a58c4371cb284396f453dc6cb5b75, type: 2}
-  - {fileID: 11400000, guid: 10bd56fa6ca8758438ff0e4a3f9933f8, type: 2}
-  - {fileID: 11400000, guid: 4b0e1225c1db5684285d8226dfb1c992, type: 2}
+  debugEnemyDatas: []
+  initialItemDatas: []
   isItemUse: 0
 --- !u!114 &753443264
 MonoBehaviour:
@@ -3855,6 +4054,7 @@ GameObject:
   - component: {fileID: 781081194}
   - component: {fileID: 781081196}
   - component: {fileID: 781081195}
+  - component: {fileID: 781081197}
   m_Layer: 5
   m_Name: spd_inc_btn
   m_TagString: Untagged
@@ -3919,6 +4119,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 781081193}
   m_CullTransparentMesh: 1
+--- !u!114 &781081197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 781081193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad36a8d26a6e1474fbb12c6d88556085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LongPressButton
+  initialDelay: 0.5
+  interval: 0.1
+  onAction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1561844258}
+        m_TargetAssemblyTypeName: CharacterStatePanelOpener, Assembly-CSharp
+        m_MethodName: ChangeSpeed
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &782365077
 GameObject:
   m_ObjectHideFlags: 0
@@ -4199,6 +4428,7 @@ GameObject:
   - component: {fileID: 786922375}
   - component: {fileID: 786922377}
   - component: {fileID: 786922376}
+  - component: {fileID: 786922378}
   m_Layer: 5
   m_Name: def_inc_btn
   m_TagString: Untagged
@@ -4263,6 +4493,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 786922374}
   m_CullTransparentMesh: 1
+--- !u!114 &786922378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 786922374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad36a8d26a6e1474fbb12c6d88556085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LongPressButton
+  initialDelay: 0.5
+  interval: 0.1
+  onAction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1561844258}
+        m_TargetAssemblyTypeName: CharacterStatePanelOpener, Assembly-CSharp
+        m_MethodName: ChangeDef
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &792245889
 GameObject:
   m_ObjectHideFlags: 0
@@ -4412,6 +4671,7 @@ GameObject:
   - component: {fileID: 797702410}
   - component: {fileID: 797702412}
   - component: {fileID: 797702411}
+  - component: {fileID: 797702413}
   m_Layer: 5
   m_Name: def_dec_btn
   m_TagString: Untagged
@@ -4476,6 +4736,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 797702409}
   m_CullTransparentMesh: 1
+--- !u!114 &797702413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 797702409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad36a8d26a6e1474fbb12c6d88556085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LongPressButton
+  initialDelay: 0.5
+  interval: 0.1
+  onAction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1561844258}
+        m_TargetAssemblyTypeName: CharacterStatePanelOpener, Assembly-CSharp
+        m_MethodName: ChangeDef
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &886762368
 GameObject:
   m_ObjectHideFlags: 0
@@ -5557,6 +5846,7 @@ GameObject:
   - component: {fileID: 1100195008}
   - component: {fileID: 1100195010}
   - component: {fileID: 1100195009}
+  - component: {fileID: 1100195011}
   m_Layer: 5
   m_Name: cri_inc_btn
   m_TagString: Untagged
@@ -5621,6 +5911,142 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1100195007}
   m_CullTransparentMesh: 1
+--- !u!114 &1100195011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1100195007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad36a8d26a6e1474fbb12c6d88556085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LongPressButton
+  initialDelay: 0.5
+  interval: 0.1
+  onAction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1561844258}
+        m_TargetAssemblyTypeName: CharacterStatePanelOpener, Assembly-CSharp
+        m_MethodName: ChangeCritRate
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+--- !u!1 &1111526604
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1111526606}
+  - component: {fileID: 1111526605}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1111526605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111526604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 332808837a05c1a4bbab0c398ca0bec9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  party:
+  - template: {fileID: 11400000, guid: 27fa2efda10633947a896260b96f5699, type: 2}
+    currentBaseMaxHp: 0
+    currentBaseAttack: 0
+    currentBaseDefense: 0
+    currentBaseSpeed: 0
+    currentBaseCritChance: 0
+    currentBaseCritDamage: 0
+    currentBaseEvasion: 0
+    currentBaseAccuracy: 0
+    currentHp: 0
+    bonusPoints: 0
+    spentHp: 0
+    spentAtk: 0
+    spentDef: 0
+    spentSpeed: 0
+    spentCritRate: 0
+    spentCritDmg: 0
+    equippedSkills: []
+    skillLevels: 
+  - template: {fileID: 11400000, guid: 1a434be0432ce7044b6ab4c69101e1f3, type: 2}
+    currentBaseMaxHp: 0
+    currentBaseAttack: 0
+    currentBaseDefense: 0
+    currentBaseSpeed: 0
+    currentBaseCritChance: 0
+    currentBaseCritDamage: 0
+    currentBaseEvasion: 0
+    currentBaseAccuracy: 0
+    currentHp: 0
+    bonusPoints: 0
+    spentHp: 0
+    spentAtk: 0
+    spentDef: 0
+    spentSpeed: 0
+    spentCritRate: 0
+    spentCritDmg: 0
+    equippedSkills: []
+    skillLevels: 
+  - template: {fileID: 0}
+    currentBaseMaxHp: 0
+    currentBaseAttack: 0
+    currentBaseDefense: 0
+    currentBaseSpeed: 0
+    currentBaseCritChance: 0
+    currentBaseCritDamage: 0
+    currentBaseEvasion: 0
+    currentBaseAccuracy: 0
+    currentHp: 0
+    bonusPoints: 0
+    spentHp: 0
+    spentAtk: 0
+    spentDef: 0
+    spentSpeed: 0
+    spentCritRate: 0
+    spentCritDmg: 0
+    equippedSkills: []
+    skillLevels: 
+  playerItems: []
+  initialTemplates:
+  - {fileID: 11400000, guid: 27fa2efda10633947a896260b96f5699, type: 2}
+  - {fileID: 11400000, guid: 1a434be0432ce7044b6ab4c69101e1f3, type: 2}
+  - {fileID: 11400000, guid: 5cbd1b082e2168b48b3c9fc301d55739, type: 2}
+--- !u!4 &1111526606
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111526604}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 792.48175, y: 719.76215, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1126909869
 GameObject:
   m_ObjectHideFlags: 0
@@ -6200,6 +6626,7 @@ GameObject:
   - component: {fileID: 1263625785}
   - component: {fileID: 1263625787}
   - component: {fileID: 1263625786}
+  - component: {fileID: 1263625788}
   m_Layer: 5
   m_Name: spd_dec_btn
   m_TagString: Untagged
@@ -6264,6 +6691,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1263625784}
   m_CullTransparentMesh: 1
+--- !u!114 &1263625788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263625784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad36a8d26a6e1474fbb12c6d88556085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LongPressButton
+  initialDelay: 0.5
+  interval: 0.1
+  onAction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1561844258}
+        m_TargetAssemblyTypeName: CharacterStatePanelOpener, Assembly-CSharp
+        m_MethodName: ChangeSpeed
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1338438634
 GameObject:
   m_ObjectHideFlags: 0
@@ -7033,6 +7489,7 @@ GameObject:
   - component: {fileID: 1561844255}
   - component: {fileID: 1561844257}
   - component: {fileID: 1561844256}
+  - component: {fileID: 1561844258}
   m_Layer: 5
   m_Name: InfoPanel
   m_TagString: Untagged
@@ -7059,10 +7516,10 @@ RectTransform:
   - {fileID: 1809339122}
   m_Father: {fileID: 444184212}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.16414209}
-  m_AnchorMax: {x: 0.8078539, y: 1}
-  m_AnchoredPosition: {x: 184.46, y: -88.637}
-  m_SizeDelta: {x: -87.803, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -0.039978027, y: -0.13696289}
+  m_SizeDelta: {x: -456.80298, y: -177}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1561844256
 MonoBehaviour:
@@ -7102,6 +7559,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1561844254}
   m_CullTransparentMesh: 1
+--- !u!114 &1561844258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1561844254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5368703bf384e89439e64c1cb30c2552, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterStatePanelOpener
+  characterStatePanel: {fileID: 1561844254}
+  imgIllustration: {fileID: 58523239}
+  txtHp: {fileID: 1692304330}
+  txtAtk: {fileID: 1664191468}
+  txtDef: {fileID: 1370028764}
+  txtSpeed: {fileID: 71871385}
+  txtCritRate: {fileID: 1394321877}
+  txtCritDmg: {fileID: 1126909871}
+  txtHpBonus: {fileID: 1056572623}
+  txtAtkBonus: {fileID: 112932317}
+  txtDefBonus: {fileID: 2034542614}
+  txtSpeedBonus: {fileID: 337784810}
+  txtCritRateBonus: {fileID: 1004482153}
+  txtCritDmgBonus: {fileID: 1850259651}
+  txtBonusPoints: {fileID: 1154323769}
+  equiPanel: {fileID: 1597438814}
+  skillPanel: {fileID: 1809339121}
 --- !u!1 &1562092695
 GameObject:
   m_ObjectHideFlags: 0
@@ -7113,6 +7599,7 @@ GameObject:
   - component: {fileID: 1562092696}
   - component: {fileID: 1562092698}
   - component: {fileID: 1562092697}
+  - component: {fileID: 1562092699}
   m_Layer: 5
   m_Name: cri_dec_btn
   m_TagString: Untagged
@@ -7177,6 +7664,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1562092695}
   m_CullTransparentMesh: 1
+--- !u!114 &1562092699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562092695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad36a8d26a6e1474fbb12c6d88556085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LongPressButton
+  initialDelay: 0.5
+  interval: 0.1
+  onAction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1561844258}
+        m_TargetAssemblyTypeName: CharacterStatePanelOpener, Assembly-CSharp
+        m_MethodName: ChangeCritRate
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1596827467
 GameObject:
   m_ObjectHideFlags: 0
@@ -7570,6 +8086,7 @@ GameObject:
   - component: {fileID: 1674108167}
   - component: {fileID: 1674108166}
   - component: {fileID: 1674108165}
+  - component: {fileID: 1674108168}
   m_Layer: 5
   m_Name: Lobby_female
   m_TagString: Untagged
@@ -7656,6 +8173,62 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1674108163}
   m_CullTransparentMesh: 1
+--- !u!114 &1674108168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674108163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1674108166}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1561844258}
+        m_TargetAssemblyTypeName: CharacterStatePanelOpener, Assembly-CSharp
+        m_MethodName: OpenPanel
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1692304328
 GameObject:
   m_ObjectHideFlags: 0
@@ -7977,6 +8550,7 @@ GameObject:
   - component: {fileID: 1759295355}
   - component: {fileID: 1759295354}
   - component: {fileID: 1759295353}
+  - component: {fileID: 1759295356}
   m_Layer: 5
   m_Name: Lobby_male
   m_TagString: Untagged
@@ -8063,6 +8637,62 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1759295351}
   m_CullTransparentMesh: 1
+--- !u!114 &1759295356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759295351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1759295354}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1561844258}
+        m_TargetAssemblyTypeName: CharacterStatePanelOpener, Assembly-CSharp
+        m_MethodName: OpenPanel
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1776916215
 GameObject:
   m_ObjectHideFlags: 0
@@ -8074,6 +8704,7 @@ GameObject:
   - component: {fileID: 1776916216}
   - component: {fileID: 1776916218}
   - component: {fileID: 1776916217}
+  - component: {fileID: 1776916220}
   m_Layer: 5
   m_Name: hp_inc_btn
   m_TagString: Untagged
@@ -8138,6 +8769,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1776916215}
   m_CullTransparentMesh: 1
+--- !u!114 &1776916220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1776916215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad36a8d26a6e1474fbb12c6d88556085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LongPressButton
+  initialDelay: 0.5
+  interval: 0.1
+  onAction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1561844258}
+        m_TargetAssemblyTypeName: CharacterStatePanelOpener, Assembly-CSharp
+        m_MethodName: ChangeHp
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &1799182852
 GameObject:
   m_ObjectHideFlags: 0
@@ -8149,6 +8809,7 @@ GameObject:
   - component: {fileID: 1799182853}
   - component: {fileID: 1799182855}
   - component: {fileID: 1799182854}
+  - component: {fileID: 1799182856}
   m_Layer: 5
   m_Name: cridmg_inc_btn
   m_TagString: Untagged
@@ -8213,6 +8874,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1799182852}
   m_CullTransparentMesh: 1
+--- !u!114 &1799182856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1799182852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad36a8d26a6e1474fbb12c6d88556085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LongPressButton
+  initialDelay: 0.5
+  interval: 0.1
+  onAction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1561844258}
+        m_TargetAssemblyTypeName: CharacterStatePanelOpener, Assembly-CSharp
+        m_MethodName: ChangeCritDmg
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &1804796094
 GameObject:
   m_ObjectHideFlags: 0
@@ -8907,6 +9597,7 @@ GameObject:
   - component: {fileID: 1899809438}
   - component: {fileID: 1899809440}
   - component: {fileID: 1899809439}
+  - component: {fileID: 1899809441}
   m_Layer: 5
   m_Name: hp_dec_btn
   m_TagString: Untagged
@@ -8971,6 +9662,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1899809437}
   m_CullTransparentMesh: 1
+--- !u!114 &1899809441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899809437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad36a8d26a6e1474fbb12c6d88556085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LongPressButton
+  initialDelay: 0.5
+  interval: 0.1
+  onAction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1561844258}
+        m_TargetAssemblyTypeName: CharacterStatePanelOpener, Assembly-CSharp
+        m_MethodName: ChangeHp
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1905026611
 GameObject:
   m_ObjectHideFlags: 0
@@ -10250,3 +10970,4 @@ SceneRoots:
   - {fileID: 1905026612}
   - {fileID: 444184212}
   - {fileID: 1534373895}
+  - {fileID: 1111526606}

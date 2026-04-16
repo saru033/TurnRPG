@@ -117,6 +117,41 @@ public class BattleCharacter
         }
     }
 
+    /// <summary>
+    /// 로비에서 관리되는 PlayerCharacterState를 기반으로 전투 인스턴스를 생성합니다. (아군용)
+    /// </summary>
+    public BattleCharacter(PlayerCharacterState state)
+    {
+        if (state == null || state.template == null) return;
+
+        Data = state.template;
+        ID = Data.ID;
+        Name = Data.CharacterName;
+        IsPlayer = true; // PlayerCharacterState는 항상 아군용
+
+        // [중요] GameManager에서 관리하는 '현재 기본 스탯' 및 '투자된 보너스 포인트'를 합산합니다.
+        BaseMaxHp = MaxHp = Data.MaxHp + (Data.MaxHp * state.spentHp * 0.01f);
+        BaseAttack = Attack = Data.Attack + (Data.Attack * state.spentAtk * 0.01f);
+        CurrentHp = state.currentHp; // 깎인 체력 그대로 가져옴
+        BaseDefense = Defense = Data.Defense + (Data.Defense * state.spentDef * 0.01f);
+        BaseSpeed = Speed = Data.Speed + state.spentSpeed;
+        BaseCritChance = CritChance = Data.CritChance + state.spentCritRate * 0.01f;
+        BaseCritDamage = CritDamage = Data.CritDamage + state.spentCritDmg * 0.01f;
+        BaseEvasionRate = EvasionRate = Data.Evasion; // 회피/명중은 현재 포인트 소모 목록에서 제외
+        BaseAccuracyRate = AccuracyRate = Data.Accuracy;
+
+        ActionGauge = 0f;
+
+        // [중요] GameManager에서 관리하는 '장착된 스킬 및 레벨'을 가져옵니다.
+        for (int i = 0; i < 3; i++)
+        {
+            if (state.equippedSkills.Count > i && state.equippedSkills[i] != null)
+            {
+                EquipSkill(i, state.equippedSkills[i], state.skillLevels[i]);
+            }
+        }
+    }
+
     public void SetAnimator(Animator animator)
     {
         Animator = animator;

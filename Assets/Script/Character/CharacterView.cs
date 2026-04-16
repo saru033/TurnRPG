@@ -113,9 +113,13 @@ public class CharacterView : MonoBehaviour, IPointerClickHandler
 
         if (damageText != null)
         {
+            damageText.transform.SetAsLastSibling(); // 레이어 최상단으로 이동
             damageText.gameObject.SetActive(true);
             damageText.text = $"+{Mathf.RoundToInt(amount)}";
             damageText.color = Color.green;
+
+            StopCoroutine(nameof(FadeOutDamageText));
+            StartCoroutine(nameof(FadeOutDamageText));
         }
     }
 
@@ -196,6 +200,7 @@ public class CharacterView : MonoBehaviour, IPointerClickHandler
     {
         if (damageText == null) return;
 
+        damageText.transform.SetAsLastSibling(); // 레이어 최상단으로 이동
         damageText.gameObject.SetActive(true);
         string dmgStr = isCrit ? $"<b>{Mathf.RoundToInt(damage)}!</b>" : Mathf.RoundToInt(damage).ToString();
         damageText.text = isEvaded ? $"Miss! {dmgStr}" : dmgStr;

@@ -15,10 +15,15 @@ public class BattleManager : MonoBehaviour
     public CharacterPlacer characterPlacer;
     public RectTransform battleBackground; // [추가] 카메라 효과용 배경 RectTransform
 
-    [Header("전투 참가 데이터 (테스트용)")]
-    public List<CharacterData> initialCharacterDatas;
+    [Header("전투 참가 데이터")]
+    [Tooltip("아군은 GameManager에서 가져옵니다. 여기의 리스트는 적군 생성용으로 사용됩니다.")]
+    public List<CharacterData> enemyTemplates;
 
-    [Header("테스트 아이템 (최대 3개)")]
+    [Header("디버그/테스트용 적군")]
+    [Tooltip("여기에 캐릭터 데이터를 넣으면 강제로 적군으로 생성되어 전투에 참여합니다.")]
+    public List<CharacterData> debugEnemyDatas;
+
+    [Header("기본 아이템 (GameManager 없을 때의 fallback)")]
     public List<SkillData> initialItemDatas;
     private List<SkillData> currentItems = new();
 
@@ -79,27 +84,72 @@ public class BattleManager : MonoBehaviour
         gaugeSystem = GetComponent<Actiongaugesystem>();
         if (gaugeSystem == null) gaugeSystem = gameObject.AddComponent<Actiongaugesystem>();
 
-        if (initialCharacterDatas != null && initialCharacterDatas.Count > 0)
+        // 1. 아군 캐릭터 생성 (GameManager 우선)
+        if (GameManager.Instance != null)
         {
-            foreach (var data in initialCharacterDatas)
+            foreach (var state in GameManager.Instance.party)
+            {
+                if (state != null && state.template != null)
+                {
+                    var bc = new BattleCharacter(state);
+                    bc.ActionGaugeSystem = gaugeSystem;
+                    bc.SubscribeEvents();
+                    allCharacters.Add(bc);
+                }
+            }
+        }
+        else if (enemyTemplates != null)
+        {
+            // GameManager가 없는 테스트 환경에서는 플레이어만 골라서 임시 생성
+            foreach (var data in enemyTemplates)
+            {
+                if (data != null && data.isPlayer)
+                {
+                    var bc = new BattleCharacter(data);
+                    bc.ActionGaugeSystem = gaugeSystem;
+                    bc.SubscribeEvents();
+                    allCharacters.Add(bc);
+                }
+            }
+        }
+
+        // 2. 적군 캐릭터 생성
+        // (1) 기존의 enemyTemplates 활용 (isPlayer=false인 것들)
+        if (enemyTemplates != null)
+        {
+            foreach (var data in enemyTemplates)
+            {
+                if (data != null && !data.isPlayer)
+                {
+                    CreateEnemy(data);
+                }
+            }
+        }
+
+        // (2) 디버그용 리스트 활용 (무조건 적군으로 생성)
+        if (debugEnemyDatas != null)
+        {
+            foreach (var data in debugEnemyDatas)
             {
                 if (data != null)
                 {
-                    var bc = new BattleCharacter(data);
-                    bc.ActionGaugeSystem = gaugeSystem; // [추가] 시스템 참조 연결
-                    bc.SubscribeEvents(); // [추가] 패시브 이벤트 구독 시작
-                    allCharacters.Add(bc);
+                    CreateEnemy(data);
                 }
             }
         }
 
         battleUI.Init(allCharacters);
 
-        // --- [추가] 아이템 초기화 ---
+        // --- 3. 아이템 초기화 (GameManager 우선) ---
         currentItems.Clear();
-        if (initialItemDatas != null)
+        if (GameManager.Instance != null && GameManager.Instance.playerItems.Count > 0)
         {
-            currentItems.AddRange(initialItemDatas.Take(3)); // 최대 3개까지만
+            // GameManager에서 현재 보유 중인 아이템 최대 3개 가져오기
+            currentItems.AddRange(GameManager.Instance.playerItems.Take(3));
+        }
+        else if (initialItemDatas != null)
+        {
+            currentItems.AddRange(initialItemDatas.Take(3));
         }
         battleUI.RefreshItemSlots(currentItems);
 
@@ -156,6 +206,18 @@ public class BattleManager : MonoBehaviour
 
         State = BattleState.Idle;
         StartCoroutine(TurnLoop());
+    }
+
+    /// <summary>
+    /// 적군 캐릭터 인스턴스를 생성하고 리스트에 추가합니다.
+    /// </summary>
+    private void CreateEnemy(CharacterData data)
+    {
+        var bc = new BattleCharacter(data);
+        bc.IsPlayer = false; // 강제로 적군으로 설정 (디버그용 대비)
+        bc.ActionGaugeSystem = gaugeSystem;
+        bc.SubscribeEvents();
+        allCharacters.Add(bc);
     }
 
     // -------------------------------------------------------
@@ -1462,6 +1524,25 @@ public class BattleManager : MonoBehaviour
         State = playerDead ? BattleState.Lose : BattleState.Win;
         battleUI.SetSkillButtonsVisible(false);
         battleUI.SetItemVisible(false);
+
+        // [추가] 전투 후 체력 데이터 GameManager에 저장
+        if (GameManager.Instance != null)
+        {
+            var party = GameManager.Instance.party;
+            int playerIdx = 0;
+            foreach (var bc in allCharacters)
+            {
+                if (bc.IsPlayer)
+                {
+                    if (playerIdx < party.Length && party[playerIdx] != null)
+                    {
+                        // 생존 시 현재 체력, 사망 시 최소 1로 저장
+                        party[playerIdx].currentHp = bc.IsAlive ? bc.CurrentHp : 1f;
+                    }
+                    playerIdx++;
+                }
+            }
+        }
     }
 
     // -------------------------------------------------------
