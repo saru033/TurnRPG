@@ -1,0 +1,252 @@
+fileFormatVersion: 2
+guid: 639b726e7bb42b442bca3ddf4fceb05d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2436103836837796689
+    second: Skill_Up_0
+  - first:
+      213: 2730175270382333232
+    second: Skill_Up_1
+  - first:
+      213: 5153269931139290953
+    second: Skill_Up_2
+  - first:
+      213: 382868441859998140
+    second: Skill_Up_3
+  - first:
+      213: -2995085413180213546
+    second: Skill_Up_4
+  - first:
+      213: -5557285898387646977
+    second: Skill_Up_5
+  - first:
+      213: 9124921172837721281
+    second: Skill_Up_6
+  - first:
+      213: 3112981704604610160
+    second: Skill_Up_7
+  - first:
+      213: 218451479142832654
+    second: Skill_Up_8
+  - first:
+      213: -8717829226964394240
+    second: Skill_Up_9
+  - first:
+      213: -3314311982171816711
+    second: Skill_Up_10
+  - first:
+      213: -8152456905620895150
+    second: Skill_Up_11
+  - first:
+      213: 5452151442825167332
+    second: Skill_Up_12
+  - first:
+      213: -2509429911975341610
+    second: Skill_Up_13
+  - first:
+      213: -46716091031003789
+    second: Skill_Up_14
+  - first:
+      213: -9141808589983694761
+    second: Skill_Up_15
+  - first:
+      213: -2642818343639658377
+    second: Skill_Up_16
+  - first:
+      213: -8619653000547499152
+    second: Skill_Up_17
+  - first:
+      213: -3707505144924520775
+    second: Skill_Up_18
+  - first:
+      213: -1757372086893804945
+    second: Skill_Up_19
+  - first:
+      213: 4638943623882151403
+    second: Skill_Up_20
+  - first:
+      213: -4766317688380115545
+    second: Skill_Up_21
+  - first:
+      213: 3040634070654089605
+    second: Skill_Up_22
+  - first:
+      213: -2140727762174008584
+    second: Skill_Up_23
+  - first:
+      213: -3531720131346882554
+    second: Skill_Up_24
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Skill_Up_0
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 43
+        width: 550
+        height: 640
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15bdea65887cec120800000000000000
+      internalID: 2436103836837796689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 735e9813895378140bb31a175757d650
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Skill_Up_0: 2436103836837796689
+      Skill_Up_1: 2730175270382333232
+      Skill_Up_10: -3314311982171816711
+      Skill_Up_11: -8152456905620895150
+      Skill_Up_12: 5452151442825167332
+      Skill_Up_13: -2509429911975341610
+      Skill_Up_14: -46716091031003789
+      Skill_Up_15: -9141808589983694761
+      Skill_Up_16: -2642818343639658377
+      Skill_Up_17: -8619653000547499152
+      Skill_Up_18: -3707505144924520775
+      Skill_Up_19: -1757372086893804945
+      Skill_Up_2: 5153269931139290953
+      Skill_Up_20: 4638943623882151403
+      Skill_Up_21: -4766317688380115545
+      Skill_Up_22: 3040634070654089605
+      Skill_Up_23: -2140727762174008584
+      Skill_Up_24: -3531720131346882554
+      Skill_Up_3: 382868441859998140
+      Skill_Up_4: -2995085413180213546
+      Skill_Up_5: -5557285898387646977
+      Skill_Up_6: 9124921172837721281
+      Skill_Up_7: 3112981704604610160
+      Skill_Up_8: 218451479142832654
+      Skill_Up_9: -8717829226964394240
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

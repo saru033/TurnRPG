@@ -20,6 +20,15 @@ public class GameManager : MonoBehaviour
     [Header("초기 파티 템플릿 (최초 1회 설정용)")]
     public CharacterData[] initialTemplates = new CharacterData[3];
 
+
+    [Header("재화")]
+    public int gold = 0;
+    public int skillup = 0;
+
+
+
+
+
     private void Awake()
     {
         // 싱글톤 초기화
@@ -45,7 +54,7 @@ public class GameManager : MonoBehaviour
             if (initialTemplates[i] != null)
             {
                 party[i] = new PlayerCharacterState(initialTemplates[i]);
-                Debug.Log($"[GameManager] {i+1}번 슬롯 {initialTemplates[i].CharacterName} 초기화 완료");
+                Debug.Log($"[GameManager] {i + 1}번 슬롯 {initialTemplates[i].CharacterName} 초기화 완료");
             }
         }
     }
@@ -74,7 +83,7 @@ public class GameManager : MonoBehaviour
         if (partyIndex >= 0 && partyIndex < 3 && party[partyIndex] != null && skillSlot >= 0 && skillSlot < 3)
         {
             party[partyIndex].skillLevels[skillSlot] = level;
-            Debug.Log($"[GameManager] {party[partyIndex].template.CharacterName}의 {skillSlot+1}번 스킬 레벨을 {level}로 변경");
+            Debug.Log($"[GameManager] {party[partyIndex].template.CharacterName}의 {skillSlot + 1}번 스킬 레벨을 {level}로 변경");
         }
     }
 }

@@ -31,6 +31,19 @@ public class BattleUI : MonoBehaviour
     public TextMeshProUGUI HPText;
     public RectTransform select_SkillRect;
 
+    [Header("Tooltip")]
+    public SkillTooltipUI tooltipPrefab;
+    private SkillTooltipUI _tooltipInstance;
+
+    [Header("Status Tooltip")]
+    public StatusEffectTooltipUI statusTooltipPrefab;
+    private StatusEffectTooltipUI _statusTooltipInstance;
+
+    /// <summary>
+    /// 현재 툴팁인 상태인지(롱프레스 중인지) 여부
+    /// </summary>
+    public bool IsTooltipPerforming { get; private set; }
+
     // -------------------------------------------------------
     // 레이아웃 비율 (패널 기준)
     // -------------------------------------------------------
@@ -355,7 +368,9 @@ public class BattleUI : MonoBehaviour
                         }
                     }
 
-                    // 침묵 상태에서는 2, 3번 스킬(i > 0) 버튼도 비활성화
+                    // [변경] 패시브 스킬도 버튼은 활성화 상태로 둡니다 (클릭은 가능하나 동작만 안 함)
+                    bool isPassive = (skill != null && skill.Type == SkillType.Passive);
+
                     if (skill == null || cd > 0 || (isSilenced && i > 0))
                     {
                         btn.interactable = false;
@@ -363,11 +378,27 @@ public class BattleUI : MonoBehaviour
                     }
                     else
                     {
+                        // 패시브 스킬 포함 일반 상태 버튼 활성화
                         btn.interactable = true;
                         img.color = Color.white;
                     }
 
                     if (skill != null && skill.SkillIcon != null) img.sprite = skill.SkillIcon;
+
+                    // [추가] 툴팁 트리거 설정
+                    if (skill != null)
+                    {
+                        var trigger = btn.GetComponent<SkillTooltipTrigger>();
+                        if (trigger == null) trigger = btn.gameObject.AddComponent<SkillTooltipTrigger>();
+                        
+                        int level = (actor.SkillLevels.Length > i) ? actor.SkillLevels[i] : 1;
+                        trigger.Init(skill, level);
+                    }
+                    else
+                    {
+                        var trigger = btn.GetComponent<SkillTooltipTrigger>();
+                        if (trigger != null) trigger.Init(null, 0);
+                    }
                 }
             }
 
@@ -596,6 +627,11 @@ public class BattleUI : MonoBehaviour
                 int index = i; // 클로저 이슈 방지
                 btn.onClick.RemoveAllListeners();
                 btn.onClick.AddListener(() => BattleManager.Instance.OnItemSelected(index));
+
+                // [추가] 툴팁 트리거 설정
+                var trigger = slotTransform.GetComponent<SkillTooltipTrigger>();
+                if (trigger == null) trigger = slotTransform.gameObject.AddComponent<SkillTooltipTrigger>();
+                trigger.Init(items[i], 1); // 아이템은 레벨 1로 고정
             }
             else
             {
@@ -611,5 +647,97 @@ public class BattleUI : MonoBehaviour
 
         HPBarImage.fillAmount = character.CurrentHp / character.MaxHp;
         HPText.text = $"{character.CurrentHp:F0} / {character.MaxHp:F0}";
+    }
+
+    public static BattleUI Instance { get; private set; }
+    private void Awake()
+    {
+        Instance = this;
+    }
+
+    // -------------------------------------------------------
+    // 스킬 툴팁 제어
+    // -------------------------------------------------------
+
+    /// <summary>
+    /// 스킬 툴팁을 표시합니다.
+    /// </summary>
+    public void ShowSkillTooltip(SkillData skill, int level, Vector3 worldPos, float yOffset)
+    {
+        if (tooltipPrefab == null) return;
+
+        // 인스턴스가 없으면 생성 (BattleUI 루트 하위로 생성하여 개별 레이아웃 제약 회피)
+        if (_tooltipInstance == null)
+        {
+            _tooltipInstance = Instantiate(tooltipPrefab, transform);
+        }
+
+        _tooltipInstance.gameObject.SetActive(true);
+        _tooltipInstance.transform.SetAsLastSibling();
+        _tooltipInstance.SetData(skill, level);
+
+        IsTooltipPerforming = true; // [추가]
+
+        // 월드 좌표 기준 설정 (버튼의 월드 좌표 + 화면상의 픽셀 오프셋)
+        // 사용중인 해상도/캔버스 스케일에 맞게 yOffset 보정
+        float canvasScale = transform.lossyScale.y;
+        _tooltipInstance.transform.position = worldPos + new Vector3(0, yOffset * canvasScale, 0);
+    }
+
+    /// <summary>
+    /// 스킬 툴팁을 숨깁니다.
+    /// </summary>
+    public void HideSkillTooltip()
+    {
+        if (_tooltipInstance != null)
+        {
+            _tooltipInstance.gameObject.SetActive(false);
+        }
+
+        // [추가] 즉시 해제하지 않고 약간의 지연을 둠 (클릭 이벤트 방지)
+        StartCoroutine(ResetTooltipFlagRoutine());
+    }
+
+    /// <summary>
+    /// 상태 효과 툴팁을 표시합니다.
+    /// </summary>
+    public void ShowStatusTooltip(StatusEffect effect, Vector3 worldPos, float height)
+    {
+        if (statusTooltipPrefab == null) return;
+
+        if (_statusTooltipInstance == null)
+        {
+            _statusTooltipInstance = Instantiate(statusTooltipPrefab, transform);
+        }
+
+        _statusTooltipInstance.gameObject.SetActive(true);
+        _statusTooltipInstance.transform.SetAsLastSibling();
+        _statusTooltipInstance.SetData(effect);
+
+        IsTooltipPerforming = true; // [추가]
+
+        // 아이콘 높이만큼 위로 띄움
+        _statusTooltipInstance.SetPosition(worldPos, height, transform.lossyScale.y);
+    }
+
+    /// <summary>
+    /// 상태 효과 툴팁을 숨깁니다.
+    /// </summary>
+    public void HideStatusTooltip()
+    {
+        if (_statusTooltipInstance != null)
+        {
+            _statusTooltipInstance.gameObject.SetActive(false);
+        }
+        
+        // [추가] 즉시 해제하지 않고 약간의 지연을 둠 (클릭 이벤트 방지)
+        StartCoroutine(ResetTooltipFlagRoutine());
+    }
+
+    private System.Collections.IEnumerator ResetTooltipFlagRoutine()
+    {
+        // 0.1초 정도 유지하여 뒤따라오는 클릭 이벤트를 씹음
+        yield return new WaitForSeconds(0.1f);
+        IsTooltipPerforming = false;
     }
 }

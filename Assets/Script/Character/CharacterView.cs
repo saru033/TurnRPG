@@ -5,6 +5,7 @@ using TMPro;
 using System.Collections.Generic;
 using TurnRPG.SkillSystem;
 using DG.Tweening;
+using System.Linq; // [추가] LINQ 확장 메서드 사용
 
 /// <summary>
 /// 캐릭터 프리팹 루트에 붙는 컴포넌트.
@@ -19,6 +20,7 @@ public class CharacterView : MonoBehaviour, IPointerClickHandler
     public Image hitbox;      // 유저가 따로 만든 히트박스 전용 이미지
     public Image hpBar;       // pivot (0, 0.5), anchor middle-left
     public Image hpBarBg;     // 체력바 배경 (최대 너비 참조용)
+    public Image shieldBar;   // [추가] 보호막 바 (hpBar 뒤에 배치 권장)
     public TextMeshProUGUI damageText;
     public GameObject buffPanel;
     [Tooltip("상태이상(버프/디버프) 아이콘 프리팹. StatusEffectIcon 스크립트가 붙어있어야 함")]
@@ -26,6 +28,7 @@ public class CharacterView : MonoBehaviour, IPointerClickHandler
 
     BattleCharacter _character;
     Dictionary<StatusEffect, GameObject> _buffIcons = new Dictionary<StatusEffect, GameObject>();
+    Dictionary<StatusEffect, GameObject> _vfxInstances = new Dictionary<StatusEffect, GameObject>(); // [추가] VFX 인스턴스 관리
     float _maxBarWidth;   // 체력 100%일 때 너비
 
     // -------------------------------------------------------
@@ -81,6 +84,13 @@ public class CharacterView : MonoBehaviour, IPointerClickHandler
         BattleEventManager.OnStatusEffectApplied -= HandleStatusEffectApplied;
         BattleEventManager.OnDamageTaken -= HandleDamageTaken;
         BattleEventManager.OnHealed -= HandleHealed;
+
+        // [추가] 관리 중인 모든 VFX 정리
+        foreach (var vfx in _vfxInstances.Values)
+        {
+            if (vfx != null) Destroy(vfx);
+        }
+        _vfxInstances.Clear();
     }
 
     private void HandleDamageTaken(BattleCharacter victim, BattleCharacter attacker, float damage, bool cannotBeCountered, bool isEvaded, bool isCritical, bool isItem)
@@ -142,6 +152,24 @@ public class CharacterView : MonoBehaviour, IPointerClickHandler
                 if (iconScript != null) iconScript.Init(effect);
                 _buffIcons[effect] = newGo;
             }
+
+            // [추가] 상시 VFX 처리
+            if (effect.Data.VFXPrefab != null && !_vfxInstances.ContainsKey(effect))
+            {
+                Transform spawnTarget = RetHitbox();
+                
+                // 프리팹이 비활성화 상태이므로, 생성 시 부모를 즉시 지정하고 활성화
+                GameObject vfxGo = Instantiate(effect.Data.VFXPrefab, spawnTarget);
+                vfxGo.SetActive(true);
+                
+                // KeepVFXAttached가 false면 부모 관계 해제 (위치는 유지)
+                if (!effect.Data.KeepVFXAttached)
+                {
+                    vfxGo.transform.SetParent(spawnTarget.parent); // 캐릭터가 아니라 전체 캐릭터 UI 루트 하위로 이동
+                }
+
+                _vfxInstances[effect] = vfxGo;
+            }
         }
         else // 만료 또는 해제됨
         {
@@ -150,7 +178,29 @@ public class CharacterView : MonoBehaviour, IPointerClickHandler
                 Destroy(go);
                 _buffIcons.Remove(effect);
             }
+
+            // [추가] 연동된 VFX 제거 처리
+            if (_vfxInstances.TryGetValue(effect, out var vfxGo))
+            {
+                if (vfxGo != null)
+                {
+                    var controller = vfxGo.GetComponent<EffectController>();
+                    if (controller != null)
+                    {
+                        // Looping인 경우 Stop()으로 페이드아웃 유도, 아니면 즉시 제거
+                        controller.Stop(); 
+                    }
+                    else
+                    {
+                        Destroy(vfxGo);
+                    }
+                }
+                _vfxInstances.Remove(effect);
+            }
         }
+
+        // [추가] 상태 효과(특히 보호막) 변경 시 체력바 즉시 갱신
+        UpdateHp();
     }
 
     private void HandleStatusEffectApplied(BattleCharacter target, StatusEffect effect)
@@ -182,13 +232,38 @@ public class CharacterView : MonoBehaviour, IPointerClickHandler
         if (object.ReferenceEquals(_character, null)) return;
         if (hpBar == null) return;
 
-        float ratio = Mathf.Clamp01(_character.CurrentHp / _character.MaxHp);
+        // 1. 현재 보호막 총 합량 계산
+        float totalShield = _character.ActiveStatusEffects
+            .Where(e => e.Data != null && e.Data.EffectType == StatusEffectType.Shield)
+            .Sum(e => e.DynamicValue);
 
-        // DOTween을 사용하여 부드럽게 게이지 변화 (0.3초 동안)
-        hpBar.DOKill(); // 이전 트윈이 진행 중이면 멈춤
-        hpBar.DOFillAmount(ratio, 0.3f).SetEase(Ease.OutCubic);
+        // 2. 전체 길이의 기준점(Denom) 산출
+        // 현재 HP + 보호막이 최대 체력을 넘어가면 그 합을 기준으로 비율 계산
+        float denom = Mathf.Max(_character.MaxHp, _character.CurrentHp + totalShield);
+        
+        float hpRatio = _character.CurrentHp / denom;
+        float totalRatio = (_character.CurrentHp + totalShield) / denom;
 
-        // 만약 기존처럼 너비 조절이 필요하다면 아래 주석 해제 (단, 이미지가 찌그러짐)
+        // 3. 게이지 애니메이션 (DOTween)
+        hpBar.DOKill();
+        hpBar.DOFillAmount(hpRatio, 0.3f).SetEase(Ease.OutCubic);
+
+        if (shieldBar != null)
+        {
+            shieldBar.DOKill();
+            if (totalShield > 0)
+            {
+                shieldBar.gameObject.SetActive(true);
+                shieldBar.DOFillAmount(totalRatio, 0.3f).SetEase(Ease.OutCubic);
+            }
+            else
+            {
+                // 보호막이 없으면 0으로 줄어든 뒤 비활성화
+                shieldBar.DOFillAmount(0f, 0.2f).OnComplete(() => shieldBar.gameObject.SetActive(false));
+            }
+        }
+
+        // 기존 너비 조절 방식은 사용자가 Fill 방식을 선호하므로 주석 유지
         // var rt = hpBar.rectTransform;
         // rt.sizeDelta = new Vector2(_maxBarWidth * ratio, rt.sizeDelta.y);
     }
@@ -229,6 +304,9 @@ public class CharacterView : MonoBehaviour, IPointerClickHandler
     // -------------------------------------------------------
     public void OnPointerClick(PointerEventData eventData)
     {
+        // [추가] 툴팁 확인 중(롱프레스)인 경우 클릭 선택 무시
+        if (BattleUI.Instance != null && BattleUI.Instance.IsTooltipPerforming) return;
+
         if (BattleManager.Instance != null && _character != null)
         {
             BattleManager.Instance.OnCharacterClicked(_character);

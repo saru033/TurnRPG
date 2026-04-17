@@ -218,6 +218,10 @@ public class BattleCharacter
             {
                 shield.DynamicValue -= actualDamage; // 데미지 전면 흡수
                 Debug.Log($"{Name} : 보호막이 {actualDamage} 피해를 방어했습니다. (남은량: {shield.DynamicValue})");
+                
+                // [추가] 보호막 수치가 변했으므로 UI 갱신을 위해 이벤트 발생
+                BattleEventManager.TriggerStatusEffectChanged(this, shield);
+
                 return 0; // 본체엔 0피해
             }
             else

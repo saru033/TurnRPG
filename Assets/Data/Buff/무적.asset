@@ -18,5 +18,5 @@ MonoBehaviour:
   Description: "\uBAA8\uB4E0 \uD53C\uD574\uB97C \uBB34\uD6A8\uD654 \uD569\uB2C8\uB2E4."
   Icon: {fileID: -1268243377512971718, guid: 6d7cbc1b559e68744983c25a91071209, type: 3}
   VFXPrefab: {fileID: 8068604026143477259, guid: 3ef855ac779699a4a98dac017601284d, type: 3}
-  KeepVFXAttached: 0
+  KeepVFXAttached: 1
   PrimaryValue: 0.5

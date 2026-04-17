@@ -281,7 +281,10 @@ public class EffectController : MonoBehaviour
         isPlaying = false;
     }
 
-    private void Deactivate()
+    /// <summary>
+    /// 이펙트 즉시 종료 및 파괴
+    /// </summary>
+    public void Deactivate()
     {
         isPlaying = false;
         //gameObject.SetActive(false);

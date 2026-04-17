@@ -21,19 +21,23 @@ MonoBehaviour:
   RequiredAnimationTrigger: skill
   UltimateCutsceneClip: {fileID: 0}
   LevelDatas:
-  - Description: "\uC544\uAD70\uC774 \uD53C\uACA9\uC2DC \uC790\uC2E0\uC758 \uD589\uB3D9\uAC8C\uC774\uC9C0\uB97C
-      100\uC99D\uAC00"
+  - Description: "\uC544\uAD70\uC774 \uD53C\uACA9\uC2DC \uC544\uAD70 \uC804\uCCB4\uC5D0\uAC8C
+      \uBCF4\uD638\uB9C9 \uBD80\uC5EC"
     Cooldown: 1
     TargetType: 0
     PassiveTrigger: 2
     ConstantEffects: []
     Effects:
-    - rid: 6423181046562947140
+    - rid: 6423181292674744386
   references:
     version: 2
     RefIds:
-    - rid: 6423181046562947140
-      type: {class: ActionGaugeEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+    - rid: 6423181292674744386
+      type: {class: ApplyStatusEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
       data:
-        TargetType: 1
-        Amount: 100
+        TargetType: 2
+        EffectData: {fileID: 11400000, guid: c1ea35754558ce947b7ab4365989e71c, type: 2}
+        Duration: 2
+        ApplyChance: 1
+        StatScaleType: 2
+        StatMultiplier: 0.25

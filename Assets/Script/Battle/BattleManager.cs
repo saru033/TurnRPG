@@ -377,11 +377,21 @@ public class BattleManager : MonoBehaviour
 
     public void OnSkillSelected(int skillIndex)
     {
+        // [추가] 툴팁 확인 중(롱프레스)인 경우 클릭 선택 무시
+        if (BattleUI.Instance != null && BattleUI.Instance.IsTooltipPerforming) return;
+
         // 타겟 선택 모드로 전환 (PlayerTurn -> SelectTarget)
         if (State != BattleState.PlayerTurn && State != BattleState.SelectTarget) return;
 
         var skillData = currentActor.ActiveSkills.Count > skillIndex ? currentActor.ActiveSkills[skillIndex] : null;
         if (skillData == null) return;
+
+        // [추가] 패시브 스킬은 수동 선택 불가
+        if (skillData.Type == SkillType.Passive)
+        {
+            Debug.Log($"[Battle] {skillData.SkillName}은 패시브 스킬이므로 선택할 수 없습니다.");
+            return;
+        }
 
         if (currentActor.SkillCooldowns.Length > skillIndex && currentActor.SkillCooldowns[skillIndex] > 0)
         {
@@ -399,6 +409,9 @@ public class BattleManager : MonoBehaviour
 
     public void OnItemSelected(int itemIndex)
     {
+        // [추가] 툴팁 확인 중(롱프레스)인 경우 클릭 선택 무시
+        if (BattleUI.Instance != null && BattleUI.Instance.IsTooltipPerforming) return;
+
         if (isItemUse || (State != BattleState.PlayerTurn && State != BattleState.SelectTarget)) return;
 
         if (currentItems.Count <= itemIndex || currentItems[itemIndex] == null) return;
@@ -1485,13 +1498,17 @@ public class BattleManager : MonoBehaviour
         // 간단한 AI: 강한 스킬(인덱스 2 -> 1 -> 0) 우선순위 검사
         for (int i = enemy.ActiveSkills.Count - 1; i >= 0; i--)
         {
-            if (enemy.ActiveSkills[i] != null && enemy.SkillCooldowns[i] <= 0)
+            var skill = enemy.ActiveSkills[i];
+            if (skill != null && enemy.SkillCooldowns[i] <= 0)
             {
+                // [추가] 패시브 스킬은 AI가 직접 사용하지 않음
+                if (skill.Type == SkillType.Passive) continue;
+
                 // 침묵 상태일 경우 1번 스킬(인덱스 0)만 선택 가능
                 if (isSilenced && i > 0) continue;
 
                 selectedIndex = i;
-                selectedSkill = enemy.ActiveSkills[i];
+                selectedSkill = skill;
                 break;
             }
         }
