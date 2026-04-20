@@ -15,7 +15,7 @@ MonoBehaviour:
   ID: 1000
   CharacterName: male
   isPlayer: 1
-  MaxHp: 512
+  MaxHp: 12
   Attack: 115
   Defense: 89
   Speed: 98

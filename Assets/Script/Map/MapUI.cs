@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -62,6 +62,7 @@ public class MapUI : MonoBehaviour
     // -------------------------------------------------------
     [Header("Game Panel")]
     public GameObject BattlePanel;
+    public StageDatabase stageDatabase; // [신규] 스테이지 데이터를 뽑아올 데이터베이스
 
     void ComputeLayout()
     {
@@ -318,6 +319,17 @@ public class MapUI : MonoBehaviour
         switch (currentNode.Type)
         {
             case NodeType.Normal:
+                // [수정] 비활성 상태에서도 데이터를 전달할 수 있도록 직접 컴포넌트 추출
+                if (BattlePanel != null)
+                {
+                    var bm = BattlePanel.GetComponentInChildren<BattleManager>();
+                    if (bm != null && stageDatabase != null)
+                    {
+                        var selectedStage = stageDatabase.GetRandomStage();
+                        bm.currentStage = selectedStage;
+                    }
+                }
+
                 LobbyTopUI.Instance.HideUI();
                 BattlePanel.SetActive(true);
                 gameObject.SetActive(false);

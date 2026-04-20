@@ -218,7 +218,7 @@ public class BattleCharacter
             {
                 shield.DynamicValue -= actualDamage; // 데미지 전면 흡수
                 Debug.Log($"{Name} : 보호막이 {actualDamage} 피해를 방어했습니다. (남은량: {shield.DynamicValue})");
-                
+
                 // [추가] 보호막 수치가 변했으므로 UI 갱신을 위해 이벤트 발생
                 BattleEventManager.TriggerStatusEffectChanged(this, shield);
 
@@ -237,7 +237,14 @@ public class BattleCharacter
             }
         }
 
+        bool wasAlive = CurrentHp > 0;
         CurrentHp = Mathf.Max(0f, CurrentHp - actualDamage);
+
+        // [추가] 사망 처리
+        if (wasAlive && CurrentHp <= 0)
+        {
+            Die();
+        }
 
         // [추가] 수면 상태 해제 (데미지가 0보다 클 때)
         if (actualDamage > 0 && HasStatusEffect(StatusEffectType.Sleep))
@@ -296,6 +303,53 @@ public class BattleCharacter
 
         CurrentHp = Mathf.Min(CurrentHp + amount, MaxHp);
         BattleEventManager.TriggerHealed(this, amount);
+    }
+
+    /// <summary>
+    /// 캐릭터 사망 처리 (연출 및 UI 연동)
+    /// </summary>
+    public void Die()
+    {
+        Debug.Log($"[사망] {Name}이(가) 쓰러졌습니다.");
+
+
+        //VFX
+        if (BattleVFXManager.Instance != null)
+            BattleVFXManager.Instance.SpawnVFX(VFXType.Death, this.View.RetHitbox(), flipX: IsPlayer, detach: true);
+
+        // 시각 연출 호출
+        if (View != null)
+            View.PlayDeathAnimation();
+
+        // 행동 게이지 아이콘 숨기기
+        if (BattleManager.Instance != null && BattleManager.Instance.battleUI != null)
+            BattleManager.Instance.battleUI.SetPortraitVisibility(this, false);
+    }
+
+    /// <summary>
+    /// 캐릭터 부활 처리 (체력 설정 및 연출 연동)
+    /// </summary>
+    public void Revive(float hpAmount)
+    {
+        // 이미 살아있다면 무시 (필요 시)
+        // if (IsAlive) return;
+
+        // 상태이상 클리어
+        ActiveStatusEffects.Clear();
+
+        CurrentHp = Mathf.Clamp(hpAmount, 1f, MaxHp);
+        Debug.Log($"[부활] {Name}이(가) 체력 {CurrentHp}으로 복귀했습니다.");
+
+        // 시각 연출 호출
+        if (View != null)
+            View.PlayReviveAnimation();
+
+        // 행동 게이지 아이콘 다시 표시
+        if (BattleManager.Instance != null && BattleManager.Instance.battleUI != null)
+            BattleManager.Instance.battleUI.SetPortraitVisibility(this, true);
+
+        // 부활도 일종의 회복 이벤트로 취급
+        BattleEventManager.TriggerHealed(this, 0);
     }
 
     public (float damage, bool isCrit) CalcDamage(float baseDamage, bool isCriResist = false)

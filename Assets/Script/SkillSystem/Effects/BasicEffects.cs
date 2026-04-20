@@ -163,21 +163,9 @@ namespace TurnRPG.SkillSystem.Effects
                 {
                     float reviveHp = t.MaxHp * RevivalHpPercent;
 
-                    // 기존에 걸려있던 각종 해로운 상태이상이나 버프 모두 지우기
-                    t.ActiveStatusEffects.Clear();
+                    // [수정] 직접 수치를 바꾸는 대신 Revive 메서드를 호출하여 연출과 로직을 통합 처리
+                    t.Revive(reviveHp);
 
-                    // 체력 상승 (자동으로 IsAlive가 true가 됨)
-                    t.CurrentHp = reviveHp;
-
-                    // 시각 이펙트(VFX) 처리
-                    if (BattleVFXManager.Instance != null)
-                        BattleVFXManager.Instance.SpawnVFX(VFXType.Heal, t.View.RetHitbox());
-
-                    // [추가] 부활 알림 (UI 갱신 등을 위해 데미지 0짜리 이벤트를 활용하던 것을 TriggerHealed로 변경)
-                    // 데미지 이벤트를 쓰지 않음으로써 부활 시 반격이 터지는 버그를 방지합니다.
-                    BattleEventManager.TriggerHealed(t, 0);
-
-                    Debug.Log($"[부활!] {t.Name}이(가) 체력 {reviveHp}으로 부활했습니다!");
                     revivedAnyone = true;
                 }
             }

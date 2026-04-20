@@ -11,6 +11,14 @@ public class Actiongaugesystem : MonoBehaviour
 
     public int ReadyCount => _readyQueue.Count;
 
+    /// <summary>
+    /// 행동게이지 시스템을 초기화합니다. (새로운 전투 시작 시 호출)
+    /// </summary>
+    public void ResetSystem()
+    {
+        _readyQueue.Clear();
+    }
+
     // -------------------------------------------------------
     // 강제 추가 턴 부여 (큐 최상단 삽입)
     // -------------------------------------------------------

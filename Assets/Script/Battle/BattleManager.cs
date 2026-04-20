@@ -14,6 +14,9 @@ public class BattleManager : MonoBehaviour
     public BattleUI battleUI;
     public CharacterPlacer characterPlacer;
     public RectTransform battleBackground; // [추가] 카메라 효과용 배경 RectTransform
+    public Image backgroundDisplay;        // [신규] 배경 이미지를 실제 보여줄 Image 컴포넌트
+    public StageData currentStage;          // [신규] 현재 도전 중인 스테이지 데이터
+    public GameObject mapUIObject;          // [신규] 복귀할 맵 UI 게임 오브젝트
 
     [Header("전투 참가 데이터")]
     [Tooltip("아군은 GameManager에서 가져옵니다. 여기의 리스트는 적군 생성용으로 사용됩니다.")]
@@ -47,6 +50,7 @@ public class BattleManager : MonoBehaviour
     public bool isItemUse = false;
 
     private LinkedList<IEnumerator> extraActionQueue = new LinkedList<IEnumerator>();
+    private bool _isBattleOverFlag = false; // [추가] 중복 종료 방지용 플래그
 
     public void EnqueueExtraAction(IEnumerator action)
     {
@@ -66,7 +70,13 @@ public class BattleManager : MonoBehaviour
     // -------------------------------------------------------
     // Unity lifecycle
     // -------------------------------------------------------
-    IEnumerator Start()
+    void OnEnable()
+    {
+        // 패널이 활성화될 때마다 초기화 코루틴 시작
+        StartCoroutine(SetupAndStartBattle());
+    }
+
+    IEnumerator SetupAndStartBattle()
     {
         yield return null;   // UI Layout 계산 완료 대기
         yield return StartCoroutine(InitBattle());
@@ -77,12 +87,18 @@ public class BattleManager : MonoBehaviour
     // -------------------------------------------------------
     IEnumerator InitBattle()
     {
-        // ScriptableObject(CharacterData) 리스트를 기반으로 런타임 캐릭터 생성
-        allCharacters = new List<BattleCharacter>();
+        State = BattleState.Idle;  // 상태 초기화
+        _isBattleOverFlag = false; // 플래그 초기화
+        isItemUse = false;         // 아이템 사용 상태 초기화
+        _selectedItemIndex = -1;   // 선택된 아이템 인덱스 초기화
 
-        // Actiongaugesystem은 MonoBehaviour이므로 컴포넌트 방식으로 초기화
+        // Actiongaugesystem 초기화
         gaugeSystem = GetComponent<Actiongaugesystem>();
         if (gaugeSystem == null) gaugeSystem = gameObject.AddComponent<Actiongaugesystem>();
+        gaugeSystem.ResetSystem();
+
+        // [중요] 기존 캐릭터 리스트 비우기
+        allCharacters = new List<BattleCharacter>();
 
         // 1. 아군 캐릭터 생성 (GameManager 우선)
         if (GameManager.Instance != null)
@@ -114,10 +130,12 @@ public class BattleManager : MonoBehaviour
         }
 
         // 2. 적군 캐릭터 생성
-        // (1) 기존의 enemyTemplates 활용 (isPlayer=false인 것들)
-        if (enemyTemplates != null)
+        // (1) StageData가 있으면 해당 리스트 사용, 없으면 기존 템플릿 사용 (하위 호환)
+        List<CharacterData> enemySource = (currentStage != null) ? currentStage.enemies : enemyTemplates;
+
+        if (enemySource != null)
         {
-            foreach (var data in enemyTemplates)
+            foreach (var data in enemySource)
             {
                 if (data != null && !data.isPlayer)
                 {
@@ -126,7 +144,7 @@ public class BattleManager : MonoBehaviour
             }
         }
 
-        // (2) 디버그용 리스트 활용 (무조건 적군으로 생성)
+        // (2) 디버그용 리스트 활용 (있을 때만 추가 생성)
         if (debugEnemyDatas != null)
         {
             foreach (var data in debugEnemyDatas)
@@ -136,6 +154,12 @@ public class BattleManager : MonoBehaviour
                     CreateEnemy(data);
                 }
             }
+        }
+
+        // --- 2.5 배경 이미지 설정 ---
+        if (currentStage != null && currentStage.backgroundSprite != null && backgroundDisplay != null)
+        {
+            backgroundDisplay.sprite = currentStage.backgroundSprite;
         }
 
         battleUI.Init(allCharacters);
@@ -655,8 +679,20 @@ public class BattleManager : MonoBehaviour
         if (currentItems.Contains(skill))
         {
             currentItems.Remove(skill);
+            // [추가] GameManager의 실제 인벤토리에서도 삭제 (영구 소모)
+            if (GameManager.Instance != null && GameManager.Instance.playerItems.Contains(skill))
+            {
+                GameManager.Instance.playerItems.Remove(skill);
+            }
         }
         battleUI.RefreshItemSlots(currentItems);
+
+        // [추가] 아이템 사용 후 전투 승패 여부 체크
+        if (IsOver())
+        {
+            OnBattleEnd();
+            yield break; // 전투 종료 시 이후 로직 스킵
+        }
 
         //스킬창 복구
         isItemUse = false;
@@ -1537,10 +1573,28 @@ public class BattleManager : MonoBehaviour
 
     void OnBattleEnd()
     {
+        if (_isBattleOverFlag) return; // 이미 종료 처리가 되었다면 무시
+        _isBattleOverFlag = true;
+
+        // [추가] 모든 캐릭터의 이벤트 구독 해제 (다음 전투에서 잔상이 남는 문제 방지)
+        if (allCharacters != null)
+        {
+            foreach (var bc in allCharacters)
+            {
+                bc.UnsubscribeEvents();
+            }
+        }
+
         bool playerDead = allCharacters.TrueForAll(c => !c.IsPlayer || !c.IsAlive);
         State = playerDead ? BattleState.Lose : BattleState.Win;
         battleUI.SetSkillButtonsVisible(false);
         battleUI.SetItemVisible(false);
+
+        // [추가] 승리 시 보상 지급 로직
+        if (State == BattleState.Win && currentStage != null)
+        {
+            GrantBattleRewards();
+        }
 
         // [추가] 전투 후 체력 데이터 GameManager에 저장
         if (GameManager.Instance != null)
@@ -1560,6 +1614,69 @@ public class BattleManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    /// <summary>
+    /// 전투 승리 보상을 계산하고 GameManager에 반영합니다. (로그 출력 포함)
+    /// </summary>
+    private void GrantBattleRewards()
+    {
+        if (GameManager.Instance == null || currentStage == null) return;
+
+        // 1. 골드 및 강화 재료 계산
+        int rewardGold = UnityEngine.Random.Range(currentStage.minGold, currentStage.maxGold + 1);
+        int rewardSkillUp = UnityEngine.Random.Range(currentStage.minSkillUp, currentStage.maxSkillUp + 1);
+
+        GameManager.Instance.gold += rewardGold;
+        GameManager.Instance.skillup += rewardSkillUp;
+
+        string rewardLog = $"<b>[전투 승리 - Stage {currentStage.stageID}]</b>\n";
+        rewardLog += $"- 획득 골드: {rewardGold} (보유: {GameManager.Instance.gold})\n";
+        rewardLog += $"- 획득 강화석: {rewardSkillUp} (보유: {GameManager.Instance.skillup})\n";
+
+        // 2. 배틀 아이템 랜덤 획득 (1~2개)
+        List<SkillData> droppedItems = new List<SkillData>();
+
+        if (currentStage.potentialBattleItems != null && currentStage.potentialBattleItems.Count > 0)
+        {
+            int itemDropCount = UnityEngine.Random.Range(1, 3); // 1~2개
+            rewardLog += "- 획득 아이템: ";
+
+            for (int i = 0; i < itemDropCount; i++)
+            {
+                int randomIndex = UnityEngine.Random.Range(0, currentStage.potentialBattleItems.Count);
+                var droppedItem = currentStage.potentialBattleItems[randomIndex];
+
+                if (droppedItem != null)
+                {
+                    GameManager.Instance.playerItems.Add(droppedItem);
+                    droppedItems.Add(droppedItem);
+                    rewardLog += $"[{droppedItem.SkillName}]" + (i < itemDropCount - 1 ? ", " : "");
+                }
+            }
+        }
+
+        Debug.Log(rewardLog);
+
+        // 3. UI 팝업 노출 연동
+        if (battleUI != null && battleUI.rewardPanel != null)
+        {
+            LobbyTopUI.Instance.Refresh();
+            battleUI.rewardPanel.Setup(rewardGold, rewardSkillUp, droppedItems, OnRewardConfirmed);
+            LobbyTopUI.Instance.ShowUI();
+        }
+    }
+
+    /// <summary>
+    /// 보상 확인 버튼 클릭 시 실행될 콜백 (맵으로 복귀)
+    /// </summary>
+    public void OnRewardConfirmed()
+    {
+        // 2. 맵 UI 다시 활성화
+        if (mapUIObject != null)
+            mapUIObject.SetActive(true);
+
+        this.gameObject.SetActive(false);
     }
 
     // -------------------------------------------------------

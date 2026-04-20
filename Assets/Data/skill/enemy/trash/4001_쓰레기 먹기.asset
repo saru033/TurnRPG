@@ -40,4 +40,4 @@ MonoBehaviour:
         Duration: 2
         ApplyChance: 1
         StatScaleType: 2
-        StatMultiplier: 0.25
+        StatMultiplier: 0.5

@@ -30,6 +30,7 @@ public class BattleUI : MonoBehaviour
     public Image HPBarImage;
     public TextMeshProUGUI HPText;
     public RectTransform select_SkillRect;
+    public RewardPanelUI rewardPanel;      // [신규] 승리 보상 패널
 
     [Header("Tooltip")]
     public SkillTooltipUI tooltipPrefab;
@@ -306,6 +307,18 @@ public class BattleUI : MonoBehaviour
     /// <summary>
     /// [추가] 캐릭터에 해당하는 포트레이트 아이콘을 반환합니다.
     /// </summary>
+    /// <summary>
+    /// 캐릭터의 행동 게이지 초상화 표시 여부를 설정합니다.
+    /// </summary>
+    public void SetPortraitVisibility(BattleCharacter character, bool visible)
+    {
+        var portrait = GetPortrait(character);
+        if (portrait != null)
+        {
+            portrait.SetVisible(visible);
+        }
+    }
+
     public GaugePortrait GetPortrait(BattleCharacter actor)
     {
         for (int i = 0; i < characters.Count; i++)
@@ -390,7 +403,7 @@ public class BattleUI : MonoBehaviour
                     {
                         var trigger = btn.GetComponent<SkillTooltipTrigger>();
                         if (trigger == null) trigger = btn.gameObject.AddComponent<SkillTooltipTrigger>();
-                        
+
                         int level = (actor.SkillLevels.Length > i) ? actor.SkillLevels[i] : 1;
                         trigger.Init(skill, level);
                     }
@@ -729,7 +742,7 @@ public class BattleUI : MonoBehaviour
         {
             _statusTooltipInstance.gameObject.SetActive(false);
         }
-        
+
         // [추가] 즉시 해제하지 않고 약간의 지연을 둠 (클릭 이벤트 방지)
         StartCoroutine(ResetTooltipFlagRoutine());
     }

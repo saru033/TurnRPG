@@ -32,6 +32,7 @@ namespace TurnRPG.SkillSystem
         public GameObject removeBuffVFXPrefab;
         public GameObject removeDebuffVFXPrefab;
         public GameObject extraMoveVFXPrefab;
+        public GameObject deathVFXPrefab;
 
         private void Awake()
         {
@@ -46,7 +47,7 @@ namespace TurnRPG.SkillSystem
         /// <summary>
         /// 지정된 타입의 VFX를 대상 트랜스폼 위치에 생성합니다.
         /// </summary>
-        public void SpawnVFX(VFXType type, Transform target, bool flipX = false)
+        public void SpawnVFX(VFXType type, Transform target, bool flipX = false, bool detach = false)
         {
             if (target == null) return;
 
@@ -84,6 +85,9 @@ namespace TurnRPG.SkillSystem
                 case VFXType.extraMove:
                     prefab = extraMoveVFXPrefab;
                     break;
+                case VFXType.Death:
+                    prefab = deathVFXPrefab;
+                    break;
             }
 
             if (prefab != null)
@@ -94,8 +98,6 @@ namespace TurnRPG.SkillSystem
                 vfx.transform.localRotation = Quaternion.identity;
 
                 // 좌우 반전 적용
-                // 아군 전용 프리팹(hitAllyVFXPrefab)을 직접 쓰는 경우 이미 반전되어 있을 수 있으므로
-                // 기본 프리팹을 공유해서 쓸 때만 코드로 반전을 수행합니다.
                 if (flipX && prefab == hitVFXPrefab)
                 {
                     vfx.transform.localScale = new Vector3(-1, 1, 1);
@@ -103,6 +105,23 @@ namespace TurnRPG.SkillSystem
                 else
                 {
                     vfx.transform.localScale = Vector3.one;
+                }
+
+                // [추가] 생성 직후 부모로부터 분리하여 캐릭터 비활성화와 무관하게 동작하게 함
+                if (detach)
+                {
+                    // 히트박스의 부모는 캐릭터 본체이므로, 
+                    // 본체의 부모(전투 패널)를 찾아 그쪽으로 옮겨야 캐릭터 비활성화의 영향을 받지 않습니다.
+                    var characterRoot = target.GetComponentInParent<CharacterView>();
+                    if (characterRoot != null)
+                    {
+                        vfx.transform.SetParent(characterRoot.transform.parent, true);
+                    }
+                    else if (target.parent != null)
+                    {
+                        // 최후의 수단으로 현재 타겟의 한 단계 위 부모로 이동
+                        vfx.transform.SetParent(target.parent.parent, true);
+                    }
                 }
             }
         }
@@ -118,6 +137,7 @@ namespace TurnRPG.SkillSystem
         Shield,
         RemoveBuff,
         RemoveDebuff,
-        extraMove
+        extraMove,
+        Death
     }
 }

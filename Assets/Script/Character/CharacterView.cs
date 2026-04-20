@@ -27,6 +27,7 @@ public class CharacterView : MonoBehaviour, IPointerClickHandler
     public GameObject statusEffectPrefab;
 
     BattleCharacter _character;
+    CanvasGroup _canvasGroup; // [추가] 전체 투명도 관리를 위한 CanvasGroup
     Dictionary<StatusEffect, GameObject> _buffIcons = new Dictionary<StatusEffect, GameObject>();
     Dictionary<StatusEffect, GameObject> _vfxInstances = new Dictionary<StatusEffect, GameObject>(); // [추가] VFX 인스턴스 관리
     float _maxBarWidth;   // 체력 100%일 때 너비
@@ -37,6 +38,8 @@ public class CharacterView : MonoBehaviour, IPointerClickHandler
     public void Init(BattleCharacter character)
     {
         _character = character;
+        _canvasGroup = GetComponent<CanvasGroup>();
+        if (_canvasGroup == null) _canvasGroup = gameObject.AddComponent<CanvasGroup>();
 
         // 프리팹에서 설정한 최초 길이를 100% 기준으로 사용 (배경 이미지에 맞추지 않음)
         if (hpBar != null)
@@ -157,11 +160,11 @@ public class CharacterView : MonoBehaviour, IPointerClickHandler
             if (effect.Data.VFXPrefab != null && !_vfxInstances.ContainsKey(effect))
             {
                 Transform spawnTarget = RetHitbox();
-                
+
                 // 프리팹이 비활성화 상태이므로, 생성 시 부모를 즉시 지정하고 활성화
                 GameObject vfxGo = Instantiate(effect.Data.VFXPrefab, spawnTarget);
                 vfxGo.SetActive(true);
-                
+
                 // KeepVFXAttached가 false면 부모 관계 해제 (위치는 유지)
                 if (!effect.Data.KeepVFXAttached)
                 {
@@ -188,7 +191,7 @@ public class CharacterView : MonoBehaviour, IPointerClickHandler
                     if (controller != null)
                     {
                         // Looping인 경우 Stop()으로 페이드아웃 유도, 아니면 즉시 제거
-                        controller.Stop(); 
+                        controller.Stop();
                     }
                     else
                     {
@@ -240,7 +243,7 @@ public class CharacterView : MonoBehaviour, IPointerClickHandler
         // 2. 전체 길이의 기준점(Denom) 산출
         // 현재 HP + 보호막이 최대 체력을 넘어가면 그 합을 기준으로 비율 계산
         float denom = Mathf.Max(_character.MaxHp, _character.CurrentHp + totalShield);
-        
+
         float hpRatio = _character.CurrentHp / denom;
         float totalRatio = (_character.CurrentHp + totalShield) / denom;
 
@@ -339,5 +342,42 @@ public class CharacterView : MonoBehaviour, IPointerClickHandler
     {
         Transform spawnTarget = hitbox != null ? hitbox.transform : (illustration != null ? illustration.transform : this.transform);
         return spawnTarget;
+    }
+    // -------------------------------------------------------
+    // 사망 및 부활 연출
+    // -------------------------------------------------------
+
+    /// <summary>
+    /// 캐릭터 사망 연출 (전체 페이드 아웃 후 비활성화)
+    /// </summary>
+    public void PlayDeathAnimation()
+    {
+        if (_canvasGroup == null)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+
+        // 전체 UI를 0.5초 동안 투명하게 만든 뒤 오브젝트 비활성화
+        _canvasGroup.DOKill();
+        _canvasGroup.DOFade(0f, 0.5f).OnComplete(() =>
+        {
+            gameObject.SetActive(false);
+        });
+    }
+
+    /// <summary>
+    /// 캐릭터 부활 연출 (활성화 후 전체 페이드 인)
+    /// </summary>
+    public void PlayReviveAnimation()
+    {
+        gameObject.SetActive(true);
+
+        if (_canvasGroup == null) return;
+
+        // 투명도 0에서 시작하여 0.3초 동안 페이드 인
+        _canvasGroup.DOKill();
+        _canvasGroup.alpha = 0f;
+        _canvasGroup.DOFade(1f, 0.3f);
     }
 }

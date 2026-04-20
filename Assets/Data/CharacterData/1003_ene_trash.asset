@@ -15,10 +15,10 @@ MonoBehaviour:
   ID: 1003
   CharacterName: Enemy_trash
   isPlayer: 0
-  MaxHp: 487
+  MaxHp: 12
   Attack: 125
   Defense: 73
-  Speed: 85
+  Speed: 230
   CritChance: 0.15
   CritDamage: 1.5
   Evasion: 0

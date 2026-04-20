@@ -15,7 +15,7 @@ MonoBehaviour:
   ID: 1004
   CharacterName: Enemy_trash
   isPlayer: 0
-  MaxHp: 487
+  MaxHp: 12
   Attack: 125
   Defense: 73
   Speed: 62
