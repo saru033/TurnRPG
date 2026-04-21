@@ -1649,7 +1649,6 @@ public class BattleManager : MonoBehaviour
 
                 if (droppedItem != null)
                 {
-                    GameManager.Instance.playerItems.Add(droppedItem);
                     droppedItems.Add(droppedItem);
                     rewardLog += $"[{droppedItem.SkillName}]" + (i < itemDropCount - 1 ? ", " : "");
                 }
@@ -1657,6 +1656,7 @@ public class BattleManager : MonoBehaviour
         }
 
         Debug.Log(rewardLog);
+        Debug.Log($"[BattleManager] 보상 패널에 전달될 아이템 개수: {droppedItems.Count}");
 
         // 3. UI 팝업 노출 연동
         if (battleUI != null && battleUI.rewardPanel != null)

@@ -255,6 +255,10 @@ public class BattleUI : MonoBehaviour
                 {
                     if (object.ReferenceEquals(bm, null)) { Debug.LogError("[BattleUI] battleManager null"); return; }
 
+                    // [추가] 롱프레스(툴팁 확인) 중이었다면 클릭 로직 무시
+                    var trigger = skillButtons[idx].GetComponent<SkillTooltipTrigger>();
+                    if (trigger != null && trigger.WasLongPressed) return;
+
                     float timeSinceLastClick = Time.time - lastClickTime;
                     bool isDoubleClick = (lastClickedIndex == idx) && (timeSinceLastClick <= doubleClickThreshold);
 

@@ -12,6 +12,7 @@ public class SkillTooltipTrigger : MonoBehaviour, IPointerDownHandler, IPointerU
     private int _level;
     private Coroutine _showRoutine;
     private bool _isPressed = false;
+    public bool WasLongPressed { get; private set; } // [추가] 롱프레스 발생 여부 확인용
 
     public void Init(SkillData skill, int level)
     {
@@ -24,6 +25,7 @@ public class SkillTooltipTrigger : MonoBehaviour, IPointerDownHandler, IPointerU
         if (_skill == null) return;
         
         _isPressed = true;
+        WasLongPressed = false; // [추가] 새로운 터치 시 리셋
         StopPressRoutine();
         _showRoutine = StartCoroutine(ShowDelayRoutine());
     }
@@ -45,6 +47,7 @@ public class SkillTooltipTrigger : MonoBehaviour, IPointerDownHandler, IPointerU
 
         if (_isPressed)
         {
+            WasLongPressed = true; // [추가] 툴팁이 떴으므로 롱프레스 성공
             // BattleUI를 통해 툴팁 표시 요청
             if (BattleUI.Instance != null)
             {
