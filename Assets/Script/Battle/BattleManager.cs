@@ -18,6 +18,10 @@ public class BattleManager : MonoBehaviour
     public StageData currentStage;          // [신규] 현재 도전 중인 스테이지 데이터
     public GameObject mapUIObject;          // [신규] 복귀할 맵 UI 게임 오브젝트
 
+    //처음 전투 진입시 흰 화면을 방지하기 위한 검은 이미지
+    public GameObject blackScreen;
+
+
     [Header("전투 참가 데이터")]
     [Tooltip("아군은 GameManager에서 가져옵니다. 여기의 리스트는 적군 생성용으로 사용됩니다.")]
     public List<CharacterData> enemyTemplates;
@@ -229,6 +233,7 @@ public class BattleManager : MonoBehaviour
         }
 
         State = BattleState.Idle;
+        blackScreen.SetActive(false);
         StartCoroutine(TurnLoop());
     }
 
