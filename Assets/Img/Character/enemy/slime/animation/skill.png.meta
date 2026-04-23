@@ -1,0 +1,1254 @@
+fileFormatVersion: 2
+guid: 0682843239c00e641b50c6499a9347fd
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4570798770633425828
+    second: eyes-closed-and-lose_0
+  - first:
+      213: 4188147396214184772
+    second: eyes-closed-and-lose_1
+  - first:
+      213: -67674546014619996
+    second: eyes-closed-and-lose_2
+  - first:
+      213: 7579835955487883864
+    second: eyes-closed-and-lose_3
+  - first:
+      213: -7542016811439691777
+    second: eyes-closed-and-lose_4
+  - first:
+      213: -1446449555588703829
+    second: eyes-closed-and-lose_5
+  - first:
+      213: 8037716430464276734
+    second: eyes-closed-and-lose_6
+  - first:
+      213: 3071556835339434336
+    second: eyes-closed-and-lose_7
+  - first:
+      213: 6243936922602511290
+    second: eyes-closed-and-lose_8
+  - first:
+      213: 2760602972831814714
+    second: eyes-closed-and-lose_9
+  - first:
+      213: -4363370528384194445
+    second: eyes-closed-and-lose_10
+  - first:
+      213: 5077482832195213310
+    second: eyes-closed-and-lose_11
+  - first:
+      213: -115509851057541551
+    second: eyes-closed-and-lose_12
+  - first:
+      213: 5029149148895472844
+    second: eyes-closed-and-lose_13
+  - first:
+      213: 2951645440110681574
+    second: eyes-closed-and-lose_14
+  - first:
+      213: 8066043462944441268
+    second: eyes-closed-and-lose_15
+  - first:
+      213: 6149081102608857219
+    second: eyes-closed-and-lose_16
+  - first:
+      213: 3700644068752676208
+    second: eyes-closed-and-lose_17
+  - first:
+      213: 3421901703713218269
+    second: eyes-closed-and-lose_18
+  - first:
+      213: 7424168401047606466
+    second: eyes-closed-and-lose_19
+  - first:
+      213: 6188402848888556800
+    second: eyes-closed-and-lose_20
+  - first:
+      213: 5270993718993945452
+    second: eyes-closed-and-lose_21
+  - first:
+      213: -1934621361491095823
+    second: eyes-closed-and-lose_22
+  - first:
+      213: 291984553331993497
+    second: eyes-closed-and-lose_23
+  - first:
+      213: -4369237629202976500
+    second: eyes-closed-and-lose_24
+  - first:
+      213: -1120171104299233821
+    second: eyes-closed-and-lose_25
+  - first:
+      213: -7593431893859816380
+    second: eyes-closed-and-lose_26
+  - first:
+      213: 4661333450868763409
+    second: eyes-closed-and-lose_27
+  - first:
+      213: 7617646333422107125
+    second: eyes-closed-and-lose_28
+  - first:
+      213: 1740446844447214435
+    second: eyes-closed-and-lose_29
+  - first:
+      213: 1396764096088765630
+    second: eyes-closed-and-lose_30
+  - first:
+      213: 7180087555290640173
+    second: eyes-closed-and-lose_31
+  - first:
+      213: 7812998301123305043
+    second: eyes-closed-and-lose_32
+  - first:
+      213: 3692740813973298914
+    second: eyes-closed-and-lose_33
+  - first:
+      213: 1509149424196276153
+    second: eyes-closed-and-lose_34
+  - first:
+      213: 3049655557816572426
+    second: eyes-closed-and-lose_35
+  - first:
+      213: -8167554065918392206
+    second: eyes-closed-and-lose_36
+  - first:
+      213: -3900581665070094552
+    second: eyes-closed-and-lose_37
+  - first:
+      213: 5350496961723166088
+    second: eyes-closed-and-lose_38
+  - first:
+      213: 2202294730248441650
+    second: eyes-closed-and-lose_39
+  - first:
+      213: 8757338652662188024
+    second: eyes-closed-and-lose_40
+  - first:
+      213: -2264770248167123987
+    second: eyes-closed-and-lose_41
+  - first:
+      213: 3155009664572595807
+    second: eyes-closed-and-lose_42
+  - first:
+      213: -3836020399337399975
+    second: eyes-closed-and-lose_43
+  - first:
+      213: 1591220440254384966
+    second: eyes-closed-and-lose_44
+  - first:
+      213: 3608225129265024176
+    second: eyes-closed-and-lose_45
+  - first:
+      213: -2367662622354173562
+    second: eyes-closed-and-lose_46
+  - first:
+      213: -8285329107355467282
+    second: eyes-closed-and-lose_47
+  - first:
+      213: 7456942685728126337
+    second: eyes-closed-and-lose_48
+  - first:
+      213: -6300093063862887731
+    second: eyes-closed-and-lose_49
+  - first:
+      213: -3425878839113822695
+    second: eyes-closed-and-lose_50
+  - first:
+      213: 7151625875089943192
+    second: eyes-closed-and-lose_51
+  - first:
+      213: 3337644701802535500
+    second: eyes-closed-and-lose_52
+  - first:
+      213: 8226848367212996675
+    second: eyes-closed-and-lose_53
+  - first:
+      213: -5039975087043269614
+    second: eyes-closed-and-lose_54
+  - first:
+      213: 2970021126963185936
+    second: eyes-closed-and-lose_55
+  - first:
+      213: -4667483726434755092
+    second: eyes-closed-and-lose_56
+  - first:
+      213: -6304703964095835626
+    second: eyes-closed-and-lose_57
+  - first:
+      213: -6175555438516955489
+    second: eyes-closed-and-lose_58
+  - first:
+      213: 1394294895063731400
+    second: eyes-closed-and-lose_59
+  - first:
+      213: -4041085870181816030
+    second: eyes-closed-and-lose_60
+  - first:
+      213: -2093951489430611194
+    second: eyes-closed-and-lose_61
+  - first:
+      213: -332036281508849955
+    second: eyes-closed-and-lose_62
+  - first:
+      213: 8035883652450170939
+    second: eyes-closed-and-lose_63
+  - first:
+      213: 4849643008827551527
+    second: eyes-closed-and-lose_64
+  - first:
+      213: 2320156911302437237
+    second: eyes-closed-and-lose_65
+  - first:
+      213: 3525424385869001323
+    second: eyes-closed-and-lose_66
+  - first:
+      213: -6776864651157957130
+    second: eyes-closed-and-lose_67
+  - first:
+      213: -31544014687638857
+    second: eyes-closed-and-lose_68
+  - first:
+      213: -3295170867397577160
+    second: eyes-closed-and-lose_69
+  - first:
+      213: 7165471986592953585
+    second: eyes-closed-and-lose_70
+  - first:
+      213: -5934035874432901536
+    second: eyes-closed-and-lose_71
+  - first:
+      213: -8313506667615263904
+    second: eyes-closed-and-lose_72
+  - first:
+      213: -7689606023831976736
+    second: eyes-closed-and-lose_73
+  - first:
+      213: 7399458091935478888
+    second: eyes-closed-and-lose_74
+  - first:
+      213: -8652061918423716335
+    second: eyes-closed-and-lose_75
+  - first:
+      213: 1458737944399667584
+    second: eyes-closed-and-lose_76
+  - first:
+      213: 88981428080358870
+    second: eyes-closed-and-lose_77
+  - first:
+      213: 8801094921573468758
+    second: eyes-closed-and-lose_78
+  - first:
+      213: -4586420152100817223
+    second: eyes-closed-and-lose_79
+  - first:
+      213: 8488351540535299974
+    second: eyes-closed-and-lose_80
+  - first:
+      213: 1581145554373016491
+    second: eyes-closed-and-lose_81
+  - first:
+      213: -5040657216211138355
+    second: eyes-closed-and-lose_82
+  - first:
+      213: -8613566038904517032
+    second: eyes-closed-and-lose_83
+  - first:
+      213: 7655456488989048519
+    second: eyes-closed-and-lose_84
+  - first:
+      213: -7441922035421535335
+    second: eyes-closed-and-lose_85
+  - first:
+      213: -5449052773295449659
+    second: eyes-closed-and-lose_86
+  - first:
+      213: -689701789546600074
+    second: eyes-closed-and-lose_87
+  - first:
+      213: -6702716454170105157
+    second: eyes-closed-and-lose_88
+  - first:
+      213: 5147927333707978744
+    second: eyes-closed-and-lose_89
+  - first:
+      213: -140944387176864881
+    second: eyes-closed-and-lose_90
+  - first:
+      213: -6371246002502707209
+    second: eyes-closed-and-lose_91
+  - first:
+      213: 3416306370938662694
+    second: eyes-closed-and-lose_92
+  - first:
+      213: 3709564753071246173
+    second: eyes-closed-and-lose_93
+  - first:
+      213: -4736360259971529891
+    second: eyes-closed-and-lose_94
+  - first:
+      213: -5630188612899382386
+    second: eyes-closed-and-lose_95
+  - first:
+      213: -2124746900040238805
+    second: eyes-closed-and-lose_96
+  - first:
+      213: 3869594021071909270
+    second: eyes-closed-and-lose_97
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: eyes-closed-and-lose_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2010
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5c3a983cb24190c0800000000000000
+      internalID: -4570798770633425828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eyes-closed-and-lose_1
+      rect:
+        serializedVersion: 2
+        x: 794
+        y: 2010
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44bd25afdd94f1a30800000000000000
+      internalID: 4188147396214184772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eyes-closed-and-lose_2
+      rect:
+        serializedVersion: 2
+        x: 1588
+        y: 2010
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a67674eb529f0ff0800000000000000
+      internalID: -67674546014619996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eyes-closed-and-lose_3
+      rect:
+        serializedVersion: 2
+        x: 2382
+        y: 2010
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 852c69e44acf03960800000000000000
+      internalID: 7579835955487883864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eyes-closed-and-lose_4
+      rect:
+        serializedVersion: 2
+        x: 3176
+        y: 2010
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff7ec185baf555790800000000000000
+      internalID: -7542016811439691777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eyes-closed-and-lose_5
+      rect:
+        serializedVersion: 2
+        x: 3970
+        y: 2010
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba91d95facd2debe0800000000000000
+      internalID: -1446449555588703829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eyes-closed-and-lose_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1608
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef8d4230284bb8f60800000000000000
+      internalID: 8037716430464276734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eyes-closed-and-lose_7
+      rect:
+        serializedVersion: 2
+        x: 794
+        y: 1608
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06974ddfaac50aa20800000000000000
+      internalID: 3071556835339434336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eyes-closed-and-lose_8
+      rect:
+        serializedVersion: 2
+        x: 1588
+        y: 1608
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abb1baf9c8be6a650800000000000000
+      internalID: 6243936922602511290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eyes-closed-and-lose_9
+      rect:
+        serializedVersion: 2
+        x: 2382
+        y: 1608
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a34178907c1af4620800000000000000
+      internalID: 2760602972831814714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eyes-closed-and-lose_10
+      rect:
+        serializedVersion: 2
+        x: 3176
+        y: 1608
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37860406f913273c0800000000000000
+      internalID: -4363370528384194445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eyes-closed-and-lose_11
+      rect:
+        serializedVersion: 2
+        x: 3970
+        y: 1608
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef7d326fbb7d67640800000000000000
+      internalID: 5077482832195213310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eyes-closed-and-lose_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1206
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15e28a70760a56ef0800000000000000
+      internalID: -115509851057541551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eyes-closed-and-lose_13
+      rect:
+        serializedVersion: 2
+        x: 794
+        y: 1206
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ccc6f5e51802bc540800000000000000
+      internalID: 5029149148895472844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eyes-closed-and-lose_14
+      rect:
+        serializedVersion: 2
+        x: 1588
+        y: 1206
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6edd2b8a3e956f820800000000000000
+      internalID: 2951645440110681574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eyes-closed-and-lose_15
+      rect:
+        serializedVersion: 2
+        x: 2382
+        y: 1206
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b34aa73bc750ff60800000000000000
+      internalID: 8066043462944441268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eyes-closed-and-lose_16
+      rect:
+        serializedVersion: 2
+        x: 3176
+        y: 1206
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38871100face55550800000000000000
+      internalID: 6149081102608857219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eyes-closed-and-lose_17
+      rect:
+        serializedVersion: 2
+        x: 3970
+        y: 1206
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 075d8267c245b5330800000000000000
+      internalID: 3700644068752676208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eyes-closed-and-lose_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 804
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dde512238790d7f20800000000000000
+      internalID: 3421901703713218269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eyes-closed-and-lose_19
+      rect:
+        serializedVersion: 2
+        x: 794
+        y: 804
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c45f1963d1f70760800000000000000
+      internalID: 7424168401047606466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eyes-closed-and-lose_20
+      rect:
+        serializedVersion: 2
+        x: 1588
+        y: 804
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00d840f7a9f91e550800000000000000
+      internalID: 6188402848888556800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eyes-closed-and-lose_21
+      rect:
+        serializedVersion: 2
+        x: 2382
+        y: 804
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6303f94cd4562940800000000000000
+      internalID: 5270993718993945452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eyes-closed-and-lose_22
+      rect:
+        serializedVersion: 2
+        x: 3176
+        y: 804
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1fec07d2f18d625e0800000000000000
+      internalID: -1934621361491095823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eyes-closed-and-lose_23
+      rect:
+        serializedVersion: 2
+        x: 3970
+        y: 804
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99b214d77665d0400800000000000000
+      internalID: 291984553331993497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eyes-closed-and-lose_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 402
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c01361486895d53c0800000000000000
+      internalID: -4369237629202976500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eyes-closed-and-lose_25
+      rect:
+        serializedVersion: 2
+        x: 794
+        y: 402
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ed4698c05a5470f0800000000000000
+      internalID: -1120171104299233821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eyes-closed-and-lose_26
+      rect:
+        serializedVersion: 2
+        x: 1588
+        y: 402
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44c2d5c9ce5be9690800000000000000
+      internalID: -7593431893859816380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eyes-closed-and-lose_27
+      rect:
+        serializedVersion: 2
+        x: 2382
+        y: 402
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11bada6a31260b040800000000000000
+      internalID: 4661333450868763409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eyes-closed-and-lose_28
+      rect:
+        serializedVersion: 2
+        x: 3176
+        y: 402
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f97e20faf057b960800000000000000
+      internalID: 7617646333422107125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eyes-closed-and-lose_29
+      rect:
+        serializedVersion: 2
+        x: 3970
+        y: 402
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36bc9b90f2f472810800000000000000
+      internalID: 1740446844447214435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eyes-closed-and-lose_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb4f3668b8d426310800000000000000
+      internalID: 1396764096088765630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eyes-closed-and-lose_31
+      rect:
+        serializedVersion: 2
+        x: 794
+        y: 0
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2f2d4df69bc4a360800000000000000
+      internalID: 7180087555290640173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eyes-closed-and-lose_32
+      rect:
+        serializedVersion: 2
+        x: 1588
+        y: 0
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35e5f215f885d6c60800000000000000
+      internalID: 7812998301123305043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eyes-closed-and-lose_33
+      rect:
+        serializedVersion: 2
+        x: 2382
+        y: 0
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ee177094304f3330800000000000000
+      internalID: 3692740813973298914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eyes-closed-and-lose_34
+      rect:
+        serializedVersion: 2
+        x: 3176
+        y: 0
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9bf443ec76391f410800000000000000
+      internalID: 1509149424196276153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eyes-closed-and-lose_35
+      rect:
+        serializedVersion: 2
+        x: 3970
+        y: 0
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0ad3f2729d825a20800000000000000
+      internalID: 3049655557816572426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 541a46de3e14860488525325014ca466
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":6.0,"y":6.0},"gridSpriteSize":{"x":794.0,"y":402.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      eyes-closed-and-lose_0: -4570798770633425828
+      eyes-closed-and-lose_1: 4188147396214184772
+      eyes-closed-and-lose_10: -4363370528384194445
+      eyes-closed-and-lose_11: 5077482832195213310
+      eyes-closed-and-lose_12: -115509851057541551
+      eyes-closed-and-lose_13: 5029149148895472844
+      eyes-closed-and-lose_14: 2951645440110681574
+      eyes-closed-and-lose_15: 8066043462944441268
+      eyes-closed-and-lose_16: 6149081102608857219
+      eyes-closed-and-lose_17: 3700644068752676208
+      eyes-closed-and-lose_18: 3421901703713218269
+      eyes-closed-and-lose_19: 7424168401047606466
+      eyes-closed-and-lose_2: -67674546014619996
+      eyes-closed-and-lose_20: 6188402848888556800
+      eyes-closed-and-lose_21: 5270993718993945452
+      eyes-closed-and-lose_22: -1934621361491095823
+      eyes-closed-and-lose_23: 291984553331993497
+      eyes-closed-and-lose_24: -4369237629202976500
+      eyes-closed-and-lose_25: -1120171104299233821
+      eyes-closed-and-lose_26: -7593431893859816380
+      eyes-closed-and-lose_27: 4661333450868763409
+      eyes-closed-and-lose_28: 7617646333422107125
+      eyes-closed-and-lose_29: 1740446844447214435
+      eyes-closed-and-lose_3: 7579835955487883864
+      eyes-closed-and-lose_30: 1396764096088765630
+      eyes-closed-and-lose_31: 7180087555290640173
+      eyes-closed-and-lose_32: 7812998301123305043
+      eyes-closed-and-lose_33: 3692740813973298914
+      eyes-closed-and-lose_34: 1509149424196276153
+      eyes-closed-and-lose_35: 3049655557816572426
+      eyes-closed-and-lose_4: -7542016811439691777
+      eyes-closed-and-lose_5: -1446449555588703829
+      eyes-closed-and-lose_6: 8037716430464276734
+      eyes-closed-and-lose_7: 3071556835339434336
+      eyes-closed-and-lose_8: 6243936922602511290
+      eyes-closed-and-lose_9: 2760602972831814714
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -477,7 +477,8 @@ public class BattleCharacter
         HandleBuffUpgrade(data.EffectType);
 
         var existing = ActiveStatusEffects.FirstOrDefault(e => e.Type == data.EffectType);
-        if (existing != null)
+        //출혈, 화상은 여러개 중첩 가능
+        if (existing != null && data.EffectType != StatusEffectType.Bleed && data.EffectType != StatusEffectType.Burn)
         {
             // 이미 있으면 지속시간 갱신 및 (기획에 따라) 수치 덮어씌우기 혹은 높은 쪽 유지 등
             existing.RemainingDuration = Mathf.Max(existing.RemainingDuration, duration);

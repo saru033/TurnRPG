@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 105c21214ebaa0a4ba836d3b14b5e4e2, type: 3}
+  m_Name: 1006_slime
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterData
+  ID: 1006
+  CharacterName: slime
+  isPlayer: 0
+  MaxHp: 310
+  Attack: 125
+  Defense: 73
+  Speed: 72
+  CritChance: 0.15
+  CritDamage: 1.5
+  Evasion: 0
+  Accuracy: 1
+  illustration: {fileID: 368543389579951487, guid: 6cca858ed22e13c4cb8f90633155cbe2, type: 3}
+  iconImage: {fileID: -2911206921925347886, guid: 53c08a0951cd60d40bef306609847bb3, type: 3}
+  sideImage: {fileID: 6695754871758846774, guid: 864ec550709083c48a636b11b325f51f, type: 3}
+  characterPrefab: {fileID: 6008314446264759706, guid: fc40479d8652ffe4796bcc8fabbd03ed, type: 3}
+  StartingSkills:
+  - skillData: {fileID: 11400000, guid: c855dc5cd1a118640bcf207036fd2236, type: 2}
+    level: 1
+  - skillData: {fileID: 11400000, guid: c022741f726403c40b9bfbba69eb5324, type: 2}
+    level: 1

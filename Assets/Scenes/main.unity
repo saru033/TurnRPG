@@ -3578,8 +3578,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StageDatabase
   allStages:
-  - {fileID: 11400000, guid: 314e03cd61cc4be42a59f53dcd35f7d2, type: 2}
-  - {fileID: 11400000, guid: 83c70848a1a580d46b4d7364d7320311, type: 2}
+  - {fileID: 11400000, guid: 32696ceacb3a2d34ab6f7abe6fe44c3c, type: 2}
 --- !u!4 &470757596
 Transform:
   m_ObjectHideFlags: 0
@@ -3870,7 +3869,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 493.5, y: -43.477}
+  m_AnchoredPosition: {x: 493.5, y: -43.47705}
   m_SizeDelta: {x: 120, y: 75}
   m_Pivot: {x: 0.00000028312206, y: 1}
 --- !u!114 &541836885
@@ -7968,7 +7967,7 @@ Animator:
   m_GameObject: {fileID: 1460857777}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 80ff4f790b90835478e1009fa0be13f7, type: 2}
+  m_Controller: {fileID: 9100000, guid: 35e5bdb21be568e4c82bc5752d013a61, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -8000,7 +7999,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 8370211998808416336, guid: c2ed125ec0d3b094bb92c1590ef7ab2d, type: 3}
+  m_Sprite: {fileID: 4454631428275665778, guid: c1e1c2537a91dd841abe413f3f242917, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -12665,7 +12664,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 35.2099}
+  m_AnchoredPosition: {x: 0, y: 35.20984}
   m_SizeDelta: {x: -105.6968, y: -248.0418}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1202219104489283490

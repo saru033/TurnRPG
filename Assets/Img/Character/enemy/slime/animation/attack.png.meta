@@ -1,0 +1,1122 @@
+fileFormatVersion: 2
+guid: cc96b739881259944b3b7fbb7c2d7139
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -13062985406193675
+    second: rushes-forward-attac_0
+  - first:
+      213: 6385367872677459409
+    second: rushes-forward-attac_1
+  - first:
+      213: -1133987529514531904
+    second: rushes-forward-attac_2
+  - first:
+      213: 5666289689523189769
+    second: rushes-forward-attac_3
+  - first:
+      213: -4505713475215125570
+    second: rushes-forward-attac_4
+  - first:
+      213: -6565753583365992781
+    second: rushes-forward-attac_5
+  - first:
+      213: 2271758590367875342
+    second: rushes-forward-attac_6
+  - first:
+      213: 7483563429282094268
+    second: rushes-forward-attac_7
+  - first:
+      213: -4552907701589743287
+    second: rushes-forward-attac_8
+  - first:
+      213: 3056563525037431195
+    second: rushes-forward-attac_9
+  - first:
+      213: -1825497979079602284
+    second: rushes-forward-attac_10
+  - first:
+      213: 6236805260403348021
+    second: rushes-forward-attac_11
+  - first:
+      213: 92583490251668961
+    second: rushes-forward-attac_12
+  - first:
+      213: 1671134017403828171
+    second: rushes-forward-attac_13
+  - first:
+      213: 3116238831681098736
+    second: rushes-forward-attac_14
+  - first:
+      213: -2829385600383419329
+    second: rushes-forward-attac_15
+  - first:
+      213: 7515173617696569691
+    second: rushes-forward-attac_16
+  - first:
+      213: 5822657253273091329
+    second: rushes-forward-attac_17
+  - first:
+      213: 6341722391074229949
+    second: rushes-forward-attac_18
+  - first:
+      213: 381206454655757154
+    second: rushes-forward-attac_19
+  - first:
+      213: -1304967269524705020
+    second: rushes-forward-attac_20
+  - first:
+      213: 1816865136701911965
+    second: rushes-forward-attac_21
+  - first:
+      213: 74195625929392399
+    second: rushes-forward-attac_22
+  - first:
+      213: -57650615161672223
+    second: rushes-forward-attac_23
+  - first:
+      213: 6383634770149125169
+    second: rushes-forward-attac_24
+  - first:
+      213: 6472939456917635589
+    second: rushes-forward-attac_25
+  - first:
+      213: -6781702069064092049
+    second: rushes-forward-attac_26
+  - first:
+      213: 465823066305474836
+    second: rushes-forward-attac_27
+  - first:
+      213: -5882026644548989336
+    second: rushes-forward-attac_28
+  - first:
+      213: -1651555716241303329
+    second: rushes-forward-attac_29
+  - first:
+      213: -1953901256275633083
+    second: rushes-forward-attac_30
+  - first:
+      213: -3564835515979086279
+    second: rushes-forward-attac_31
+  - first:
+      213: -4374680458249518560
+    second: rushes-forward-attac_32
+  - first:
+      213: 4250303734206889164
+    second: rushes-forward-attac_33
+  - first:
+      213: 7972082997241854357
+    second: rushes-forward-attac_34
+  - first:
+      213: -3904109841534989139
+    second: rushes-forward-attac_35
+  - first:
+      213: -1299971807155174
+    second: rushes-forward-attac_36
+  - first:
+      213: -2822526054806933506
+    second: rushes-forward-attac_37
+  - first:
+      213: 2704977175635557647
+    second: rushes-forward-attac_38
+  - first:
+      213: -4313404892325330096
+    second: rushes-forward-attac_39
+  - first:
+      213: -6530387588220731840
+    second: rushes-forward-attac_40
+  - first:
+      213: 2975072323763312146
+    second: rushes-forward-attac_41
+  - first:
+      213: 1860813443308950758
+    second: rushes-forward-attac_42
+  - first:
+      213: -5803005836241402169
+    second: rushes-forward-attac_43
+  - first:
+      213: 7578013517647227947
+    second: rushes-forward-attac_44
+  - first:
+      213: 773358309344931316
+    second: rushes-forward-attac_45
+  - first:
+      213: -7658960297180836293
+    second: rushes-forward-attac_46
+  - first:
+      213: -7433965519062205795
+    second: rushes-forward-attac_47
+  - first:
+      213: 9184356348808329382
+    second: rushes-forward-attac_48
+  - first:
+      213: 7766867721826961858
+    second: rushes-forward-attac_49
+  - first:
+      213: -5707091897131881557
+    second: rushes-forward-attac_50
+  - first:
+      213: 917043263985958782
+    second: rushes-forward-attac_51
+  - first:
+      213: -7895885541949211666
+    second: rushes-forward-attac_52
+  - first:
+      213: 6802565963786068026
+    second: rushes-forward-attac_53
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: rushes-forward-attac_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2010
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ff5823b84791dff0800000000000000
+      internalID: -13062985406193675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rushes-forward-attac_1
+      rect:
+        serializedVersion: 2
+        x: 794
+        y: 2010
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d5b123cf326d9850800000000000000
+      internalID: 6385367872677459409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rushes-forward-attac_2
+      rect:
+        serializedVersion: 2
+        x: 1588
+        y: 2010
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c3409b99544340f0800000000000000
+      internalID: -1133987529514531904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rushes-forward-attac_3
+      rect:
+        serializedVersion: 2
+        x: 2382
+        y: 2010
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 908fc7a8374b2ae40800000000000000
+      internalID: 5666289689523189769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rushes-forward-attac_4
+      rect:
+        serializedVersion: 2
+        x: 3176
+        y: 2010
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb39c12777d7871c0800000000000000
+      internalID: -4505713475215125570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rushes-forward-attac_5
+      rect:
+        serializedVersion: 2
+        x: 3970
+        y: 2010
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3bec8bc17e1c1e4a0800000000000000
+      internalID: -6565753583365992781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rushes-forward-attac_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1608
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e01c152d668e68f10800000000000000
+      internalID: 2271758590367875342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rushes-forward-attac_7
+      rect:
+        serializedVersion: 2
+        x: 794
+        y: 1608
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbc96701a45fad760800000000000000
+      internalID: 7483563429282094268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rushes-forward-attac_8
+      rect:
+        serializedVersion: 2
+        x: 1588
+        y: 1608
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9496a975192d0d0c0800000000000000
+      internalID: -4552907701589743287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rushes-forward-attac_9
+      rect:
+        serializedVersion: 2
+        x: 2382
+        y: 1608
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b999547e4581b6a20800000000000000
+      internalID: 3056563525037431195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rushes-forward-attac_10
+      rect:
+        serializedVersion: 2
+        x: 3176
+        y: 1608
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49f44ca82478aa6e0800000000000000
+      internalID: -1825497979079602284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rushes-forward-attac_11
+      rect:
+        serializedVersion: 2
+        x: 3970
+        y: 1608
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53211af17559d8650800000000000000
+      internalID: 6236805260403348021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rushes-forward-attac_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1206
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ed3480a13ce84100800000000000000
+      internalID: 92583490251668961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rushes-forward-attac_13
+      rect:
+        serializedVersion: 2
+        x: 794
+        y: 1206
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc73d67e88f013710800000000000000
+      internalID: 1671134017403828171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rushes-forward-attac_14
+      rect:
+        serializedVersion: 2
+        x: 1588
+        y: 1206
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f351a5f4ba1f3b20800000000000000
+      internalID: 3116238831681098736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rushes-forward-attac_15
+      rect:
+        serializedVersion: 2
+        x: 2382
+        y: 1206
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3c7a8489c00cb8d0800000000000000
+      internalID: -2829385600383419329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rushes-forward-attac_16
+      rect:
+        serializedVersion: 2
+        x: 3176
+        y: 1206
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b59f03496924b4860800000000000000
+      internalID: 7515173617696569691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rushes-forward-attac_17
+      rect:
+        serializedVersion: 2
+        x: 3970
+        y: 1206
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10db13e0ceb3ec050800000000000000
+      internalID: 5822657253273091329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rushes-forward-attac_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 804
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbece103ae2520850800000000000000
+      internalID: 6341722391074229949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rushes-forward-attac_19
+      rect:
+        serializedVersion: 2
+        x: 794
+        y: 804
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26ba7d330415a4500800000000000000
+      internalID: 381206454655757154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rushes-forward-attac_20
+      rect:
+        serializedVersion: 2
+        x: 1588
+        y: 804
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 401f770be23d3ede0800000000000000
+      internalID: -1304967269524705020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rushes-forward-attac_21
+      rect:
+        serializedVersion: 2
+        x: 2382
+        y: 804
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d93b8e5373dc63910800000000000000
+      internalID: 1816865136701911965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rushes-forward-attac_22
+      rect:
+        serializedVersion: 2
+        x: 3176
+        y: 804
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f01c8675788970100800000000000000
+      internalID: 74195625929392399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rushes-forward-attac_23
+      rect:
+        serializedVersion: 2
+        x: 3970
+        y: 804
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1eda43a221f233ff0800000000000000
+      internalID: -57650615161672223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rushes-forward-attac_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 402
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13c2292600a379850800000000000000
+      internalID: 6383634770149125169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rushes-forward-attac_25
+      rect:
+        serializedVersion: 2
+        x: 794
+        y: 402
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5028f26142084d950800000000000000
+      internalID: 6472939456917635589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rushes-forward-attac_26
+      rect:
+        serializedVersion: 2
+        x: 1588
+        y: 402
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6637e036ed82e1a0800000000000000
+      internalID: -6781702069064092049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rushes-forward-attac_27
+      rect:
+        serializedVersion: 2
+        x: 2382
+        y: 402
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 411325b5c9fe67600800000000000000
+      internalID: 465823066305474836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rushes-forward-attac_28
+      rect:
+        serializedVersion: 2
+        x: 3176
+        y: 402
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86e464c5ee7de5ea0800000000000000
+      internalID: -5882026644548989336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rushes-forward-attac_29
+      rect:
+        serializedVersion: 2
+        x: 3970
+        y: 402
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd8dbae83de7419e0800000000000000
+      internalID: -1651555716241303329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rushes-forward-attac_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54c508dd82952e4e0800000000000000
+      internalID: -1953901256275633083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rushes-forward-attac_31
+      rect:
+        serializedVersion: 2
+        x: 794
+        y: 0
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 936ce5b4cf8278ec0800000000000000
+      internalID: -3564835515979086279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rushes-forward-attac_32
+      rect:
+        serializedVersion: 2
+        x: 1588
+        y: 0
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 022c1302d430a43c0800000000000000
+      internalID: -4374680458249518560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rushes-forward-attac_33
+      rect:
+        serializedVersion: 2
+        x: 2382
+        y: 0
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cccfae82abc1cfa30800000000000000
+      internalID: 4250303734206889164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rushes-forward-attac_34
+      rect:
+        serializedVersion: 2
+        x: 3176
+        y: 0
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59938828f3782ae60800000000000000
+      internalID: 7972082997241854357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rushes-forward-attac_35
+      rect:
+        serializedVersion: 2
+        x: 3970
+        y: 0
+        width: 794
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dac4333b8c0d1d9c0800000000000000
+      internalID: -3904109841534989139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: aae662c4cc7fa584d84c4be43fb07729
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":6.0,"y":6.0},"gridSpriteSize":{"x":794.0,"y":402.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      rushes-forward-attac_0: -13062985406193675
+      rushes-forward-attac_1: 6385367872677459409
+      rushes-forward-attac_10: -1825497979079602284
+      rushes-forward-attac_11: 6236805260403348021
+      rushes-forward-attac_12: 92583490251668961
+      rushes-forward-attac_13: 1671134017403828171
+      rushes-forward-attac_14: 3116238831681098736
+      rushes-forward-attac_15: -2829385600383419329
+      rushes-forward-attac_16: 7515173617696569691
+      rushes-forward-attac_17: 5822657253273091329
+      rushes-forward-attac_18: 6341722391074229949
+      rushes-forward-attac_19: 381206454655757154
+      rushes-forward-attac_2: -1133987529514531904
+      rushes-forward-attac_20: -1304967269524705020
+      rushes-forward-attac_21: 1816865136701911965
+      rushes-forward-attac_22: 74195625929392399
+      rushes-forward-attac_23: -57650615161672223
+      rushes-forward-attac_24: 6383634770149125169
+      rushes-forward-attac_25: 6472939456917635589
+      rushes-forward-attac_26: -6781702069064092049
+      rushes-forward-attac_27: 465823066305474836
+      rushes-forward-attac_28: -5882026644548989336
+      rushes-forward-attac_29: -1651555716241303329
+      rushes-forward-attac_3: 5666289689523189769
+      rushes-forward-attac_30: -1953901256275633083
+      rushes-forward-attac_31: -3564835515979086279
+      rushes-forward-attac_32: -4374680458249518560
+      rushes-forward-attac_33: 4250303734206889164
+      rushes-forward-attac_34: 7972082997241854357
+      rushes-forward-attac_35: -3904109841534989139
+      rushes-forward-attac_4: -4505713475215125570
+      rushes-forward-attac_5: -6565753583365992781
+      rushes-forward-attac_6: 2271758590367875342
+      rushes-forward-attac_7: 7483563429282094268
+      rushes-forward-attac_8: -4552907701589743287
+      rushes-forward-attac_9: 3056563525037431195
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
