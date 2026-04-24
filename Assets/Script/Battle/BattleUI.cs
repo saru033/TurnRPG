@@ -31,6 +31,7 @@ public class BattleUI : MonoBehaviour
     public TextMeshProUGUI HPText;
     public RectTransform select_SkillRect;
     public RewardPanelUI rewardPanel;      // [신규] 승리 보상 패널
+    public ActionListPanelUI actionListPanel; // [신규] 행동게이지 상세 리스트 패널
 
     [Header("Tooltip")]
     public SkillTooltipUI tooltipPrefab;
@@ -756,5 +757,16 @@ public class BattleUI : MonoBehaviour
         // 0.1초 정도 유지하여 뒤따라오는 클릭 이벤트를 씹음
         yield return new WaitForSeconds(0.1f);
         IsTooltipPerforming = false;
+    }
+
+    /// <summary>
+    /// [신규] 행동게이지 상세 리스트 버튼 클릭 시 호출됩니다.
+    /// </summary>
+    public void OnActionListButtonClicked()
+    {
+        if (actionListPanel != null)
+        {
+            actionListPanel.Toggle();
+        }
     }
 }
