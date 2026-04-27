@@ -10,6 +10,12 @@ public class ActionListEntryUI : MonoBehaviour
     public GaugePortrait portrait;
     public TextMeshProUGUI actionGaugeValue;
 
+    [Header("Distinguish Number")]
+    public GameObject distinguishNumObj;      // dintinguse_num 오브젝트
+    public TextMeshProUGUI distinguishNumText; // 번호 TMP
+    public Color allyNumColor = Color.blue;
+    public Color enemyNumColor = Color.red;
+
     [Header("HP Bar")]
     public Image hpBarImage;
     public TextMeshProUGUI hpDetailText;
@@ -21,7 +27,12 @@ public class ActionListEntryUI : MonoBehaviour
     public float skillStartX = 40f;
     public float skillSpacing = 90f;
 
+    [Header("Status Effects (Buffs/Debuffs)")]
+    public GameObject buffPanel;      // 버프가 배치될 패널
+    public GameObject buffIconPrefab; // bufficon 프리팹
+
     private List<GameObject> _spawnedSkills = new List<GameObject>();
+    private List<GameObject> _spawnedBuffs = new List<GameObject>();
 
     private void Awake()
     {
@@ -68,6 +79,22 @@ public class ActionListEntryUI : MonoBehaviour
             actionGaugeValue.text = $"{(int)character.ActionGauge}%";
         }
 
+        // [추가] 인식표 설정
+        if (distinguishNumObj != null)
+        {
+            distinguishNumObj.SetActive(true);
+            if (distinguishNumText != null)
+            {
+                distinguishNumText.text = character.DistinguishNum.ToString();
+            }
+
+            var img = distinguishNumObj.GetComponent<Image>();
+            if (img != null)
+            {
+                img.color = character.IsPlayer ? allyNumColor : enemyNumColor;
+            }
+        }
+
         // 3. HP 바 조절
         if (hpBarImage != null)
         {
@@ -84,6 +111,9 @@ public class ActionListEntryUI : MonoBehaviour
 
         // 4. 스킬 배치
         RefreshSkills(character);
+
+        // 5. 버프 배치
+        RefreshBuffs(character);
     }
 
     private void RefreshSkills(BattleCharacter character)
@@ -97,7 +127,9 @@ public class ActionListEntryUI : MonoBehaviour
 
         if (skillPrefab == null || skillContainer == null) return;
 
-        for (int i = 0; i < character.ActiveSkills.Count; i++)
+        // 최대 3개까지만 표시 (1, 2, 3스킬)
+        int skillCount = Mathf.Min(3, character.ActiveSkills.Count);
+        for (int i = 0; i < skillCount; i++)
         {
             var skillData = character.ActiveSkills[i];
             if (skillData == null) continue;
@@ -129,12 +161,38 @@ public class ActionListEntryUI : MonoBehaviour
                 }
             }
 
-            // 툴팁 트리거 (프리팹에 이미 있다고 하셨지만, 데이터 갱신을 위해 호출)
+            // 툴팁 트리거
             var trigger = go.GetComponent<SkillTooltipTrigger>();
             if (trigger == null) trigger = go.AddComponent<SkillTooltipTrigger>();
             
             int level = character.SkillLevels.Length > i ? character.SkillLevels[i] : 1;
             trigger.Init(skillData, level);
+        }
+    }
+
+    private void RefreshBuffs(BattleCharacter character)
+    {
+        // 기존 버프 제거
+        foreach (var b in _spawnedBuffs)
+        {
+            if (b != null) Destroy(b);
+        }
+        _spawnedBuffs.Clear();
+
+        if (buffPanel == null || buffIconPrefab == null) return;
+
+        foreach (var effect in character.ActiveStatusEffects)
+        {
+            if (effect == null) continue;
+
+            GameObject go = Instantiate(buffIconPrefab, buffPanel.transform);
+            _spawnedBuffs.Add(go);
+
+            var iconScript = go.GetComponent<StatusEffectIcon>();
+            if (iconScript != null)
+            {
+                iconScript.Init(effect);
+            }
         }
     }
 }

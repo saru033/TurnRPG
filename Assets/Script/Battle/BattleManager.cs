@@ -1677,6 +1677,23 @@ public class BattleManager : MonoBehaviour
     /// </summary>
     public void OnRewardConfirmed()
     {
+        // [추가] 강화석이 있다면 스킬 강화 UI 오픈
+        if (GameManager.Instance != null && GameManager.Instance.skillup > 0)
+        {
+            if (battleUI != null && battleUI.skillUpgradeUI != null)
+            {
+                // 강화 UI가 닫힐 때 맵으로 돌아가도록 콜백 등록
+                battleUI.skillUpgradeUI.OnClose = ReturnToMap;
+                battleUI.skillUpgradeUI.Open();
+                return;
+            }
+        }
+
+        ReturnToMap();
+    }
+
+    private void ReturnToMap()
+    {
         // 2. 맵 UI 다시 활성화
         if (mapUIObject != null)
             mapUIObject.SetActive(true);

@@ -10,10 +10,10 @@ namespace TurnRPG.SkillSystem
         public string Description; // 레벨별 설명
         public int Cooldown;       // 레벨별 쿨타임 변경 가능
         public SkillTargetType TargetType; // 스킬 레벨별로 타겟군이 변할 수 있음
-        
+
         [Tooltip("패시브 스킬일 경우, 해당 레벨에서 터질 방아쇠 (강화별로 트리거 추가 가능)")]
         public PassiveTriggerType PassiveTrigger = PassiveTriggerType.None;
-        
+
         [Header("상시 적용 효과 (전투 시작 시 1회 적용)")]
         [SerializeReference] public List<SkillEffect> ConstantEffects = new List<SkillEffect>();
 
@@ -28,22 +28,51 @@ namespace TurnRPG.SkillSystem
         public string SkillID;
         public string SkillName;
         public Sprite SkillIcon;
-        
+
         [Header("로직 정보")]
         public SkillType Type;
 
         public SkillSlotIndex SlotIndex; // 1스킬, 2스킬, 3스킬 구분
+
         [Tooltip("비트 플래그 설정 (Male, Female, Wolf, Enemy 둥)")]
         public CharacterType EquipRestriction = CharacterType.All;
-        
+
         [Header("애니메이션 & 연출")]
         [Tooltip("캐릭터에게 보낼 애니메이션 트리거 이름 (1, 2, 3스킬 공통)")]
-        public string RequiredAnimationTrigger; 
-        
+        public string RequiredAnimationTrigger;
+
         [Tooltip("3스킬 전용 UI 컷신 클립 (단일 컷신 패널의 Animator Override Controller와 연동)")]
         public AnimationClip UltimateCutsceneClip;
 
         [Header("단계별 효과 (0번 인덱스가 1레벨)")]
         public List<SkillLevelData> LevelDatas;
+
+        /// <summary>
+        /// 스킬 슬롯에 따른 분기 시작 레벨 반환
+        /// </summary>
+        public int GetBranchLevel()
+        {
+            return SlotIndex switch
+            {
+                SkillSlotIndex.Skill1 => 999, // 분기 없음
+                SkillSlotIndex.Skill2 => 3,   // 3 -> 4 or 5
+                SkillSlotIndex.Skill3 => 4,   // 4 -> 5 or 6
+                _ => 999
+            };
+        }
+
+        /// <summary>
+        /// 해당 스킬이 최대 레벨인지 확인
+        /// </summary>
+        public bool IsMaxLevel(int currentLevel)
+        {
+            return SlotIndex switch
+            {
+                SkillSlotIndex.Skill1 => currentLevel >= 3,
+                SkillSlotIndex.Skill2 => currentLevel > 3, // 4레벨 혹은 5레벨이면 최대
+                SkillSlotIndex.Skill3 => currentLevel > 4, // 5레벨 혹은 6레벨이면 최대
+                _ => true
+            };
+        }
     }
 }

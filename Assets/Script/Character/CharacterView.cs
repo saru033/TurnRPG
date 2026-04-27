@@ -26,6 +26,12 @@ public class CharacterView : MonoBehaviour, IPointerClickHandler
     [Tooltip("상태이상(버프/디버프) 아이콘 프리팹. StatusEffectIcon 스크립트가 붙어있어야 함")]
     public GameObject statusEffectPrefab;
 
+    [Header("Distinguish Number")]
+    public GameObject distinguishNumObj;      // dintinguse_num 오브젝트
+    public TextMeshProUGUI distinguishNumText; // 번호 TMP
+    public Color allyNumColor = Color.blue;
+    public Color enemyNumColor = Color.red;
+
     BattleCharacter _character;
     CanvasGroup _canvasGroup; // [추가] 전체 투명도 관리를 위한 CanvasGroup
     Dictionary<StatusEffect, GameObject> _buffIcons = new Dictionary<StatusEffect, GameObject>();
@@ -79,6 +85,23 @@ public class CharacterView : MonoBehaviour, IPointerClickHandler
         BattleEventManager.OnStatusEffectApplied += HandleStatusEffectApplied; // 신규 효과 부여 이벤트 구독
         BattleEventManager.OnDamageTaken += HandleDamageTaken;
         BattleEventManager.OnHealed += HandleHealed;
+
+        // [추가] 인식표 초기화
+        if (distinguishNumObj != null)
+        {
+            distinguishNumObj.SetActive(true);
+            if (distinguishNumText != null)
+            {
+                distinguishNumText.text = _character.DistinguishNum.ToString();
+            }
+
+            // 아군/적군 색상 변경 (Image 컴포넌트가 있다면)
+            var img = distinguishNumObj.GetComponent<Image>();
+            if (img != null)
+            {
+                img.color = _character.IsPlayer ? allyNumColor : enemyNumColor;
+            }
+        }
     }
 
     private void OnDestroy()

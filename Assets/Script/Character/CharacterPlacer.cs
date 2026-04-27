@@ -108,6 +108,7 @@ public class CharacterPlacer : MonoBehaviour
             var view = go.GetComponent<CharacterView>();
             if (!object.ReferenceEquals(view, null))
             {
+                c.DistinguishNum = slotIndex + 1; // [추가] 슬롯 번호(1, 2, 3) 부여
                 view.Init(c);
                 c.View = view; // [추가] BattleCharacter에 View 연결
             }

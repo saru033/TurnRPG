@@ -16,11 +16,9 @@ MonoBehaviour:
   backgroundSprite: {fileID: -8483731395159641348, guid: 281a96be91a309249921a5e925dc780f, type: 3}
   enemies:
   - {fileID: 11400000, guid: 29ad900cd55fbf34abbbea1d14a76f76, type: 2}
-  - {fileID: 11400000, guid: 29ad900cd55fbf34abbbea1d14a76f76, type: 2}
-  - {fileID: 11400000, guid: 29ad900cd55fbf34abbbea1d14a76f76, type: 2}
   minGold: 25
   maxGold: 45
-  minSkillUp: 0
+  minSkillUp: 1
   maxSkillUp: 1
   potentialBattleItems:
   - {fileID: 11400000, guid: 35b31d570c2c0804ca1ccdf79160ed90, type: 2}

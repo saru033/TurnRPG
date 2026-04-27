@@ -32,6 +32,7 @@ public class BattleUI : MonoBehaviour
     public RectTransform select_SkillRect;
     public RewardPanelUI rewardPanel;      // [신규] 승리 보상 패널
     public ActionListPanelUI actionListPanel; // [신규] 행동게이지 상세 리스트 패널
+    public SkillUpgradeUI skillUpgradeUI; // [추가] 스킬 강화 UI 참조
 
     [Header("Tooltip")]
     public SkillTooltipUI tooltipPrefab;

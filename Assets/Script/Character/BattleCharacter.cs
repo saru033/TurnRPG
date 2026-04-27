@@ -23,6 +23,7 @@ public class BattleCharacter
     public int ID;
     public string Name;
     public bool IsPlayer;   // true = 아군, false = 적
+    public int DistinguishNum; // [추가] 동일 캐릭터 구분용 번호 (1, 2, 3...)
 
     // -------------------------------------------------------
     // 스탯 (전투 중 버프 등으로 변경 가능)

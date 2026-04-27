@@ -29,8 +29,8 @@ MonoBehaviour:
   characterPrefab: {fileID: 6008314446264759706, guid: 849df6cc6f4a9d040a87aeed15af2c64, type: 3}
   StartingSkills:
   - skillData: {fileID: 11400000, guid: 284567476175bba4a94e036005abcc98, type: 2}
-    level: 5
+    level: 1
   - skillData: {fileID: 11400000, guid: 8cc637272d4abce4abafe83131c520b3, type: 2}
-    level: 2
+    level: 1
   - skillData: {fileID: 11400000, guid: 4c0c7552d3798384c8828ce346721572, type: 2}
-    level: 4
+    level: 1
