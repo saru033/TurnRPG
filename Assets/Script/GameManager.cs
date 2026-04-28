@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TurnRPG.SkillSystem;
 
 /// <summary>
 /// 프로젝트 전체의 게임 데이터 및 상태를 관리하는 싱글톤 매니저입니다.
@@ -26,8 +27,91 @@ public class GameManager : MonoBehaviour
     public int skillup = 0;
 
 
+    [Header("Tooltip")]
+    public Canvas tooltipCanvas; // [추가] 툴팁이 생성될 캔버스
+    public SkillTooltipUI tooltipPrefab;
+    private SkillTooltipUI _tooltipInstance;
 
+    [Header("Status Tooltip")]
+    public StatusEffectTooltipUI statusTooltipPrefab;
+    private StatusEffectTooltipUI _statusTooltipInstance;
 
+    /// <summary>
+    /// 현재 툴팁인 상태인지(롱프레스 중인지) 여부
+    /// </summary>
+    public bool IsTooltipPerforming { get; private set; }
+
+    // -------------------------------------------------------
+    // 스킬 툴팁 제어 (전역)
+    // -------------------------------------------------------
+
+    public void ShowSkillTooltip(SkillData skill, int level, Vector3 worldPos, float yOffset)
+    {
+        if (tooltipPrefab == null) return;
+
+        if (_tooltipInstance == null)
+        {
+            // 지정된 캔버스가 있으면 그 하위로, 없으면 GameManager 하위로 생성
+            Transform parent = tooltipCanvas != null ? tooltipCanvas.transform : transform;
+            _tooltipInstance = Instantiate(tooltipPrefab, parent);
+        }
+
+        _tooltipInstance.gameObject.SetActive(true);
+        _tooltipInstance.transform.SetAsLastSibling();
+        _tooltipInstance.SetData(skill, level);
+
+        IsTooltipPerforming = true;
+
+        float canvasScale = _tooltipInstance.transform.lossyScale.y;
+        _tooltipInstance.transform.position = worldPos + new Vector3(0, yOffset * canvasScale, 0);
+    }
+
+    public void HideSkillTooltip()
+    {
+        if (_tooltipInstance != null)
+        {
+            _tooltipInstance.gameObject.SetActive(false);
+        }
+        StartCoroutine(ResetTooltipFlagRoutine());
+    }
+
+    // -------------------------------------------------------
+    // 상태 효과 툴팁 제어 (전역)
+    // -------------------------------------------------------
+
+    public void ShowStatusTooltip(StatusEffect effect, Vector3 worldPos, float height)
+    {
+        if (statusTooltipPrefab == null) return;
+
+        if (_statusTooltipInstance == null)
+        {
+            Transform parent = tooltipCanvas != null ? tooltipCanvas.transform : transform;
+            _statusTooltipInstance = Instantiate(statusTooltipPrefab, parent);
+        }
+
+        _statusTooltipInstance.gameObject.SetActive(true);
+        _statusTooltipInstance.transform.SetAsLastSibling();
+        _statusTooltipInstance.SetData(effect);
+
+        IsTooltipPerforming = true;
+
+        _statusTooltipInstance.SetPosition(worldPos, height, _statusTooltipInstance.transform.lossyScale.y);
+    }
+
+    public void HideStatusTooltip()
+    {
+        if (_statusTooltipInstance != null)
+        {
+            _statusTooltipInstance.gameObject.SetActive(false);
+        }
+        StartCoroutine(ResetTooltipFlagRoutine());
+    }
+
+    private IEnumerator ResetTooltipFlagRoutine()
+    {
+        yield return new WaitForSeconds(0.1f);
+        IsTooltipPerforming = false;
+    }
 
     private void Awake()
     {

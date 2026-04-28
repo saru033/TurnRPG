@@ -33,9 +33,19 @@ public class SkillUpgradeUI : MonoBehaviour
     public System.Action OnClose; // UI가 완전히 닫힐 때 실행될 콜백
 
     private Vector2 _originalIllustrationPos; // [추가] 일러스트의 원본 위치 저장용
+    private Vector2 _originalSkillUpPanelPos; // [추가] 스킬업 패널 원본 위치 저장용
+    private bool _isInitialized = false;
 
     private void Start()
     {
+        InitIfNecessary();
+    }
+
+    private void InitIfNecessary()
+    {
+        if (_isInitialized) return;
+        _isInitialized = true;
+
         // 초기에는 디테일 창들 비활성화
         HideAllDetails();
 
@@ -43,6 +53,13 @@ public class SkillUpgradeUI : MonoBehaviour
         if (offPanelIllustration != null)
         {
             _originalIllustrationPos = offPanelIllustration.GetComponent<RectTransform>().anchoredPosition;
+        }
+
+        // 스킬업 패널 원본 위치 저장
+        if (skillUpPanel != null)
+        {
+            var rt = skillUpPanel.GetComponent<RectTransform>();
+            if (rt != null) _originalSkillUpPanelPos = rt.anchoredPosition;
         }
 
         if (offPanel != null)
@@ -67,10 +84,20 @@ public class SkillUpgradeUI : MonoBehaviour
     /// </summary>
     public void Open()
     {
+        InitIfNecessary();
+
         if (skillUpPanel == null) return;
 
         skillUpPanel.SetActive(true);
         if (offPanel != null) offPanel.SetActive(false);
+
+        // [DOTween] 스킬업 패널 아래에서 위로 등장
+        var rt = skillUpPanel.GetComponent<RectTransform>();
+        if (rt != null)
+        {
+            rt.anchoredPosition = new Vector2(_originalSkillUpPanelPos.x, _originalSkillUpPanelPos.y - 1500f);
+            rt.DOAnchorPos(_originalSkillUpPanelPos, 0.4f).SetEase(Ease.OutCubic);
+        }
 
         RefreshCharacterList();
     }
@@ -233,6 +260,12 @@ public class SkillUpgradeUI : MonoBehaviour
         // 2. 강화 적용
         GameManager.Instance.SetSkillLevel(charIdx, skillIdx, nextLevel);
 
+        // [추가] 상단 UI(강화석 표시 등) 최신화
+        if (LobbyTopUI.Instance != null)
+        {
+            LobbyTopUI.Instance.Refresh();
+        }
+
         // 3. UI 갱신 (연속 강화 가능하도록 상세창만 닫고 리스트 갱신)
         CloseDetail();
         RefreshCharacterList();
@@ -293,11 +326,34 @@ public class SkillUpgradeUI : MonoBehaviour
 
     public void CloseAll()
     {
-        if (skillUpPanel != null) skillUpPanel.SetActive(false);
         CloseDetail(); // CloseDetail 내부에서 애니메이션 후 offPanel을 끔
 
-        // [추가] 맵으로 복귀 등의 후속 처리를 위해 콜백 실행
-        OnClose?.Invoke();
-        OnClose = null;
+        if (skillUpPanel != null)
+        {
+            var rt = skillUpPanel.GetComponent<RectTransform>();
+            if (rt != null)
+            {
+                // [DOTween] 스킬업 패널 아래로 퇴장
+                rt.DOAnchorPos(new Vector2(_originalSkillUpPanelPos.x, _originalSkillUpPanelPos.y - 1500f), 0.4f)
+                  .SetEase(Ease.InCubic)
+                  .OnComplete(() =>
+                  {
+                      skillUpPanel.SetActive(false);
+                      OnClose?.Invoke();
+                      OnClose = null;
+                  });
+            }
+            else
+            {
+                skillUpPanel.SetActive(false);
+                OnClose?.Invoke();
+                OnClose = null;
+            }
+        }
+        else
+        {
+            OnClose?.Invoke();
+            OnClose = null;
+        }
     }
 }

@@ -143,12 +143,13 @@ public class BattleCharacter
 
         ActionGauge = 0f;
 
-        // [중요] GameManager에서 관리하는 '장착된 스킬 및 레벨'을 가져옵니다.
+        // [중요] GameManager에서 관리하는 '장착된 스킬 및 레벨'과 '쿨타임'을 가져옵니다.
         for (int i = 0; i < 3; i++)
         {
             if (state.equippedSkills.Count > i && state.equippedSkills[i] != null)
             {
                 EquipSkill(i, state.equippedSkills[i], state.skillLevels[i]);
+                SkillCooldowns[i] = state.skillCooldowns[i]; // [추가] 이전 전투의 쿨타임 이어받기
             }
         }
     }

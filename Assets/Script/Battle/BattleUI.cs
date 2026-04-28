@@ -34,18 +34,11 @@ public class BattleUI : MonoBehaviour
     public ActionListPanelUI actionListPanel; // [신규] 행동게이지 상세 리스트 패널
     public SkillUpgradeUI skillUpgradeUI; // [추가] 스킬 강화 UI 참조
 
-    [Header("Tooltip")]
-    public SkillTooltipUI tooltipPrefab;
-    private SkillTooltipUI _tooltipInstance;
-
-    [Header("Status Tooltip")]
-    public StatusEffectTooltipUI statusTooltipPrefab;
-    private StatusEffectTooltipUI _statusTooltipInstance;
 
     /// <summary>
     /// 현재 툴팁인 상태인지(롱프레스 중인지) 여부
     /// </summary>
-    public bool IsTooltipPerforming { get; private set; }
+    public bool IsTooltipPerforming => GameManager.Instance != null && GameManager.Instance.IsTooltipPerforming;
 
     // -------------------------------------------------------
     // 레이아웃 비율 (패널 기준)
@@ -674,91 +667,6 @@ public class BattleUI : MonoBehaviour
         Instance = this;
     }
 
-    // -------------------------------------------------------
-    // 스킬 툴팁 제어
-    // -------------------------------------------------------
-
-    /// <summary>
-    /// 스킬 툴팁을 표시합니다.
-    /// </summary>
-    public void ShowSkillTooltip(SkillData skill, int level, Vector3 worldPos, float yOffset)
-    {
-        if (tooltipPrefab == null) return;
-
-        // 인스턴스가 없으면 생성 (BattleUI 루트 하위로 생성하여 개별 레이아웃 제약 회피)
-        if (_tooltipInstance == null)
-        {
-            _tooltipInstance = Instantiate(tooltipPrefab, transform);
-        }
-
-        _tooltipInstance.gameObject.SetActive(true);
-        _tooltipInstance.transform.SetAsLastSibling();
-        _tooltipInstance.SetData(skill, level);
-
-        IsTooltipPerforming = true; // [추가]
-
-        // 월드 좌표 기준 설정 (버튼의 월드 좌표 + 화면상의 픽셀 오프셋)
-        // 사용중인 해상도/캔버스 스케일에 맞게 yOffset 보정
-        float canvasScale = transform.lossyScale.y;
-        _tooltipInstance.transform.position = worldPos + new Vector3(0, yOffset * canvasScale, 0);
-    }
-
-    /// <summary>
-    /// 스킬 툴팁을 숨깁니다.
-    /// </summary>
-    public void HideSkillTooltip()
-    {
-        if (_tooltipInstance != null)
-        {
-            _tooltipInstance.gameObject.SetActive(false);
-        }
-
-        // [추가] 즉시 해제하지 않고 약간의 지연을 둠 (클릭 이벤트 방지)
-        StartCoroutine(ResetTooltipFlagRoutine());
-    }
-
-    /// <summary>
-    /// 상태 효과 툴팁을 표시합니다.
-    /// </summary>
-    public void ShowStatusTooltip(StatusEffect effect, Vector3 worldPos, float height)
-    {
-        if (statusTooltipPrefab == null) return;
-
-        if (_statusTooltipInstance == null)
-        {
-            _statusTooltipInstance = Instantiate(statusTooltipPrefab, transform);
-        }
-
-        _statusTooltipInstance.gameObject.SetActive(true);
-        _statusTooltipInstance.transform.SetAsLastSibling();
-        _statusTooltipInstance.SetData(effect);
-
-        IsTooltipPerforming = true; // [추가]
-
-        // 아이콘 높이만큼 위로 띄움
-        _statusTooltipInstance.SetPosition(worldPos, height, transform.lossyScale.y);
-    }
-
-    /// <summary>
-    /// 상태 효과 툴팁을 숨깁니다.
-    /// </summary>
-    public void HideStatusTooltip()
-    {
-        if (_statusTooltipInstance != null)
-        {
-            _statusTooltipInstance.gameObject.SetActive(false);
-        }
-
-        // [추가] 즉시 해제하지 않고 약간의 지연을 둠 (클릭 이벤트 방지)
-        StartCoroutine(ResetTooltipFlagRoutine());
-    }
-
-    private System.Collections.IEnumerator ResetTooltipFlagRoutine()
-    {
-        // 0.1초 정도 유지하여 뒤따라오는 클릭 이벤트를 씹음
-        yield return new WaitForSeconds(0.1f);
-        IsTooltipPerforming = false;
-    }
 
     /// <summary>
     /// [신규] 행동게이지 상세 리스트 버튼 클릭 시 호출됩니다.

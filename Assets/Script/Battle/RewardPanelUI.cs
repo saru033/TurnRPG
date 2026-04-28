@@ -18,7 +18,8 @@ public class RewardPanelUI : MonoBehaviour
     [Header("Texts")]
     public TextMeshProUGUI goldText;
     public TextMeshProUGUI skillUpText;
-    public GameObject warningPanel; // [수정] 보관하지 않은 아이템 경고 패널 (GameObject)
+    public GameObject warningPanel; // 보관하지 않은 아이템 경고 패널
+    public GameObject resourceWarningPanel; // [추가] 획득하지 않은 재화(돈/강화석) 경고 패널
 
     [Header("Item Icons")]
     public RectTransform itemSnapshotContainer;
@@ -45,8 +46,9 @@ public class RewardPanelUI : MonoBehaviour
     {
         _onConfirm = onConfirm;
         gameObject.SetActive(true);
+        if (warningPanel != null) warningPanel.SetActive(false);
+        if (resourceWarningPanel != null) resourceWarningPanel.SetActive(false); // [추가] 초기화
         _hasShownBagWarning = false;
-        if (warningPanel != null) warningPanel.SetActive(false); // [추가] 초기화
 
         // 보상 아이템 리스트 초기 할당 (미표시 버그 수정)
         _droppedItems = (items != null) ? new List<SkillData>(items) : new List<SkillData>();
@@ -56,18 +58,52 @@ public class RewardPanelUI : MonoBehaviour
         // 보상용 가방 전용 UI 활성화
         if (rewardBagGroup != null) rewardBagGroup.SetActive(true);
 
-        // 1. 골드 표시
+        // 1. 골드 표시 및 클릭 획득 설정
         if (goldGroup != null)
         {
             goldGroup.SetActive(gold > 0);
             if (goldText != null) goldText.text = gold.ToString();
+
+            var btn = goldGroup.GetComponent<Button>();
+            if (btn == null) btn = goldGroup.AddComponent<Button>();
+            btn.onClick.RemoveAllListeners();
+            btn.onClick.AddListener(() =>
+            {
+                if (GameManager.Instance != null)
+                {
+                    GameManager.Instance.gold += gold;
+                    if (LobbyTopUI.Instance != null) LobbyTopUI.Instance.Refresh();
+                }
+                goldGroup.SetActive(false);
+                resourceWarningPanel.SetActive(false);
+            });
         }
 
-        // 2. 강화석 표시
+        // 2. 강화석 표시 및 클릭 획득 설정
         if (skillUpGroup != null)
         {
             skillUpGroup.SetActive(skillUp > 0);
             if (skillUpText != null) skillUpText.text = skillUp.ToString();
+
+            // 스킬업 그룹을 클릭하면 재화 획득 후 즉시 스킬 강화 UI 열기
+            var btn = skillUpGroup.GetComponent<Button>();
+            if (btn == null) btn = skillUpGroup.AddComponent<Button>();
+            btn.onClick.RemoveAllListeners();
+            btn.onClick.AddListener(() =>
+            {
+                if (GameManager.Instance != null)
+                {
+                    GameManager.Instance.skillup += skillUp;
+                    if (LobbyTopUI.Instance != null) LobbyTopUI.Instance.Refresh();
+                }
+                skillUpGroup.SetActive(false);
+
+                if (BattleManager.Instance != null && BattleManager.Instance.battleUI != null && BattleManager.Instance.battleUI.skillUpgradeUI != null)
+                {
+                    BattleManager.Instance.battleUI.skillUpgradeUI.Open();
+                    resourceWarningPanel.SetActive(false);
+                }
+            });
         }
 
         // 3. 배틀 아이템 및 가방 UI 갱신
@@ -194,7 +230,15 @@ public class RewardPanelUI : MonoBehaviour
 
     private void HandleConfirm()
     {
-        // 1. 이미 경고 패널이 떠있는 상태에서 다시 누르면 즉시 종료
+        // 0. 재화(골드, 강화석)를 획득하지 않은 상태면 경고 패널 표시 후 중단
+        bool hasUncollectedResources = (goldGroup != null && goldGroup.activeSelf) || (skillUpGroup != null && skillUpGroup.activeSelf);
+        if (hasUncollectedResources)
+        {
+            if (resourceWarningPanel != null) resourceWarningPanel.SetActive(true);
+            return;
+        }
+
+        // 1. 이미 아이템 경고 패널이 떠있는 상태에서 다시 누르면 즉시 종료
         if (warningPanel != null && warningPanel.activeSelf)
         {
             ClosePanel();
@@ -222,6 +266,7 @@ public class RewardPanelUI : MonoBehaviour
     public void HideWarning()
     {
         if (warningPanel != null) warningPanel.SetActive(false);
+        if (resourceWarningPanel != null) resourceWarningPanel.SetActive(false);
         _hasShownBagWarning = false;
     }
 

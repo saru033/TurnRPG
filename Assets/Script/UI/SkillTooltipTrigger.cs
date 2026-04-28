@@ -23,7 +23,7 @@ public class SkillTooltipTrigger : MonoBehaviour, IPointerDownHandler, IPointerU
     public void OnPointerDown(PointerEventData eventData)
     {
         if (_skill == null) return;
-        
+
         _isPressed = true;
         WasLongPressed = false; // [추가] 새로운 터치 시 리셋
         StopPressRoutine();
@@ -48,15 +48,15 @@ public class SkillTooltipTrigger : MonoBehaviour, IPointerDownHandler, IPointerU
         if (_isPressed)
         {
             WasLongPressed = true; // [추가] 툴팁이 떴으므로 롱프레스 성공
-            // BattleUI를 통해 툴팁 표시 요청
-            if (BattleUI.Instance != null)
+            // GameManager를 통해 툴팁 표시 요청
+            if (GameManager.Instance != null)
             {
                 RectTransform rt = GetComponent<RectTransform>();
                 Vector3 worldPos = transform.position; // 월드 좌표 사용
                 float height = rt.rect.height;
 
                 // 버튼의 높이만큼 위로 오프셋 전달
-                BattleUI.Instance.ShowSkillTooltip(_skill, _level, worldPos, height);
+                GameManager.Instance.ShowSkillTooltip(_skill, _level, worldPos, height);
             }
         }
     }
@@ -65,9 +65,9 @@ public class SkillTooltipTrigger : MonoBehaviour, IPointerDownHandler, IPointerU
     {
         _isPressed = false;
         StopPressRoutine();
-        if (BattleUI.Instance != null)
+        if (GameManager.Instance != null)
         {
-            BattleUI.Instance.HideSkillTooltip();
+            GameManager.Instance.HideSkillTooltip();
         }
     }
 

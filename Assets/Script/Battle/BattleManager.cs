@@ -407,7 +407,7 @@ public class BattleManager : MonoBehaviour
     public void OnSkillSelected(int skillIndex)
     {
         // [추가] 툴팁 확인 중(롱프레스)인 경우 클릭 선택 무시
-        if (BattleUI.Instance != null && BattleUI.Instance.IsTooltipPerforming) return;
+        if (GameManager.Instance != null && GameManager.Instance.IsTooltipPerforming) return;
 
         // 타겟 선택 모드로 전환 (PlayerTurn -> SelectTarget)
         if (State != BattleState.PlayerTurn && State != BattleState.SelectTarget) return;
@@ -439,7 +439,7 @@ public class BattleManager : MonoBehaviour
     public void OnItemSelected(int itemIndex)
     {
         // [추가] 툴팁 확인 중(롱프레스)인 경우 클릭 선택 무시
-        if (BattleUI.Instance != null && BattleUI.Instance.IsTooltipPerforming) return;
+        if (GameManager.Instance != null && GameManager.Instance.IsTooltipPerforming) return;
 
         if (isItemUse || (State != BattleState.PlayerTurn && State != BattleState.SelectTarget)) return;
 
@@ -1614,6 +1614,12 @@ public class BattleManager : MonoBehaviour
                     {
                         // 생존 시 현재 체력, 사망 시 최소 1로 저장
                         party[playerIdx].currentHp = bc.IsAlive ? bc.CurrentHp : 1f;
+
+                        // [추가] 스킬 쿨타임 저장
+                        for (int i = 0; i < 3; i++)
+                        {
+                            party[playerIdx].skillCooldowns[i] = bc.SkillCooldowns[i];
+                        }
                     }
                     playerIdx++;
                 }
@@ -1632,12 +1638,11 @@ public class BattleManager : MonoBehaviour
         int rewardGold = UnityEngine.Random.Range(currentStage.minGold, currentStage.maxGold + 1);
         int rewardSkillUp = UnityEngine.Random.Range(currentStage.minSkillUp, currentStage.maxSkillUp + 1);
 
-        GameManager.Instance.gold += rewardGold;
-        GameManager.Instance.skillup += rewardSkillUp;
+        // [수정] GameManager에 즉시 추가하지 않음 (RewardPanelUI에서 클릭 시 추가)
 
         string rewardLog = $"<b>[전투 승리 - Stage {currentStage.stageID}]</b>\n";
-        rewardLog += $"- 획득 골드: {rewardGold} (보유: {GameManager.Instance.gold})\n";
-        rewardLog += $"- 획득 강화석: {rewardSkillUp} (보유: {GameManager.Instance.skillup})\n";
+        rewardLog += $"- 획득 골드: {rewardGold}\n";
+        rewardLog += $"- 획득 강화석: {rewardSkillUp}\n";
 
         // 2. 배틀 아이템 랜덤 획득 (1~2개)
         List<SkillData> droppedItems = new List<SkillData>();
@@ -1677,18 +1682,6 @@ public class BattleManager : MonoBehaviour
     /// </summary>
     public void OnRewardConfirmed()
     {
-        // [추가] 강화석이 있다면 스킬 강화 UI 오픈
-        if (GameManager.Instance != null && GameManager.Instance.skillup > 0)
-        {
-            if (battleUI != null && battleUI.skillUpgradeUI != null)
-            {
-                // 강화 UI가 닫힐 때 맵으로 돌아가도록 콜백 등록
-                battleUI.skillUpgradeUI.OnClose = ReturnToMap;
-                battleUI.skillUpgradeUI.Open();
-                return;
-            }
-        }
-
         ReturnToMap();
     }
 
@@ -1697,8 +1690,6 @@ public class BattleManager : MonoBehaviour
         // 2. 맵 UI 다시 활성화
         if (mapUIObject != null)
             mapUIObject.SetActive(true);
-
-        this.gameObject.SetActive(false);
     }
 
     // -------------------------------------------------------

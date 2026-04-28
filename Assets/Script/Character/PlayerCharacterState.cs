@@ -33,6 +33,7 @@ public class PlayerCharacterState
     // 최대 3개의 스킬 슬롯 유지 (SkillData 레퍼런스 및 레벨)
     public List<SkillData> equippedSkills = new List<SkillData>(3);
     public int[] skillLevels = new int[3] { 1, 1, 1 };
+    public int[] skillCooldowns = new int[3]; // [추가] 스테이지 간 유지되는 스킬 쿨타임
 
     public PlayerCharacterState(CharacterData data)
     {

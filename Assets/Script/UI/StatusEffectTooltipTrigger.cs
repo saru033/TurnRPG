@@ -43,15 +43,15 @@ public class StatusEffectTooltipTrigger : MonoBehaviour, IPointerDownHandler, IP
 
         if (_isPressed && _effect != null)
         {
-            // BattleUI를 통해 상태 효과 툴팁 표시 요청
-            if (BattleUI.Instance != null)
+            // GameManager를 통해 상태 효과 툴팁 표시 요청
+            if (GameManager.Instance != null)
             {
                 RectTransform rt = GetComponent<RectTransform>();
                 Vector3 worldPos = transform.position;
                 float height = rt.rect.height;
 
                 // 아이콘 높이만큼 오프셋을 주어 바로 위에 표시
-                BattleUI.Instance.ShowStatusTooltip(_effect, worldPos, height);
+                GameManager.Instance.ShowStatusTooltip(_effect, worldPos, height);
             }
         }
     }
@@ -60,9 +60,9 @@ public class StatusEffectTooltipTrigger : MonoBehaviour, IPointerDownHandler, IP
     {
         _isPressed = false;
         StopPressRoutine();
-        if (BattleUI.Instance != null)
+        if (GameManager.Instance != null)
         {
-            BattleUI.Instance.HideStatusTooltip();
+            GameManager.Instance.HideStatusTooltip();
         }
     }
 

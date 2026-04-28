@@ -28,9 +28,9 @@ MonoBehaviour:
   sideImage: {fileID: 3888641499719248106, guid: 87a664be21bf45f4f9219c14546c1816, type: 3}
   characterPrefab: {fileID: 1635540565847222994, guid: dff8b8cfe3e764e449ce348511cef712, type: 3}
   StartingSkills:
-  - skillData: {fileID: 11400000, guid: c72903f8e89369d4e9c689aaa6f58aa3, type: 2}
+  - skillData: {fileID: 11400000, guid: 86fe3f13062fb1d4cb88e63548567156, type: 2}
     level: 1
   - skillData: {fileID: 11400000, guid: 60f840a90d8acd343ba6aad8cbee547b, type: 2}
     level: 1
-  - skillData: {fileID: 11400000, guid: d4b289102e6098a4796680883f6bd417, type: 2}
+  - skillData: {fileID: 11400000, guid: a8ecc1c2ad7a8af46b3258671c9be3d6, type: 2}
     level: 1

@@ -331,7 +331,7 @@ public class CharacterView : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         // [추가] 툴팁 확인 중(롱프레스)인 경우 클릭 선택 무시
-        if (BattleUI.Instance != null && BattleUI.Instance.IsTooltipPerforming) return;
+        if (GameManager.Instance != null && GameManager.Instance.IsTooltipPerforming) return;
 
         if (BattleManager.Instance != null && _character != null)
         {

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 /// <summary>
 /// 맵을 Canvas 위에 렌더링하고 플레이어 이동을 처리하는 MonoBehaviour.
@@ -64,6 +65,9 @@ public class MapUI : MonoBehaviour
     public GameObject BattlePanel;
     public StageDatabase stageDatabase; // [신규] 스테이지 데이터를 뽑아올 데이터베이스
 
+    public GameObject RestPanel;
+    public GameObject shopPanel;
+
     void ComputeLayout()
     {
         // panelRect가 없으면 Screen 높이로 fallback
@@ -96,7 +100,39 @@ public class MapUI : MonoBehaviour
     }
 
     // ── Unity lifecycle ───────────────────────────────────
-    void Start() => GenerateAndDraw();
+    private Vector2 _origMapPos;
+    private bool _isMapInitialized = false;
+
+    void Start()
+    {
+        InitMapIfNecessary();
+        GenerateAndDraw();
+    }
+
+    private void InitMapIfNecessary()
+    {
+        if (_isMapInitialized) return;
+        _isMapInitialized = true;
+
+        var rt = GetComponent<RectTransform>();
+        if (rt != null)
+        {
+            _origMapPos = rt.anchoredPosition;
+        }
+    }
+
+    private void OnEnable()
+    {
+        InitMapIfNecessary();
+
+        var rt = GetComponent<RectTransform>();
+        if (rt != null)
+        {
+            // 오른쪽에서 원래 위치로 스르륵 등장
+            rt.anchoredPosition = new Vector2(_origMapPos.x + 2000f, _origMapPos.y);
+            rt.DOAnchorPos(_origMapPos, 0.2f).SetEase(Ease.OutCubic);
+        }
+    }
 
     // ── Public API ────────────────────────────────────────
     public void GenerateAndDraw()
@@ -302,6 +338,46 @@ public class MapUI : MonoBehaviour
         }
     }
 
+    // 선택한 노드 타입 이외의 패널을 비활성화
+    public void DisableOtherPanels(NodeType nodeType)
+    {
+        BattlePanel.SetActive(false);
+        RestPanel.SetActive(false);
+        //eventPanel.SetActive(false);
+        if (shopPanel != null) shopPanel.SetActive(false);
+        //startHubPanel.SetActive(false);
+        //goalHubPanel.SetActive(false);
+
+
+
+
+
+        switch (nodeType)
+        {
+            case NodeType.Normal:
+                BattlePanel.SetActive(true);
+                break;
+            case NodeType.Elite:
+                BattlePanel.SetActive(true);
+                break;
+            case NodeType.Rest:
+                RestPanel.SetActive(true);
+                break;
+            case NodeType.Event:
+                //eventPanel.SetActive(true);
+                break;
+            case NodeType.Shop:
+                if (shopPanel != null) shopPanel.SetActive(true);
+                break;
+            case NodeType.StartHub:
+                break;
+            case NodeType.GoalHub:
+                break;
+        }
+    }
+
+
+
     // ── 인터랙션 ──────────────────────────────────────────
     void OnNodeClicked(MapNode target)
     {
@@ -331,14 +407,35 @@ public class MapUI : MonoBehaviour
                 }
 
                 LobbyTopUI.Instance.HideUI();
-                BattlePanel.SetActive(true);
+                DisableOtherPanels(target.Type);
                 gameObject.SetActive(false);
                 break;
+
+
             case NodeType.Elite:
-                UnityEngine.Debug.Log("[MapUI] 엘리트 노드");
+                // [수정] 비활성 상태에서도 데이터를 전달할 수 있도록 직접 컴포넌트 추출
+                if (BattlePanel != null)
+                {
+                    var bm = BattlePanel.GetComponentInChildren<BattleManager>();
+                    if (bm != null && stageDatabase != null)
+                    {
+                        // 엘리트 보스 스테이지 가져오기 (추후 생성 후 연결)
+                        var selectedStage = stageDatabase.GetRandomStage();
+                        bm.currentStage = selectedStage;
+                    }
+                }
+
+                LobbyTopUI.Instance.HideUI();
+                DisableOtherPanels(target.Type);
+                gameObject.SetActive(false);
                 break;
+
             case NodeType.Rest:
-                UnityEngine.Debug.Log("[MapUI] 휴식 노드");
+                if (RestPanel != null)
+                {
+                    DisableOtherPanels(target.Type);
+                    gameObject.SetActive(false);
+                }
                 break;
             case NodeType.Event:
                 UnityEngine.Debug.Log("[MapUI] 이벤트 노드");
