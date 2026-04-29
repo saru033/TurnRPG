@@ -67,7 +67,6 @@ public class MapUI : MonoBehaviour
 
     public GameObject RestPanel;
     public GameObject shopPanel;
-
     void ComputeLayout()
     {
         // panelRect가 없으면 Screen 높이로 fallback
@@ -441,7 +440,11 @@ public class MapUI : MonoBehaviour
                 UnityEngine.Debug.Log("[MapUI] 이벤트 노드");
                 break;
             case NodeType.Shop:
-                UnityEngine.Debug.Log("[MapUI] 상점 노드");
+                if (shopPanel != null)
+                {
+                    DisableOtherPanels(target.Type);
+                    gameObject.SetActive(false);
+                }
                 break;
             case NodeType.StartHub:
                 UnityEngine.Debug.Log("[MapUI] 시작 허브 노드");

@@ -15,6 +15,7 @@ MonoBehaviour:
   ID: 1002
   CharacterName: wolf
   isPlayer: 1
+  charType: 4
   MaxHp: 487
   Attack: 125
   Defense: 73

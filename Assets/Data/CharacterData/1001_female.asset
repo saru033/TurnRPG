@@ -15,6 +15,7 @@ MonoBehaviour:
   ID: 1001
   CharacterName: female
   isPlayer: 1
+  charType: 2
   MaxHp: 558
   Attack: 104
   Defense: 95

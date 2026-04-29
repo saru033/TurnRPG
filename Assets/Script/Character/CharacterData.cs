@@ -7,6 +7,7 @@ public class CharacterData : ScriptableObject
     public int ID;
     public string CharacterName;
     public bool isPlayer;
+    public TurnRPG.SkillSystem.CharacterType charType;
 
     [Header("기본 스탯")]
     public float MaxHp = 1000f;
