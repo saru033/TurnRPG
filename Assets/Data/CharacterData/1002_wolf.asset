@@ -17,7 +17,7 @@ MonoBehaviour:
   isPlayer: 1
   charType: 4
   MaxHp: 487
-  Attack: 125
+  Attack: 850
   Defense: 73
   Speed: 114
   CritChance: 0.15
