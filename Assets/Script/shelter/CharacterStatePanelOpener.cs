@@ -167,10 +167,25 @@ public class CharacterStatePanelOpener : MonoBehaviour
                         {
                             iconImage.sprite = state.equippedSkills[i].SkillIcon;
                             iconImage.enabled = true; // 아이콘 활성화
+
+                            // [추가] 툴팁 트리거 초기화
+                            var trigger = skillSlotTransform.GetComponent<SkillTooltipTrigger>();
+                            if (trigger == null) trigger = skillSlotTransform.GetComponentInChildren<SkillTooltipTrigger>();
+                            
+                            if (trigger != null)
+                            {
+                                trigger.Init(state.equippedSkills[i], state.skillLevels[i]);
+                                trigger.enabled = true;
+                            }
                         }
                         else
                         {
                             iconImage.enabled = false; // 스킬이 없으면 이미지 비활성화
+
+                            // 스킬이 없으면 트리거 비활성화
+                            var trigger = skillSlotTransform.GetComponent<SkillTooltipTrigger>();
+                            if (trigger == null) trigger = skillSlotTransform.GetComponentInChildren<SkillTooltipTrigger>();
+                            if (trigger != null) trigger.enabled = false;
                         }
                     }
                 }
@@ -234,6 +249,46 @@ public class CharacterStatePanelOpener : MonoBehaviour
     {
         if (ProcessStatChange(ref GameManager.Instance.party[_currentIdx].spentCritDmg, isPlus))
             UpdateUI();
+    }
+
+    /// <summary>
+    /// 모든 투자된 스탯을 초기화하고 포인트를 환급합니다.
+    /// </summary>
+    public void ResetStats()
+    {
+        if (_currentIdx == -1 || GameManager.Instance == null) return;
+        var state = GameManager.Instance.party[_currentIdx];
+        var data = state.template;
+
+        // 1. 투자한 총 포인트 계산
+        int totalSpent = state.spentHp + state.spentAtk + state.spentDef + 
+                         state.spentSpeed + state.spentCritRate + state.spentCritDmg;
+
+        if (totalSpent <= 0) return; // 투자한 포인트가 없으면 무시
+
+        // 2. 포인트 환급
+        state.bonusPoints += totalSpent;
+
+        // 3. 체력 조정 (최대 체력이 줄어들므로 현재 체력도 차이만큼 감소)
+        float oldMaxHp = data.MaxHp + (data.MaxHp * state.spentHp * 0.01f);
+        float newMaxHp = data.MaxHp; // spentHp가 0이 될 것이므로
+        float diff = newMaxHp - oldMaxHp;
+        
+        // 현재 체력도 줄어든 최대치에 맞춰 클램프
+        state.currentHp = Mathf.Clamp(state.currentHp + diff, 1f, newMaxHp);
+
+        // 4. 모든 투자 포인트 초기화
+        state.spentHp = 0;
+        state.spentAtk = 0;
+        state.spentDef = 0;
+        state.spentSpeed = 0;
+        state.spentCritRate = 0;
+        state.spentCritDmg = 0;
+
+        // 5. UI 갱신
+        UpdateUI();
+
+        Debug.Log($"[UI] {state.characterName} 스탯 초기화 완료. {totalSpent} 포인트 환급됨.");
     }
 
     /// <summary>
