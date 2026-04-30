@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: 1004_ene_trash2
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
   ID: 1004
-  CharacterName: Enemy_trash
+  CharacterName: "\uC4F0\uBD09\uC774"
   isPlayer: 0
-  MaxHp: 12
-  Attack: 125
-  Defense: 73
-  Speed: 62
+  charType: 0
+  MaxHp: 5243
+  Attack: 689
+  Defense: 631
+  Speed: 91
   CritChance: 0.15
   CritDamage: 1.5
   Evasion: 0

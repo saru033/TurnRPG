@@ -11,6 +11,7 @@ public class PlayerCharacterState
 {
     [Header("Base Data")]
     public CharacterData template;
+    public string characterName; // [추가] 유저가 정한 커스텀 이름
 
     [Header("Current Baseline Stats (Lobby/Equipment applied)")]
     public float currentBaseMaxHp;
@@ -40,6 +41,7 @@ public class PlayerCharacterState
         if (data == null) return;
 
         template = data;
+        characterName = data.CharacterName;
 
         // 초기화 시 CharacterData의 기본값을 복사
         currentBaseMaxHp = data.MaxHp;

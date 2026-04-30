@@ -127,7 +127,7 @@ public class BattleCharacter
 
         Data = state.template;
         ID = Data.ID;
-        Name = Data.CharacterName;
+        Name = state.characterName;
         IsPlayer = true; // PlayerCharacterState는 항상 아군용
 
         // [중요] GameManager에서 관리하는 '현재 기본 스탯' 및 '투자된 보너스 포인트'를 합산합니다.

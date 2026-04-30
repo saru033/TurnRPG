@@ -16,7 +16,6 @@ MonoBehaviour:
   SkillName: "\uC800\uACA9"
   SkillIcon: {fileID: -6577425418674535482, guid: d2e4857c263b66c4ab9a5b30da4dae0a, type: 3}
   Type: 0
-  PassiveTrigger: 0
   SlotIndex: 2
   EquipRestriction: 2
   RequiredAnimationTrigger: 
@@ -26,6 +25,7 @@ MonoBehaviour:
       \uBC29\uC5B4\uB825\uC744 50% \uAD00\uD1B5\uD569\uB2C8\uB2E4."
     Cooldown: 6
     TargetType: 2
+    PassiveTrigger: 0
     ConstantEffects: []
     Effects:
     - rid: 7481024980550680752
@@ -34,6 +34,7 @@ MonoBehaviour:
       \uB300\uC0C1\uC758 \uBC29\uC5B4\uB825\uC744 50% \uAD00\uD1B5\uD569\uB2C8\uB2E4."
     Cooldown: 6
     TargetType: 2
+    PassiveTrigger: 0
     ConstantEffects: []
     Effects:
     - rid: 7481024980550680753
@@ -43,34 +44,41 @@ MonoBehaviour:
       \uB300\uC0C1\uC758 \uBC29\uC5B4\uB825\uC744 50% \uAD00\uD1B5\uD569\uB2C8\uB2E4."
     Cooldown: 5
     TargetType: 2
+    PassiveTrigger: 0
     ConstantEffects: []
     Effects:
     - rid: 7481024980550680753
     - rid: 7481024980550680752
   - Description: "\uC790\uC2E0\uC5D0\uAC8C 2\uD134\uAC04 \uCE58\uBA85 \uD53C\uD574
       \uC99D\uAC00\uB97C \uBD80\uC5EC\uD55C \uD6C4 \uC801\uC744 \uACF5\uACA9\uD569\uB2C8\uB2E4.
-      \uB300\uC0C1\uC758 \uBC29\uC5B4\uB825\uC744 50% \uAD00\uD1B5\uD569\uB2C8\uB2E4."
+      \uACF5\uACA9\uC758\uD53C\uD574\uB7C9\uC774 50% \uC99D\uAC00\uD558\uACE0, \uB300\uC0C1\uC758
+      \uBC29\uC5B4\uB825\uC744 50% \uAD00\uD1B5\uD569\uB2C8\uB2E4."
     Cooldown: 5
     TargetType: 2
+    PassiveTrigger: 0
     ConstantEffects: []
     Effects:
     - rid: 7481024980550680753
     - rid: 7481024980550680754
   - Description: "\uC790\uC2E0\uC5D0\uAC8C 2\uD134\uAC04 \uCE58\uBA85 \uD53C\uD574
       \uC99D\uAC00\uB97C \uBD80\uC5EC\uD55C \uD6C4 \uC801\uC744 \uACF5\uACA9\uD569\uB2C8\uB2E4.
-      \uB300\uC0C1\uC758 \uBC29\uC5B4\uB825\uC744 70% \uAD00\uD1B5\uD569\uB2C8\uB2E4."
+      \uACF5\uACA9\uC758\uD53C\uD574\uB7C9\uC774 50% \uC99D\uAC00\uD558\uACE0,  \uB300\uC0C1\uC758
+      \uBC29\uC5B4\uB825\uC744 70% \uAD00\uD1B5\uD569\uB2C8\uB2E4."
     Cooldown: 5
     TargetType: 2
+    PassiveTrigger: 0
     ConstantEffects: []
     Effects:
     - rid: 7481024980550680753
     - rid: 7481024980550680755
   - Description: "\uC790\uC2E0\uC5D0\uAC8C 2\uD134\uAC04 \uCE58\uBA85 \uD53C\uD574
       \uC99D\uAC00\uB97C \uBD80\uC5EC\uD55C \uD6C4 \uC801\uC744 \uACF5\uACA9\uD569\uB2C8\uB2E4.
-      \uB300\uC0C1\uC758 \uBC29\uC5B4\uB825\uC744 50% \uAD00\uD1B5\uD569\uB2C8\uB2E4.
-      \uC774 \uACF5\uACA9\uC740 \uBE57\uB098\uAC00\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4."
+      \uACF5\uACA9\uC758\uD53C\uD574\uB7C9\uC774 50% \uC99D\uAC00\uD558\uACE0,  \uB300\uC0C1\uC758
+      \uBC29\uC5B4\uB825\uC744 50% \uAD00\uD1B5\uD569\uB2C8\uB2E4. \uC774 \uACF5\uACA9\uC740
+      \uBE57\uB098\uAC00\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4."
     Cooldown: 5
     TargetType: 2
+    PassiveTrigger: 0
     ConstantEffects: []
     Effects:
     - rid: 7481024980550680753

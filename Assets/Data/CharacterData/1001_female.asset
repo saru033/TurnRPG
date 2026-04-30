@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: 1001_female
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
   ID: 1001
-  CharacterName: female
+  CharacterName: 
   isPlayer: 1
   charType: 2
-  MaxHp: 558
-  Attack: 104
-  Defense: 95
-  Speed: 112
+  MaxHp: 7323
+  Attack: 966
+  Defense: 657
+  Speed: 102
   CritChance: 0.15
   CritDamage: 1.5
   Evasion: 0
@@ -29,9 +29,9 @@ MonoBehaviour:
   sideImage: {fileID: 3888641499719248106, guid: 87a664be21bf45f4f9219c14546c1816, type: 3}
   characterPrefab: {fileID: 1635540565847222994, guid: dff8b8cfe3e764e449ce348511cef712, type: 3}
   StartingSkills:
-  - skillData: {fileID: 11400000, guid: 86fe3f13062fb1d4cb88e63548567156, type: 2}
+  - skillData: {fileID: 11400000, guid: 251ccf2871ca5f645ab2679f567f6f44, type: 2}
     level: 1
   - skillData: {fileID: 11400000, guid: 60f840a90d8acd343ba6aad8cbee547b, type: 2}
     level: 1
-  - skillData: {fileID: 11400000, guid: a8ecc1c2ad7a8af46b3258671c9be3d6, type: 2}
+  - skillData: {fileID: 11400000, guid: 86fe3f13062fb1d4cb88e63548567156, type: 2}
     level: 1

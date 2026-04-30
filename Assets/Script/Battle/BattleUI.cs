@@ -27,6 +27,7 @@ public class BattleUI : MonoBehaviour
     [SerializeField] private Sprite bagCloseImg; // 닫힌 이미지
     bool isBagOpen = false;
     public RectTransform baginsideimgRect;
+    public TMP_Text characterNameText;
     public Image HPBarImage;
     public TextMeshProUGUI HPText;
     public RectTransform select_SkillRect;
@@ -513,6 +514,13 @@ public class BattleUI : MonoBehaviour
                 imgRt.sizeDelta = new Vector2(w, h);
                 imgRt.anchoredPosition = Vector2.zero; // 왼쪽 하단 기준
             }
+
+            // 이름 갱신
+            if (characterNameText != null)
+            {
+                characterNameText.text = actor.Name;
+            }
+
 
             ImgSideHpUpdate(actor);
 

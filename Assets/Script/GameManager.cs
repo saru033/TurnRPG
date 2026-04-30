@@ -36,6 +36,9 @@ public class GameManager : MonoBehaviour
     public StatusEffectTooltipUI statusTooltipPrefab;
     private StatusEffectTooltipUI _statusTooltipInstance;
 
+    [Header("Character Naming")]
+    public CharacterNamingUI namingUI;
+
     /// <summary>
     /// 현재 툴팁인 상태인지(롱프레스 중인지) 여부
     /// </summary>
@@ -133,14 +136,51 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void InitializeParty()
     {
+        List<PlayerCharacterState> needsNaming = new List<PlayerCharacterState>();
+
         for (int i = 0; i < 3; i++)
         {
             if (initialTemplates[i] != null)
             {
                 party[i] = new PlayerCharacterState(initialTemplates[i]);
                 Debug.Log($"[GameManager] {i + 1}번 슬롯 {initialTemplates[i].CharacterName} 초기화 완료");
+
+                // 이름이 비어있다면 명명 큐에 추가
+                if (string.IsNullOrEmpty(party[i].characterName))
+                {
+                    needsNaming.Add(party[i]);
+                }
             }
         }
+
+        // 명명이 필요한 캐릭터가 있다면 연출 시작
+        if (needsNaming.Count > 0)
+        {
+            StartCoroutine(NamingFlowRoutine(needsNaming));
+        }
+    }
+
+    private IEnumerator NamingFlowRoutine(List<PlayerCharacterState> targets)
+    {
+        if (namingUI == null)
+        {
+            Debug.LogError("[GameManager] namingUI가 할당되지 않았습니다!");
+            yield break;
+        }
+
+        foreach (var charState in targets)
+        {
+            bool isWaiting = true;
+            namingUI.Open(charState, () => isWaiting = false);
+            
+            // 유저가 이름을 확정할 때까지 대기
+            while (isWaiting)
+            {
+                yield return null;
+            }
+        }
+
+        Debug.Log("[GameManager] 모든 캐릭터 명명 완료");
     }
 
     // -------------------------------------------------------

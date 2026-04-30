@@ -13,6 +13,7 @@ public class CharacterStatePanelOpener : MonoBehaviour
     [Header("UI Panels")]
     public GameObject characterStatePanel;
     public Image imgIllustration; // 캐릭터 전신 일러스트 표시용
+    public TMP_Text txtName;
 
     [Header("Stats UI (TextMeshPro)")]
     public TMP_Text txtHp;
@@ -47,7 +48,7 @@ public class CharacterStatePanelOpener : MonoBehaviour
         if (characterIndex < 0 || characterIndex >= GameManager.Instance.party.Length) return;
 
         _currentIdx = characterIndex;
-        
+
         // UI 갱신
         UpdateUI();
 
@@ -111,15 +112,18 @@ public class CharacterStatePanelOpener : MonoBehaviour
         // 1. 일러스트 갱신
         if (imgIllustration != null) imgIllustration.sprite = data.illustration;
 
+        // 1.1 이름 갱신
+        if (txtName != null) txtName.text = state.characterName;
+
         // 2. 스탯 텍스트 갱신 (최종 스텟 / 보너스 수치 분리)
         // 체력, 공격력, 방어력: 1포인트당 1%
         float hpBonus = data.MaxHp * state.spentHp * 0.01f;
         float atkBonus = data.Attack * state.spentAtk * 0.01f;
         float defBonus = data.Defense * state.spentDef * 0.01f;
-        
+
         // 속도: 1포인트당 1f
         float speedBonus = state.spentSpeed;
-        
+
         // 치명타 확률/피해: 1포인트당 1% (0.01f)
         float critRateBonus = state.spentCritRate * 0.01f;
         float critDmgBonus = state.spentCritDmg * 0.01f;
@@ -150,7 +154,7 @@ public class CharacterStatePanelOpener : MonoBehaviour
             {
                 string skillObjectName = $"skill{i + 1}";
                 Transform skillSlotTransform = skillPanel.transform.Find(skillObjectName);
-                
+
                 if (skillSlotTransform != null)
                 {
                     Image iconImage = skillSlotTransform.GetComponent<Image>();
@@ -197,7 +201,7 @@ public class CharacterStatePanelOpener : MonoBehaviour
 
             // 현재 체력도 차이만큼 조정 (단, 사망 상태가 되지 않도록 최소 1 유지 및 최대치 클램프)
             state.currentHp = Mathf.Clamp(state.currentHp + diff, 1f, newMaxHp);
-            
+
             UpdateUI();
         }
     }
