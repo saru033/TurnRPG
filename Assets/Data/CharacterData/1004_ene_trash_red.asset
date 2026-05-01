@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 105c21214ebaa0a4ba836d3b14b5e4e2, type: 3}
-  m_Name: 1005_ene_trash3
+  m_Name: 1004_ene_trash_red
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
-  ID: 1005
-  CharacterName: "\uC4F0\uBD09\uC774"
+  ID: 1004
+  CharacterName: "\uBE68\uAC04 \uC4F0\uBD09\uC774"
   isPlayer: 0
   charType: 0
   MaxHp: 5243
@@ -27,7 +27,7 @@ MonoBehaviour:
   illustration: {fileID: 7858980336673299937, guid: 4b5707357641e04438686dd5962c9f7d, type: 3}
   iconImage: {fileID: -1955851177974502843, guid: 99b77f96fafbdf94c854afd8faaf3597, type: 3}
   sideImage: {fileID: -7636694935251246727, guid: 7c7405ae2e004234aa55c571d7a22c2d, type: 3}
-  characterPrefab: {fileID: 6008314446264759706, guid: 72ff3ac32bc5e454e9e61f0596e1de2e, type: 3}
+  characterPrefab: {fileID: 6008314446264759706, guid: 783a2b5d1ad4be1488700ebd082a4c29, type: 3}
   StartingSkills:
   - skillData: {fileID: 11400000, guid: 63f9ca49754e7494bb37153ed51ac91c, type: 2}
     level: 1

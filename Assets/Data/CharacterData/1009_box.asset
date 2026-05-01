@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 105c21214ebaa0a4ba836d3b14b5e4e2, type: 3}
+  m_Name: 1009_box
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterData
+  ID: 1008
+  CharacterName: "\uC0C1\uC790 \uACE8\uB818"
+  isPlayer: 0
+  charType: 0
+  MaxHp: 4677
+  Attack: 726
+  Defense: 553
+  Speed: 111
+  CritChance: 0.15
+  CritDamage: 1.5
+  Evasion: 0
+  Accuracy: 1
+  illustration: {fileID: 7499154508442906066, guid: 6e18dcfbb77aa5649b560a1310bd8760, type: 3}
+  iconImage: {fileID: 7425190661023625120, guid: 90244b19c3a6d3849bb9c36f3974b45d, type: 3}
+  sideImage: {fileID: 3865875042886232523, guid: e4da53fad12f9ef45a39e9803492fdd9, type: 3}
+  characterPrefab: {fileID: 6008314446264759706, guid: d4a2bd760035061479e40879f787aaed, type: 3}
+  StartingSkills:
+  - skillData: {fileID: 11400000, guid: d6fecf199ce56624480cd1a2d2697204, type: 2}
+    level: 1

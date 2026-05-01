@@ -5536,7 +5536,6 @@ RectTransform:
   - {fileID: 1135919607}
   - {fileID: 543466008}
   - {fileID: 3015151}
-  - {fileID: 1460857778}
   - {fileID: 5117511968840734936}
   - {fileID: 1840112838}
   - {fileID: 1561844255}
@@ -5545,6 +5544,7 @@ RectTransform:
   - {fileID: 1234849657}
   - {fileID: 467779517}
   - {fileID: 229464243}
+  - {fileID: 1460857778}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -6036,10 +6036,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StageDatabase
   allStages:
-  - {fileID: 11400000, guid: 32696ceacb3a2d34ab6f7abe6fe44c3c, type: 2}
-  - {fileID: 11400000, guid: 4324952b93bae264185e235ad8dc12f5, type: 2}
   - {fileID: 11400000, guid: 83c70848a1a580d46b4d7364d7320311, type: 2}
-  - {fileID: 11400000, guid: 314e03cd61cc4be42a59f53dcd35f7d2, type: 2}
 --- !u!4 &470757596
 Transform:
   m_ObjectHideFlags: 0
@@ -15267,6 +15264,7 @@ GameObject:
   - component: {fileID: 1460857781}
   - component: {fileID: 1460857780}
   - component: {fileID: 1460857779}
+  - component: {fileID: 1460857782}
   m_Layer: 5
   m_Name: animationTemp
   m_TagString: Untagged
@@ -15290,8 +15288,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 451, y: -112}
-  m_SizeDelta: {x: 565.8896, y: 749.5266}
+  m_AnchoredPosition: {x: 38, y: -0.000030518}
+  m_SizeDelta: {x: 1057.3, y: 1400.3601}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1460857779
 Animator:
@@ -15303,7 +15301,7 @@ Animator:
   m_GameObject: {fileID: 1460857777}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 35e5bdb21be568e4c82bc5752d013a61, type: 2}
+  m_Controller: {fileID: 9100000, guid: e08b3121ade97944696b3b3872e0600a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -15335,7 +15333,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 4454631428275665778, guid: c1e1c2537a91dd841abe413f3f242917, type: 3}
+  m_Sprite: {fileID: 7499154508442906066, guid: 6e18dcfbb77aa5649b560a1310bd8760, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -15353,6 +15351,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1460857777}
   m_CullTransparentMesh: 1
+--- !u!114 &1460857782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460857777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d51eb153d15a74141952ed9ab29ac693, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TurnRPG.Battle.AnimationEventReceiver
 --- !u!1 &1462083653
 GameObject:
   m_ObjectHideFlags: 0
