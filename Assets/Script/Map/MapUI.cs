@@ -67,6 +67,7 @@ public class MapUI : MonoBehaviour
 
     public GameObject RestPanel;
     public GameObject shopPanel;
+    public GameObject eventPanel;
     void ComputeLayout()
     {
         // panelRect가 없으면 Screen 높이로 fallback
@@ -342,7 +343,7 @@ public class MapUI : MonoBehaviour
     {
         BattlePanel.SetActive(false);
         RestPanel.SetActive(false);
-        //eventPanel.SetActive(false);
+        eventPanel.SetActive(false);
         if (shopPanel != null) shopPanel.SetActive(false);
         //startHubPanel.SetActive(false);
         //goalHubPanel.SetActive(false);
@@ -363,7 +364,7 @@ public class MapUI : MonoBehaviour
                 RestPanel.SetActive(true);
                 break;
             case NodeType.Event:
-                //eventPanel.SetActive(true);
+                eventPanel.SetActive(true);
                 break;
             case NodeType.Shop:
                 if (shopPanel != null) shopPanel.SetActive(true);
@@ -437,7 +438,11 @@ public class MapUI : MonoBehaviour
                 }
                 break;
             case NodeType.Event:
-                UnityEngine.Debug.Log("[MapUI] 이벤트 노드");
+                if (eventPanel != null)
+                {
+                    DisableOtherPanels(target.Type);
+                    gameObject.SetActive(false);
+                }
                 break;
             case NodeType.Shop:
                 if (shopPanel != null)

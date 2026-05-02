@@ -136,6 +136,8 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void InitializeParty()
     {
+        if (LobbyTopUI.Instance != null) LobbyTopUI.Instance.Refresh();
+
         List<PlayerCharacterState> needsNaming = new List<PlayerCharacterState>();
 
         for (int i = 0; i < 3; i++)
@@ -172,7 +174,7 @@ public class GameManager : MonoBehaviour
         {
             bool isWaiting = true;
             namingUI.Open(charState, () => isWaiting = false);
-            
+
             // 유저가 이름을 확정할 때까지 대기
             while (isWaiting)
             {

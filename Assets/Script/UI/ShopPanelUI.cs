@@ -29,10 +29,7 @@ public class ShopPanelUI : MonoBehaviour
     public int itemPrice = 150;
 
     [Header("Skill Exchange UI")]
-    public GameObject exchangePanel;
-    public Image charIllustration;
-    public SkillTooltipUI currentSkillTooltip;
-    public SkillTooltipUI newSkillTooltip;
+    public SkillExchangeUI skillExchangeUI;
 
     [Header("Inventory UI")]
     public GameObject inventoryPanel;
@@ -44,8 +41,6 @@ public class ShopPanelUI : MonoBehaviour
     public Button discardNoBtn;
 
     private List<GameObject> _spawnedItems = new List<GameObject>();
-    private Vector2 _originalIllustrationPos;
-    private bool _isExchangeInitialized = false;
 
 
     /// <summary>
@@ -217,74 +212,12 @@ public class ShopPanelUI : MonoBehaviour
     /// </summary>
     private void OpenSkillExchangePanel(SkillData newSkill, int price, GameObject itemObj)
     {
-        if (exchangePanel == null) return;
+        if (skillExchangeUI == null) return;
 
-        // 0. 초기 위치 저장 및 초기화
-        if (!_isExchangeInitialized && charIllustration != null)
+        skillExchangeUI.Open(newSkill, price, () => 
         {
-            _originalIllustrationPos = charIllustration.rectTransform.anchoredPosition;
-            _isExchangeInitialized = true;
-        }
-
-        // 1. 해당 스킬을 장착할 수 있는 캐릭터 찾기
-        PlayerCharacterState targetChar = null;
-        foreach (var charState in GameManager.Instance.party)
-        {
-            if (charState != null && (charState.template.charType & newSkill.EquipRestriction) != 0)
-            {
-                targetChar = charState;
-                break;
-            }
-        }
-
-        if (targetChar == null)
-        {
-            Debug.LogWarning($"[Shop] {newSkill.SkillName}을(를) 장착할 수 있는 캐릭터가 파티에 없습니다.");
-            return;
-        }
-
-        // 2. 현재 장착 중인 동일 슬롯의 스킬 정보 가져오기
-        int slotIdx = (int)newSkill.SlotIndex;
-        SkillData currentSkill = targetChar.equippedSkills[slotIdx];
-        int currentLevel = targetChar.skillLevels[slotIdx];
-
-        // 3. UI 세팅 및 연출
-        if (charIllustration != null)
-        {
-            charIllustration.sprite = targetChar.template.illustration;
-            
-            // [DOTween] 일러스트 아래에서 위로 슬라이드
-            charIllustration.rectTransform.DOKill();
-            charIllustration.rectTransform.anchoredPosition = new Vector2(_originalIllustrationPos.x, _originalIllustrationPos.y - 300f);
-            charIllustration.rectTransform.DOAnchorPos(_originalIllustrationPos, 0.4f).SetEase(Ease.OutCubic);
-        }
-        
-        // [DOTween] 패널 페이드 인
-        CanvasGroup cg = exchangePanel.GetComponent<CanvasGroup>();
-        if (cg == null) cg = exchangePanel.AddComponent<CanvasGroup>();
-        cg.DOKill();
-        cg.alpha = 0;
-        cg.DOFade(1f, 0.4f);
-
-        if (currentSkillTooltip != null)
-        {
-            currentSkillTooltip.gameObject.SetActive(currentSkill != null);
-            if (currentSkill != null) currentSkillTooltip.SetData(currentSkill, currentLevel);
-        }
-
-        if (newSkillTooltip != null)
-        {
-            newSkillTooltip.SetData(newSkill, 1);
-            
-            // 버튼 이벤트 설정 (교체할 스킬 툴팁에 버튼이 있다고 가정)
-            Button btn = newSkillTooltip.GetComponent<Button>();
-            if (btn == null) btn = newSkillTooltip.gameObject.AddComponent<Button>();
-            
-            btn.onClick.RemoveAllListeners();
-            btn.onClick.AddListener(() => ExecuteSkillExchange(targetChar, newSkill, price, itemObj));
-        }
-
-        exchangePanel.SetActive(true);
+            SetItemSoldOut(itemObj);
+        });
     }
 
     /// <summary>
@@ -292,83 +225,7 @@ public class ShopPanelUI : MonoBehaviour
     /// </summary>
     public void CloseExchangePanel()
     {
-        if (exchangePanel == null) return;
-
-        // [DOTween] 퇴장 연출
-        CanvasGroup cg = exchangePanel.GetComponent<CanvasGroup>();
-        if (cg != null)
-        {
-            cg.DOKill();
-            cg.DOFade(0f, 0.3f);
-        }
-
-        if (charIllustration != null)
-        {
-            charIllustration.rectTransform.DOKill();
-            charIllustration.rectTransform.DOAnchorPos(new Vector2(_originalIllustrationPos.x, _originalIllustrationPos.y - 300f), 0.3f)
-                .SetEase(Ease.InCubic)
-                .OnComplete(() => exchangePanel.SetActive(false));
-        }
-        else
-        {
-            exchangePanel.SetActive(false);
-        }
-    }
-
-    /// <summary>
-    /// 실제 스킬 교체를 실행합니다.
-    /// </summary>
-    private void ExecuteSkillExchange(PlayerCharacterState targetChar, SkillData newSkill, int price, GameObject itemObj)
-    {
-        if (GameManager.Instance.gold < price)
-        {
-            Debug.Log("[Shop] 소지금이 부족합니다!");
-            return;
-        }
-
-        // 1. 재화 차감
-        GameManager.Instance.gold -= price;
-
-        // 2. 기존 스킬 강화석 환급 로직 (분기점 기준)
-        int slotIdx = (int)newSkill.SlotIndex;
-        int oldLevel = targetChar.skillLevels[slotIdx];
-        int refund = 0;
-
-        if (oldLevel > 1)
-        {
-            int branch = newSkill.GetBranchLevel();
-            // 분기점(branch) 레벨 이하일 때는 레벨-1만큼, 분기점 초과(강화 경로 선택 후)일 때는 분기점만큼 환급
-            if (oldLevel <= branch)
-            {
-                refund = oldLevel - 1;
-            }
-            else
-            {
-                refund = branch;
-            }
-
-            GameManager.Instance.skillup += refund;
-            Debug.Log($"[Shop] 기존 스킬 환급: 강화석 {refund}개 획득! (레벨:{oldLevel}, 분기:{branch})");
-        }
-
-        // 3. 스킬 교체 및 레벨 초기화
-        targetChar.equippedSkills[slotIdx] = newSkill;
-        targetChar.skillLevels[slotIdx] = 1;
-
-        // 4. 결과 반영
-        if (LobbyTopUI.Instance != null) LobbyTopUI.Instance.Refresh();
-        
-        // 5. 즉시 강화창 열기 (환급받은 강화석이 있을 때만)
-        if (refund > 0 && skillUpgradeUI != null)
-        {
-            skillUpgradeUI.Open();
-        }
-
-        // 6. UI 정리
-        SetItemSoldOut(itemObj);
-        CloseExchangePanel();
-
-        Debug.Log($"[Shop] {targetChar.template.CharacterName}의 {slotIdx + 1}번 스킬을 {newSkill.SkillName}(으)로 교체 완료!");
+        if (skillExchangeUI != null) skillExchangeUI.Close();
     }
 
 
