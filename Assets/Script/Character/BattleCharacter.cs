@@ -130,14 +130,21 @@ public class BattleCharacter
         Name = state.characterName;
         IsPlayer = true; // PlayerCharacterState는 항상 아군용
 
-        // [중요] GameManager에서 관리하는 '현재 기본 스탯' 및 '투자된 보너스 포인트'를 합산합니다.
-        BaseMaxHp = MaxHp = Data.MaxHp + (Data.MaxHp * state.spentHp * 0.01f);
-        BaseAttack = Attack = Data.Attack + (Data.Attack * state.spentAtk * 0.01f);
+        // [중요] GameManager에서 관리하는 '현재 기본 스탯', '투자된 보너스 포인트', '장비 보너스'를 합산합니다.
+        float eqHpPer = state.GetEquipmentBonus(StatType.HP);
+        float eqAtkPer = state.GetEquipmentBonus(StatType.Attack);
+        float eqDefPer = state.GetEquipmentBonus(StatType.Defense);
+        float eqSpeed = state.GetEquipmentBonus(StatType.Speed);
+        float eqCritRatePer = state.GetEquipmentBonus(StatType.CritChance);
+        float eqCritDmgPer = state.GetEquipmentBonus(StatType.CritDamage);
+
+        BaseMaxHp = MaxHp = Data.MaxHp + (Data.MaxHp * state.spentHp * 0.01f) + (Data.MaxHp * eqHpPer * 0.01f);
+        BaseAttack = Attack = Data.Attack + (Data.Attack * state.spentAtk * 0.01f) + (Data.Attack * eqAtkPer * 0.01f);
         CurrentHp = state.currentHp; // 깎인 체력 그대로 가져옴
-        BaseDefense = Defense = Data.Defense + (Data.Defense * state.spentDef * 0.01f);
-        BaseSpeed = Speed = Data.Speed + state.spentSpeed;
-        BaseCritChance = CritChance = Data.CritChance + state.spentCritRate * 0.01f;
-        BaseCritDamage = CritDamage = Data.CritDamage + state.spentCritDmg * 0.01f;
+        BaseDefense = Defense = Data.Defense + (Data.Defense * state.spentDef * 0.01f) + (Data.Defense * eqDefPer * 0.01f);
+        BaseSpeed = Speed = Data.Speed + state.spentSpeed + eqSpeed;
+        BaseCritChance = CritChance = Data.CritChance + (state.spentCritRate * 0.01f) + (eqCritRatePer * 0.01f);
+        BaseCritDamage = CritDamage = Data.CritDamage + (state.spentCritDmg * 0.01f) + (eqCritDmgPer * 0.01f);
         BaseEvasionRate = EvasionRate = Data.Evasion; // 회피/명중은 현재 포인트 소모 목록에서 제외
         BaseAccuracyRate = AccuracyRate = Data.Accuracy;
 

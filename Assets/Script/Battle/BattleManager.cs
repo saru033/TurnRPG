@@ -292,6 +292,7 @@ public class BattleManager : MonoBehaviour
                 yield return StartCoroutine(ProcessExtraActions());
 
                 gaugeSystem.OnTurnEnd(currentActor);
+                if (currentActor.IsAlive) battleUI.SetVisible(currentActor, true);
                 continue;
             }
 
@@ -301,6 +302,7 @@ public class BattleManager : MonoBehaviour
                 currentActor.OnTurnEnd();
                 yield return StartCoroutine(ProcessExtraActions());
                 gaugeSystem.OnTurnEnd(currentActor);
+                if (currentActor.IsAlive) battleUI.SetVisible(currentActor, true);
                 continue;
             }
 
@@ -346,8 +348,7 @@ public class BattleManager : MonoBehaviour
                 yield return new WaitUntil(() => State == BattleState.Idle || State == BattleState.Win || State == BattleState.Lose);
             }
 
-            // 승패 결판 났으면 턴 넘기지 않고 종료
-            if (State == BattleState.Win || State == BattleState.Lose) break;
+            // [수정] 승패가 결정되었더라도 마지막 행동 캐릭터의 턴 종료 처리를 위해 여기서 break 하지 않음
 
             // [수정] 메인 행동 후 발생한 패시브(반격 등) 처리
             yield return StartCoroutine(ProcessExtraActions());
@@ -362,8 +363,11 @@ public class BattleManager : MonoBehaviour
             if (currentActor.Animator != null) currentActor.Animator.SetBool("isWaiting", false); // 안전장치
 
             gaugeSystem.OnTurnEnd(currentActor);
-            battleUI.SetVisible(currentActor, true);
+            if (currentActor.IsAlive) battleUI.SetVisible(currentActor, true);
             battleUI.UpdateGaugePositions(allCharacters);
+
+            // [추가] 턴 정리가 완료된 후 승패 여부에 따라 루프 탈출
+            if (State == BattleState.Win || State == BattleState.Lose) break;
 
 
             yield return new WaitForSeconds(0.2f);
@@ -695,8 +699,10 @@ public class BattleManager : MonoBehaviour
         // [추가] 아이템 사용 후 전투 승패 여부 체크
         if (IsOver())
         {
-            OnBattleEnd();
-            yield break; // 전투 종료 시 이후 로직 스킵
+            // 직접 OnBattleEnd를 호출하지 않고 상태만 변경하여 턴 루프가 정리하도록 유도
+            bool playerDead = allCharacters.TrueForAll(c => !c.IsPlayer || !c.IsAlive);
+            State = playerDead ? BattleState.Lose : BattleState.Win;
+            yield break;
         }
 
         //스킬창 복구
@@ -1515,7 +1521,9 @@ public class BattleManager : MonoBehaviour
         // 전투가 아예 끝났는지 검사
         if (IsOver())
         {
-            OnBattleEnd();
+            // 직접 OnBattleEnd를 호출하지 않고 상태만 변경하여 턴 루프가 정리하도록 유도
+            bool playerDead = allCharacters.TrueForAll(c => !c.IsPlayer || !c.IsAlive);
+            State = playerDead ? BattleState.Lose : BattleState.Win;
         }
         else
         {
@@ -1594,6 +1602,7 @@ public class BattleManager : MonoBehaviour
         State = playerDead ? BattleState.Lose : BattleState.Win;
         battleUI.SetSkillButtonsVisible(false);
         battleUI.SetItemVisible(false);
+        battleUI.AnimateGaugeBar(false); // [추가] 행동게이지 좌측으로 퇴장 연출
 
         // [추가] 승리 시 보상 지급 로직
         if (State == BattleState.Win && currentStage != null)
@@ -1637,12 +1646,14 @@ public class BattleManager : MonoBehaviour
         // 1. 골드 및 강화 재료 계산
         int rewardGold = UnityEngine.Random.Range(currentStage.minGold, currentStage.maxGold + 1);
         int rewardSkillUp = UnityEngine.Random.Range(currentStage.minSkillUp, currentStage.maxSkillUp + 1);
+        int rewardReroll = UnityEngine.Random.Range(currentStage.minReroll, currentStage.maxReroll + 1);
 
         // [수정] GameManager에 즉시 추가하지 않음 (RewardPanelUI에서 클릭 시 추가)
 
         string rewardLog = $"<b>[전투 승리 - Stage {currentStage.stageID}]</b>\n";
         rewardLog += $"- 획득 골드: {rewardGold}\n";
         rewardLog += $"- 획득 강화석: {rewardSkillUp}\n";
+        rewardLog += $"- 획득 리롤권: {rewardReroll}\n";
 
         // 2. 배틀 아이템 랜덤 획득 (1~2개)
         List<SkillData> droppedItems = new List<SkillData>();
@@ -1672,7 +1683,7 @@ public class BattleManager : MonoBehaviour
         if (battleUI != null && battleUI.rewardPanel != null)
         {
             LobbyTopUI.Instance.Refresh();
-            battleUI.rewardPanel.Setup(rewardGold, rewardSkillUp, droppedItems, OnRewardConfirmed);
+            battleUI.rewardPanel.Setup(rewardGold, rewardSkillUp, rewardReroll, droppedItems, OnRewardConfirmed);
             LobbyTopUI.Instance.ShowUI();
         }
     }

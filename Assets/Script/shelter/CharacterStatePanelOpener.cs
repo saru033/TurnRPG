@@ -34,8 +34,13 @@ public class CharacterStatePanelOpener : MonoBehaviour
     public TMP_Text txtBonusPoints;
 
     [Header("Other Panels")]
-    public GameObject equiPanel; // 장비 패널 (현재는 비활성 또는 기본 정보만)
+    public GameObject equiPanel; // 장비 패널
     public GameObject skillPanel; // 스킬 패널
+
+    [Header("Equipment Slots")]
+    public Image imgHead;
+    public Image imgBody;
+    public Image imgShoes;
 
     private int _currentIdx = -1;
 
@@ -115,37 +120,51 @@ public class CharacterStatePanelOpener : MonoBehaviour
         // 1.1 이름 갱신
         if (txtName != null) txtName.text = state.characterName;
 
-        // 2. 스탯 텍스트 갱신 (최종 스텟 / 보너스 수치 분리)
-        // 체력, 공격력, 방어력: 1포인트당 1%
-        float hpBonus = data.MaxHp * state.spentHp * 0.01f;
-        float atkBonus = data.Attack * state.spentAtk * 0.01f;
-        float defBonus = data.Defense * state.spentDef * 0.01f;
+        // 2. 스탯 텍스트 갱신 (기본 + 보너스포인트 + 장비 보너스)
+        float eqHpPer = state.GetEquipmentBonus(StatType.HP);
+        float eqAtkPer = state.GetEquipmentBonus(StatType.Attack);
+        float eqDefPer = state.GetEquipmentBonus(StatType.Defense);
+        float eqSpeed = state.GetEquipmentBonus(StatType.Speed);
+        float eqCritRatePer = state.GetEquipmentBonus(StatType.CritChance);
+        float eqCritDmgPer = state.GetEquipmentBonus(StatType.CritDamage);
 
-        // 속도: 1포인트당 1f
-        float speedBonus = state.spentSpeed;
+        float pntHpBonus = data.MaxHp * state.spentHp * 0.01f;
+        float pntAtkBonus = data.Attack * state.spentAtk * 0.01f;
+        float pntDefBonus = data.Defense * state.spentDef * 0.01f;
+        float eqHpVal = data.MaxHp * eqHpPer * 0.01f;
+        float eqAtkVal = data.Attack * eqAtkPer * 0.01f;
+        float eqDefVal = data.Defense * eqDefPer * 0.01f;
 
-        // 치명타 확률/피해: 1포인트당 1% (0.01f)
-        float critRateBonus = state.spentCritRate * 0.01f;
-        float critDmgBonus = state.spentCritDmg * 0.01f;
+        float finalHp = data.MaxHp + pntHpBonus + eqHpVal;
+        float finalAtk = data.Attack + pntAtkBonus + eqAtkVal;
+        float finalDef = data.Defense + pntDefBonus + eqDefVal;
+        float finalSpeed = data.Speed + state.spentSpeed + eqSpeed;
+        float finalCritRate = data.CritChance + (state.spentCritRate * 0.01f) + (eqCritRatePer * 0.01f);
+        float finalCritDmg = data.CritDamage + (state.spentCritDmg * 0.01f) + (eqCritDmgPer * 0.01f);
 
         // 최종 수치 (왼쪽)
-        if (txtHp != null) txtHp.text = $"{data.MaxHp + hpBonus:F0}";
-        if (txtAtk != null) txtAtk.text = $"{data.Attack + atkBonus:F0}";
-        if (txtDef != null) txtDef.text = $"{data.Defense + defBonus:F0}";
-        if (txtSpeed != null) txtSpeed.text = $"{data.Speed + speedBonus:F0}";
-        if (txtCritRate != null) txtCritRate.text = $"{(data.CritChance + critRateBonus) * 100f:F0}%";
-        if (txtCritDmg != null) txtCritDmg.text = $"{(data.CritDamage + critDmgBonus) * 100f:F0}%";
+        if (txtHp != null) txtHp.text = $"{finalHp:F0}";
+        if (txtAtk != null) txtAtk.text = $"{finalAtk:F0}";
+        if (txtDef != null) txtDef.text = $"{finalDef:F0}";
+        if (txtSpeed != null) txtSpeed.text = $"{finalSpeed:F0}";
+        if (txtCritRate != null) txtCritRate.text = $"{finalCritRate * 100f:F0}%";
+        if (txtCritDmg != null) txtCritDmg.text = $"{finalCritDmg * 100f:F0}%";
 
         // 보너스 수치 (오른쪽 + 텍스트)
-        if (txtHpBonus != null) txtHpBonus.text = $"+{hpBonus:F0}";
-        if (txtAtkBonus != null) txtAtkBonus.text = $"+{atkBonus:F0}";
-        if (txtDefBonus != null) txtDefBonus.text = $"+{defBonus:F0}";
-        if (txtSpeedBonus != null) txtSpeedBonus.text = $"+{speedBonus:F0}";
-        if (txtCritRateBonus != null) txtCritRateBonus.text = $"+{critRateBonus * 100f:F0}%";
-        if (txtCritDmgBonus != null) txtCritDmgBonus.text = $"+{critDmgBonus * 100f:F0}%";
+        if (txtHpBonus != null) txtHpBonus.text = $"+{(pntHpBonus + eqHpVal):F0}";
+        if (txtAtkBonus != null) txtAtkBonus.text = $"+{(pntAtkBonus + eqAtkVal):F0}";
+        if (txtDefBonus != null) txtDefBonus.text = $"+{(pntDefBonus + eqDefVal):F0}";
+        if (txtSpeedBonus != null) txtSpeedBonus.text = $"+{(state.spentSpeed + eqSpeed):F0}";
+        if (txtCritRateBonus != null) txtCritRateBonus.text = $"+{(state.spentCritRate + eqCritRatePer):F0}%";
+        if (txtCritDmgBonus != null) txtCritDmgBonus.text = $"+{(state.spentCritDmg + eqCritDmgPer):F0}%";
 
         // 3. 보너스 포인트 갱신
         if (txtBonusPoints != null) txtBonusPoints.text = $"Points: {state.bonusPoints}";
+
+        // 3.1 장비 툴팁 갱신 (이미지에 설정된 Sprite를 그대로 사용)
+        SetupEquipSlot(imgHead, state.headGear);
+        SetupEquipSlot(imgBody, state.bodyArmor);
+        SetupEquipSlot(imgShoes, state.shoes);
 
         // 4. 스킬 아이콘 갱신 (skill1, skill2, skill3 자식 오브젝트 찾기)
         if (skillPanel != null)
@@ -171,7 +190,7 @@ public class CharacterStatePanelOpener : MonoBehaviour
                             // [추가] 툴팁 트리거 초기화
                             var trigger = skillSlotTransform.GetComponent<SkillTooltipTrigger>();
                             if (trigger == null) trigger = skillSlotTransform.GetComponentInChildren<SkillTooltipTrigger>();
-                            
+
                             if (trigger != null)
                             {
                                 trigger.Init(state.equippedSkills[i], state.skillLevels[i]);
@@ -203,51 +222,49 @@ public class CharacterStatePanelOpener : MonoBehaviour
     {
         if (_currentIdx == -1 || GameManager.Instance == null) return;
         var state = GameManager.Instance.party[_currentIdx];
-        var data = state.template;
 
-        // 변경 전 최대 체력 계산
-        float oldMaxHp = data.MaxHp + (data.MaxHp * state.spentHp * 0.01f);
+        // 1. 변경 전 비율 저장 (장비 포함 최종 최대 체력 기준)
+        float oldMaxHp = state.TotalMaxHp;
+        float hpRatio = oldMaxHp > 0 ? state.currentHp / oldMaxHp : 1f;
 
-        if (ProcessStatChange(ref state.spentHp, isPlus))
+        // 2. 포인트 변경 시도
+        if (ProcessStatChange(ref state.spentHp, isPlus, true))
         {
-            // 변경 후 최대 체력 계산
-            float newMaxHp = data.MaxHp + (data.MaxHp * state.spentHp * 0.01f);
-            float diff = newMaxHp - oldMaxHp;
-
-            // 현재 체력도 차이만큼 조정 (단, 사망 상태가 되지 않도록 최소 1 유지 및 최대치 클램프)
-            state.currentHp = Mathf.Clamp(state.currentHp + diff, 1f, newMaxHp);
-
+            // 3. 변경 후 새로운 최대 체력에 맞춰 비율 적용
+            float newMaxHp = state.TotalMaxHp;
+            state.currentHp = newMaxHp * hpRatio;
+            
             UpdateUI();
         }
     }
 
     public void ChangeAtk(bool isPlus)
     {
-        if (ProcessStatChange(ref GameManager.Instance.party[_currentIdx].spentAtk, isPlus))
+        if (ProcessStatChange(ref GameManager.Instance.party[_currentIdx].spentAtk, isPlus, false))
             UpdateUI();
     }
 
     public void ChangeDef(bool isPlus)
     {
-        if (ProcessStatChange(ref GameManager.Instance.party[_currentIdx].spentDef, isPlus))
+        if (ProcessStatChange(ref GameManager.Instance.party[_currentIdx].spentDef, isPlus, false))
             UpdateUI();
     }
 
     public void ChangeSpeed(bool isPlus)
     {
-        if (ProcessStatChange(ref GameManager.Instance.party[_currentIdx].spentSpeed, isPlus))
+        if (ProcessStatChange(ref GameManager.Instance.party[_currentIdx].spentSpeed, isPlus, false))
             UpdateUI();
     }
 
     public void ChangeCritRate(bool isPlus)
     {
-        if (ProcessStatChange(ref GameManager.Instance.party[_currentIdx].spentCritRate, isPlus))
+        if (ProcessStatChange(ref GameManager.Instance.party[_currentIdx].spentCritRate, isPlus, false))
             UpdateUI();
     }
 
     public void ChangeCritDmg(bool isPlus)
     {
-        if (ProcessStatChange(ref GameManager.Instance.party[_currentIdx].spentCritDmg, isPlus))
+        if (ProcessStatChange(ref GameManager.Instance.party[_currentIdx].spentCritDmg, isPlus, false))
             UpdateUI();
     }
 
@@ -261,7 +278,7 @@ public class CharacterStatePanelOpener : MonoBehaviour
         var data = state.template;
 
         // 1. 투자한 총 포인트 계산
-        int totalSpent = state.spentHp + state.spentAtk + state.spentDef + 
+        int totalSpent = state.spentHp + state.spentAtk + state.spentDef +
                          state.spentSpeed + state.spentCritRate + state.spentCritDmg;
 
         if (totalSpent <= 0) return; // 투자한 포인트가 없으면 무시
@@ -269,13 +286,9 @@ public class CharacterStatePanelOpener : MonoBehaviour
         // 2. 포인트 환급
         state.bonusPoints += totalSpent;
 
-        // 3. 체력 조정 (최대 체력이 줄어들므로 현재 체력도 차이만큼 감소)
-        float oldMaxHp = data.MaxHp + (data.MaxHp * state.spentHp * 0.01f);
-        float newMaxHp = data.MaxHp; // spentHp가 0이 될 것이므로
-        float diff = newMaxHp - oldMaxHp;
-        
-        // 현재 체력도 줄어든 최대치에 맞춰 클램프
-        state.currentHp = Mathf.Clamp(state.currentHp + diff, 1f, newMaxHp);
+        // 3. 체력 비율 저장 (장비 포함 최종 최대 체력 기준)
+        float oldMaxHp = state.TotalMaxHp;
+        float hpRatio = oldMaxHp > 0 ? state.currentHp / oldMaxHp : 1f;
 
         // 4. 모든 투자 포인트 초기화
         state.spentHp = 0;
@@ -285,7 +298,11 @@ public class CharacterStatePanelOpener : MonoBehaviour
         state.spentCritRate = 0;
         state.spentCritDmg = 0;
 
-        // 5. UI 갱신
+        // 5. 초기화된 상태에서의 새로운 최대 체력 계산 및 비율 적용
+        float newMaxHp = state.TotalMaxHp;
+        state.currentHp = newMaxHp * hpRatio;
+
+        // 6. UI 갱신
         UpdateUI();
 
         Debug.Log($"[UI] {state.characterName} 스탯 초기화 완료. {totalSpent} 포인트 환급됨.");
@@ -294,7 +311,7 @@ public class CharacterStatePanelOpener : MonoBehaviour
     /// <summary>
     /// 공통 스탯 변경 로직. 포인트가 충분하거나 환급 가능한지 체크합니다.
     /// </summary>
-    private bool ProcessStatChange(ref int spentTarget, bool isPlus)
+    private bool ProcessStatChange(ref int spentTarget, bool isPlus, bool isHp)
     {
         if (_currentIdx == -1 || GameManager.Instance == null) return false;
         var state = GameManager.Instance.party[_currentIdx];
@@ -319,5 +336,23 @@ public class CharacterStatePanelOpener : MonoBehaviour
         }
 
         return false;
+    }
+
+    private void SetupEquipSlot(Image img, EquipmentState state)
+    {
+        if (img == null || img.sprite == null) return;
+
+        var trigger = img.GetComponent<EquipmentTooltipTrigger>();
+        if (trigger == null) trigger = img.gameObject.AddComponent<EquipmentTooltipTrigger>();
+        trigger.Init(state, img.sprite);
+    }
+
+    public void OpenRerollPanel()
+    {
+        // 리롤 아이템이 1개 이상일 때만 열리게
+        if (GameManager.Instance != null && GameManager.Instance.rerollUI != null && GameManager.Instance.rerollItemCount > 0)
+        {
+            GameManager.Instance.rerollUI.Open();
+        }
     }
 }

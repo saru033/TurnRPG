@@ -36,12 +36,26 @@ public class PlayerCharacterState
     public int[] skillLevels = new int[3] { 1, 1, 1 };
     public int[] skillCooldowns = new int[3]; // [추가] 스테이지 간 유지되는 스킬 쿨타임
 
+    [Header("Equipments")]
+    public EquipmentState headGear;
+    public EquipmentState bodyArmor;
+    public EquipmentState shoes;
+
     public PlayerCharacterState(CharacterData data)
     {
         if (data == null) return;
 
         template = data;
         characterName = data.CharacterName;
+
+        // 장비 초기화
+        headGear = new EquipmentState(EquipmentPart.Head);
+        bodyArmor = new EquipmentState(EquipmentPart.Body);
+        shoes = new EquipmentState(EquipmentPart.Shoes);
+
+        headGear.GenerateRandomStats();
+        bodyArmor.GenerateRandomStats();
+        shoes.GenerateRandomStats();
 
         // 초기화 시 CharacterData의 기본값을 복사
         currentBaseMaxHp = data.MaxHp;
@@ -53,8 +67,8 @@ public class PlayerCharacterState
         currentBaseEvasion = data.Evasion;
         currentBaseAccuracy = data.Accuracy;
 
-        // 현재 체력을 원본 데이터의 MaxHp로 초기화
-        currentHp = data.MaxHp;
+        // 현재 체력을 장비 보너스가 포함된 최종 MaxHp로 초기화 (풀피 시작)
+        currentHp = TotalMaxHp;
 
         // 초기 스킬 로스터 설정
         equippedSkills.Clear();
@@ -75,5 +89,40 @@ public class PlayerCharacterState
                 }
             }
         }
+    }
+
+    /// <summary>
+    /// 모든 장비 부위에서 특정 타입의 스탯 보너스 합계를 가져옵니다.
+    /// </summary>
+    public float GetEquipmentBonus(StatType type)
+    {
+        float total = 0f;
+        total += GetBonusFromPart(headGear, type);
+        total += GetBonusFromPart(bodyArmor, type);
+        total += GetBonusFromPart(shoes, type);
+        return total;
+    }
+
+    public float TotalMaxHp
+    {
+        get
+        {
+            if (template == null) return 0f;
+            float pntHpBonus = template.MaxHp * spentHp * 0.01f;
+            float eqHpPer = GetEquipmentBonus(StatType.HP);
+            float eqHpVal = template.MaxHp * eqHpPer * 0.01f;
+            return template.MaxHp + pntHpBonus + eqHpVal;
+        }
+    }
+
+    private float GetBonusFromPart(EquipmentState equip, StatType type)
+    {
+        if (equip == null) return 0f;
+        float partTotal = 0f;
+        foreach (var sub in equip.subStats)
+        {
+            if (sub.statType == type) partTotal += sub.value;
+        }
+        return partTotal;
     }
 }

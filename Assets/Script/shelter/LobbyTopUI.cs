@@ -10,6 +10,7 @@ public class LobbyTopUI : MonoBehaviour
     [Header("UI References")]
     public TextMeshProUGUI txtGold;
     public TextMeshProUGUI txtSkillUp;
+    public TextMeshProUGUI txtRerollItem;
 
     private RectTransform _rect;
     private Vector2 _originalPos;
@@ -53,6 +54,11 @@ public class LobbyTopUI : MonoBehaviour
         if (txtSkillUp != null)
         {
             txtSkillUp.text = ": " + GameManager.Instance.skillup.ToString("N0");
+        }
+
+        if (txtRerollItem != null)
+        {
+            txtRerollItem.text = ": " + GameManager.Instance.rerollItemCount.ToString("N0");
         }
     }
 

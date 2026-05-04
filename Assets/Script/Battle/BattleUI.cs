@@ -34,6 +34,7 @@ public class BattleUI : MonoBehaviour
     public RewardPanelUI rewardPanel;      // [신규] 승리 보상 패널
     public ActionListPanelUI actionListPanel; // [신규] 행동게이지 상세 리스트 패널
     public SkillUpgradeUI skillUpgradeUI; // [추가] 스킬 강화 UI 참조
+    public EquipmentRerollUI rerollUI;    // [추가] 장비 리롤 UI 참조
 
 
     /// <summary>
@@ -76,6 +77,7 @@ public class BattleUI : MonoBehaviour
     float _panelW;
     float _panelH;
     float _portraitSize;
+    private Vector2 _originalGaugeBarPos; // [추가] 게이지 바의 원래 위치 저장용
 
     // -------------------------------------------------------
     // 캐릭터/포트레이트 목록
@@ -112,6 +114,7 @@ public class BattleUI : MonoBehaviour
             gaugeBarRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, barH);
 
             gaugeBarRect.anchoredPosition = new Vector2(barX, gaugeBarRect.anchoredPosition.y);
+            _originalGaugeBarPos = gaugeBarRect.anchoredPosition; // 원래 위치 저장
         }
 
         // --- Skill Area ---
@@ -185,8 +188,34 @@ public class BattleUI : MonoBehaviour
         // --- Portrait 크기 ---
         _portraitSize = _panelH * portraitSizeRatio;
 
-        // 조정이 끝난 이후 활성화
+        // 조정이 끝난 이후 활성화 및 등장 연출
         gaugeBarRect.gameObject.SetActive(true);
+        AnimateGaugeBar(true);
+    }
+
+    /// <summary>
+    /// [신규] 행동 게이지 바를 좌측에서/좌측으로 이동시키며 활성화/비활성화 합니다.
+    /// </summary>
+    /// <param name="isVisible">보여줄지 여부</param>
+    public void AnimateGaugeBar(bool isVisible)
+    {
+        if (gaugeBarRect == null) return;
+
+        // 트윈 중복 방지
+        gaugeBarRect.DOKill();
+
+        if (isVisible)
+        {
+            // 좌측 밖에서 원래 위치로 등장
+            gaugeBarRect.anchoredPosition = new Vector2(_originalGaugeBarPos.x - 500f, _originalGaugeBarPos.y);
+            gaugeBarRect.DOAnchorPos(_originalGaugeBarPos, 0.5f).SetEase(Ease.OutBack);
+        }
+        else
+        {
+            // 좌측 밖으로 퇴장
+            Vector2 targetPos = new Vector2(_originalGaugeBarPos.x - 500f, _originalGaugeBarPos.y);
+            gaugeBarRect.DOAnchorPos(targetPos, 0.4f).SetEase(Ease.InCubic);
+        }
     }
 
     // -------------------------------------------------------

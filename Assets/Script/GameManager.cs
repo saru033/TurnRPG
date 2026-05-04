@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     [Header("재화")]
     public int gold = 0;
     public int skillup = 0;
+    public int rerollItemCount = 50; // 장비 리롤 아이메 (테스트용 50)
 
 
     [Header("Tooltip")]
@@ -38,6 +39,19 @@ public class GameManager : MonoBehaviour
 
     [Header("Character Naming")]
     public CharacterNamingUI namingUI;
+    public EquipmentRerollUI rerollUI;
+
+    [Header("Equipment Stat Ranges")]
+    public float minHpPercent = 5f, maxHpPercent = 15f;
+    public float minAtkPercent = 5f, maxAtkPercent = 15f;
+    public float minDefPercent = 5f, maxDefPercent = 15f;
+    public int minSpeed = 1, maxSpeed = 5;
+    public float minCritChance = 3f, maxCritChance = 8f;
+    public float minCritDamage = 10f, maxCritDamage = 20f;
+
+    [Header("Equipment Tooltip")]
+    public EquipmentTooltipUI equipTooltipPrefab;
+    private EquipmentTooltipUI _equipTooltipInstance;
 
     /// <summary>
     /// 현재 툴팁인 상태인지(롱프레스 중인지) 여부
@@ -108,6 +122,83 @@ public class GameManager : MonoBehaviour
             _statusTooltipInstance.gameObject.SetActive(false);
         }
         StartCoroutine(ResetTooltipFlagRoutine());
+    }
+
+    // -------------------------------------------------------
+    // 장비 툴팁 제어 (전역)
+    // -------------------------------------------------------
+
+    public void ShowEquipmentTooltip(EquipmentState state, Sprite icon, Vector3 worldPos, float height)
+    {
+        if (equipTooltipPrefab == null) return;
+
+        if (_equipTooltipInstance == null)
+        {
+            Transform parent = tooltipCanvas != null ? tooltipCanvas.transform : transform;
+            _equipTooltipInstance = Instantiate(equipTooltipPrefab, parent);
+        }
+
+        _equipTooltipInstance.gameObject.SetActive(true);
+        _equipTooltipInstance.transform.SetAsLastSibling();
+        _equipTooltipInstance.SetData(state, icon);
+
+        IsTooltipPerforming = true;
+        
+        // 위치 설정 (다른 툴팁들과 동일한 로직)
+        float canvasScale = _equipTooltipInstance.transform.lossyScale.y;
+        _equipTooltipInstance.transform.position = worldPos + new Vector3(0, height * canvasScale, 0);
+    }
+
+    public void HideEquipmentTooltip()
+    {
+        if (_equipTooltipInstance != null)
+        {
+            _equipTooltipInstance.gameObject.SetActive(false);
+        }
+        StartCoroutine(ResetTooltipFlagRoutine());
+    }
+
+    // -------------------------------------------------------
+    // 장비 리롤 (옵션 변경)
+    // -------------------------------------------------------
+
+    /// <summary>
+    /// 특정 캐릭터의 특정 부위 장비 옵션을 랜덤하게 재설정합니다.
+    /// minScale/maxScale을 조절하여 고급 리롤 기능을 구현할 수 있습니다.
+    /// </summary>
+    public void RerollEquipment(PlayerCharacterState state, EquipmentPart part, float minScale = 1.0f, float maxScale = 1.0f)
+    {
+        if (state == null) return;
+
+        // 1. 기존 체력 비율 저장
+        float oldMaxHp = state.TotalMaxHp;
+        float hpRatio = oldMaxHp > 0 ? state.currentHp / oldMaxHp : 1f;
+
+        EquipmentState targetEquip = null;
+        switch (part)
+        {
+            case EquipmentPart.Head: targetEquip = state.headGear; break;
+            case EquipmentPart.Body: targetEquip = state.bodyArmor; break;
+            case EquipmentPart.Shoes: targetEquip = state.shoes; break;
+        }
+
+        if (targetEquip != null)
+        {
+            targetEquip.GenerateRandomStats(minScale, maxScale);
+            
+            // 2. 새로운 체력 비율에 맞춰 현재 체력 조정
+            float newMaxHp = state.TotalMaxHp;
+            state.currentHp = newMaxHp * hpRatio;
+            
+            // UI 갱신 (열려있다면)
+            var opener = FindObjectOfType<CharacterStatePanelOpener>();
+            if (opener != null && opener.characterStatePanel.activeSelf)
+            {
+                opener.UpdateUI();
+            }
+
+            Debug.Log($"[Equipment] {state.characterName}의 {part} 장비 옵션이 변경되었습니다.");
+        }
     }
 
     private IEnumerator ResetTooltipFlagRoutine()
@@ -183,6 +274,15 @@ public class GameManager : MonoBehaviour
         }
 
         Debug.Log("[GameManager] 모든 캐릭터 명명 완료");
+
+        // [추가] 명명 완료 후 리롤 아이템 3개 지급 및 패널 오픈
+        rerollItemCount += 3;
+        if (LobbyTopUI.Instance != null) LobbyTopUI.Instance.Refresh();
+
+        if (rerollUI != null)
+        {
+            rerollUI.Open();
+        }
     }
 
     // -------------------------------------------------------

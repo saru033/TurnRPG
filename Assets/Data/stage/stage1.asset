@@ -19,7 +19,9 @@ MonoBehaviour:
   minGold: 25
   maxGold: 45
   minSkillUp: 0
-  maxSkillUp: 1
+  maxSkillUp: 0
+  minReroll: 0
+  maxReroll: 0
   potentialBattleItems:
   - {fileID: 11400000, guid: 35b31d570c2c0804ca1ccdf79160ed90, type: 2}
   - {fileID: 11400000, guid: 10bd56fa6ca8758438ff0e4a3f9933f8, type: 2}

@@ -207,14 +207,14 @@ public class SkillUpgradeUI : MonoBehaviour
             int branchLevel = skill.GetBranchLevel();
             if (currentLevel == branchLevel)
             {
-                SetupUpgradeDetail(branchUpgradeDetailA, skill, currentLevel + 1, charIdx, skillIdx);
-                SetupUpgradeDetail(branchUpgradeDetailB, skill, currentLevel + 2, charIdx, skillIdx);
+                SetupUpgradeDetail(branchUpgradeDetailA, skill, currentLevel + 1, charIdx, skillIdx, skill, currentLevel);
+                SetupUpgradeDetail(branchUpgradeDetailB, skill, currentLevel + 2, charIdx, skillIdx, skill, currentLevel);
                 AnimateDetailIn(branchUpgradeDetailA.gameObject);
                 AnimateDetailIn(branchUpgradeDetailB.gameObject);
             }
             else
             {
-                SetupUpgradeDetail(singleUpgradeDetail, skill, currentLevel + 1, charIdx, skillIdx);
+                SetupUpgradeDetail(singleUpgradeDetail, skill, currentLevel + 1, charIdx, skillIdx, skill, currentLevel);
                 AnimateDetailIn(singleUpgradeDetail.gameObject);
             }
         }
@@ -235,12 +235,12 @@ public class SkillUpgradeUI : MonoBehaviour
         cg.DOFade(1f, 0.3f);
     }
 
-    private void SetupUpgradeDetail(SkillTooltipUI detail, SkillData skill, int level, int charIdx, int skillIdx)
+    private void SetupUpgradeDetail(SkillTooltipUI detail, SkillData skill, int level, int charIdx, int skillIdx, SkillData originalSkill, int originalLevel)
     {
         if (detail == null) return;
 
         detail.gameObject.SetActive(true);
-        detail.SetData(skill, level);
+        detail.SetDataWithComparison(skill, level, originalSkill, originalLevel);
 
         // 버튼 클릭 리스너 설정
         var btn = detail.GetComponent<Button>();

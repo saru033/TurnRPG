@@ -12,12 +12,14 @@ public class RewardPanelUI : MonoBehaviour
     [Header("UI Groups (수량이 0이면 비활성화됨)")]
     public GameObject goldGroup;
     public GameObject skillUpGroup;
+    public GameObject equiReRollGroup; // [추가] 장비 리롤 아이템 그룹
     public GameObject itemGroup;
     public GameObject rewardBagGroup; // [추가] 보상용 가방 UI 부모 오브젝트
 
     [Header("Texts")]
     public TextMeshProUGUI goldText;
     public TextMeshProUGUI skillUpText;
+    public TextMeshProUGUI rerollText; // [추가] 장비 리롤 아이템 개수 텍스트
     public GameObject warningPanel; // 보관하지 않은 아이템 경고 패널
     public GameObject resourceWarningPanel; // [추가] 획득하지 않은 재화(돈/강화석) 경고 패널
 
@@ -42,7 +44,7 @@ public class RewardPanelUI : MonoBehaviour
     /// <summary>
     /// 보상 패널을 설정하고 활성화합니다.
     /// </summary>
-    public void Setup(int gold, int skillUp, List<SkillData> items, System.Action onConfirm)
+    public void Setup(int gold, int skillUp, int rerollCount, List<SkillData> items, System.Action onConfirm)
     {
         _onConfirm = onConfirm;
         gameObject.SetActive(true);
@@ -101,6 +103,33 @@ public class RewardPanelUI : MonoBehaviour
                 if (BattleManager.Instance != null && BattleManager.Instance.battleUI != null && BattleManager.Instance.battleUI.skillUpgradeUI != null)
                 {
                     BattleManager.Instance.battleUI.skillUpgradeUI.Open();
+                    resourceWarningPanel.SetActive(false);
+                }
+            });
+        }
+
+        // 2.1 장비 리롤 아이템 표시 및 클릭 획득 설정
+        if (equiReRollGroup != null)
+        {
+            equiReRollGroup.SetActive(rerollCount > 0);
+            if (rerollText != null) rerollText.text = rerollCount.ToString();
+
+            var btn = equiReRollGroup.GetComponent<Button>();
+            if (btn == null) btn = equiReRollGroup.AddComponent<Button>();
+            btn.onClick.RemoveAllListeners();
+            btn.onClick.AddListener(() =>
+            {
+                if (GameManager.Instance != null)
+                {
+                    GameManager.Instance.rerollItemCount += rerollCount;
+                    if (LobbyTopUI.Instance != null) LobbyTopUI.Instance.Refresh();
+                }
+                equiReRollGroup.SetActive(false);
+
+                // 리롤 아이템 획득 시 즉시 리롤 패널 열기
+                if (BattleManager.Instance != null && BattleManager.Instance.battleUI != null && BattleManager.Instance.battleUI.rerollUI != null)
+                {
+                    BattleManager.Instance.battleUI.rerollUI.Open();
                     resourceWarningPanel.SetActive(false);
                 }
             });
@@ -230,8 +259,10 @@ public class RewardPanelUI : MonoBehaviour
 
     private void HandleConfirm()
     {
-        // 0. 재화(골드, 강화석)를 획득하지 않은 상태면 경고 패널 표시 후 중단
-        bool hasUncollectedResources = (goldGroup != null && goldGroup.activeSelf) || (skillUpGroup != null && skillUpGroup.activeSelf);
+        // 0. 재화(골드, 강화석, 리롤템)를 획득하지 않은 상태면 경고 패널 표시 후 중단
+        bool hasUncollectedResources = (goldGroup != null && goldGroup.activeSelf) || 
+                                       (skillUpGroup != null && skillUpGroup.activeSelf) ||
+                                       (equiReRollGroup != null && equiReRollGroup.activeSelf);
         if (hasUncollectedResources)
         {
             if (resourceWarningPanel != null) resourceWarningPanel.SetActive(true);
