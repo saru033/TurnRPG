@@ -9,17 +9,19 @@ using TurnRPG.SkillSystem;
 /// </summary>
 public class RewardPanelUI : MonoBehaviour
 {
-    [Header("UI Groups (수량이 0이면 비활성화됨)")]
-    public GameObject goldGroup;
-    public GameObject skillUpGroup;
-    public GameObject equiReRollGroup; // [추가] 장비 리롤 아이템 그룹
-    public GameObject itemGroup;
-    public GameObject rewardBagGroup; // [추가] 보상용 가방 UI 부모 오브젝트
+    [Header("Resource Reward Slots (Dynamic)")]
+    public GameObject[] resourceSlots; // 3개의 슬롯 (각 슬롯은 Button이며, 자식으로 Image와 Text를 가짐)
+    
+    [Header("Resource Icons")]
+    public Sprite goldIcon;
+    public Sprite skillUpIcon;
+    public Sprite rerollIcon;
+    public Sprite highRerollIcon;
 
-    [Header("Texts")]
-    public TextMeshProUGUI goldText;
-    public TextMeshProUGUI skillUpText;
-    public TextMeshProUGUI rerollText; // [추가] 장비 리롤 아이템 개수 텍스트
+    public GameObject rewardBagGroup; // [추가] 보상용 가방 UI 부모 오브젝트
+    public GameObject itemGroup;      // [복구] 배틀 아이템 영역 그룹
+
+    [Header("Texts/Panels")]
     public GameObject warningPanel; // 보관하지 않은 아이템 경고 패널
     public GameObject resourceWarningPanel; // [추가] 획득하지 않은 재화(돈/강화석) 경고 패널
 
@@ -44,99 +46,116 @@ public class RewardPanelUI : MonoBehaviour
     /// <summary>
     /// 보상 패널을 설정하고 활성화합니다.
     /// </summary>
-    public void Setup(int gold, int skillUp, int rerollCount, List<SkillData> items, System.Action onConfirm)
+    public void Setup(int gold, int skillUp, int rerollCount, int highRerollCount, List<SkillData> items, System.Action onConfirm)
     {
         _onConfirm = onConfirm;
         gameObject.SetActive(true);
         if (warningPanel != null) warningPanel.SetActive(false);
-        if (resourceWarningPanel != null) resourceWarningPanel.SetActive(false); // [추가] 초기화
+        if (resourceWarningPanel != null) resourceWarningPanel.SetActive(false);
         _hasShownBagWarning = false;
 
-        // 보상 아이템 리스트 초기 할당 (미표시 버그 수정)
         _droppedItems = (items != null) ? new List<SkillData>(items) : new List<SkillData>();
 
-        Debug.Log($"[RewardPanel] Setup 호출됨. 보상 아이템 개수: {_droppedItems.Count}");
+        // 1. 재화형 보상 데이터 리스트 구성 (위에서부터 채우기 위함)
+        var rewards = new List<ResourceRewardData>();
+        if (gold > 0) rewards.Add(new ResourceRewardData { Icon = goldIcon, Amount = gold, Type = ResourceType.Gold });
+        if (skillUp > 0) rewards.Add(new ResourceRewardData { Icon = skillUpIcon, Amount = skillUp, Type = ResourceType.SkillUp });
+        if (rerollCount > 0) rewards.Add(new ResourceRewardData { Icon = rerollIcon, Amount = rerollCount, Type = ResourceType.Reroll });
+        if (highRerollCount > 0) rewards.Add(new ResourceRewardData { Icon = highRerollIcon, Amount = highRerollCount, Type = ResourceType.HighReroll });
 
-        // 보상용 가방 전용 UI 활성화
-        if (rewardBagGroup != null) rewardBagGroup.SetActive(true);
-
-        // 1. 골드 표시 및 클릭 획득 설정
-        if (goldGroup != null)
+        // 2. 슬롯 배치 (최대 3개까지 지원)
+        for (int i = 0; i < resourceSlots.Length; i++)
         {
-            goldGroup.SetActive(gold > 0);
-            if (goldText != null) goldText.text = gold.ToString();
-
-            var btn = goldGroup.GetComponent<Button>();
-            if (btn == null) btn = goldGroup.AddComponent<Button>();
-            btn.onClick.RemoveAllListeners();
-            btn.onClick.AddListener(() =>
+            if (i < rewards.Count)
             {
-                if (GameManager.Instance != null)
+                resourceSlots[i].SetActive(true);
+                var data = rewards[i];
+                
+                // 자식 오브젝트에서 컴포넌트 자동 찾기
+                var amountText = resourceSlots[i].GetComponentInChildren<TextMeshProUGUI>();
+                var btn = resourceSlots[i].GetComponent<Button>();
+
+                // [수정] 슬롯 자체의 Image(버튼 배경)가 아닌 자식의 Image(아이콘)를 찾음
+                Image iconImage = null;
+                var allImages = resourceSlots[i].GetComponentsInChildren<Image>();
+                foreach (var img in allImages)
                 {
-                    GameManager.Instance.gold += gold;
-                    if (LobbyTopUI.Instance != null) LobbyTopUI.Instance.Refresh();
+                    if (img.gameObject != resourceSlots[i]) // 루트가 아닌 첫 번째 자식 이미지 선택
+                    {
+                        iconImage = img;
+                        break;
+                    }
                 }
-                goldGroup.SetActive(false);
-                resourceWarningPanel.SetActive(false);
-            });
+
+                if (iconImage != null) iconImage.sprite = data.Icon;
+                if (amountText != null) amountText.text = data.Amount.ToString("N0");
+
+                // 클릭 리스너 설정
+                int slotIdx = i; // 클로저용
+                if (btn != null)
+                {
+                    btn.onClick.RemoveAllListeners();
+                    btn.onClick.AddListener(() => OnResourceClicked(slotIdx, data));
+                }
+            }
+            else
+            {
+                resourceSlots[i].SetActive(false);
+            }
         }
 
-        // 2. 강화석 표시 및 클릭 획득 설정
-        if (skillUpGroup != null)
+        if (rewardBagGroup != null) rewardBagGroup.SetActive(true);
+        RefreshUI();
+    }
+
+    private enum ResourceType { Gold, SkillUp, Reroll, HighReroll }
+    private struct ResourceRewardData
+    {
+        public Sprite Icon;
+        public int Amount;
+        public ResourceType Type;
+    }
+
+    private void OnResourceClicked(int slotIdx, ResourceRewardData data)
+    {
+        if (GameManager.Instance == null) return;
+
+        switch (data.Type)
         {
-            skillUpGroup.SetActive(skillUp > 0);
-            if (skillUpText != null) skillUpText.text = skillUp.ToString();
-
-            // 스킬업 그룹을 클릭하면 재화 획득 후 즉시 스킬 강화 UI 열기
-            var btn = skillUpGroup.GetComponent<Button>();
-            if (btn == null) btn = skillUpGroup.AddComponent<Button>();
-            btn.onClick.RemoveAllListeners();
-            btn.onClick.AddListener(() =>
-            {
-                if (GameManager.Instance != null)
-                {
-                    GameManager.Instance.skillup += skillUp;
-                    if (LobbyTopUI.Instance != null) LobbyTopUI.Instance.Refresh();
-                }
-                skillUpGroup.SetActive(false);
-
+            case ResourceType.Gold:
+                GameManager.Instance.gold += data.Amount;
+                break;
+            case ResourceType.SkillUp:
+                GameManager.Instance.skillup += data.Amount;
                 if (BattleManager.Instance != null && BattleManager.Instance.battleUI != null && BattleManager.Instance.battleUI.skillUpgradeUI != null)
                 {
                     BattleManager.Instance.battleUI.skillUpgradeUI.Open();
-                    resourceWarningPanel.SetActive(false);
                 }
-            });
-        }
-
-        // 2.1 장비 리롤 아이템 표시 및 클릭 획득 설정
-        if (equiReRollGroup != null)
-        {
-            equiReRollGroup.SetActive(rerollCount > 0);
-            if (rerollText != null) rerollText.text = rerollCount.ToString();
-
-            var btn = equiReRollGroup.GetComponent<Button>();
-            if (btn == null) btn = equiReRollGroup.AddComponent<Button>();
-            btn.onClick.RemoveAllListeners();
-            btn.onClick.AddListener(() =>
-            {
-                if (GameManager.Instance != null)
-                {
-                    GameManager.Instance.rerollItemCount += rerollCount;
-                    if (LobbyTopUI.Instance != null) LobbyTopUI.Instance.Refresh();
-                }
-                equiReRollGroup.SetActive(false);
-
-                // 리롤 아이템 획득 시 즉시 리롤 패널 열기
+                break;
+            case ResourceType.Reroll:
+                GameManager.Instance.rerollItemCount += data.Amount;
                 if (BattleManager.Instance != null && BattleManager.Instance.battleUI != null && BattleManager.Instance.battleUI.rerollUI != null)
                 {
+                    BattleManager.Instance.battleUI.rerollUI.isHighTier = false; // 일반 리롤
                     BattleManager.Instance.battleUI.rerollUI.Open();
-                    resourceWarningPanel.SetActive(false);
                 }
-            });
+                break;
+            case ResourceType.HighReroll:
+                GameManager.Instance.highRerollItemCount += data.Amount;
+                if (BattleManager.Instance != null && BattleManager.Instance.battleUI != null && BattleManager.Instance.battleUI.highRerollUI != null)
+                {
+                    BattleManager.Instance.battleUI.highRerollUI.isHighTier = true; // 고급 리롤 설정 보장
+                    BattleManager.Instance.battleUI.highRerollUI.Open();
+                }
+                break;
         }
 
-        // 3. 배틀 아이템 및 가방 UI 갱신
-        RefreshUI();
+        Debug.Log($"[RewardPanel] Resource Clicked: {data.Type}, New Count: {(data.Type == ResourceType.Reroll ? GameManager.Instance.rerollItemCount : GameManager.Instance.highRerollItemCount)}");
+
+        if (LobbyTopUI.Instance != null) LobbyTopUI.Instance.Refresh();
+        
+        resourceSlots[slotIdx].SetActive(false);
+        resourceWarningPanel.SetActive(false);
     }
 
     /// <summary>
@@ -260,9 +279,15 @@ public class RewardPanelUI : MonoBehaviour
     private void HandleConfirm()
     {
         // 0. 재화(골드, 강화석, 리롤템)를 획득하지 않은 상태면 경고 패널 표시 후 중단
-        bool hasUncollectedResources = (goldGroup != null && goldGroup.activeSelf) || 
-                                       (skillUpGroup != null && skillUpGroup.activeSelf) ||
-                                       (equiReRollGroup != null && equiReRollGroup.activeSelf);
+        bool hasUncollectedResources = false;
+        foreach (var slot in resourceSlots)
+        {
+            if (slot != null && slot.activeSelf)
+            {
+                hasUncollectedResources = true;
+                break;
+            }
+        }
         if (hasUncollectedResources)
         {
             if (resourceWarningPanel != null) resourceWarningPanel.SetActive(true);

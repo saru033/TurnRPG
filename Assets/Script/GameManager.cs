@@ -25,7 +25,8 @@ public class GameManager : MonoBehaviour
     [Header("재화")]
     public int gold = 0;
     public int skillup = 0;
-    public int rerollItemCount = 50; // 장비 리롤 아이메 (테스트용 50)
+    public int rerollItemCount = 50; // 장비 리롤 아이템 (테스트용 50)
+    public int highRerollItemCount = 10; // 고급 장비 리롤 아이템 (테스트용 10)
 
 
     [Header("Tooltip")]

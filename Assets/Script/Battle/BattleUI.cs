@@ -35,6 +35,7 @@ public class BattleUI : MonoBehaviour
     public ActionListPanelUI actionListPanel; // [신규] 행동게이지 상세 리스트 패널
     public SkillUpgradeUI skillUpgradeUI; // [추가] 스킬 강화 UI 참조
     public EquipmentRerollUI rerollUI;    // [추가] 장비 리롤 UI 참조
+    public EquipmentRerollUI highRerollUI; // [추가] 고급 장비 리롤 UI 참조
 
 
     /// <summary>

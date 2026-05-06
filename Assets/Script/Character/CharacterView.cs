@@ -26,6 +26,10 @@ public class CharacterView : MonoBehaviour, IPointerClickHandler
     [Tooltip("상태이상(버프/디버프) 아이콘 프리팹. StatusEffectIcon 스크립트가 붙어있어야 함")]
     public GameObject statusEffectPrefab;
 
+    [Header("Passive Notice")]
+    public Transform passiveNoticeContainer; // [추가] 패시브 문구가 뜰 부모 (Vertical Layout Group 권장)
+    public GameObject passiveNoticePrefab;   // [추가] 패시브 이름이 적힌 TMP 프리팹
+
     [Header("Distinguish Number")]
     public GameObject distinguishNumObj;      // dintinguse_num 오브젝트
     public TextMeshProUGUI distinguishNumText; // 번호 TMP
@@ -303,15 +307,21 @@ public class CharacterView : MonoBehaviour, IPointerClickHandler
 
         damageText.transform.SetAsLastSibling(); // 레이어 최상단으로 이동
         damageText.gameObject.SetActive(true);
-        string dmgStr = isCrit ? $"<b>{Mathf.RoundToInt(damage)}!</b>" : Mathf.RoundToInt(damage).ToString();
-        damageText.text = isEvaded ? $"Miss! {dmgStr}" : dmgStr;
 
         if (isEvaded)
         {
-            damageText.color = Color.gray;
+            ShowPassiveNotice("빗나감");
+            damageText.gameObject.SetActive(false); // [수정] 숫자는 숨기고 문구만 노출
+        }
+        else if (damage <= 0)
+        {
+            ShowPassiveNotice("흡수");
+            damageText.gameObject.SetActive(false); // [수정] 숫자는 숨기고 문구만 노출
         }
         else
         {
+            string dmgStr = isCrit ? $"<b>{Mathf.RoundToInt(damage)}!</b>" : Mathf.RoundToInt(damage).ToString();
+            damageText.text = dmgStr;
             damageText.color = isCrit ? Color.yellow : Color.white;
         }
 
@@ -402,5 +412,28 @@ public class CharacterView : MonoBehaviour, IPointerClickHandler
         _canvasGroup.DOKill();
         _canvasGroup.alpha = 0f;
         _canvasGroup.DOFade(1f, 0.3f);
+    }
+
+    /// <summary>
+    /// [신규] 패시브 발동 시 화면에 패시브 이름을 띄웁니다.
+    /// </summary>
+    public void ShowPassiveNotice(string passiveName)
+    {
+        if (passiveNoticeContainer == null || passiveNoticePrefab == null) return;
+
+        // [추가] 컨테이너 자체를 현재 부모의 최상단으로 이동 (이미지 등에 가려지는 현상 방지)
+        passiveNoticeContainer.SetAsLastSibling();
+
+        GameObject notice = Instantiate(passiveNoticePrefab, passiveNoticeContainer);
+        notice.transform.SetAsLastSibling(); // [추가] 가장 최근 문구가 가장 아래에 위치하도록 (Layout Group 설정에 따라 노출 순서 결정)
+
+        // [수정] 자식 오브젝트인 passiveText를 찾아 문구 입력 (배경 이미지가 있는 프리팹 대응)
+        var tmp = notice.transform.Find("passiveText")?.GetComponent<TextMeshProUGUI>();
+        if (tmp == null) tmp = notice.GetComponentInChildren<TextMeshProUGUI>(); // Fallback
+
+        if (tmp != null) tmp.text = passiveName;
+
+        // 1초 뒤에 스스로 파괴 (유저 요청: 다음 턴에 다시 아래에서부터 쌓이게)
+        Destroy(notice, 1.0f);
     }
 }

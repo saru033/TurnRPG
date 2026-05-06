@@ -215,6 +215,9 @@ public class BattleManager : MonoBehaviour
                     {
                         if (eff != null)
                         {
+                            // [추가] 패시브 이름 표시
+                            if (bc.View != null) bc.View.ShowPassiveNotice(skill.SkillName);
+
                             Debug.Log($"[Passive-Silent] {bc.Name}의 {skill.SkillName} 상시 효과 즉시 적용");
                             eff.Execute(bc, bc);
                         }
@@ -225,15 +228,22 @@ public class BattleManager : MonoBehaviour
         }
 
         // 큐에 쌓인 패시브 연출들을 순차적으로 모두 실행
-        while (extraActionQueue.Count > 0)
+        if (extraActionQueue.Count > 0)
         {
-            var action = extraActionQueue.First.Value;
-            extraActionQueue.RemoveFirst();
-            yield return StartCoroutine(action);
+            blackScreen.SetActive(false); // [추가] 연출 시작 전 검은 화면 제거 (문구가 보이도록)
+            while (extraActionQueue.Count > 0)
+            {
+                var action = extraActionQueue.First.Value;
+                extraActionQueue.RemoveFirst();
+                yield return StartCoroutine(action);
+            }
+        }
+        else
+        {
+            blackScreen.SetActive(false);
         }
 
         State = BattleState.Idle;
-        blackScreen.SetActive(false);
         StartCoroutine(TurnLoop());
     }
 
@@ -718,9 +728,12 @@ public class BattleManager : MonoBehaviour
 
     public IEnumerator CounterAttackRoutine(BattleCharacter attacker, BattleCharacter target)
     {
-        //attker와 target이 죽어 있다면 스킵
         if (!attacker.IsAlive || !target.IsAlive) yield break;
 
+        // [추가] 반격 문구 표시
+        if (attacker.View != null) attacker.View.ShowPassiveNotice("반격");
+
+        Debug.Log($"[Battle] {attacker.Name} → {target.Name} 반격 시작");
 
         var skillData = attacker.ActiveSkills.Count > 0 ? attacker.ActiveSkills[0] : null;
         if (skillData == null) yield break;
@@ -837,11 +850,12 @@ public class BattleManager : MonoBehaviour
     ///협공///
     public IEnumerator CombinationAttackRoutine(BattleCharacter attacker, BattleCharacter target)
     {
-        //attker와 target이 죽어 있다면 스킵
         if (!attacker.IsAlive || !target.IsAlive) yield break;
 
+        // [추가] 협공 문구 표시
+        if (attacker.View != null) attacker.View.ShowPassiveNotice("협공");
 
-
+        Debug.Log($"[Battle] {attacker.Name} → {target.Name} 협공 시작");
 
         var skillData = attacker.ActiveSkills.Count > 0 ? attacker.ActiveSkills[0] : null;
         if (skillData == null) yield break;
@@ -970,6 +984,9 @@ public class BattleManager : MonoBehaviour
 
 
         Debug.Log($"[Passive-Show] {character.Name} → {skill.SkillName} 패시브 연출 시작");
+
+        // [추가] 패시브 이름 표시
+        if (character.View != null) character.View.ShowPassiveNotice(skill.SkillName);
 
         var levelData = skill.LevelDatas != null && skill.LevelDatas.Count >= level
                         ? skill.LevelDatas[level - 1] : null;
@@ -1125,6 +1142,9 @@ public class BattleManager : MonoBehaviour
 
 
         Debug.Log($"[Passive-Show] {character.Name} → {skill.SkillName} 패시브 발동 연출 시작");
+
+        // [추가] 패시브 이름 표시
+        if (character.View != null) character.View.ShowPassiveNotice(skill.SkillName);
 
         var levelData = skill.LevelDatas != null && skill.LevelDatas.Count >= level
                         ? skill.LevelDatas[level - 1] : null;
@@ -1647,6 +1667,7 @@ public class BattleManager : MonoBehaviour
         int rewardGold = UnityEngine.Random.Range(currentStage.minGold, currentStage.maxGold + 1);
         int rewardSkillUp = UnityEngine.Random.Range(currentStage.minSkillUp, currentStage.maxSkillUp + 1);
         int rewardReroll = UnityEngine.Random.Range(currentStage.minReroll, currentStage.maxReroll + 1);
+        int rewardHighReroll = UnityEngine.Random.Range(currentStage.minHighReroll, currentStage.maxHighReroll + 1);
 
         // [수정] GameManager에 즉시 추가하지 않음 (RewardPanelUI에서 클릭 시 추가)
 
@@ -1654,6 +1675,7 @@ public class BattleManager : MonoBehaviour
         rewardLog += $"- 획득 골드: {rewardGold}\n";
         rewardLog += $"- 획득 강화석: {rewardSkillUp}\n";
         rewardLog += $"- 획득 리롤권: {rewardReroll}\n";
+        rewardLog += $"- 획득 고급 리롤권: {rewardHighReroll}\n";
 
         // 2. 배틀 아이템 랜덤 획득 (1~2개)
         List<SkillData> droppedItems = new List<SkillData>();
@@ -1683,7 +1705,7 @@ public class BattleManager : MonoBehaviour
         if (battleUI != null && battleUI.rewardPanel != null)
         {
             LobbyTopUI.Instance.Refresh();
-            battleUI.rewardPanel.Setup(rewardGold, rewardSkillUp, rewardReroll, droppedItems, OnRewardConfirmed);
+            battleUI.rewardPanel.Setup(rewardGold, rewardSkillUp, rewardReroll, rewardHighReroll, droppedItems, OnRewardConfirmed);
             LobbyTopUI.Instance.ShowUI();
         }
     }

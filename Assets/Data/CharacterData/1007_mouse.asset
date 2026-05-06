@@ -31,3 +31,5 @@ MonoBehaviour:
   StartingSkills:
   - skillData: {fileID: 11400000, guid: d6fecf199ce56624480cd1a2d2697204, type: 2}
     level: 1
+  - skillData: {fileID: 11400000, guid: b459a9490c1fe4d42b89fc2f0741643c, type: 2}
+    level: 1

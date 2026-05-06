@@ -19,6 +19,8 @@ public class StageData : ScriptableObject
     public int maxSkillUp = 5;
     public int minReroll = 0;
     public int maxReroll = 2;
+    public int minHighReroll = 0;
+    public int maxHighReroll = 1;
 
     [Header("Rewards - Battle Items")]
     [Tooltip("전투 중 사용 가능한 아이템들 중 랜덤으로 지급될 목록입니다.")]

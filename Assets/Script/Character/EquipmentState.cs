@@ -77,7 +77,7 @@ public class EquipmentState
     /// GameManager에 설정된 범위를 기반으로 4개의 중복되지 않는 랜덤 스탯을 생성합니다.
     /// minScale/maxScale을 조절하여 상위 수치가 붙는 '고급 리롤' 등을 구현할 수 있습니다.
     /// </summary>
-    public void GenerateRandomStats(float minScale = 1.0f, float maxScale = 1.0f)
+    public void GenerateRandomStats(float minScale = 1.0f, float maxScale = 1.0f, bool isHighTier = false)
     {
         subStats.Clear();
         
@@ -93,12 +93,12 @@ public class EquipmentState
             StatType selectedType = availableTypes[randomIndex];
             availableTypes.RemoveAt(randomIndex);
 
-            float randomValue = GetRandomValueForType(selectedType, minScale, maxScale);
+            float randomValue = GetRandomValueForType(selectedType, minScale, maxScale, isHighTier);
             subStats.Add(new EquipmentSubStat(selectedType, randomValue));
         }
     }
 
-    private float GetRandomValueForType(StatType type, float minScale, float maxScale)
+    private float GetRandomValueForType(StatType type, float minScale, float maxScale, bool isHighTier)
     {
         if (GameManager.Instance == null) return 0f;
 
@@ -120,6 +120,7 @@ public class EquipmentState
             case StatType.Speed: 
                 min = GameManager.Instance.minSpeed; 
                 max = GameManager.Instance.maxSpeed; 
+                if (isHighTier) min = max * 0.9f; // 고급 리롤 시 90% 이상 보장
                 return (int)UnityEngine.Random.Range(min * minScale, (max * maxScale) + 1);
             case StatType.CritChance: 
                 min = GameManager.Instance.minCritChance; 
@@ -130,6 +131,8 @@ public class EquipmentState
                 max = GameManager.Instance.maxCritDamage; 
                 break;
         }
+
+        if (isHighTier) min = max * 0.9f; // 고급 리롤 시 90% 이상 보장
 
         return (int)UnityEngine.Random.Range(min * minScale, max * maxScale);
     }

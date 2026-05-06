@@ -189,17 +189,19 @@ public class BattleCharacter
         // 빗나감 상태 저장 (이후 스킬 체인의 디버프 적용 여부 판단용)
         LastReceivedAttackEvaded = isEvaded;
 
+        bool isZeroDmg = false;
+
         if (HasStatusEffect(StatusEffectType.Invincible))
         {
             Debug.Log($"{Name} 무적 상태! 데미지 0");
-            return 0;
+            isZeroDmg = true;
         }
 
         if (HasStatusEffect(StatusEffectType.SkillDmgNullify) && !isBurn)
         {
             Debug.Log($"{Name} 스킬 데미지 1회 무효화!");
             RemoveStatusEffect(StatusEffectType.SkillDmgNullify);
-            return 0;
+            isZeroDmg = true;
         }
 
         // 1. 회피 체크 (외부에서 판정된 isEvaded 사용)
@@ -218,43 +220,47 @@ public class BattleCharacter
         actualDamage *= 1f - Mathf.Clamp01(PassiveDamageReduction);
 
         actualDamage = Mathf.Max(1f, actualDamage);   // 최소 1 피해
+        if (isZeroDmg) actualDamage = 0;
 
-        // 보호막 차감 로직!
-        var shield = ActiveStatusEffects.FirstOrDefault(e => e.Type == StatusEffectType.Shield);
-        if (shield != null)
+        if (!isZeroDmg)
         {
-            if (shield.DynamicValue >= actualDamage)
+            // 보호막 차감 로직!
+            var shield = ActiveStatusEffects.FirstOrDefault(e => e.Type == StatusEffectType.Shield);
+            if (shield != null)
             {
-                shield.DynamicValue -= actualDamage; // 데미지 전면 흡수
-                Debug.Log($"{Name} : 보호막이 {actualDamage} 피해를 방어했습니다. (남은량: {shield.DynamicValue})");
+                if (shield.DynamicValue >= actualDamage)
+                {
+                    shield.DynamicValue -= actualDamage; // 데미지 전면 흡수
+                    Debug.Log($"{Name} : 보호막이 {actualDamage} 피해를 방어했습니다. (남은량: {shield.DynamicValue})");
 
-                // [추가] 보호막 수치가 변했으므로 UI 갱신을 위해 이벤트 발생
-                BattleEventManager.TriggerStatusEffectChanged(this, shield);
+                    // [추가] 보호막 수치가 변했으므로 UI 갱신을 위해 이벤트 발생
+                    BattleEventManager.TriggerStatusEffectChanged(this, shield);
 
-                return 0; // 본체엔 0피해
+                    actualDamage = 0; // [수정] 본체 데미지를 0으로 명시적 초기화
+                    isZeroDmg = true;
+                }
+                else
+                {
+                    actualDamage -= shield.DynamicValue; // 남은 데미지 관통
+                    Debug.Log($"{Name} : 보호막이 파괴되었습니다! ({shield.DynamicValue} 방어완료)");
+                    shield.DynamicValue = 0;
+
+                    // 쉴드 파괴 시 즉시 삭제 처리
+                    shield.DestroyVFX();
+                    ActiveStatusEffects.Remove(shield);
+                    BattleEventManager.TriggerStatusEffectChanged(this, shield); // 삭제 알림
+                }
             }
-            else
-            {
-                actualDamage -= shield.DynamicValue; // 남은 데미지 관통
-                Debug.Log($"{Name} : 보호막이 파괴되었습니다! ({shield.DynamicValue} 방어완료)");
-                shield.DynamicValue = 0;
 
-                // 쉴드 파괴 시 즉시 삭제 처리
-                shield.DestroyVFX();
-                ActiveStatusEffects.Remove(shield);
-                BattleEventManager.TriggerStatusEffectChanged(this, shield); // 삭제 알림
+            bool wasAlive = CurrentHp > 0;
+            CurrentHp = Mathf.Max(0f, CurrentHp - actualDamage);
+
+            // [추가] 사망 처리
+            if (wasAlive && CurrentHp <= 0)
+            {
+                Die();
             }
         }
-
-        bool wasAlive = CurrentHp > 0;
-        CurrentHp = Mathf.Max(0f, CurrentHp - actualDamage);
-
-        // [추가] 사망 처리
-        if (wasAlive && CurrentHp <= 0)
-        {
-            Die();
-        }
-
         // [추가] 수면 상태 해제 (데미지가 0보다 클 때)
         if (actualDamage > 0 && HasStatusEffect(StatusEffectType.Sleep))
         {

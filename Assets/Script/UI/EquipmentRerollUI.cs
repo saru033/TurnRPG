@@ -34,6 +34,9 @@ public class EquipmentRerollUI : MonoBehaviour
     public TextMeshProUGUI txtBeforeAtk, txtBeforeDef, txtBeforeSpd, txtBeforeCritRate, txtBeforeCritDmg;
     public TextMeshProUGUI txtAfterHp, txtAfterAtk, txtAfterDef, txtAfterSpd, txtAfterCritRate, txtAfterCritDmg;
 
+    [Header("Reroll Settings")]
+    public bool isHighTier; // [추가] 고급 리롤 여부
+
     public System.Action OnClose;
 
     private Vector2 _originalIllustrationPos;
@@ -80,6 +83,9 @@ public class EquipmentRerollUI : MonoBehaviour
     {
         InitIfNecessary();
         if (rerollPanel == null) return;
+
+        int currentCount = isHighTier ? GameManager.Instance.highRerollItemCount : GameManager.Instance.rerollItemCount;
+        Debug.Log($"[EquipmentReroll] Open called. isHighTier: {isHighTier}, currentCount: {currentCount}");
 
         rerollPanel.SetActive(true);
         if (offPanel != null) offPanel.SetActive(false);
@@ -137,7 +143,7 @@ public class EquipmentRerollUI : MonoBehaviour
         // 1. 클릭 리스너 (리롤 시작)
         btn.onClick.RemoveAllListeners();
         btn.onClick.AddListener(() => OnPartSelected(state, part, icon));
-        
+
         // 2. 툴팁 트리거 설정 (기존 장비 정보 확인용)
         var trigger = btn.GetComponent<EquipmentTooltipTrigger>();
         if (trigger == null) trigger = btn.gameObject.AddComponent<EquipmentTooltipTrigger>();
@@ -146,14 +152,20 @@ public class EquipmentRerollUI : MonoBehaviour
 
     private void OnPartSelected(PlayerCharacterState state, EquipmentPart part, Sprite icon)
     {
-        if (GameManager.Instance == null || GameManager.Instance.rerollItemCount <= 0)
+        if (GameManager.Instance == null) return;
+
+        // [수정] 고급 여부에 따라 다른 재화 체크
+        int currentCount = isHighTier ? GameManager.Instance.highRerollItemCount : GameManager.Instance.rerollItemCount;
+
+        if (currentCount <= 0)
         {
-            Debug.Log("리롤 아이템이 부족합니다.");
+            Debug.Log(isHighTier ? "고급 리롤 아이템이 부족합니다." : "리롤 아이템이 부족합니다.");
             return;
         }
 
         // [중요] 누르는 순간 아이템 소모
-        GameManager.Instance.rerollItemCount--;
+        if (isHighTier) GameManager.Instance.highRerollItemCount--;
+        else GameManager.Instance.rerollItemCount--;
         if (LobbyTopUI.Instance != null) LobbyTopUI.Instance.Refresh();
 
         _selectedState = state;
@@ -161,16 +173,17 @@ public class EquipmentRerollUI : MonoBehaviour
 
         // 1. 현재 장비 복사해서 프리뷰 생성
         EquipmentState currentEquip = null;
-        switch (part) {
+        switch (part)
+        {
             case EquipmentPart.Head: currentEquip = state.headGear; break;
             case EquipmentPart.Body: currentEquip = state.bodyArmor; break;
             case EquipmentPart.Shoes: currentEquip = state.shoes; break;
         }
-        
+
         if (currentEquip == null) return;
-        
+
         _previewState = currentEquip.Clone();
-        _previewState.GenerateRandomStats(); // 프리뷰에만 랜덤 스탯 적용
+        _previewState.GenerateRandomStats(isHighTier: isHighTier); // 프리뷰에 고급 리롤 여부 전달
 
         // 2. UI 연출
         if (offPanel != null)
@@ -389,17 +402,43 @@ public class EquipmentRerollUI : MonoBehaviour
         AnimateDetailOut(currentEquipDetail?.gameObject, duration);
         AnimateDetailOut(previewEquipDetail?.gameObject, duration);
 
-        // [추가] 상세창이 닫힐 때 아이템이 없다면 전체 패널도 닫기
-        if (GameManager.Instance != null && GameManager.Instance.rerollItemCount <= 0)
+        // [수정] 상세창이 닫힐 때 아이템이 없다면 전체 패널도 닫기
+        // 단, 이미 CloseAll이 진행 중이거나 Open된 직후라면 방지
+        if (GameManager.Instance != null)
         {
-            // 약간의 딜레이 후 닫기 (연출상 자연스러움)
-            DOVirtual.DelayedCall(duration, () => CloseAll());
+            int currentCount = isHighTier ? GameManager.Instance.highRerollItemCount : GameManager.Instance.rerollItemCount;
+            if (currentCount <= 0 && rerollPanel != null && rerollPanel.activeSelf)
+            {
+                Debug.Log($"[EquipmentReroll] No items left ({currentCount}). Closing all.");
+                DOVirtual.DelayedCall(duration, () =>
+                {
+                    // 딜레이 후에도 여전히 아이템이 0개인 경우에만 닫기
+                    int checkCount = isHighTier ? GameManager.Instance.highRerollItemCount : GameManager.Instance.rerollItemCount;
+                    if (checkCount <= 0) CloseAll();
+                });
+            }
         }
     }
 
     public void CloseAll()
     {
-        CloseDetail();
+        // CloseDetail을 직접 호출하지 않고 내부 로직만 수행하여 루프 방지
+        float duration = 0.3f;
+        if (offPanel != null && offPanel.activeSelf)
+        {
+            var bgImg = offPanel.GetComponent<Image>();
+            if (bgImg != null) bgImg.DOFade(0, duration).OnComplete(() => offPanel.SetActive(false));
+
+            if (offPanelIllustration != null)
+            {
+                var rt = offPanelIllustration.GetComponent<RectTransform>();
+                if (rt != null) rt.DOAnchorPos(new Vector2(_originalIllustrationPos.x, _originalIllustrationPos.y - 300f), duration).SetEase(Ease.InCubic);
+            }
+        }
+
+        AnimateDetailOut(currentEquipDetail?.gameObject, duration);
+        AnimateDetailOut(previewEquipDetail?.gameObject, duration);
+
         if (rerollPanel != null)
         {
             var rt = rerollPanel.GetComponent<RectTransform>();
@@ -407,7 +446,8 @@ public class EquipmentRerollUI : MonoBehaviour
             {
                 rt.DOAnchorPos(new Vector2(_originalRerollPanelPos.x, _originalRerollPanelPos.y - 1500f), 0.4f)
                   .SetEase(Ease.InCubic)
-                  .OnComplete(() => {
+                  .OnComplete(() =>
+                  {
                       rerollPanel.SetActive(false);
                       OnClose?.Invoke();
                       OnClose = null;

@@ -15,13 +15,15 @@ MonoBehaviour:
   stageID: 1
   backgroundSprite: {fileID: -1768854372134492381, guid: 3f41b896221d54742902581c530b3932, type: 3}
   enemies:
-  - {fileID: 11400000, guid: c97e2339cba626643af8e358210f4e2c, type: 2}
+  - {fileID: 11400000, guid: e084d337da097f046b9a669f42f81dbe, type: 2}
   minGold: 25
   maxGold: 45
-  minSkillUp: 0
-  maxSkillUp: 0
+  minSkillUp: 1
+  maxSkillUp: 1
   minReroll: 0
   maxReroll: 0
+  minHighReroll: 0
+  maxHighReroll: 0
   potentialBattleItems:
   - {fileID: 11400000, guid: 35b31d570c2c0804ca1ccdf79160ed90, type: 2}
   - {fileID: 11400000, guid: 10bd56fa6ca8758438ff0e4a3f9933f8, type: 2}

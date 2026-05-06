@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7166cb7f5dfe6a84cbbfd47fcd0f00ad, type: 3}
+  m_Name: "5001_\uD68C\uD53C"
+  m_EditorClassIdentifier: Assembly-CSharp::TurnRPG.SkillSystem.SkillData
+  SkillID: 5001
+  SkillName: "\uD68C\uD53C"
+  SkillIcon: {fileID: 5317870697044535638, guid: 401c595f02fd7684eb9cd1b052b2fd82, type: 3}
+  Type: 2
+  SlotIndex: 1
+  EquipRestriction: 8
+  RequiredAnimationTrigger: 
+  UltimateCutsceneClip: {fileID: 0}
+  LevelDatas:
+  - Description: "\uC804\uD22C \uC2DC\uC791 \uC2DC \uC790\uC2E0\uC758 \uD68C\uD53C\uB97C
+      20% \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
+    Cooldown: 3
+    TargetType: 0
+    PassiveTrigger: 0
+    ConstantEffects:
+    - rid: 8427518173222797378
+    Effects: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 8427518173222797378
+      type: {class: PassiveStatBoostEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 1
+        TargetStat: evasion
+        PercentAmount: 0.2

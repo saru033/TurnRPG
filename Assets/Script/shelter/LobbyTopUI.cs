@@ -11,6 +11,7 @@ public class LobbyTopUI : MonoBehaviour
     public TextMeshProUGUI txtGold;
     public TextMeshProUGUI txtSkillUp;
     public TextMeshProUGUI txtRerollItem;
+    public TextMeshProUGUI txtHighRerollItem; // [추가] 고급 리롤 아이템 텍스트
 
     private RectTransform _rect;
     private Vector2 _originalPos;
@@ -59,6 +60,11 @@ public class LobbyTopUI : MonoBehaviour
         if (txtRerollItem != null)
         {
             txtRerollItem.text = ": " + GameManager.Instance.rerollItemCount.ToString("N0");
+        }
+
+        if (txtHighRerollItem != null)
+        {
+            txtHighRerollItem.text = ": " + GameManager.Instance.highRerollItemCount.ToString("N0");
         }
     }
 
