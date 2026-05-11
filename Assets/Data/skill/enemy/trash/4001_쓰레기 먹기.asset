@@ -15,17 +15,17 @@ MonoBehaviour:
   SkillID: 4001
   SkillName: "\uC4F0\uB808\uAE30 \uBA39\uAE30"
   SkillIcon: {fileID: 1372627480461126414, guid: 401c595f02fd7684eb9cd1b052b2fd82, type: 3}
-  Type: 2
+  Type: 1
   SlotIndex: 1
   EquipRestriction: 8
   RequiredAnimationTrigger: skill
   UltimateCutsceneClip: {fileID: 0}
   LevelDatas:
-  - Description: "\uC544\uAD70\uC774 \uD53C\uACA9\uC2DC \uC544\uAD70 \uC804\uCCB4\uC5D0\uAC8C
-      \uBCF4\uD638\uB9C9 \uBD80\uC5EC"
-    Cooldown: 1
+  - Description: "\uC790\uC2E0\uC5D0\uAC8C 3\uD134\uAC04 \uC790\uB3D9 \uD68C\uBCF5\uC744
+      \uBC1C\uC0DD\uC2DC\uD0B5\uB2C8\uB2E4."
+    Cooldown: 3
     TargetType: 0
-    PassiveTrigger: 2
+    PassiveTrigger: 0
     ConstantEffects: []
     Effects:
     - rid: 6423181292674744386
@@ -35,9 +35,9 @@ MonoBehaviour:
     - rid: 6423181292674744386
       type: {class: ApplyStatusEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
       data:
-        TargetType: 2
-        EffectData: {fileID: 11400000, guid: c1ea35754558ce947b7ab4365989e71c, type: 2}
-        Duration: 2
+        TargetType: 1
+        EffectData: {fileID: 11400000, guid: c0353486444189045963eb4b9d25d22b, type: 2}
+        Duration: 3
         ApplyChance: 1
-        StatScaleType: 2
-        StatMultiplier: 0.5
+        StatScaleType: 0
+        StatMultiplier: 0

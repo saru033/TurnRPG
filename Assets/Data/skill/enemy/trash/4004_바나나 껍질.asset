@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7166cb7f5dfe6a84cbbfd47fcd0f00ad, type: 3}
+  m_Name: "4004_\uBC14\uB098\uB098 \uAECD\uC9C8"
+  m_EditorClassIdentifier: Assembly-CSharp::TurnRPG.SkillSystem.SkillData
+  SkillID: 4002
+  SkillName: "\uBC14\uB098\uB098 \uAECD\uC9C8"
+  SkillIcon: {fileID: 1372627480461126414, guid: 401c595f02fd7684eb9cd1b052b2fd82, type: 3}
+  Type: 1
+  SlotIndex: 1
+  EquipRestriction: 8
+  RequiredAnimationTrigger: skill
+  UltimateCutsceneClip: {fileID: 0}
+  LevelDatas:
+  - Description: "\uC790\uC2E0\uC5D0\uAC8C 2\uD134\uAC04 \uC18D\uB3C4 \uC99D\uAC00,
+      1\uD134\uAC04 \uC2A4\uD0AC \uB370\uBBF8\uC9C0 \uBB34\uD6A8\uB97C \uBC1C\uC0DD
+      \uC2DC\uD0B5\uB2C8\uB2E4."
+    Cooldown: 2
+    TargetType: 1
+    PassiveTrigger: 0
+    ConstantEffects: []
+    Effects:
+    - rid: 8427518286752120898
+    - rid: 8427518286752120899
+  references:
+    version: 2
+    RefIds:
+    - rid: 8427518286752120898
+      type: {class: ApplyStatusEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 1
+        EffectData: {fileID: 11400000, guid: 240d832eeeacbbe479690f6e3f75d5fd, type: 2}
+        Duration: 2
+        ApplyChance: 1
+        StatScaleType: 0
+        StatMultiplier: 0
+    - rid: 8427518286752120899
+      type: {class: ApplyStatusEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 1
+        EffectData: {fileID: 11400000, guid: 134fc7940bc9bc64a90e3d102b716a77, type: 2}
+        Duration: 1
+        ApplyChance: 1
+        StatScaleType: 0
+        StatMultiplier: 0

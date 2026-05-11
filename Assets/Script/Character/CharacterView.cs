@@ -41,6 +41,7 @@ public class CharacterView : MonoBehaviour, IPointerClickHandler
     Dictionary<StatusEffect, GameObject> _buffIcons = new Dictionary<StatusEffect, GameObject>();
     Dictionary<StatusEffect, GameObject> _vfxInstances = new Dictionary<StatusEffect, GameObject>(); // [추가] VFX 인스턴스 관리
     float _maxBarWidth;   // 체력 100%일 때 너비
+    Color _originalColor; // [추가] 원래 일러스트 색상 (색깔놀이 대응)
 
     // -------------------------------------------------------
     // 초기화
@@ -50,6 +51,10 @@ public class CharacterView : MonoBehaviour, IPointerClickHandler
         _character = character;
         _canvasGroup = GetComponent<CanvasGroup>();
         if (_canvasGroup == null) _canvasGroup = gameObject.AddComponent<CanvasGroup>();
+
+        // [추가] 원래 색상 저장 (색깔놀이 캐릭터 대응)
+        if (illustration != null) _originalColor = illustration.color;
+        else _originalColor = Color.white;
 
         // 프리팹에서 설정한 최초 길이를 100% 기준으로 사용 (배경 이미지에 맞추지 않음)
         if (hpBar != null)
@@ -358,13 +363,12 @@ public class CharacterView : MonoBehaviour, IPointerClickHandler
 
         // 이전 연출이 진행 중이라면 즉시 중단 및 초기화
         illustration.DOKill();
-        illustration.color = Color.white;
+        illustration.color = _originalColor;
 
-        // Sequence를 사용하여 빨강 -> 하양 -> 원래색으로 번쩍이는 효과
+        // Sequence를 사용하여 빨강 -> 원래색으로 번쩍이는 효과
         Sequence seq = DOTween.Sequence();
-        seq.Append(illustration.DOColor(Color.red, 0.05f));
-        seq.Append(illustration.DOColor(Color.white, 0.05f));
-        seq.Append(illustration.DOColor(Color.white, 0.1f)); // 원래색(하양)으로 복구
+        seq.Append(illustration.DOColor(Color.red, 0.1f));
+        seq.Append(illustration.DOColor(_originalColor, 0.1f));
 
         seq.Play();
     }

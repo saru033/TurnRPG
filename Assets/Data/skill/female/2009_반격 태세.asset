@@ -31,7 +31,7 @@ MonoBehaviour:
     - rid: 7481024980550680800
   - Description: "\uC544\uAD70 \uD55C\uBA85\uC5D0\uAC8C 2\uD134\uAC04 \uBC18\uACA9
       , \uBC29\uC5B4\uB825 \uC99D\uAC00\uB97C \uBD80\uC5EC\uD569\uB2C8\uB2E4."
-    Cooldown: 3
+    Cooldown: 4
     TargetType: 4
     PassiveTrigger: 0
     ConstantEffects: []

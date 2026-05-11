@@ -434,10 +434,9 @@ public class BattleCharacter
     {
         if (!IsAlive) return;
 
-        // 쿨타임 감소 (이번 턴에 방금 쓴 스킬은 감소 제외!)
+        // 쿨타임 감소
         for (int i = 0; i < SkillCooldowns.Length; i++)
         {
-            if (i == CastedSkillIndexThisTurn) continue;
             if (SkillCooldowns[i] > 0) SkillCooldowns[i]--;
         }
 

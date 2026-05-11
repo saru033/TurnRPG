@@ -430,7 +430,7 @@ MonoBehaviour:
   nodeButtonPrefab: {fileID: 715159613063604323, guid: 15ac4549eb9a7854bb483748ffc7f17d, type: 3}
   hubPrefab: {fileID: 5309782409667129406, guid: e25012ba4ddc2c5419aaf9b4c822c5b1, type: 3}
   edgeImagePrefab: {fileID: 6762278690133610348, guid: dd85003d9c6b73e45b9196059254aef4, type: 3}
-  nodeCount: 20
+  nodeCount: 15
   splitChance: 0.3
   pathCount: 3
   columnSpacingRatio: 0.25
@@ -460,6 +460,8 @@ MonoBehaviour:
   RestPanel: {fileID: 1135919606}
   shopPanel: {fileID: 543466007}
   eventPanel: {fileID: 946107687}
+  circlePrefab: {fileID: 7153082511847882636, guid: db8d917e3441a0a45834a0b199db6923, type: 3}
+  circleAnimationDuration: 0.3
 --- !u!114 &3015153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10226,6 +10228,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StageDatabase
   allStages:
   - {fileID: 11400000, guid: 314e03cd61cc4be42a59f53dcd35f7d2, type: 2}
+  - {fileID: 11400000, guid: 83c70848a1a580d46b4d7364d7320311, type: 2}
+  - {fileID: 11400000, guid: 715248f65e9b7c64cae79267e75ba3b2, type: 2}
+  - {fileID: 11400000, guid: 13315fb1b17c30346a5203c3fdd25a12, type: 2}
+  - {fileID: 11400000, guid: 4736a5f2f411b0d4b808fd0579acb75d, type: 2}
+  - {fileID: 11400000, guid: 5f3b0865bfdbc984b8a28ba33e7547f5, type: 2}
+  - {fileID: 11400000, guid: c142cabd27dd2b144a698df1956655ed, type: 2}
+  - {fileID: 11400000, guid: ebe9257cf495f16429a77099c0e10249, type: 2}
+  - {fileID: 11400000, guid: 0053efa6071932045aca0628e991f49b, type: 2}
+  - {fileID: 11400000, guid: 819d468643c6b10448a65432ab3e50f2, type: 2}
+  - {fileID: 11400000, guid: 58ec1e95739f767439288627fb5e6025, type: 2}
+  - {fileID: 11400000, guid: dd469405ffcca7a44a0a72d2d360f5d0, type: 2}
 --- !u!4 &470757596
 Transform:
   m_ObjectHideFlags: 0
@@ -18115,15 +18128,112 @@ MonoBehaviour:
   goldImg: {fileID: 5670732621190257608, guid: 146d16e6a525bb04db3b2f904f8ecd15, type: 3}
   skillupImg: {fileID: 2436103836837796689, guid: 639b726e7bb42b442bca3ddf4fceb05d, type: 3}
   eventPool:
-  - eventTitle: "\uB3C8"
-    eventDescription: "\uD14C\uC2A4\uD2B8\uC6A9"
+  - eventTitle: E01
+    eventDescription: "\uAE38\uC744 \uC9C0\uB098\uAC00\uB2E4 \uC4F0\uB808\uAE30 \uBD09\uD22C\uC640
+      \uC885\uC774 \uBC15\uC2A4\uB97C \uBC1C\uACAC \uD588\uB2E4."
     choiceA:
-      buttonText: "\uAC15\uD654"
+      buttonText: "\uC4F0\uB808\uAE30 \uBD09\uD22C\uB97C \uB4A4\uC9C4\uB2E4."
       resultType: 3
       value: 1
     choiceB:
-      buttonText: "\uB79C\uB364\uC2A4\uD0AC"
+      buttonText: "\uC885\uC774 \uBC15\uC2A4\uB97C \uB4A4\uC9C4\uB2E4"
+      resultType: 4
+      value: 1
+  - eventTitle: E02
+    eventDescription: "\uC624\uB79C \uC774\uB3D9\uC73C\uB85C \uD53C\uACE4\uD558\uB2E4.
+      \uC880 \uC26C\uC5C8\uB2E4 \uAC08\uAE4C?"
+    choiceA:
+      buttonText: "\uC26C\uC5C8\uB2E4 \uAC04\uB2E4"
+      resultType: 2
+      value: 0.3
+    choiceB:
+      buttonText: "\uC26C\uC9C0 \uC54A\uACE0 \uAC04\uB2E4"
       resultType: 5
+      value: 1
+  - eventTitle: E03
+    eventDescription: "\uBC14\uB2E5\uC5D0 \uBC18\uC9DD\uAC70\uB9AC\uB294 \uBB34\uC5B8\uAC00\uAC00
+      \uB5A8\uC5B4\uC838 \uC788\uB2E4."
+    choiceA:
+      buttonText: "\uC90D\uB294\uB2E4"
+      resultType: 3
+      value: 1
+    choiceB:
+      buttonText: "\uC90D\uB294\uB2E4"
+      resultType: 1
+      value: 50
+  - eventTitle: E04
+    eventDescription: "\uAC08\uB9BC\uAE38\uC5D0 \uB2E4\uB2E4\uB790\uB2E4."
+    choiceA:
+      buttonText: "\uC67C\uCABD \uAE38\uB85C \uAC04\uB2E4"
+      resultType: 5
+      value: 1
+    choiceB:
+      buttonText: "\uC624\uB978\uCABD \uAE38\uB85C \uAC04\uB2E4"
+      resultType: 4
+      value: 50
+  - eventTitle: E05
+    eventDescription: "\uC0C8\uB85C\uC6B4 \uAC83\uC5D0 \uB300\uD574 \uD638\uAE30\uC2EC\uC774
+      \uBC1C\uB3D9\uD588\uB2E4"
+    choiceA:
+      buttonText: "\uC6D0\uB798 \uAC83\uC5D0 \uC9D1\uC911\uD55C\uB2E4"
+      resultType: 3
+      value: 1
+    choiceB:
+      buttonText: "\uB3C4\uC804\uD574 \uBCF8\uB2E4"
+      resultType: 5
+      value: 1
+  - eventTitle: E06
+    eventDescription: "\uB2E4\uB978 \uC0AC\uB78C\uC774 \uAE30\uC808\uD574 \uC788\uB2E4.
+      \uC804\uD22C\uC5D0\uC11C \uD328\uBC30\uD55C \uB4EF \uD558\uB2E4."
+    choiceA:
+      buttonText: "\uC548\uC804\uD55C \uB370\uB85C \uC774\uB3D9 \uC2DC\uCF1C \uC900\uB2E4"
+      resultType: 1
+      value: 100
+    choiceB:
+      buttonText: "\uD488\uC744 \uB4A4\uC9C4\uB2E4"
+      resultType: 4
+      value: 1
+  - eventTitle: E07
+    eventDescription: "\uBC24\uC774 \uB418\uC5C8\uB2E4."
+    choiceA:
+      buttonText: "\uBCC4\uC744 \uAD6C\uACBD\uD55C\uB2E4"
+      resultType: 3
+      value: 1
+    choiceB:
+      buttonText: "\uC7A0\uC744 \uC794\uB2E4"
+      resultType: 2
+      value: 0.5
+  - eventTitle: E08
+    eventDescription: "\uB3D9\uB8CC\uAC00 \uC5B4\uB5A4 \uBB3C\uAC74\uC744 \uC8FC\uC6CC\uC654\uB2E4."
+    choiceA:
+      buttonText: "\uD314\uB77C\uACE0 \uD55C\uB2E4"
+      resultType: 1
+      value: 50
+    choiceB:
+      buttonText: "\uC6B0\uB9AC\uAC00 \uC0AC\uC6A9\uD55C\uB2E4"
+      resultType: 4
+      value: 1
+  - eventTitle: E09
+    eventDescription: "\uD3D0\uD5C8\uAC00 \uB41C \uB9C8\uD2B8\uC5D0 \uC624\uAC8C
+      \uB418\uC5C8\uB2E4."
+    choiceA:
+      buttonText: "\uC2DD\uD488 \uCF54\uB108\uB97C \uAC00\uBCF8\uB2E4"
+      resultType: 4
+      value: 1
+    choiceB:
+      buttonText: "\uC804\uC790\uC81C\uD488 \uCF54\uB108\uB97C \uAC00\uBCF8\uB2E4."
+      resultType: 5
+      value: 1
+  - eventTitle: E10
+    eventDescription: "\uB3D9\uB8CC\uB4E4\uC774 \uD734\uC2DD\uACFC \uD6C8\uB828\uC911\uC5D0
+      \uC758\uACAC \uCDA9\uB3D9\uC774 \uC77C\uC5B4\uB0AC\uB2E4."
+    choiceA:
+      buttonText: "\uD734\uC2DD\uD558\uC790\uACE0 \uD55C\uB2E4"
+      resultType: 2
+      value: 0.5
+    choiceB:
+      buttonText: "\uD6C8\uB828\uD558\uC790\uACE0 \uD55C\uB2E4"
+      resultType: 3
       value: 1
   itemPool:
   - {fileID: 11400000, guid: 35b31d570c2c0804ca1ccdf79160ed90, type: 2}

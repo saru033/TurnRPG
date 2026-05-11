@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
  
@@ -93,40 +93,106 @@ public class Mapmanager : MonoBehaviour
             .Where(n => !n.IsHub)
             .OrderBy(n => n.Column)
             .ToList();
- 
-        // ① 첫 3열 → 무조건 Normal
+
+        // 1. 마지막 열(GoalHub 직전) → 무조건 Rest
+        int lastCol = candidates.Max(n => n.Column);
+        foreach (var node in candidates.Where(n => n.Column == lastCol))
+        {
+            node.Type = NodeType.Rest;
+        }
+
+        // 2. 첫 3열 → 무조건 Normal
         foreach (var node in candidates.Where(n => n.Column <= ForcedNormalColumns))
+        {
             node.Type = NodeType.Normal;
- 
-        // ② 나머지 슬롯
-        var freeSlots = candidates
-            .Where(n => n.Column > ForcedNormalColumns)
-            .OrderBy(_ => Random.value)   // 셔플
+        }
+
+        // 3. Era 구분 (StageDatabase와 동일한 로직)
+        int threshold = N / 2;
+        int earlyEndCol = threshold + 1;
+
+        var earlyNodes = candidates.Where(n => n.Column > ForcedNormalColumns && n.Column <= earlyEndCol).ToList();
+        var lateNodes = candidates.Where(n => n.Column > earlyEndCol && n.Column < lastCol).ToList();
+
+        // 4. 각 Era별 최소 보장 (Elite, Rest, Shop, Event)
+        GuaranteeTypesInGroup(earlyNodes);
+        GuaranteeTypesInGroup(lateNodes);
+
+        // 5. 나머지 노드들 순차적 배정 (제약 조건 적용하며 채우기)
+        var remainingNodes = candidates
+            .Where(n => n.Column > ForcedNormalColumns && n.Column < lastCol)
+            .OrderBy(n => n.Column)
             .ToList();
- 
-        // ③ 최소 보장 (노드 수 >= 8 일 때 Elite/Rest/Event/Shop 각 1개)
-        var mustInclude = new List<NodeType>();
-        if (candidates.Count >= 8)
+
+        foreach (var node in remainingNodes)
         {
-            mustInclude.Add(NodeType.Elite);
-            mustInclude.Add(NodeType.Rest);
-            mustInclude.Add(NodeType.Event);
-            mustInclude.Add(NodeType.Shop);
-        }
- 
-        var guaranteedIds = new HashSet<int>();
-        for (int i = 0; i < mustInclude.Count && i < freeSlots.Count; i++)
-        {
-            freeSlots[i].Type = mustInclude[i];
-            guaranteedIds.Add(freeSlots[i].Id);
-        }
- 
-        // ④ 나머지 → 가중치 랜덤
-        foreach (var node in freeSlots)
-        {
-            if (!guaranteedIds.Contains(node.Id))
+            // 이미 보장 로직으로 배정된 경우(Normal이 아닌 경우) 패스
+            if (node.Type != NodeType.Normal) continue;
+
+            // 제약 조건 체크
+            if (IsThirdConsecutiveSpecial(node))
+            {
+                node.Type = NodeType.Normal;
+            }
+            else
+            {
                 node.Type = PickRandomType();
+            }
         }
+    }
+
+    /// <summary>
+    /// 주어진 노드 리스트 내에서 Elite, Rest, Shop, Event가 최소 1회씩은 나오도록 우선 배정
+    /// </summary>
+    void GuaranteeTypesInGroup(List<MapNode> group)
+    {
+        if (group.Count == 0) return;
+
+        NodeType[] toGuarantee = { NodeType.Elite, NodeType.Rest, NodeType.Shop, NodeType.Event };
+        var shuffled = group.OrderBy(_ => Random.value).ToList();
+
+        int assignedCount = 0;
+        foreach (var type in toGuarantee)
+        {
+            // 이미 이 그룹에 해당 타입이 (우연히라도) 배정되어 있는지 체크 (현재는 모두 Normal이겠지만 확장성 대비)
+            if (group.Any(n => n.Type == type)) continue;
+
+            // 배정 가능한 노드 찾기 (연속 3회 제한을 '현재' 상태 기준으로 체크)
+            foreach (var node in shuffled)
+            {
+                if (node.Type == NodeType.Normal && !IsThirdConsecutiveSpecial(node))
+                {
+                    node.Type = type;
+                    assignedCount++;
+                    break;
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// 노드에 도달하는 모든 경로 중 하나라도 '연속 2회 특수 노드'인 경우가 있는지 체크
+    /// </summary>
+    bool IsThirdConsecutiveSpecial(MapNode node)
+    {
+        if (node.Prev.Count == 0) return false;
+
+        foreach (var prev in node.Prev)
+        {
+            // 직전이 Normal이면 통과
+            if (prev.Type == NodeType.Normal) continue;
+
+            // 직전이 특수라면, 그 전꺼까지 확인
+            foreach (var prevPrev in prev.Prev)
+            {
+                if (prevPrev.Type != NodeType.Normal && !prevPrev.IsHub)
+                {
+                    // [Prev -> 특수] AND [PrevPrev -> 특수] 이면 현재는 반드시 Normal이어야 함
+                    return true;
+                }
+            }
+        }
+        return false;
     }
  
     // ────────────────────────────────────────────────────────

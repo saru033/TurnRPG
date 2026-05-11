@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 105c21214ebaa0a4ba836d3b14b5e4e2, type: 3}
+  m_Name: 1011_devillSupporter
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterData
+  ID: 1011
+  CharacterName: "\uACF5\uC99D\uB300\uBC1C\uC2F8\uB300"
+  isPlayer: 0
+  charType: 0
+  MaxHp: 500
+  Attack: 0
+  Defense: 500
+  Speed: 80
+  CritChance: 0
+  CritDamage: 1
+  Evasion: 0
+  Accuracy: 1
+  illustration: {fileID: 7858980336673299937, guid: 4b5707357641e04438686dd5962c9f7d, type: 3}
+  iconImage: {fileID: -1955851177974502843, guid: 99b77f96fafbdf94c854afd8faaf3597, type: 3}
+  sideImage: {fileID: -7636694935251246727, guid: 7c7405ae2e004234aa55c571d7a22c2d, type: 3}
+  characterPrefab: {fileID: 6008314446264759706, guid: 72ff3ac32bc5e454e9e61f0596e1de2e, type: 3}
+  StartingSkills:
+  - skillData: {fileID: 11400000, guid: 70f3d1fde0bca974999de1af037a284f, type: 2}
+    level: 1

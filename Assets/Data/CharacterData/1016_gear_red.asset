@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 105c21214ebaa0a4ba836d3b14b5e4e2, type: 3}
+  m_Name: 1016_gear_red
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterData
+  ID: 1016
+  CharacterName: "\uD751\uD654 \uD1B1\uB2C8\uC7A5\uCE58"
+  isPlayer: 0
+  charType: 0
+  MaxHp: 5315
+  Attack: 2090
+  Defense: 537
+  Speed: 150
+  CritChance: 0.15
+  CritDamage: 1.5
+  Evasion: 0
+  Accuracy: 1
+  illustration: {fileID: 9143868440440847147, guid: 78b51429da5e2fa4c83c1c690717e8b0, type: 3}
+  iconImage: {fileID: -8198718030236053810, guid: 817e64f0f931f4e47989a1f409c1829c, type: 3}
+  sideImage: {fileID: 6871124208172002427, guid: 84ace84a459ec2c4da2f9bc23fe76064, type: 3}
+  characterPrefab: {fileID: 6008314446264759706, guid: 697be2befd56f6842af6470b23342a1e, type: 3}
+  StartingSkills:
+  - skillData: {fileID: 11400000, guid: 9409126dd155cda4d9be42804ca48cf2, type: 2}
+    level: 1
+  - skillData: {fileID: 11400000, guid: 57e05681a0559aa43954bed46cfa62d3, type: 2}
+    level: 1
+  - skillData: {fileID: 11400000, guid: 075974ffb8e1c844187c6f23459b4839, type: 2}
+    level: 1

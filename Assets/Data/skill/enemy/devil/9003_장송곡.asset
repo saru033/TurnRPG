@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7166cb7f5dfe6a84cbbfd47fcd0f00ad, type: 3}
+  m_Name: "9003_\uC7A5\uC1A1\uACE1"
+  m_EditorClassIdentifier: Assembly-CSharp::TurnRPG.SkillSystem.SkillData
+  SkillID: 9003
+  SkillName: "\uC7A5\uC1A1\uACE1"
+  SkillIcon: {fileID: 1372627480461126414, guid: 401c595f02fd7684eb9cd1b052b2fd82, type: 3}
+  Type: 1
+  SlotIndex: 2
+  EquipRestriction: 8
+  RequiredAnimationTrigger: skill
+  UltimateCutsceneClip: {fileID: 0}
+  LevelDatas:
+  - Description: "\uC801 \uC804\uCCB4\uC5D0\uAC8C 100% \uD655\uB960\uB85C 1\uD134\uAC04
+      \uC218\uBA74\uC744 \uBC1C\uC0DD\uC2DC\uD0B5\uB2C8\uB2E4. \uC774\uD6C4 \uC8FD\uC740
+      \uBAA8\uB4E0 \uC544\uAD70\uC744 100% \uC0DD\uBA85\uB825\uC73C\uB85C \uBD80\uD65C\uC2DC\uD0A8
+      \uD6C4 \uD589\uB3D9\uAC8C\uC774\uC9C0\uB97C 0%\uB85C \uB418\uB3CC\uB9BD\uB2C8\uB2E4."
+    Cooldown: 3
+    TargetType: 3
+    PassiveTrigger: 0
+    ConstantEffects: []
+    Effects:
+    - rid: 8427518197643870309
+    - rid: 8427518197643870310
+    - rid: 8427518197643870311
+  references:
+    version: 2
+    RefIds:
+    - rid: 8427518197643870309
+      type: {class: ApplyStatusEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 3
+        EffectData: {fileID: 11400000, guid: 4878bbc30737f654e9f50087bb9454fe, type: 2}
+        Duration: 1
+        ApplyChance: 1
+        StatScaleType: 0
+        StatMultiplier: 0
+    - rid: 8427518197643870310
+      type: {class: ReviveEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 5
+        RevivalHpPercent: 1
+    - rid: 8427518197643870311
+      type: {class: ActionGaugeEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 2
+        Amount: -100

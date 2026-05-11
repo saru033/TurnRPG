@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 105c21214ebaa0a4ba836d3b14b5e4e2, type: 3}
+  m_Name: 1015_mouse_red
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterData
+  ID: 1015
+  CharacterName: "\uD751\uD654 \uC950\uB3CC\uC774"
+  isPlayer: 0
+  charType: 0
+  MaxHp: 5780
+  Attack: 1580
+  Defense: 668
+  Speed: 165
+  CritChance: 0.15
+  CritDamage: 1.5
+  Evasion: 0
+  Accuracy: 1
+  illustration: {fileID: 4454631428275665778, guid: c1e1c2537a91dd841abe413f3f242917, type: 3}
+  iconImage: {fileID: 7130982385751882015, guid: dd7a0bf98ac35ea4fab78051adf8d81e, type: 3}
+  sideImage: {fileID: 4074227167906526859, guid: 053e975fba9f3d84db3e413fdc1eb1f2, type: 3}
+  characterPrefab: {fileID: 6008314446264759706, guid: c6814de0721f9214b9dd6c4b13874416, type: 3}
+  StartingSkills:
+  - skillData: {fileID: 11400000, guid: e6e28feaf12e09c4f93d96433d057df9, type: 2}
+    level: 1
+  - skillData: {fileID: 11400000, guid: 23554cb2461909048b5687ecdec48942, type: 2}
+    level: 1
+  - skillData: {fileID: 11400000, guid: 6aa2b3d4902e96b4e9996e6cd12ecb78, type: 2}
+    level: 1

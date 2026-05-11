@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7166cb7f5dfe6a84cbbfd47fcd0f00ad, type: 3}
+  m_Name: "7005_\uD611\uACF5 \uD504\uB85C\uADF8\uB7A8"
+  m_EditorClassIdentifier: Assembly-CSharp::TurnRPG.SkillSystem.SkillData
+  SkillID: 7005
+  SkillName: "\uD611\uACF5 \uD504\uB85C\uADF8\uB7A8"
+  SkillIcon: {fileID: 1372627480461126414, guid: 401c595f02fd7684eb9cd1b052b2fd82, type: 3}
+  Type: 0
+  SlotIndex: 0
+  EquipRestriction: 8
+  RequiredAnimationTrigger: attack
+  UltimateCutsceneClip: {fileID: 0}
+  LevelDatas:
+  - Description: "\uC801 \uD55C\uBA85\uC744 \uACF5\uACA9\uD569\uB2C8\uB2E4. \uBB34\uC791\uC704
+      \uC544\uAD70\uC5D0\uAC8C \uD611\uACF5\uC744 \uBC1C\uC0DD\uC2DC\uD0B5\uB2C8\uB2E4."
+    Cooldown: 0
+    TargetType: 2
+    PassiveTrigger: 0
+    ConstantEffects: []
+    Effects:
+    - rid: 8427518286752120916
+    - rid: 8427518286752120917
+  references:
+    version: 2
+    RefIds:
+    - rid: 8427518286752120916
+      type: {class: DamageEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 0
+        DamageMultiplier: 1.3
+        Penetration: 0
+        CannotBeCountered: 0
+        AlwaysHit: 0
+    - rid: 8427518286752120917
+      type: {class: DualAttackEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        HelperSelection: 0

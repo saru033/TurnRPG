@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7166cb7f5dfe6a84cbbfd47fcd0f00ad, type: 3}
+  m_Name: "4003_\uAC00\uC2A4 \uBD84\uCD9C"
+  m_EditorClassIdentifier: Assembly-CSharp::TurnRPG.SkillSystem.SkillData
+  SkillID: 4002
+  SkillName: "\uAC00\uC2A4 \uBD84\uCD9C"
+  SkillIcon: {fileID: 1372627480461126414, guid: 401c595f02fd7684eb9cd1b052b2fd82, type: 3}
+  Type: 0
+  SlotIndex: 2
+  EquipRestriction: 8
+  RequiredAnimationTrigger: attack
+  UltimateCutsceneClip: {fileID: 0}
+  LevelDatas:
+  - Description: "\uC801 \uD55C\uBA85\uC744 \uACF5\uACA9\uD574 100% \uD655\uB960\uB85C
+      2\uD134\uAC04 \uBA85\uC911 \uAC10\uC18C\uC640 \uCE68\uBB35\uC744 \uBC1C\uC0DD
+      \uC2DC\uD0B5\uB2C8\uB2E4."
+    Cooldown: 3
+    TargetType: 2
+    PassiveTrigger: 0
+    ConstantEffects: []
+    Effects:
+    - rid: 8427518286752120900
+    - rid: 8427518286752120898
+    - rid: 8427518286752120899
+  references:
+    version: 2
+    RefIds:
+    - rid: 8427518286752120898
+      type: {class: ApplyStatusEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 0
+        EffectData: {fileID: 11400000, guid: 240f4229f4e8bd94c9b7cc22243d7f7e, type: 2}
+        Duration: 2
+        ApplyChance: 1
+        StatScaleType: 0
+        StatMultiplier: 0
+    - rid: 8427518286752120899
+      type: {class: ApplyStatusEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 0
+        EffectData: {fileID: 11400000, guid: fa87e85cec6ebbc40bf6208daf30b660, type: 2}
+        Duration: 2
+        ApplyChance: 1
+        StatScaleType: 0
+        StatMultiplier: 0
+    - rid: 8427518286752120900
+      type: {class: DamageEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 0
+        DamageMultiplier: 2.2
+        Penetration: 0
+        CannotBeCountered: 0
+        AlwaysHit: 0

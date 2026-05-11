@@ -21,8 +21,8 @@ MonoBehaviour:
   RequiredAnimationTrigger: attack
   UltimateCutsceneClip: {fileID: 0}
   LevelDatas:
-  - Description: "\uC801\uC744 \uACF5\uACA9\uD569\uB2C8\uB2E4. \uB300\uC0C1\uC758\uD589\uB3D9
-      \uAC8C\uC774\uC9C0\uB97C 10% \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
+  - Description: "\uC801\uC744 \uACF5\uACA9\uD569\uB2C8\uB2E4. \uC774\uD6C4 \uC790\uC2E0\uC758
+      \uD589\uB3D9\uAC8C\uC774\uC9C0\uB97C 5% \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
     Cooldown: 0
     TargetType: 2
     PassiveTrigger: 0
@@ -44,5 +44,5 @@ MonoBehaviour:
     - rid: 7481024980550680890
       type: {class: ActionGaugeEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
       data:
-        TargetType: 0
-        Amount: -10
+        TargetType: 1
+        Amount: 5

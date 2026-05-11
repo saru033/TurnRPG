@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -68,6 +69,10 @@ public class MapUI : MonoBehaviour
     public GameObject RestPanel;
     public GameObject shopPanel;
     public GameObject eventPanel;
+
+    [Header("Animations")]
+    public GameObject circlePrefab; // [추가] 빨간 동그라미 연출 프리팹
+    public float circleAnimationDuration = 0.4f; // [추가] 연출 대기 시간
     void ComputeLayout()
     {
         // panelRect가 없으면 Screen 높이로 fallback
@@ -381,10 +386,15 @@ public class MapUI : MonoBehaviour
     // ── 인터랙션 ──────────────────────────────────────────
     void OnNodeClicked(MapNode target)
     {
+        StartCoroutine(NodeClickedRoutine(target));
+    }
+
+    IEnumerator NodeClickedRoutine(MapNode target)
+    {
         bool canMove = false;
         foreach (var next in currentNode.Next)
             if (next.Id == target.Id) { canMove = true; break; }
-        if (!canMove) return;
+        if (!canMove) yield break;
 
         visitedEdges.Add((currentNode.Id, target.Id));
         currentNode = target;
@@ -392,6 +402,27 @@ public class MapUI : MonoBehaviour
 
         RefreshUI();
 
+        // 연출: 빨간 동그라미 생성
+        if (circlePrefab != null)
+        {
+            var circle = Instantiate(circlePrefab, mapRoot);
+            var rt = circle.GetComponent<RectTransform>();
+            if (rt != null)
+            {
+                rt.anchorMin = new Vector2(0f, 0.5f);
+                rt.anchorMax = new Vector2(0f, 0.5f);
+                rt.pivot = new Vector2(0.5f, 0.5f);
+                rt.anchoredPosition = NodePosition(target);
+                rt.sizeDelta = new Vector2(nodeSize, nodeSize);
+            }
+
+            // 스크립트의 duration과 맞춤
+            var anim = circle.GetComponent<MapCircleAnimation>();
+            if (anim != null) anim.duration = circleAnimationDuration;
+        }
+
+        // 동그라미 그려지는 시간 동안 대기
+        yield return new WaitForSeconds(circleAnimationDuration);
         switch (currentNode.Type)
         {
             case NodeType.Normal:
@@ -401,7 +432,7 @@ public class MapUI : MonoBehaviour
                     var bm = BattlePanel.GetComponentInChildren<BattleManager>();
                     if (bm != null && stageDatabase != null)
                     {
-                        var selectedStage = stageDatabase.GetRandomStage();
+                        var selectedStage = stageDatabase.GetRandomStage(currentNode.Type, currentNode.Column, nodeCount);
                         bm.currentStage = selectedStage;
                     }
                 }
@@ -419,8 +450,8 @@ public class MapUI : MonoBehaviour
                     var bm = BattlePanel.GetComponentInChildren<BattleManager>();
                     if (bm != null && stageDatabase != null)
                     {
-                        // 엘리트 보스 스테이지 가져오기 (추후 생성 후 연결)
-                        var selectedStage = stageDatabase.GetRandomStage();
+                        // 엘리트 보스 스테이지 가져오기
+                        var selectedStage = stageDatabase.GetRandomStage(currentNode.Type, currentNode.Column, nodeCount);
                         bm.currentStage = selectedStage;
                     }
                 }

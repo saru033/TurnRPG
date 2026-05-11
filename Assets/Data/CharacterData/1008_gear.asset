@@ -16,11 +16,11 @@ MonoBehaviour:
   CharacterName: "\uD1B1\uB2C8\uC7A5\uCE58"
   isPlayer: 0
   charType: 0
-  MaxHp: 4677
-  Attack: 726
-  Defense: 553
+  MaxHp: 2990
+  Attack: 2870
+  Defense: 473
   Speed: 111
-  CritChance: 0.15
+  CritChance: 0.5
   CritDamage: 1.5
   Evasion: 0
   Accuracy: 1
@@ -29,5 +29,9 @@ MonoBehaviour:
   sideImage: {fileID: 6871124208172002427, guid: 84ace84a459ec2c4da2f9bc23fe76064, type: 3}
   characterPrefab: {fileID: 6008314446264759706, guid: 99f94d1ed3a32b24bafe1979d2205741, type: 3}
   StartingSkills:
-  - skillData: {fileID: 11400000, guid: d6fecf199ce56624480cd1a2d2697204, type: 2}
+  - skillData: {fileID: 11400000, guid: 5fed82cfdbde826438156f8a40244726, type: 2}
+    level: 1
+  - skillData: {fileID: 11400000, guid: a362738157c64f1468da78c413e3ac7c, type: 2}
+    level: 1
+  - skillData: {fileID: 11400000, guid: 7a25e3a50b8aa59438b17dc5ba425d3a, type: 2}
     level: 1

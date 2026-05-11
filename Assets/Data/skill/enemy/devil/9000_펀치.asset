@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7166cb7f5dfe6a84cbbfd47fcd0f00ad, type: 3}
+  m_Name: "9000_\uD380\uCE58"
+  m_EditorClassIdentifier: Assembly-CSharp::TurnRPG.SkillSystem.SkillData
+  SkillID: 9000
+  SkillName: "\uD380\uCE58"
+  SkillIcon: {fileID: 1372627480461126414, guid: 401c595f02fd7684eb9cd1b052b2fd82, type: 3}
+  Type: 0
+  SlotIndex: 0
+  EquipRestriction: 8
+  RequiredAnimationTrigger: attack
+  UltimateCutsceneClip: {fileID: 0}
+  LevelDatas:
+  - Description: "\uC801 \uD55C\uBA85\uC744 \uACF5\uACA9\uD569\uB2C8\uB2E4. \uC790\uC2E0\uC5D0\uAC8C
+      \uBC84\uD504\uAC00 \uC788\uC5C8\uB2E4\uBA74 \uC801 \uC804\uCCB4\uC5D0\uAC8C
+      \uAC15\uB825\uD55C \uCD94\uAC00 \uACF5\uACA9\uC744 \uAC00\uD569\uB2C8\uB2E4."
+    Cooldown: 0
+    TargetType: 2
+    PassiveTrigger: 0
+    ConstantEffects: []
+    Effects:
+    - rid: 7481024980550680889
+    - rid: 8427518197643870315
+    - rid: 8427518197643870316
+  references:
+    version: 2
+    RefIds:
+    - rid: 7481024980550680889
+      type: {class: DamageEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 0
+        DamageMultiplier: 1
+        Penetration: 0
+        CannotBeCountered: 0
+        AlwaysHit: 0
+    - rid: 8427518197643870315
+      type: {class: CheckStatusEffectCountConditionEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 1
+        Category: 0
+        ThresholdCount: 1
+        IsBelow: 0
+    - rid: 8427518197643870316
+      type: {class: DamageEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 3
+        DamageMultiplier: 8
+        Penetration: 0
+        CannotBeCountered: 0
+        AlwaysHit: 0

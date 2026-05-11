@@ -155,10 +155,21 @@ namespace TurnRPG.SkillSystem.Effects
                 // 모든 장착 스킬 쿨타임 변경 (궁극기는 제외할지 여부는 별도 처리 가능)
                 for (int i = 0; i < t.SkillCooldowns.Length; i++)
                 {
-                    if (t.SkillCooldowns[i] > 0)
+                    int currentCooldown = t.SkillCooldowns[i];
+                    int newCooldown = currentCooldown + TurnAmount;
+
+                    // [추가] 쿨타임 증가 시, 기존 스킬의 최대 쿨타임보다 높게 증가하지 않게 제한
+                    if (TurnAmount > 0 && t.ActiveSkills.Count > i && t.ActiveSkills[i] != null)
                     {
-                        t.SkillCooldowns[i] = Mathf.Max(0, t.SkillCooldowns[i] + TurnAmount);
+                        int level = t.SkillLevels[i];
+                        if (t.ActiveSkills[i].LevelDatas.Count >= level)
+                        {
+                            int maxCD = t.ActiveSkills[i].LevelDatas[level - 1].Cooldown;
+                            newCooldown = Mathf.Min(newCooldown, maxCD);
+                        }
                     }
+
+                    t.SkillCooldowns[i] = Mathf.Max(0, newCooldown);
                 }
                 Debug.Log($"{t.Name}의 쿨타임이 {TurnAmount}턴 변경되었습니다.");
             }

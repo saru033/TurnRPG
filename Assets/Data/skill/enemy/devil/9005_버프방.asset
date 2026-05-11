@@ -10,24 +10,34 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7166cb7f5dfe6a84cbbfd47fcd0f00ad, type: 3}
-  m_Name: "4003_\uC4F0\uB808\uAE30\uC26C\uAE30"
+  m_Name: "9005_\uBC84\uD504\uBC29"
   m_EditorClassIdentifier: Assembly-CSharp::TurnRPG.SkillSystem.SkillData
-  SkillID: 4003
-  SkillName: "\uC4F0\uB808\uAE30\uC26C\uAE30"
+  SkillID: 9004
+  SkillName: "\uBC84\uD504"
   SkillIcon: {fileID: 1372627480461126414, guid: 401c595f02fd7684eb9cd1b052b2fd82, type: 3}
   Type: 1
-  SlotIndex: 2
+  SlotIndex: 0
   EquipRestriction: 8
   RequiredAnimationTrigger: skill
   UltimateCutsceneClip: {fileID: 0}
   LevelDatas:
-  - Description: "\uD328\uC2DC\uBE0C \uD655\uC778\uC6A9 \uB2A5\uB825 \uC5C6\uB294
-      3\uC2A4\uD0AC"
+  - Description: "\uC544\uAD70 \uC804\uCCB4\uC5D0\uAC8C 1\uD134\uAC04 \uBC29\uC5B4\uB825
+      \uC99D\uAC00(\uB300)\uB97C \uBD80\uC5EC\uD569\uB2C8\uB2E4."
     Cooldown: 0
-    TargetType: 1
+    TargetType: 5
     PassiveTrigger: 0
     ConstantEffects: []
-    Effects: []
+    Effects:
+    - rid: 8427518197643870317
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 8427518197643870317
+      type: {class: ApplyStatusEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 2
+        EffectData: {fileID: 11400000, guid: 41372ce004ee55949b28581896423e90, type: 2}
+        Duration: 1
+        ApplyChance: 1
+        StatScaleType: 0
+        StatMultiplier: 0

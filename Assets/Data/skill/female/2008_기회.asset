@@ -27,10 +27,7 @@ MonoBehaviour:
     Cooldown: 4
     TargetType: 2
     PassiveTrigger: 0
-    ConstantEffects:
-    - rid: 7481024980550680792
-    - rid: 7481024980550680793
-    - rid: 7481024980550680794
+    ConstantEffects: []
     Effects:
     - rid: 6423180961368244290
     - rid: 6423180961368244291
@@ -41,11 +38,11 @@ MonoBehaviour:
     Cooldown: 4
     TargetType: 2
     PassiveTrigger: 0
-    ConstantEffects:
-    - rid: 7481024980550680792
-    - rid: 7481024980550680795
-    - rid: 7481024980550680794
-    Effects: []
+    ConstantEffects: []
+    Effects:
+    - rid: 8427518197643870273
+    - rid: 8427518197643870274
+    - rid: 8427518197643870279
   - Description: "\uC801 \uD55C\uBA85\uC744 \uACF5\uACA9 \uD55C \uD6C4 1\uD134\uAC04
       100% \uD655\uB960\uB85C \uD654\uC0C1\uC744 \uBC1C\uC0DD \uC2DC\uD0B5\uB2C8\uB2E4.
       \uB300\uC0C1\uC758 \uC57D\uD654\uD6A8\uACFC\uAC00 4\uAC1C \uC774\uC0C1\uC774\uB77C\uBA74
@@ -53,12 +50,12 @@ MonoBehaviour:
     Cooldown: 4
     TargetType: 2
     PassiveTrigger: 0
-    ConstantEffects:
-    - rid: 7481024980550680792
-    - rid: 7481024980550680796
-    - rid: 7481024980550680795
-    - rid: 7481024980550680794
-    Effects: []
+    ConstantEffects: []
+    Effects:
+    - rid: 8427518197643870275
+    - rid: 8427518197643870276
+    - rid: 8427518197643870277
+    - rid: 8427518197643870278
   - Description: "\uC801 \uD55C\uBA85\uC744 \uACF5\uACA9 \uD55C \uD6C4 1\uD134\uAC04
       100% \uD655\uB960\uB85C \uD654\uC0C1\uC744 \uBC1C\uC0DD \uC2DC\uD0A4\uACE0
       \uACF5\uACA9\uB825\uC774 \uAC00\uC7A5 \uB192\uC740 \uC544\uAD70\uC5D0\uAC8C
@@ -68,13 +65,13 @@ MonoBehaviour:
     Cooldown: 4
     TargetType: 2
     PassiveTrigger: 0
-    ConstantEffects:
-    - rid: 7481024980550680792
-    - rid: 7481024980550680796
-    - rid: 7481024980550680797
-    - rid: 7481024980550680795
-    - rid: 7481024980550680794
-    Effects: []
+    ConstantEffects: []
+    Effects:
+    - rid: 8427518197643870280
+    - rid: 8427518197643870281
+    - rid: 8427518197643870282
+    - rid: 8427518197643870283
+    - rid: 8427518197643870284
   - Description: "\uC801 \uD55C\uBA85\uC744 \uACF5\uACA9 \uD55C \uD6C4 1\uD134\uAC04
       100% \uD655\uB960\uB85C \uD654\uC0C1\uC744 \uBC1C\uC0DD \uC2DC\uD0B5\uB2C8\uB2E4.
       \uB300\uC0C1\uC758 \uC57D\uD654\uD6A8\uACFC\uAC00 3\uAC1C \uC774\uC0C1\uC774\uB77C\uBA74
@@ -82,12 +79,12 @@ MonoBehaviour:
     Cooldown: 4
     TargetType: 2
     PassiveTrigger: 0
-    ConstantEffects:
-    - rid: 7481024980550680792
-    - rid: 7481024980550680798
-    - rid: 7481024980550680799
-    - rid: 7481024980550680794
-    Effects: []
+    ConstantEffects: []
+    Effects:
+    - rid: 8427518197643870285
+    - rid: 8427518197643870286
+    - rid: 8427518197643870287
+    - rid: 8427518197643870288
   references:
     version: 2
     RefIds:
@@ -110,7 +107,7 @@ MonoBehaviour:
       type: {class: ExtraTurnEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
       data:
         TargetType: 1
-    - rid: 7481024980550680792
+    - rid: 8427518197643870273
       type: {class: DamageEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
       data:
         TargetType: 0
@@ -118,25 +115,22 @@ MonoBehaviour:
         Penetration: 0
         CannotBeCountered: 0
         AlwaysHit: 0
-    - rid: 7481024980550680793
-      type: {class: CheckStatusEffectCountConditionEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
-      data:
-        TargetType: 0
-        Category: 1
-        ThresholdCount: 5
-        IsBelow: 0
-    - rid: 7481024980550680794
-      type: {class: ExtraTurnEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
-      data:
-        TargetType: 1
-    - rid: 7481024980550680795
+    - rid: 8427518197643870274
       type: {class: CheckStatusEffectCountConditionEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
       data:
         TargetType: 0
         Category: 1
         ThresholdCount: 4
         IsBelow: 0
-    - rid: 7481024980550680796
+    - rid: 8427518197643870275
+      type: {class: DamageEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 0
+        DamageMultiplier: 1.5
+        Penetration: 0
+        CannotBeCountered: 0
+        AlwaysHit: 0
+    - rid: 8427518197643870276
       type: {class: ApplyStatusEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
       data:
         TargetType: 0
@@ -145,11 +139,62 @@ MonoBehaviour:
         ApplyChance: 1
         StatScaleType: 1
         StatMultiplier: 1
-    - rid: 7481024980550680797
+    - rid: 8427518197643870277
+      type: {class: CheckStatusEffectCountConditionEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 0
+        Category: 1
+        ThresholdCount: 4
+        IsBelow: 0
+    - rid: 8427518197643870278
+      type: {class: ExtraTurnEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 1
+    - rid: 8427518197643870279
+      type: {class: ExtraTurnEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 1
+    - rid: 8427518197643870280
+      type: {class: DamageEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 0
+        DamageMultiplier: 1.5
+        Penetration: 0
+        CannotBeCountered: 0
+        AlwaysHit: 0
+    - rid: 8427518197643870281
+      type: {class: ApplyStatusEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 0
+        EffectData: {fileID: 11400000, guid: 4ef8368aeb273504693faa814b8f040f, type: 2}
+        Duration: 1
+        ApplyChance: 1
+        StatScaleType: 1
+        StatMultiplier: 1
+    - rid: 8427518197643870282
       type: {class: DualAttackEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
       data:
-        HelperSelection: 0
-    - rid: 7481024980550680798
+        HelperSelection: 1
+    - rid: 8427518197643870283
+      type: {class: CheckStatusEffectCountConditionEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 0
+        Category: 1
+        ThresholdCount: 4
+        IsBelow: 0
+    - rid: 8427518197643870284
+      type: {class: ExtraTurnEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 1
+    - rid: 8427518197643870285
+      type: {class: DamageEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 0
+        DamageMultiplier: 1.5
+        Penetration: 0
+        CannotBeCountered: 0
+        AlwaysHit: 0
+    - rid: 8427518197643870286
       type: {class: ApplyStatusEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
       data:
         TargetType: 0
@@ -158,10 +203,14 @@ MonoBehaviour:
         ApplyChance: 1
         StatScaleType: 1
         StatMultiplier: 1
-    - rid: 7481024980550680799
+    - rid: 8427518197643870287
       type: {class: CheckStatusEffectCountConditionEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
       data:
         TargetType: 0
         Category: 1
         ThresholdCount: 3
         IsBelow: 0
+    - rid: 8427518197643870288
+      type: {class: ExtraTurnEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 1

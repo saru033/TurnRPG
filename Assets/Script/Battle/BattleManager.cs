@@ -281,7 +281,7 @@ public class BattleManager : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
             battleUI.SetVisible(currentActor, false);
 
-            // ⭐ 1.5 턴 시작 시스템 발동 (쿨타임 감소, 출혈 피해 등)
+            // ⭐ 1.5 턴 시작 시스템 발동 (출혈 피해)
             currentActor.OnTurnStart();
 
             // 턴 시작시 행동게이지 초기화 (여기서 실제 값 0으로 리셋)

@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 105c21214ebaa0a4ba836d3b14b5e4e2, type: 3}
+  m_Name: 1014_slime_red
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterData
+  ID: 1014
+  CharacterName: "\uD751\uD654 \uC2AC\uB77C\uC784"
+  isPlayer: 0
+  charType: 0
+  MaxHp: 7230
+  Attack: 2108
+  Defense: 782
+  Speed: 172
+  CritChance: 0.15
+  CritDamage: 1.5
+  Evasion: 0
+  Accuracy: 1
+  illustration: {fileID: 368543389579951487, guid: 6cca858ed22e13c4cb8f90633155cbe2, type: 3}
+  iconImage: {fileID: -2911206921925347886, guid: 53c08a0951cd60d40bef306609847bb3, type: 3}
+  sideImage: {fileID: 6695754871758846774, guid: 864ec550709083c48a636b11b325f51f, type: 3}
+  characterPrefab: {fileID: 6008314446264759706, guid: dd4b0b76d68ed0b41a541aed2032de07, type: 3}
+  StartingSkills:
+  - skillData: {fileID: 11400000, guid: bb9f272f76e7a9d44b82bd8a142eae3d, type: 2}
+    level: 1
+  - skillData: {fileID: 11400000, guid: 93de632519b5f564d8aae11b84cb4e6d, type: 2}
+    level: 1
+  - skillData: {fileID: 11400000, guid: 7e1dae180584ee84986e21847f51db49, type: 2}
+    level: 1

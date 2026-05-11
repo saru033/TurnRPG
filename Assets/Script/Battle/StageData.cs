@@ -2,12 +2,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using TurnRPG.SkillSystem;
 
+public enum StageDifficulty { Normal, Elite }
+public enum StageEra { Early, Late }
+
 [CreateAssetMenu(fileName = "StageData", menuName = "TurnRPG/StageData")]
 public class StageData : ScriptableObject
 {
     [Header("Stage Info")]
     public int stageID;
     public Sprite backgroundSprite;
+    public StageDifficulty difficulty = StageDifficulty.Normal;
+    public StageEra era = StageEra.Early;
     
     [Header("Enemies")]
     public List<CharacterData> enemies = new List<CharacterData>();

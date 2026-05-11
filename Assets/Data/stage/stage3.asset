@@ -13,15 +13,18 @@ MonoBehaviour:
   m_Name: stage3
   m_EditorClassIdentifier: Assembly-CSharp::StageData
   stageID: 3
-  backgroundSprite: {fileID: -8483731395159641348, guid: 281a96be91a309249921a5e925dc780f, type: 3}
+  backgroundSprite: {fileID: -1641259752620419291, guid: 0eda067b3bca24f4baeac051375458e8, type: 3}
   enemies:
-  - {fileID: 11400000, guid: 91ed1846fdacba84aa0345176c60f1ba, type: 2}
-  - {fileID: 11400000, guid: 91ed1846fdacba84aa0345176c60f1ba, type: 2}
-  - {fileID: 11400000, guid: 91ed1846fdacba84aa0345176c60f1ba, type: 2}
-  minGold: 25
-  maxGold: 45
-  minSkillUp: 0
+  - {fileID: 11400000, guid: c97e2339cba626643af8e358210f4e2c, type: 2}
+  - {fileID: 11400000, guid: e084d337da097f046b9a669f42f81dbe, type: 2}
+  minGold: 35
+  maxGold: 60
+  minSkillUp: 1
   maxSkillUp: 1
+  minReroll: 0
+  maxReroll: 1
+  minHighReroll: 0
+  maxHighReroll: 0
   potentialBattleItems:
   - {fileID: 11400000, guid: 35b31d570c2c0804ca1ccdf79160ed90, type: 2}
   - {fileID: 11400000, guid: 10bd56fa6ca8758438ff0e4a3f9933f8, type: 2}
