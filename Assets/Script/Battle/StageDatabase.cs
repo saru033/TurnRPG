@@ -11,6 +11,9 @@ public class StageDatabase : MonoBehaviour
     [Tooltip("전체 스테이지 리스트를 여기에 등록합니다.")]
     public List<StageData> allStages = new List<StageData>();
 
+    [Tooltip("최종 목적지에서 등장할 보스 스테이지입니다.")]
+    public StageData bossStage;
+
     // 내부 분류 리스트
     private List<StageData> _earlyNormal = new();
     private List<StageData> _earlyElite = new();

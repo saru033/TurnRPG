@@ -20,8 +20,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 567bd7bb9cdf8794c879166d64217c07, type: 2}
   - {fileID: 11400000, guid: 567bd7bb9cdf8794c879166d64217c07, type: 2}
   - {fileID: 11400000, guid: 567bd7bb9cdf8794c879166d64217c07, type: 2}
-  minGold: 110
-  maxGold: 130
+  minGold: 190
+  maxGold: 210
   minSkillUp: 1
   maxSkillUp: 2
   minReroll: 1

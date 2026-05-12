@@ -24,7 +24,7 @@ MonoBehaviour:
   - Description: "\uC544\uAD70 \uC804\uCCB4\uC758 \uC57D\uD654\uD6A8\uACFC\uB97C
       2\uAC1C \uD574\uC81C\uD558\uACE0 2\uD134\uAC04 \uC9C0\uC18D \uD68C\uBCF5\uC744
       \uBD80\uC5EC\uD569\uB2C8\uB2E4. "
-    Cooldown: 6
+    Cooldown: 5
     TargetType: 5
     PassiveTrigger: 0
     ConstantEffects: []
@@ -34,7 +34,7 @@ MonoBehaviour:
   - Description: "\uC544\uAD70 \uC804\uCCB4\uC758 \uC57D\uD654\uD6A8\uACFC\uB97C
       2\uAC1C \uD574\uC81C\uD558\uACE0 2\uD134\uAC04 \uC9C0\uC18D \uD68C\uBCF5 ,
       \uCE58\uBA85 \uC800\uD56D\uC744 \uBD80\uC5EC\uD569\uB2C8\uB2E4. "
-    Cooldown: 6
+    Cooldown: 5
     TargetType: 5
     PassiveTrigger: 0
     ConstantEffects: []
@@ -45,7 +45,7 @@ MonoBehaviour:
   - Description: "\uC544\uAD70 \uC804\uCCB4\uC758 \uC57D\uD654\uD6A8\uACFC\uB97C
       2\uAC1C \uD574\uC81C\uD558\uACE0 2\uD134\uAC04 \uC9C0\uC18D \uD68C\uBCF5 ,
       \uCE58\uBA85 \uC800\uD56D\uC744 \uBD80\uC5EC\uD569\uB2C8\uB2E4. "
-    Cooldown: 5
+    Cooldown: 4
     TargetType: 5
     PassiveTrigger: 0
     ConstantEffects: []
@@ -56,7 +56,7 @@ MonoBehaviour:
   - Description: "\uC544\uAD70 \uC804\uCCB4\uC758 \uC57D\uD654\uD6A8\uACFC\uB97C
       2\uAC1C \uD574\uC81C\uD558\uACE0 2\uD134\uAC04 \uC9C0\uC18D \uD68C\uBCF5 ,
       \uCE58\uBA85 \uC800\uD56D , 1\uD134\uAC04 \uBB34\uC801\uC744 \uBD80\uC5EC\uD569\uB2C8\uB2E4. "
-    Cooldown: 5
+    Cooldown: 4
     TargetType: 5
     PassiveTrigger: 0
     ConstantEffects: []
@@ -69,7 +69,7 @@ MonoBehaviour:
       2\uAC1C \uD574\uC81C\uD558\uACE0 2\uD134\uAC04 \uC9C0\uC18D \uD68C\uBCF5 ,
       \uCE58\uBA85 \uC800\uD56D , \uBCF4\uD638\uB9C9 ,  1\uD134\uAC04 \uBB34\uC801\uC744
       \uBD80\uC5EC\uD569\uB2C8\uB2E4. "
-    Cooldown: 5
+    Cooldown: 4
     TargetType: 5
     PassiveTrigger: 0
     ConstantEffects: []
@@ -82,7 +82,7 @@ MonoBehaviour:
   - Description: "\uC544\uAD70 \uC804\uCCB4\uC758 \uC57D\uD654\uD6A8\uACFC\uB97C
       2\uAC1C \uD574\uC81C\uD558\uACE0 3\uD134\uAC04 \uC9C0\uC18D \uD68C\uBCF5 ,
       \uCE58\uBA85 \uC800\uD56D ,  1\uD134\uAC04 \uBB34\uC801\uC744 \uBD80\uC5EC\uD569\uB2C8\uB2E4. "
-    Cooldown: 5
+    Cooldown: 4
     TargetType: 5
     PassiveTrigger: 0
     ConstantEffects: []

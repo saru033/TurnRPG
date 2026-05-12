@@ -14,10 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StageData
   stageID: 2
   backgroundSprite: {fileID: -1641259752620419291, guid: 0eda067b3bca24f4baeac051375458e8, type: 3}
+  difficulty: 0
+  era: 0
   enemies:
   - {fileID: 11400000, guid: c97e2339cba626643af8e358210f4e2c, type: 2}
-  minGold: 25
-  maxGold: 45
+  minGold: 65
+  maxGold: 125
   minSkillUp: 0
   maxSkillUp: 1
   minReroll: 1

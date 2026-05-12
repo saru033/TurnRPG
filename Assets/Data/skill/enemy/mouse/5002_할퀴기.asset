@@ -24,7 +24,7 @@ MonoBehaviour:
   - Description: "\uC801 \uD55C\uBA85\uC744 \uACF5\uACA9\uD574 50% \uD655\uB960\uB85C
       1\uD134\uAC04 \uCD9C\uD608\uC744 \uBC1C\uC0DD\uC2DC\uD0B5\uB2C8\uB2E4."
     Cooldown: 0
-    TargetType: 0
+    TargetType: 2
     PassiveTrigger: 0
     ConstantEffects: []
     Effects:

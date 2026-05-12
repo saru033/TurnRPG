@@ -16,7 +16,7 @@ MonoBehaviour:
   CharacterName: "\uC545\uB9C8"
   isPlayer: 0
   charType: 0
-  MaxHp: 76500
+  MaxHp: 56500
   Attack: 3000
   Defense: 553
   Speed: 88

@@ -74,12 +74,13 @@ public class RestPanelUI : MonoBehaviour
             {
                 if (charState != null)
                 {
-                    // 1. 최대 체력의 30% 회복
-                    float healAmount = charState.currentBaseMaxHp * 0.3f;
+                    // 1. 최대 체력의 30% 회복 (장비 보너스가 포함된 TotalMaxHp 기준)
+                    float maxHp = charState.TotalMaxHp;
+                    float healAmount = maxHp * 0.3f;
                     charState.currentHp += healAmount;
-                    if (charState.currentHp > charState.currentBaseMaxHp)
+                    if (charState.currentHp > maxHp)
                     {
-                        charState.currentHp = charState.currentBaseMaxHp;
+                        charState.currentHp = maxHp;
                     }
 
                     // 2. 스킬 쿨타임 초기화

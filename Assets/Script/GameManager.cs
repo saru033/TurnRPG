@@ -28,6 +28,9 @@ public class GameManager : MonoBehaviour
     public int rerollItemCount = 50; // 장비 리롤 아이템 (테스트용 50)
     public int highRerollItemCount = 10; // 고급 장비 리롤 아이템 (테스트용 10)
 
+    [Header("Master Skill List")]
+    public List<TurnRPG.SkillSystem.SkillData> masterSkillList = new List<TurnRPG.SkillSystem.SkillData>();
+
 
     [Header("Tooltip")]
     public Canvas tooltipCanvas; // [추가] 툴팁이 생성될 캔버스
@@ -208,6 +211,50 @@ public class GameManager : MonoBehaviour
         IsTooltipPerforming = false;
     }
 
+    /// <summary>
+    /// 게임 진행 상황을 초기화합니다. (로그라이크 리셋: 패배 시 또는 최종 보스 클리어 시)
+    /// </summary>
+    public void ResetGameProgress()
+    {
+        Debug.Log("[GameManager] 게임 진행 상황 초기화 (Roguelike Reset)");
+
+        // 1. 재화 및 아이템 초기화
+        gold = 0;
+        skillup = 0;
+        rerollItemCount = 0; // 명명 완료 후 NamingFlowRoutine에서 3개를 줄 것이므로 0으로 설정
+        highRerollItemCount = 0;
+        playerItems.Clear();
+
+        // 2. UI 정리 (MapUI와 연결된 게임 패널들 비활성화)
+        // [수정] MapUI가 비활성화된 상태일 수 있으므로 비활성 객체도 포함하여 찾습니다.
+        var mapUI = GameObject.FindAnyObjectByType<MapUI>(FindObjectsInactive.Include);
+        if (mapUI != null)
+        {
+            if (mapUI.BattlePanel != null) mapUI.BattlePanel.SetActive(false);
+            if (mapUI.RestPanel != null) mapUI.RestPanel.SetActive(false);
+            if (mapUI.shopPanel != null) mapUI.shopPanel.SetActive(false);
+            if (mapUI.eventPanel != null) mapUI.eventPanel.SetActive(false);
+
+            // 3. 맵 초기화 및 재생성 (리셋 후 바로 켜지지 않게 비활성 유지)
+            mapUI.GenerateAndDraw();
+            mapUI.gameObject.SetActive(false); // 로비에서 초기 설정을 해야 하므로 꺼둠
+        }
+        else
+        {
+            Debug.LogWarning("[GameManager] MapUI를 찾을 수 없습니다. UI 초기화에 실패했습니다.");
+        }
+
+        // 4. 캐릭터 파티 초기화 (명명 단계부터 다시 시작)
+        InitializeParty();
+
+        // 5. 상단 재화 UI 초기화 및 노출
+        if (LobbyTopUI.Instance != null)
+        {
+            LobbyTopUI.Instance.Refresh();
+            LobbyTopUI.Instance.ShowUI();
+        }
+    }
+
     private void Awake()
     {
         // 싱글톤 초기화
@@ -237,7 +284,11 @@ public class GameManager : MonoBehaviour
             if (initialTemplates[i] != null)
             {
                 party[i] = new PlayerCharacterState(initialTemplates[i]);
-                Debug.Log($"[GameManager] {i + 1}번 슬롯 {initialTemplates[i].CharacterName} 초기화 완료");
+
+                // [추가] 2, 3번 스킬 무작위 할당
+                RandomizeSkills(party[i]);
+
+                Debug.Log($"[GameManager] {i + 1}번 슬롯 {initialTemplates[i].CharacterName} 초기화 완료 (스킬 랜덤 배정됨)");
 
                 // 이름이 비어있다면 명명 큐에 추가
                 if (string.IsNullOrEmpty(party[i].characterName))
@@ -251,6 +302,36 @@ public class GameManager : MonoBehaviour
         if (needsNaming.Count > 0)
         {
             StartCoroutine(NamingFlowRoutine(needsNaming));
+        }
+    }
+
+    /// <summary>
+    /// 캐릭터의 타입과 슬롯 조건에 맞는 스킬을 무작위로 할당합니다. (1번 스킬 제외)
+    /// </summary>
+    private void RandomizeSkills(PlayerCharacterState state)
+    {
+        if (state == null || state.template == null || masterSkillList == null || masterSkillList.Count == 0) return;
+
+        var charType = state.template.charType;
+
+        // 2번 스킬 (Index 1)
+        var skill2Pool = masterSkillList.FindAll(s => s != null && 
+                                                      s.SlotIndex == SkillSlotIndex.Skill2 && 
+                                                      (s.EquipRestriction & charType) != 0);
+        if (skill2Pool.Count > 0)
+        {
+            state.equippedSkills[1] = skill2Pool[Random.Range(0, skill2Pool.Count)];
+            state.skillLevels[1] = 1;
+        }
+
+        // 3번 스킬 (Index 2)
+        var skill3Pool = masterSkillList.FindAll(s => s != null && 
+                                                      s.SlotIndex == SkillSlotIndex.Skill3 && 
+                                                      (s.EquipRestriction & charType) != 0);
+        if (skill3Pool.Count > 0)
+        {
+            state.equippedSkills[2] = skill3Pool[Random.Range(0, skill3Pool.Count)];
+            state.skillLevels[2] = 1;
         }
     }
 

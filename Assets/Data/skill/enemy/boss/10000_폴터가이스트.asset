@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7166cb7f5dfe6a84cbbfd47fcd0f00ad, type: 3}
+  m_Name: "10000_\uD3F4\uD130\uAC00\uC774\uC2A4\uD2B8"
+  m_EditorClassIdentifier: Assembly-CSharp::TurnRPG.SkillSystem.SkillData
+  SkillID: 10000
+  SkillName: "\uD3F4\uD130\uAC00\uC774\uC2A4\uD2B8"
+  SkillIcon: {fileID: 1372627480461126414, guid: 401c595f02fd7684eb9cd1b052b2fd82, type: 3}
+  Type: 1
+  SlotIndex: 2
+  EquipRestriction: 8
+  RequiredAnimationTrigger: 
+  UltimateCutsceneClip: {fileID: 7400000, guid: af9db5e012bebb643af4def224bb6cea, type: 2}
+  LevelDatas:
+  - Description: "\uC801 \uC804\uCCB4\uB97C \uACF5\uACA9\uD574 \uAC15\uD654\uD6A8\uACFC\uB97C
+      \uC804\uBD80 \uD574\uC81C\uD558\uACE0 2\uD134\uAC04 \uBC29\uC5B4\uB825 \uAC10\uC18C\uC640
+      \uC18D\uB3C4 \uAC10\uC18C\uB97C \uBC1C\uC0DD \uC2DC\uD0B5\uB2C8\uB2E4. \uC774
+      \uACF5\uACA9\uC740 \uBE57\uB098\uAC00\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4. "
+    Cooldown: 4
+    TargetType: 3
+    PassiveTrigger: 0
+    ConstantEffects: []
+    Effects:
+    - rid: 8427518313609560139
+    - rid: 8427518313609560147
+    - rid: 8427518313609560066
+    - rid: 8427518313609560148
+  references:
+    version: 2
+    RefIds:
+    - rid: 8427518313609560066
+      type: {class: ApplyStatusEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 3
+        EffectData: {fileID: 11400000, guid: 8436ce67d453ddc4ea1ca35a854cd5f9, type: 2}
+        Duration: 2
+        ApplyChance: 1
+        StatScaleType: 0
+        StatMultiplier: 0
+    - rid: 8427518313609560139
+      type: {class: DamageEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 3
+        DamageMultiplier: 2.3
+        Penetration: 0
+        CannotBeCountered: 0
+        AlwaysHit: 1
+    - rid: 8427518313609560147
+      type: {class: CleanseEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 3
+        TargetCategory: 0
+        Count: 10
+    - rid: 8427518313609560148
+      type: {class: ApplyStatusEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 3
+        EffectData: {fileID: 11400000, guid: 2088129e2ba5f92448d59475cbe7a7f6, type: 2}
+        Duration: 2
+        ApplyChance: 1
+        StatScaleType: 0
+        StatMultiplier: 0

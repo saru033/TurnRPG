@@ -1622,11 +1622,24 @@ public class BattleManager : MonoBehaviour
         State = playerDead ? BattleState.Lose : BattleState.Win;
         battleUI.SetSkillButtonsVisible(false);
         battleUI.SetItemVisible(false);
-        battleUI.AnimateGaugeBar(false); // [추가] 행동게이지 좌측으로 퇴장 연출
+        battleUI.AnimateGaugeBar(false);
 
-        // [추가] 승리 시 보상 지급 로직
+        if (State == BattleState.Lose)
+        {
+            Debug.Log("[Battle] 패배! 게임을 초기화합니다.");
+            StartCoroutine(ResetAfterDelay(2.0f));
+            return;
+        }
+
         if (State == BattleState.Win && currentStage != null)
         {
+            var mapUI = FindObjectOfType<MapUI>();
+            if (mapUI != null && mapUI.stageDatabase != null && currentStage == mapUI.stageDatabase.bossStage)
+            {
+                Debug.Log("[Battle] 최종 보스 클리어! 게임을 초기화합니다.");
+                StartCoroutine(ResetAfterDelay(3.0f));
+                return;
+            }
             GrantBattleRewards();
         }
 
@@ -1819,5 +1832,14 @@ public class BattleManager : MonoBehaviour
 
         rectTransform.pivot = pivot;
         rectTransform.localPosition -= deltaPosition;
+    }
+
+    private IEnumerator ResetAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.ResetGameProgress();
+        }
     }
 }

@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 105c21214ebaa0a4ba836d3b14b5e4e2, type: 3}
+  m_Name: "1019_\uBE5B"
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterData
+  ID: 1019
+  CharacterName: "\uBE5B"
+  isPlayer: 0
+  charType: 0
+  MaxHp: 24600
+  Attack: 0
+  Defense: 550
+  Speed: 105
+  CritChance: 0
+  CritDamage: 1.5
+  Evasion: 0
+  Accuracy: 1
+  illustration: {fileID: 9059677374204716978, guid: 362b0a127411fbf49b9635c23fcbf842, type: 3}
+  iconImage: {fileID: 1396809577659790722, guid: eb3680ffb26cf4240aad8717a0c942e0, type: 3}
+  sideImage: {fileID: -647297561781491763, guid: f22964243c53ba34d872c86fb0be4197, type: 3}
+  characterPrefab: {fileID: 1635540565847222994, guid: 3f154909c04e33443868aa5e39015dfd, type: 3}
+  StartingSkills:
+  - skillData: {fileID: 11400000, guid: b7fa8df5843eacb4c8acb05005e70d1d, type: 2}
+    level: 1

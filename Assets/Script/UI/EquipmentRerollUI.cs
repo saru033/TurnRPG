@@ -142,7 +142,14 @@ public class EquipmentRerollUI : MonoBehaviour
 
         // 1. 클릭 리스너 (리롤 시작)
         btn.onClick.RemoveAllListeners();
-        btn.onClick.AddListener(() => OnPartSelected(state, part, icon));
+        btn.onClick.AddListener(() => 
+        {
+            // [추가] 툴팁 확인(롱프레스) 중이었다면 클릭 로직 무시
+            var trigger = btn.GetComponent<EquipmentTooltipTrigger>();
+            if (trigger != null && trigger.WasLongPressed) return;
+
+            OnPartSelected(state, part, icon);
+        });
 
         // 2. 툴팁 트리거 설정 (기존 장비 정보 확인용)
         var trigger = btn.GetComponent<EquipmentTooltipTrigger>();

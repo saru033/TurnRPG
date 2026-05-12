@@ -17,7 +17,7 @@ MonoBehaviour:
   SkillIcon: {fileID: -3299899548581960979, guid: 22846eb03378dc246a9993eb27075ea6, type: 3}
   Type: 2
   SlotIndex: 1
-  EquipRestriction: -1
+  EquipRestriction: 1
   RequiredAnimationTrigger: 
   UltimateCutsceneClip: {fileID: 0}
   LevelDatas:

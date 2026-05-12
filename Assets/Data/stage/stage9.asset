@@ -19,8 +19,8 @@ MonoBehaviour:
   enemies:
   - {fileID: 11400000, guid: 6d8f6810b1e844942925d8de9320eb59, type: 2}
   - {fileID: 11400000, guid: 6d8f6810b1e844942925d8de9320eb59, type: 2}
-  minGold: 110
-  maxGold: 130
+  minGold: 160
+  maxGold: 240
   minSkillUp: 1
   maxSkillUp: 2
   minReroll: 1

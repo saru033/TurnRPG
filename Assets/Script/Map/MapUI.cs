@@ -486,7 +486,19 @@ public class MapUI : MonoBehaviour
                 UnityEngine.Debug.Log("[MapUI] 시작 허브 노드");
                 break;
             case NodeType.GoalHub:
-                UnityEngine.Debug.Log("[MapUI] 목표 허브 노드");
+                if (BattlePanel != null && stageDatabase != null && stageDatabase.bossStage != null)
+                {
+                    var bm = BattlePanel.GetComponentInChildren<BattleManager>();
+                    if (bm != null)
+                    {
+                        bm.currentStage = stageDatabase.bossStage;
+                    }
+
+                    LobbyTopUI.Instance.HideUI();
+                    DisableOtherPanels(NodeType.Elite); // 보스전도 배틀의 일종이므로 Elite와 유사하게 처리
+                    gameObject.SetActive(false);
+                }
+                UnityEngine.Debug.Log("[MapUI] 목표 허브 노드 - 보스전 시작");
                 break;
         }
 

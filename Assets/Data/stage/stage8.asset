@@ -18,8 +18,8 @@ MonoBehaviour:
   era: 1
   enemies:
   - {fileID: 11400000, guid: 3d022827097cf18408041597572f0319, type: 2}
-  minGold: 100
-  maxGold: 120
+  minGold: 180
+  maxGold: 220
   minSkillUp: 1
   maxSkillUp: 2
   minReroll: 1
