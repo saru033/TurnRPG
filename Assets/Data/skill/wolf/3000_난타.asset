@@ -65,8 +65,8 @@ MonoBehaviour:
     - rid: 7481024980550680813
   - Description: "\uC790\uC2E0\uC5D0\uAC8C 2\uD134\uAC04 \uACF5\uACA9\uB825 \uC99D\uAC00(\uB300)\uB97C
       \uBD80\uC5EC\uD55C \uD6C4 \uC801\uC744 \uACF5\uACA9\uD574 1\uD134\uAC04 \uAE30\uC808\uC744
-      \uBC1C\uC0DD\uC2DC\uD0B5\uB2C8\uB2E4. \uC774\uD6C4 \uC790\uC2E0\uC5D0\uAC8C
-      1\uD134\uAC04 \uC740\uC2E0\uC744 \uBD80\uC5EC\uD569\uB2C8\uB2E4."
+      \uBC1C\uC0DD\uC2DC\uD0B5\uB2C8\uB2E4. \uC774\uD6C4 \uC790\uC2E0\uC758 \uC0DD\uBA85\uB825\uC744
+      30% \uD68C\uBCF5\uD569\uB2C8\uB2E4."
     Cooldown: 4
     TargetType: 2
     PassiveTrigger: 0
@@ -75,7 +75,7 @@ MonoBehaviour:
     - rid: 7481024980550680814
     - rid: 7481024980550680812
     - rid: 7481024980550680813
-    - rid: 7481024980550680815
+    - rid: 8427518320447848448
   - Description: "\uC790\uC2E0\uC5D0\uAC8C 2\uD134\uAC04 \uACF5\uACA9\uB825 \uC99D\uAC00(\uB300)\uB97C
       \uBD80\uC5EC\uD55C \uD6C4 \uC801\uC744 \uACF5\uACA9\uD574 1\uD134\uAC04 \uAE30\uC808\uC744
       \uBC1C\uC0DD\uC2DC\uD0A4\uACE0 \uD589\uB3D9\uAC8C\uC774\uC9C0\uB97C 30% \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
@@ -126,17 +126,14 @@ MonoBehaviour:
         ApplyChance: 1
         StatScaleType: 0
         StatMultiplier: 0
-    - rid: 7481024980550680815
-      type: {class: ApplyStatusEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
-      data:
-        TargetType: 1
-        EffectData: {fileID: 11400000, guid: 784c459373dd0a54b8846d77a80c9586, type: 2}
-        Duration: 2
-        ApplyChance: 1
-        StatScaleType: 0
-        StatMultiplier: 0
     - rid: 7481024980550680816
       type: {class: ActionGaugeEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
       data:
         TargetType: 0
         Amount: -30
+    - rid: 8427518320447848448
+      type: {class: HealEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 1
+        HealPercent: 0.3
+        BasedOnTargetMaxHp: 1

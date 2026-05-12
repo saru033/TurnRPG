@@ -32,8 +32,7 @@ MonoBehaviour:
     - rid: 7481024980550680818
   - Description: "\uC801 \uC804\uCCB4\uB97C \uACF5\uACA9\uD55C \uD6C4 \uC790\uC2E0\uC5D0\uAC8C
       2\uD134\uAC04 \uC18D\uB3C4 \uC99D\uAC00\uB97C \uBC1C\uC0DD\uC2DC\uD0B5\uB2C8\uB2E4.
-      \uC774 \uACF5\uACA9\uC73C\uB85C\uB294 \uBC18\uACA9\uC774 \uBC1C\uC0DD\uD558\uC9C0
-      \uC54A\uC2B5\uB2C8\uB2E4."
+      \uC774 \uACF5\uACA9\uC740 \uBE57\uB098\uAC00\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4."
     Cooldown: 5
     TargetType: 3
     PassiveTrigger: 0
@@ -43,8 +42,7 @@ MonoBehaviour:
     - rid: 7481024980550680818
   - Description: "\uC801 \uC804\uCCB4\uB97C \uACF5\uACA9\uD55C \uD6C4 \uC790\uC2E0\uC5D0\uAC8C
       2\uD134\uAC04 \uC18D\uB3C4 \uC99D\uAC00\uB97C \uBC1C\uC0DD\uC2DC\uD0B5\uB2C8\uB2E4.
-      \uC774 \uACF5\uACA9\uC73C\uB85C\uB294 \uBC18\uACA9\uC774 \uBC1C\uC0DD\uD558\uC9C0
-      \uC54A\uC2B5\uB2C8\uB2E4."
+      \uC774 \uACF5\uACA9\uC740 \uBE57\uB098\uAC00\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4."
     Cooldown: 4
     TargetType: 3
     PassiveTrigger: 0
@@ -54,8 +52,7 @@ MonoBehaviour:
     - rid: 7481024980550680818
   - Description: "\uC801 \uC804\uCCB4\uB97C \uACF5\uACA9\uD55C \uD6C4 \uC544\uAD70\uC5D0\uAC8C
       2\uD134\uAC04 \uC18D\uB3C4 \uC99D\uAC00\uB97C \uBC1C\uC0DD\uC2DC\uD0B5\uB2C8\uB2E4.
-      \uC774 \uACF5\uACA9\uC73C\uB85C\uB294 \uBC18\uACA9\uC774 \uBC1C\uC0DD\uD558\uC9C0
-      \uC54A\uC2B5\uB2C8\uB2E4."
+      \uC774 \uACF5\uACA9\uC740 \uBE57\uB098\uAC00\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4."
     Cooldown: 4
     TargetType: 3
     PassiveTrigger: 0
@@ -79,8 +76,7 @@ MonoBehaviour:
       2\uD134\uAC04 \uC18D\uB3C4 \uC99D\uAC00\uB97C \uBC1C\uC0DD\uC2DC\uD0B5\uB2C8\uB2E4.
       \uC774\uD6C4 \uBB34\uC791\uC704 \uC544\uAD70 \uD55C \uBA85\uC758 \uC2A4\uD0AC
       \uCFE8\uD0C0\uC784\uC744 1\uD134 \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4. \uC774
-      \uACF5\uACA9\uC73C\uB85C\uB294 \uBC18\uACA9\uC774 \uBC1C\uC0DD\uD558\uC9C0
-      \uC54A\uC2B5\uB2C8\uB2E4."
+      \uACF5\uACA9\uC740 \uBE57\uB098\uAC00\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4."
     Cooldown: 4
     TargetType: 3
     PassiveTrigger: 0
@@ -115,8 +111,8 @@ MonoBehaviour:
         TargetType: 3
         DamageMultiplier: 1.5
         Penetration: 0
-        CannotBeCountered: 1
-        AlwaysHit: 0
+        CannotBeCountered: 0
+        AlwaysHit: 1
     - rid: 7481024980550680820
       type: {class: ApplyStatusEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
       data:

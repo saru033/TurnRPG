@@ -19,7 +19,7 @@ MonoBehaviour:
   MaxHp: 28600
   Attack: 0
   Defense: 550
-  Speed: 131
+  Speed: 112
   CritChance: 0
   CritDamage: 1.5
   Evasion: 0

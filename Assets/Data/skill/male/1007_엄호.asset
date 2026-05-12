@@ -55,12 +55,11 @@ MonoBehaviour:
     - rid: 7481024980550680706
     - rid: 7481024980550680715
     - rid: 7481024980550680717
-  - Description: "\uC544\uAD70\uC774 \uD53C\uACA9\uC2DC \uC790\uC2E0\uACFC \uD53C\uACA9\uB2F9\uD55C
-      \uC544\uAD70\uC758 \uD589\uB3D9 \uAC8C\uC774\uC9C0\uB97C 10% \uC99D\uAC00\uC2DC\uD0A8
-      \uD6C4 \uADF8 \uB300\uC0C1\uC5D0\uAC8C  100% \uD655\uB960\uB85C 2\uD134\uAC04
-      \uACF5\uACA9\uB825 \uAC10\uC18C\uB97C \uBD80\uC5EC\uD55C \uD6C4 \uAE30\uBCF8
-      \uACF5\uACA9 \uC73C\uB85C \uBC18\uACA9\uD569\uB2C8\uB2E4."
-    Cooldown: 3
+  - Description: "\uC544\uAD70\uC774 \uD53C\uACA9\uC2DC \uC790\uC2E0\uC758 \uD589\uB3D9
+      \uAC8C\uC774\uC9C0\uB97C 10% \uC99D\uAC00\uC2DC\uD0A8 \uD6C4 \uADF8 \uB300\uC0C1\uC5D0\uAC8C 
+      100% \uD655\uB960\uB85C 2\uD134\uAC04 \uACF5\uACA9\uB825 \uAC10\uC18C\uB97C
+      \uBD80\uC5EC\uD55C \uD6C4 \uAE30\uBCF8 \uACF5\uACA9 \uC73C\uB85C \uBC18\uACA9\uD569\uB2C8\uB2E4."
+    Cooldown: 1
     TargetType: 0
     PassiveTrigger: 6
     ConstantEffects: []
@@ -68,7 +67,6 @@ MonoBehaviour:
     - rid: 7481024980550680706
     - rid: 7481024980550680715
     - rid: 7481024980550680707
-    - rid: 7481024980550680716
   - Description: "\uC544\uAD70\uC774 \uD53C\uACA9\uC2DC \uC790\uC2E0\uC758 \uD589\uB3D9
       \uAC8C\uC774\uC9C0\uB97C 20% \uC99D\uAC00\uC2DC\uD0A8 \uD6C4 \uADF8 \uB300\uC0C1\uC5D0\uAC8C 
       100% \uD655\uB960\uB85C 2\uD134\uAC04 \uACF5\uACA9\uB825 \uAC10\uC18C\uB97C
@@ -107,11 +105,6 @@ MonoBehaviour:
         ApplyChance: 1
         StatScaleType: 0
         StatMultiplier: 0
-    - rid: 7481024980550680716
-      type: {class: ActionGaugeEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
-      data:
-        TargetType: 4
-        Amount: 10
     - rid: 7481024980550680717
       type: {class: ActionGaugeEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
       data:
