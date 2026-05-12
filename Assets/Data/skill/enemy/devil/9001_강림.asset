@@ -21,7 +21,8 @@ MonoBehaviour:
   RequiredAnimationTrigger: skill
   UltimateCutsceneClip: {fileID: 0}
   LevelDatas:
-  - Description: "\uC804\uD22C \uC2DC\uC791 \uC2DC \uC790\uC2E0\uC758 \uC2A4\uD0AC
+  - Description: "\uC790\uC2E0\uC774 \uC218\uBA74 \uBC0F \uAE30\uC808\uC5D0 \uBA74\uC5ED\uC774
+      \uB429\uB2C8\uB2E4. \uC804\uD22C \uC2DC\uC791 \uC2DC \uC790\uC2E0\uC758 \uC2A4\uD0AC
       \uCFE8\uD0C0\uC784\uC744 \uCD5C\uB300\uB85C \uC99D\uAC00\uC2DC\uD0A8 \uC0C1\uB300\uB85C
       \uC2DC\uC791\uD569\uB2C8\uB2E4.\n\uB204\uAD70\uAC00 \uD134 \uC885\uB8CC\uC2DC
       \uC790\uC2E0\uC758 \uD589\uB3D9\uAC8C\uC774\uC9C0\uB97C 10% \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
@@ -29,6 +30,8 @@ MonoBehaviour:
     TargetType: 0
     PassiveTrigger: 16
     ConstantEffects:
+    - rid: 8427518317518389254
+    - rid: 8427518317518389255
     - rid: 8427518197643870314
     Effects:
     - rid: 8427518197643870313
@@ -45,3 +48,13 @@ MonoBehaviour:
       data:
         TargetType: 1
         TurnAmount: 5
+    - rid: 8427518317518389254
+      type: {class: PassiveImmunityEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 1
+        ImmuneType: 23
+    - rid: 8427518317518389255
+      type: {class: PassiveImmunityEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 1
+        ImmuneType: 24

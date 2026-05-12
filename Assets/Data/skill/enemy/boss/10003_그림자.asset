@@ -21,13 +21,15 @@ MonoBehaviour:
   RequiredAnimationTrigger: skill
   UltimateCutsceneClip: {fileID: 0}
   LevelDatas:
-  - Description: "\uC801 \uC804\uCCB4\uC5D0\uAC8C 100% \uD655\uB960\uB85C 1\uD134\uAC04
-      \uBA85\uC911 \uAC10\uC18C\uB97C \uBC1C\uC0DD \uC2DC\uD0B5\uB2C8\uB2E4."
+  - Description: "\uC801 \uC804\uCCB4\uC758 \uAC15\uD654\uD6A8\uACFC\uB97C 2\uAC1C
+      \uC81C\uAC70\uD55C \uB4A4 100% \uD655\uB960\uB85C 1\uD134\uAC04 \uBA85\uC911
+      \uAC10\uC18C\uB97C \uBC1C\uC0DD \uC2DC\uD0B5\uB2C8\uB2E4."
     Cooldown: 0
     TargetType: 3
     PassiveTrigger: 0
     ConstantEffects: []
     Effects:
+    - rid: 8427518317518389250
     - rid: 8427518313609560140
   references:
     version: 2
@@ -41,3 +43,9 @@ MonoBehaviour:
         ApplyChance: 1
         StatScaleType: 0
         StatMultiplier: 0
+    - rid: 8427518317518389250
+      type: {class: CleanseEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 3
+        TargetCategory: 0
+        Count: 2

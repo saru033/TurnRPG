@@ -21,18 +21,21 @@ MonoBehaviour:
   RequiredAnimationTrigger: skill
   UltimateCutsceneClip: {fileID: 0}
   LevelDatas:
-  - Description: "\uC804\uD22C \uC2DC\uC791 \uC2DC, \uC790\uC2E0\uC5D0\uAC8C 3\uD134\uAC04
-      \uD68C\uD53C \uC99D\uAC00\uB97C \uBC1C\uC0DD\uC2DC\uD0B5\uB2C8\uB2E4. \uC774\uD6C4
-      \uC790\uC2E0\uC758 \uD589\uB3D9\uAC8C\uC774\uC9C0\uB97C 100% \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4.\n\uD53C\uACA9
+  - Description: "\uC790\uC2E0\uC774 \uAE30\uC808 \uBC0F \uC218\uBA74\uC5D0 \uBA74\uC5ED\uC774
+      \uB429\uB2C8\uB2E4. \uC804\uD22C \uC2DC\uC791 \uC2DC, \uC790\uC2E0\uC5D0\uAC8C
+      3\uD134\uAC04 \uD68C\uD53C \uC99D\uAC00\uB97C \uBC1C\uC0DD\uC2DC\uD0B5\uB2C8\uB2E4.
+      \uC774\uD6C4 \uC790\uC2E0\uC758 \uD589\uB3D9\uAC8C\uC774\uC9C0\uB97C 100% \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4.\n\uD53C\uACA9
       \uD6C4 \uD68C\uD53C\uD588\uB2E4\uBA74 \uC790\uC2E0\uC758 \uC57D\uD654\uD6A8\uACFC\uB97C
       \uBAA8\uB450 \uD574\uC81C\uD558\uACE0 \uC790\uC2E0\uC5D0\uAC8C 2\uD134\uAC04
       \uACF5\uACA9\uB825 \uC99D\uAC00(\uB300) , \uCE58\uBA85 \uD655\uB960 \uC99D\uAC00
       , \uCE58\uBA85 \uD53C\uD574 \uC99D\uAC00\uB97C \uBC1C\uC0DD\uC2DC\uD0A8 \uD6C4
-      \uC790\uC2E0\uC758 \uD589\uB3D9\uAC8C\uC774\uC9C0\uB97C 100% \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4,"
+      \uC790\uC2E0\uC758 \uD589\uB3D9\uAC8C\uC774\uC9C0\uB97C 100% \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
     Cooldown: 0
     TargetType: 0
     PassiveTrigger: 256
     ConstantEffects:
+    - rid: 8427518317518389252
+    - rid: 8427518317518389253
     - rid: 8427518313609560145
     - rid: 8427518313609560133
     Effects:
@@ -96,3 +99,13 @@ MonoBehaviour:
         ApplyChance: 1
         StatScaleType: 0
         StatMultiplier: 0
+    - rid: 8427518317518389252
+      type: {class: PassiveImmunityEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 1
+        ImmuneType: 24
+    - rid: 8427518317518389253
+      type: {class: PassiveImmunityEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 1
+        ImmuneType: 23

@@ -1633,13 +1633,18 @@ public class BattleManager : MonoBehaviour
 
         if (State == BattleState.Win && currentStage != null)
         {
-            var mapUI = FindObjectOfType<MapUI>();
-            if (mapUI != null && mapUI.stageDatabase != null && currentStage == mapUI.stageDatabase.bossStage)
+            // [수정] 비활성 객체 포함하여 MapUI 찾기 및 stageID 기반 보스전 판별
+            var mapUI = GameObject.FindAnyObjectByType<MapUI>(FindObjectsInactive.Include);
+            if (mapUI != null && mapUI.stageDatabase != null && mapUI.stageDatabase.bossStage != null)
             {
-                Debug.Log("[Battle] 최종 보스 클리어! 게임을 초기화합니다.");
-                StartCoroutine(ResetAfterDelay(3.0f));
-                return;
+                if (currentStage.stageID == mapUI.stageDatabase.bossStage.stageID)
+                {
+                    Debug.Log($"[Battle] 최종 보스(ID:{currentStage.stageID}) 클리어! 보상 없이 게임을 초기화합니다.");
+                    StartCoroutine(ResetAfterDelay(3.0f));
+                    return; // 리워드 창을 띄우지 않고 바로 종료
+                }
             }
+
             GrantBattleRewards();
         }
 

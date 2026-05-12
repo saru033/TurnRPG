@@ -24,7 +24,9 @@ MonoBehaviour:
   - Description: "\uC801 \uC804\uCCB4\uB97C \uACF5\uACA9\uD574 \uAC15\uD654\uD6A8\uACFC\uB97C
       \uC804\uBD80 \uD574\uC81C\uD558\uACE0 2\uD134\uAC04 \uBC29\uC5B4\uB825 \uAC10\uC18C\uC640
       \uC18D\uB3C4 \uAC10\uC18C\uB97C \uBC1C\uC0DD \uC2DC\uD0B5\uB2C8\uB2E4. \uC774
-      \uACF5\uACA9\uC740 \uBE57\uB098\uAC00\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4. "
+      \uACF5\uACA9\uC740 \uBE57\uB098\uAC00\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4. \uC8FD\uC740
+      \uC544\uAD70\uC744 \uCD5C\uB300 \uC0DD\uBA85\uB825\uC758 50%\uB85C \uBD80\uD65C
+      \uC2DC\uD0B5\uB2C8\uB2E4."
     Cooldown: 4
     TargetType: 3
     PassiveTrigger: 0
@@ -34,6 +36,7 @@ MonoBehaviour:
     - rid: 8427518313609560147
     - rid: 8427518313609560066
     - rid: 8427518313609560148
+    - rid: 8427518317518389248
   references:
     version: 2
     RefIds:
@@ -69,3 +72,8 @@ MonoBehaviour:
         ApplyChance: 1
         StatScaleType: 0
         StatMultiplier: 0
+    - rid: 8427518317518389248
+      type: {class: ReviveEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 5
+        RevivalHpPercent: 0.5

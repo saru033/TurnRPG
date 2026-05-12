@@ -23,7 +23,8 @@ MonoBehaviour:
   LevelDatas:
   - Description: "\uC801 \uD55C\uBA85\uC744 \uACF5\uACA9\uD569\uB2C8\uB2E4. \uC774\uD6C4
       \uC801 \uC804\uCCB4\uC758 \uD589\uB3D9 \uAC8C\uC774\uC9C0\uB97C 10% \uAC10\uC18C
-      \uC2DC\uD0B5\uB2C8\uB2E4."
+      \uC2DC\uD0A4\uACE0 \uC544\uAD70 \uC804\uCCB4\uC758 \uD589\uB3D9 \uAC8C\uC774\uC9C0\uB97C
+      10% \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
     Cooldown: 0
     TargetType: 3
     PassiveTrigger: 0
@@ -31,6 +32,7 @@ MonoBehaviour:
     Effects:
     - rid: 8427518313609560138
     - rid: 8427518313609560137
+    - rid: 8427518317518389249
   references:
     version: 2
     RefIds:
@@ -47,3 +49,8 @@ MonoBehaviour:
         Penetration: 0
         CannotBeCountered: 0
         AlwaysHit: 0
+    - rid: 8427518317518389249
+      type: {class: ActionGaugeEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 2
+        Amount: 10
