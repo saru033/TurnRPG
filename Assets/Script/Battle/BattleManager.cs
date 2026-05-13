@@ -12,6 +12,7 @@ public class BattleManager : MonoBehaviour
 {
     [Header("References")]
     public BattleUI battleUI;
+    public GameObject winPanel; // [추가] 최종 승리 시 띄울 패널
     public CharacterPlacer characterPlacer;
     public RectTransform battleBackground; // [추가] 카메라 효과용 배경 RectTransform
     public Image backgroundDisplay;        // [신규] 배경 이미지를 실제 보여줄 Image 컴포넌트
@@ -95,6 +96,8 @@ public class BattleManager : MonoBehaviour
         _isBattleOverFlag = false; // 플래그 초기화
         isItemUse = false;         // 아이템 사용 상태 초기화
         _selectedItemIndex = -1;   // 선택된 아이템 인덱스 초기화
+
+        if (winPanel != null) winPanel.SetActive(false); // [추가] 승리 패널 숨기기
 
         // Actiongaugesystem 초기화
         gaugeSystem = GetComponent<Actiongaugesystem>();
@@ -1640,6 +1643,17 @@ public class BattleManager : MonoBehaviour
                 if (currentStage.stageID == mapUI.stageDatabase.bossStage.stageID)
                 {
                     Debug.Log($"[Battle] 최종 보스(ID:{currentStage.stageID}) 클리어! 보상 없이 게임을 초기화합니다.");
+
+                    // [추가] 승리 패널 표시 (DOTween 페이드 인)
+                    if (winPanel != null)
+                    {
+                        winPanel.SetActive(true);
+                        var cg = winPanel.GetComponent<CanvasGroup>();
+                        if (cg == null) cg = winPanel.AddComponent<CanvasGroup>();
+                        cg.alpha = 0;
+                        cg.DOFade(1f, 1.0f);
+                    }
+
                     StartCoroutine(ResetAfterDelay(3.0f));
                     return; // 리워드 창을 띄우지 않고 바로 종료
                 }

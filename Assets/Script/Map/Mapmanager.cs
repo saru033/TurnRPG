@@ -101,6 +101,16 @@ public class Mapmanager : MonoBehaviour
             node.Type = NodeType.Rest;
         }
 
+        // 1-2. [추가] 마지막 직전 열 → 무조건 Shop
+        int beforeLastCol = lastCol - 1;
+        if (beforeLastCol > ForcedNormalColumns)
+        {
+            foreach (var node in candidates.Where(n => n.Column == beforeLastCol))
+            {
+                node.Type = NodeType.Shop;
+            }
+        }
+
         // 2. 첫 3열 → 무조건 Normal
         foreach (var node in candidates.Where(n => n.Column <= ForcedNormalColumns))
         {
@@ -112,7 +122,7 @@ public class Mapmanager : MonoBehaviour
         int earlyEndCol = threshold + 1;
 
         var earlyNodes = candidates.Where(n => n.Column > ForcedNormalColumns && n.Column <= earlyEndCol).ToList();
-        var lateNodes = candidates.Where(n => n.Column > earlyEndCol && n.Column < lastCol).ToList();
+        var lateNodes = candidates.Where(n => n.Column > earlyEndCol && n.Column < beforeLastCol).ToList();
 
         // 4. 각 Era별 최소 보장 (Elite, Rest, Shop, Event)
         GuaranteeTypesInGroup(earlyNodes);
@@ -120,7 +130,7 @@ public class Mapmanager : MonoBehaviour
 
         // 5. 나머지 노드들 순차적 배정 (제약 조건 적용하며 채우기)
         var remainingNodes = candidates
-            .Where(n => n.Column > ForcedNormalColumns && n.Column < lastCol)
+            .Where(n => n.Column > ForcedNormalColumns && n.Column < beforeLastCol)
             .OrderBy(n => n.Column)
             .ToList();
 

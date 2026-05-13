@@ -40,14 +40,28 @@ public class ShopPanelUI : MonoBehaviour
     public Button discardYesBtn;
     public Button discardNoBtn;
 
+    [Header("Shop Reroll")]
+    public Button btnReroll;
+    public TMP_Text txtRerollCount;
+    public int rerollPrice = 50;
+    public int maxRerollCount = 2;
+    private int _currentRerollCount = 0;
+
     private List<GameObject> _spawnedItems = new List<GameObject>();
 
-
-    /// <summary>
-    /// 상점을 열 때 랜덤하게 아이템 목록을 갱신하여 프리팹을 생성합니다.
-    /// </summary>
-    public void GenerateShopItems()
+    private void Awake()
     {
+        if (btnReroll != null) btnReroll.onClick.AddListener(OnRerollClicked);
+    }
+
+
+    public void GenerateShopItems(bool isReroll = false)
+    {
+        if (!isReroll)
+        {
+            _currentRerollCount = 0;
+            UpdateRerollUI();
+        }
         // 1. 기존 생성된 아이템 모두 지우기
         foreach (var obj in _spawnedItems)
         {
@@ -133,7 +147,7 @@ public class ShopPanelUI : MonoBehaviour
         Button btn = obj.GetComponent<Button>();
         if (btn == null) btn = obj.AddComponent<Button>();
 
-        btn.onClick.AddListener(() => 
+        btn.onClick.AddListener(() =>
         {
             if (tooltip != null && tooltip.WasLongPressed) return;
             OnPurchaseClicked(data, price, obj);
@@ -165,7 +179,7 @@ public class ShopPanelUI : MonoBehaviour
 
             // UI 반영
             if (LobbyTopUI.Instance != null) LobbyTopUI.Instance.Refresh();
-            
+
             // 스킬 강화 패널 열기
             if (skillUpgradeUI != null)
             {
@@ -214,7 +228,7 @@ public class ShopPanelUI : MonoBehaviour
     {
         if (skillExchangeUI == null) return;
 
-        skillExchangeUI.Open(newSkill, price, () => 
+        skillExchangeUI.Open(newSkill, price, () =>
         {
             SetItemSoldOut(itemObj);
         });
@@ -243,7 +257,7 @@ public class ShopPanelUI : MonoBehaviour
             {
                 inventorySlots[i].SetActive(true);
                 SkillData item = items[i];
-                
+
                 // 1. 아이콘 설정
                 Image img = inventorySlots[i].GetComponent<Image>();
                 if (img == null) img = inventorySlots[i].GetComponentInChildren<Image>();
@@ -257,11 +271,11 @@ public class ShopPanelUI : MonoBehaviour
                 // 3. 판매 버튼 설정 (클릭 시 50원에 판매)
                 Button btn = inventorySlots[i].GetComponent<Button>();
                 if (btn == null) btn = inventorySlots[i].GetComponentInChildren<Button>();
-                
+
                 if (btn != null)
                 {
                     btn.onClick.RemoveAllListeners();
-                    btn.onClick.AddListener(() => 
+                    btn.onClick.AddListener(() =>
                     {
                         if (trigger != null && trigger.WasLongPressed) return;
                         OpenDiscardPanel(item);
@@ -307,7 +321,7 @@ public class ShopPanelUI : MonoBehaviour
 
         GameManager.Instance.playerItems.Remove(item);
         RefreshInventoryUI();
-        
+
         if (discardPanel != null) discardPanel.SetActive(false);
 
         Debug.Log($"[Shop] 아이템 버리기 완료: {item.SkillName}");
@@ -389,5 +403,35 @@ public class ShopPanelUI : MonoBehaviour
         }
 
         return result;
+    }
+
+    private void OnRerollClicked()
+    {
+        if (GameManager.Instance == null) return;
+
+        if (_currentRerollCount >= maxRerollCount) return;
+
+        if (GameManager.Instance.gold < rerollPrice) return;
+
+        GameManager.Instance.gold -= rerollPrice;
+        _currentRerollCount++;
+
+        if (LobbyTopUI.Instance != null) LobbyTopUI.Instance.Refresh();
+        UpdateRerollUI();
+        GenerateShopItems(true);
+    }
+
+    private void UpdateRerollUI()
+    {
+        if (txtRerollCount != null)
+        {
+            int remaining = maxRerollCount - _currentRerollCount;
+            txtRerollCount.text = $"{remaining}번 남음!";
+        }
+
+        if (btnReroll != null)
+        {
+            btnReroll.interactable = (_currentRerollCount < maxRerollCount);
+        }
     }
 }
