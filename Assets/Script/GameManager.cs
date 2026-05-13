@@ -31,6 +31,10 @@ public class GameManager : MonoBehaviour
     [Header("Master Skill List")]
     public List<TurnRPG.SkillSystem.SkillData> masterSkillList = new List<TurnRPG.SkillSystem.SkillData>();
 
+    [Header("UI References")]
+    public SettingsUI settingsUI; // [추가] ESC 메뉴 UI
+    public InitialGiftUI initialGiftUI; // [추가] 시작 보상 선택 UI
+
 
     [Header("Tooltip")]
     public Canvas tooltipCanvas; // [추가] 툴팁이 생성될 캔버스
@@ -147,7 +151,7 @@ public class GameManager : MonoBehaviour
         _equipTooltipInstance.SetData(state, icon);
 
         IsTooltipPerforming = true;
-        
+
         // 위치 설정 (다른 툴팁들과 동일한 로직)
         float canvasScale = _equipTooltipInstance.transform.lossyScale.y;
         _equipTooltipInstance.transform.position = worldPos + new Vector3(0, height * canvasScale, 0);
@@ -189,11 +193,11 @@ public class GameManager : MonoBehaviour
         if (targetEquip != null)
         {
             targetEquip.GenerateRandomStats(minScale, maxScale);
-            
+
             // 2. 새로운 체력 비율에 맞춰 현재 체력 조정
             float newMaxHp = state.TotalMaxHp;
             state.currentHp = newMaxHp * hpRatio;
-            
+
             // UI 갱신 (열려있다면)
             var opener = FindObjectOfType<CharacterStatePanelOpener>();
             if (opener != null && opener.characterStatePanel.activeSelf)
@@ -225,11 +229,24 @@ public class GameManager : MonoBehaviour
         highRerollItemCount = 0;
         playerItems.Clear();
 
-        // 2. UI 정리 (MapUI와 연결된 게임 패널들 비활성화)
+        // [추가] 안전한 리셋을 위해 다른 매니저들의 코루틴 중단
+        var battleMgr = GameObject.FindAnyObjectByType<BattleManager>(FindObjectsInactive.Include);
+        if (battleMgr != null) battleMgr.StopAllCoroutines();
+
+        // 2. UI 정리 ("GamePanel" 태그를 가진 모든 활성 패널 비활성화)
+        GameObject[] gamePanels = GameObject.FindGameObjectsWithTag("GamePanel");
+        foreach (GameObject panel in gamePanels)
+        {
+            panel.SetActive(false);
+        }
+
         // [수정] MapUI가 비활성화된 상태일 수 있으므로 비활성 객체도 포함하여 찾습니다.
         var mapUI = GameObject.FindAnyObjectByType<MapUI>(FindObjectsInactive.Include);
         if (mapUI != null)
         {
+            mapUI.StopAllCoroutines(); // 맵 관련 애니메이션 중단
+
+            // 개별 할당된 패널들도 안전하게 한 번 더 체크 (태그가 안 붙어있을 경우 대비)
             if (mapUI.BattlePanel != null) mapUI.BattlePanel.SetActive(false);
             if (mapUI.RestPanel != null) mapUI.RestPanel.SetActive(false);
             if (mapUI.shopPanel != null) mapUI.shopPanel.SetActive(false);
@@ -252,6 +269,15 @@ public class GameManager : MonoBehaviour
         {
             LobbyTopUI.Instance.Refresh();
             LobbyTopUI.Instance.ShowUI();
+        }
+    }
+
+    private void Update()
+    {
+        // [수정] New Input System 방식의 ESC 메뉴 토글
+        if (UnityEngine.InputSystem.Keyboard.current != null && UnityEngine.InputSystem.Keyboard.current.escapeKey.wasPressedThisFrame)
+        {
+            if (settingsUI != null) settingsUI.Toggle();
         }
     }
 
@@ -315,8 +341,9 @@ public class GameManager : MonoBehaviour
         var charType = state.template.charType;
 
         // 2번 스킬 (Index 1)
-        var skill2Pool = masterSkillList.FindAll(s => s != null && 
-                                                      s.SlotIndex == SkillSlotIndex.Skill2 && 
+        var skill2Pool = masterSkillList.FindAll(s => s != null &&
+                                                      s.Type != TurnRPG.SkillSystem.SkillType.Item &&
+                                                      s.SlotIndex == SkillSlotIndex.Skill2 &&
                                                       (s.EquipRestriction & charType) != 0);
         if (skill2Pool.Count > 0)
         {
@@ -325,8 +352,9 @@ public class GameManager : MonoBehaviour
         }
 
         // 3번 스킬 (Index 2)
-        var skill3Pool = masterSkillList.FindAll(s => s != null && 
-                                                      s.SlotIndex == SkillSlotIndex.Skill3 && 
+        var skill3Pool = masterSkillList.FindAll(s => s != null &&
+                                                      s.Type != TurnRPG.SkillSystem.SkillType.Item &&
+                                                      s.SlotIndex == SkillSlotIndex.Skill3 &&
                                                       (s.EquipRestriction & charType) != 0);
         if (skill3Pool.Count > 0)
         {
@@ -357,13 +385,17 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("[GameManager] 모든 캐릭터 명명 완료");
 
-        // [추가] 명명 완료 후 리롤 아이템 3개 지급 및 패널 오픈
-        rerollItemCount += 3;
-        if (LobbyTopUI.Instance != null) LobbyTopUI.Instance.Refresh();
-
-        if (rerollUI != null)
+        // [수정] 명명 완료 후 보상 선택 UI 오픈
+        if (initialGiftUI != null)
         {
-            rerollUI.Open();
+            initialGiftUI.Open();
+        }
+        else
+        {
+            // 폴백: UI가 없다면 기존처럼 리롤 아이템 지급
+            rerollItemCount += 3;
+            if (LobbyTopUI.Instance != null) LobbyTopUI.Instance.Refresh();
+            if (rerollUI != null) rerollUI.Open();
         }
     }
 

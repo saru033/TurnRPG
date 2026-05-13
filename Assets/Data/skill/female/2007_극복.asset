@@ -21,69 +21,80 @@ MonoBehaviour:
   RequiredAnimationTrigger: 
   UltimateCutsceneClip: {fileID: 0}
   LevelDatas:
-  - Description: "\uB204\uAD70\uAC00 \uD134 \uC885\uB8CC \uC2DC \uC544\uAD70\uC774
-      \uD589\uB3D9\uBD88\uAC00\uB958 \uC57D\uD654\uD6A8\uACFC ( \uAE30\uC808 , \uC218\uBA74
-      ) \uC0C1\uD0DC\uB77C\uBA74 \uC544\uAD70 \uC804\uCCB4\uC758 \uC57D\uD654\uD6A8\uACFC\uB97C
-      2\uAC1C \uC81C\uAC70\uD569\uB2C8\uB2E4."
-    Cooldown: 4
+  - Description: "\uB204\uAD70\uAC00 \uD134 \uC885\uB8CC \uC2DC \uC544\uAD70\uC804\uCCB4\uC758
+      \uC0DD\uBA85\uB825\uC744 1% \uD68C\uBCF5\uD569\uB2C8\uB2E4. \uB9CC\uC57D \uC544\uAD70
+      \uB204\uAD70\uAC00\uAC00 \uD589\uB3D9\uBD88\uAC00\uB958 \uC57D\uD654\uD6A8\uACFC
+      ( \uAE30\uC808 , \uC218\uBA74 ) \uC0C1\uD0DC\uB77C\uBA74 \uC544\uAD70 \uC804\uCCB4\uC758
+      \uC57D\uD654\uD6A8\uACFC\uB97C 2\uAC1C \uC81C\uAC70\uD569\uB2C8\uB2E4."
+    Cooldown: 0
     TargetType: 0
     PassiveTrigger: 16
     ConstantEffects: []
     Effects:
+    - rid: 8427518332692594688
     - rid: 7481024980550680787
     - rid: 7481024980550680788
-  - Description: "\uB204\uAD70\uAC00 \uD134 \uC885\uB8CC \uC2DC \uC544\uAD70\uC774
-      \uD589\uB3D9\uBD88\uAC00\uB958 \uC57D\uD654\uD6A8\uACFC ( \uAE30\uC808 , \uC218\uBA74
-      ) \uC0C1\uD0DC\uB77C\uBA74 \uC544\uAD70 \uC804\uCCB4\uC758 \uC57D\uD654\uD6A8\uACFC\uB97C
-      2\uAC1C \uC81C\uAC70\uD558\uACE0 2\uD134\uAC04 \uBCF4\uD638\uB9C9\uC744 \uD68D\uB4DD\uD569\uB2C8\uB2E4."
-    Cooldown: 4
+  - Description: "\uB204\uAD70\uAC00 \uD134 \uC885\uB8CC \uC2DC \uC544\uAD70\uC804\uCCB4\uC758
+      \uC0DD\uBA85\uB825\uC744 1% \uD68C\uBCF5\uD569\uB2C8\uB2E4. \uB9CC\uC57D \uC544\uAD70
+      \uB204\uAD70\uAC00\uAC00 \uD589\uB3D9\uBD88\uAC00\uB958 \uC57D\uD654\uD6A8\uACFC
+      ( \uAE30\uC808 , \uC218\uBA74 ) \uC0C1\uD0DC\uB77C\uBA74 \uC544\uAD70 \uC804\uCCB4\uC758
+      \uC57D\uD654\uD6A8\uACFC\uB97C 2\uAC1C \uC81C\uAC70\uD558\uACE0 2\uD134\uAC04
+      \uBCF4\uD638\uB9C9\uC744 \uD68D\uB4DD\uD569\uB2C8\uB2E4."
+    Cooldown: 0
     TargetType: 0
     PassiveTrigger: 16
     ConstantEffects: []
     Effects:
+    - rid: 8427518332692594689
     - rid: 7481024980550680787
     - rid: 7481024980550680788
     - rid: 7481024980550680789
-  - Description: "\uB204\uAD70\uAC00 \uD134 \uC885\uB8CC \uC2DC \uC544\uAD70\uC774
-      \uD589\uB3D9\uBD88\uAC00\uB958 \uC57D\uD654\uD6A8\uACFC ( \uAE30\uC808 , \uC218\uBA74
+  - Description: "\uB204\uAD70\uAC00 \uD134 \uC885\uB8CC \uC2DC \uC544\uAD70\uC804\uCCB4\uC758
+      \uC0DD\uBA85\uB825\uC744 3% \uD68C\uBCF5\uD569\uB2C8\uB2E4. \uB9CC\uC57D \uC544\uAD70
+      \uB204\uAD70\uAC00\uAC00 \uC57D\uD654\uD6A8\uACFC ( \uAE30\uC808 , \uC218\uBA74
       ) \uC0C1\uD0DC\uB77C\uBA74 \uC544\uAD70 \uC804\uCCB4\uC758 \uC57D\uD654\uD6A8\uACFC\uB97C
       2\uAC1C \uC81C\uAC70\uD558\uACE0 2\uD134\uAC04 \uBCF4\uD638\uB9C9\uC744 \uD68D\uB4DD\uD569\uB2C8\uB2E4."
-    Cooldown: 3
+    Cooldown: 0
     TargetType: 0
     PassiveTrigger: 16
     ConstantEffects: []
     Effects:
+    - rid: 8427518332692594690
     - rid: 7481024980550680787
     - rid: 7481024980550680788
     - rid: 7481024980550680789
   - Description: "\uC790\uC2E0\uC774 \uAE30\uC808, \uC218\uBA74\uC5D0 \uAC78\uB9AC\uC9C0
-      \uC54A\uC2B5\uB2C8\uB2E4. \uB204\uAD70\uAC00 \uD134 \uC885\uB8CC \uC2DC \uC544\uAD70\uC774
-      \uD589\uB3D9\uBD88\uAC00\uB958 \uC57D\uD654\uD6A8\uACFC ( \uAE30\uC808 , \uC218\uBA74
-      ) \uC0C1\uD0DC \uB77C\uBA74 \uC544\uAD70 \uC804\uCCB4\uC758 \uC57D\uD654\uD6A8\uACFC\uB97C
-      2\uAC1C \uC81C\uAC70\uD558\uACE0 2\uD134\uAC04 \uBCF4\uD638\uB9C9\uC744 \uD68D\uB4DD\uD569\uB2C8\uB2E4."
-    Cooldown: 3
+      \uC54A\uC2B5\uB2C8\uB2E4. \uB204\uAD70\uAC00 \uD134 \uC885\uB8CC \uC2DC \uC544\uAD70\uC804\uCCB4\uC758
+      \uC0DD\uBA85\uB825\uC744 3% \uD68C\uBCF5\uD569\uB2C8\uB2E4. \uB9CC\uC57D \uC544\uAD70
+      \uB204\uAD70\uAC00\uAC00 \uD589\uB3D9\uBD88\uAC00\uB958 \uC57D\uD654\uD6A8\uACFC
+      ( \uAE30\uC808 , \uC218\uBA74 ) \uC0C1\uD0DC \uB77C\uBA74 \uC544\uAD70 \uC804\uCCB4\uC758
+      \uC57D\uD654\uD6A8\uACFC\uB97C 2\uAC1C \uC81C\uAC70\uD558\uACE0 2\uD134\uAC04
+      \uBCF4\uD638\uB9C9\uC744 \uD68D\uB4DD\uD569\uB2C8\uB2E4."
+    Cooldown: 0
     TargetType: 0
     PassiveTrigger: 16
     ConstantEffects:
     - rid: 6423181046562947142
     - rid: 6423181046562947143
     Effects:
+    - rid: 8427518332692594691
     - rid: 7481024980550680787
     - rid: 7481024980550680788
     - rid: 7481024980550680789
-  - Description: "\uB204\uAD70\uAC00 \uD134 \uC885\uB8CC \uC2DC \uC544\uAD70\uC774
-      \uD589\uB3D9\uBD88\uAC00\uB958 \uC57D\uD654\uD6A8\uACFC ( \uAE30\uC808 , \uC218\uBA74
-      ) \uC0C1\uD0DC\uB77C\uBA74 \uC544\uAD70 \uC804\uCCB4\uC758 \uC57D\uD654\uD6A8\uACFC\uB97C
-      2\uAC1C \uC81C\uAC70\uD558\uACE0 2\uD134\uAC04 \uC18D\uB3C4 \uC99D\uAC00\uC640
+  - Description: "\uB204\uAD70\uAC00 \uD134 \uC885\uB8CC \uC2DC \uC544\uAD70\uC804\uCCB4\uC758
+      \uC0DD\uBA85\uB825\uC744 5% \uD68C\uBCF5\uD569\uB2C8\uB2E4. \uB9CC\uC57D \uC544\uAD70
+      \uB204\uAD70\uAC00\uAC00 \uD589\uB3D9\uBD88\uAC00\uB958 \uC57D\uD654\uD6A8\uACFC
+      ( \uAE30\uC808 , \uC218\uBA74 ) \uC0C1\uD0DC\uB77C\uBA74 \uC544\uAD70 \uC804\uCCB4\uC758
+      \uC57D\uD654\uD6A8\uACFC\uB97C 2\uAC1C \uC81C\uAC70\uD558\uACE0 2\uD134\uAC04 
       \uBCF4\uD638\uB9C9\uC744 \uBC1C\uC0DD \uC2DC\uD0B5\uB2C8\uB2E4."
-    Cooldown: 3
+    Cooldown: 0
     TargetType: 0
     PassiveTrigger: 16
     ConstantEffects: []
     Effects:
+    - rid: 8427518332692594692
     - rid: 7481024980550680787
     - rid: 7481024980550680788
-    - rid: 7481024980550680791
     - rid: 7481024980550680789
   references:
     version: 2
@@ -116,12 +127,33 @@ MonoBehaviour:
         ApplyChance: 1
         StatScaleType: 2
         StatMultiplier: 0.2
-    - rid: 7481024980550680791
-      type: {class: ApplyStatusEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+    - rid: 8427518332692594688
+      type: {class: HealEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
       data:
         TargetType: 2
-        EffectData: {fileID: 11400000, guid: 240d832eeeacbbe479690f6e3f75d5fd, type: 2}
-        Duration: 2
-        ApplyChance: 1
-        StatScaleType: 0
-        StatMultiplier: 0
+        HealPercent: 0.01
+        BasedOnTargetMaxHp: 1
+    - rid: 8427518332692594689
+      type: {class: HealEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 2
+        HealPercent: 0.01
+        BasedOnTargetMaxHp: 1
+    - rid: 8427518332692594690
+      type: {class: HealEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 2
+        HealPercent: 0.03
+        BasedOnTargetMaxHp: 1
+    - rid: 8427518332692594691
+      type: {class: HealEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 2
+        HealPercent: 0.03
+        BasedOnTargetMaxHp: 1
+    - rid: 8427518332692594692
+      type: {class: HealEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 2
+        HealPercent: 0.05
+        BasedOnTargetMaxHp: 1
