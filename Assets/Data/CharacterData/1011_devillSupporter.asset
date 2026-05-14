@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 1011_devillSupporter
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
   ID: 1011
-  CharacterName: "\uACF5\uC99D\uB300\uBC1C\uC2F8\uB300"
+  CharacterName: "\uCD08\uB85D \uC4F0\uBD09\uC774"
   isPlayer: 0
   charType: 0
   MaxHp: 750
@@ -24,10 +24,19 @@ MonoBehaviour:
   CritDamage: 1
   Evasion: 0
   Accuracy: 1
+  DualAttackChance: 0
   illustration: {fileID: 7858980336673299937, guid: 4b5707357641e04438686dd5962c9f7d, type: 3}
   iconImage: {fileID: -1955851177974502843, guid: 99b77f96fafbdf94c854afd8faaf3597, type: 3}
   sideImage: {fileID: -7636694935251246727, guid: 7c7405ae2e004234aa55c571d7a22c2d, type: 3}
-  characterPrefab: {fileID: 6008314446264759706, guid: 72ff3ac32bc5e454e9e61f0596e1de2e, type: 3}
+  characterPrefab: {fileID: 6008314446264759706, guid: fa7172d8054e032469cbc4e519c65121, type: 3}
   StartingSkills:
   - skillData: {fileID: 11400000, guid: 70f3d1fde0bca974999de1af037a284f, type: 2}
     level: 1
+  readyVoices: []
+  attackVoices: []
+  hitVoices: []
+  skillVoices: []
+  winVoices: []
+  skillUpgradeVoices: []
+  skillChangeVoices: []
+  call: []

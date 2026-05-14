@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TurnRPG.SkillSystem;
+using DG.Tweening;
 
 /// <summary>
 /// 프로젝트 전체의 게임 데이터 및 상태를 관리하는 싱글톤 매니저입니다.
@@ -45,8 +46,9 @@ public class GameManager : MonoBehaviour
     public StatusEffectTooltipUI statusTooltipPrefab;
     private StatusEffectTooltipUI _statusTooltipInstance;
 
-    [Header("Character Naming")]
+    [Header("Character Naming & Preview")]
     public CharacterNamingUI namingUI;
+    public InitialCharacterPreviewUI previewUI; // [추가] 초기 캐릭터 정보 확인 UI
     public EquipmentRerollUI rerollUI;
 
     [Header("Equipment Stat Ranges")]
@@ -215,19 +217,43 @@ public class GameManager : MonoBehaviour
         IsTooltipPerforming = false;
     }
 
+    [Header("Transition UI")]
+    [SerializeField] private UnityEngine.UI.Image screenFadeImage; // 암전용 블랙 이미지
+
     /// <summary>
-    /// 게임 진행 상황을 초기화합니다. (로그라이크 리셋: 패배 시 또는 최종 보스 클리어 시)
+    /// 게임 진행 상황을 초기화합니다. (화면 암전 연출 포함)
     /// </summary>
     public void ResetGameProgress()
     {
-        Debug.Log("[GameManager] 게임 진행 상황 초기화 (Roguelike Reset)");
+        StartCoroutine(ResetGameFlowRoutine());
+    }
+
+    private IEnumerator ResetGameFlowRoutine()
+    {
+        Debug.Log("[GameManager] 게임 진행 상황 초기화 시작 (암전 연출)");
+
+        // 0. 화면 암전 (Fade In)
+        if (screenFadeImage != null)
+        {
+            screenFadeImage.gameObject.SetActive(true);
+            Color c = screenFadeImage.color;
+            c.a = 0f;
+            screenFadeImage.color = c;
+            yield return screenFadeImage.DOFade(1f, 0.5f).WaitForCompletion();
+        }
 
         // 1. 재화 및 아이템 초기화
         gold = 0;
         skillup = 0;
-        rerollItemCount = 0; // 명명 완료 후 NamingFlowRoutine에서 3개를 줄 것이므로 0으로 설정
+        rerollItemCount = 0;
         highRerollItemCount = 0;
         playerItems.Clear();
+
+        // [추가] BGM을 로비 음악으로 변경
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.PlayBGM(BgmType.MainLobby);
+        }
 
         // [추가] 안전한 리셋을 위해 다른 매니저들의 코루틴 중단
         var battleMgr = GameObject.FindAnyObjectByType<BattleManager>(FindObjectsInactive.Include);
@@ -240,36 +266,44 @@ public class GameManager : MonoBehaviour
             panel.SetActive(false);
         }
 
-        // [수정] MapUI가 비활성화된 상태일 수 있으므로 비활성 객체도 포함하여 찾습니다.
         var mapUI = GameObject.FindAnyObjectByType<MapUI>(FindObjectsInactive.Include);
         if (mapUI != null)
         {
-            mapUI.StopAllCoroutines(); // 맵 관련 애니메이션 중단
-
-            // 개별 할당된 패널들도 안전하게 한 번 더 체크 (태그가 안 붙어있을 경우 대비)
+            mapUI.StopAllCoroutines();
             if (mapUI.BattlePanel != null) mapUI.BattlePanel.SetActive(false);
             if (mapUI.RestPanel != null) mapUI.RestPanel.SetActive(false);
             if (mapUI.shopPanel != null) mapUI.shopPanel.SetActive(false);
             if (mapUI.eventPanel != null) mapUI.eventPanel.SetActive(false);
 
-            // 3. 맵 초기화 및 재생성 (리셋 후 바로 켜지지 않게 비활성 유지)
+            // 3. 맵 초기화 및 재생성
             mapUI.GenerateAndDraw();
-            mapUI.gameObject.SetActive(false); // 로비에서 초기 설정을 해야 하므로 꺼둠
-        }
-        else
-        {
-            Debug.LogWarning("[GameManager] MapUI를 찾을 수 없습니다. UI 초기화에 실패했습니다.");
+            mapUI.gameObject.SetActive(false);
         }
 
-        // 4. 캐릭터 파티 초기화 (명명 단계부터 다시 시작)
+        // 4. 캐릭터 파티 초기화
         InitializeParty();
 
-        // 5. 상단 재화 UI 초기화 및 노출
+        // 데이터 반영을 위해 한 프레임 대기
+        yield return null;
+
+        // 5. 암전 유지 (1초)
+        yield return new WaitForSeconds(1.0f);
+
+        // 6. 화면 밝아짐 (Fade Out)
+        if (screenFadeImage != null)
+        {
+            yield return screenFadeImage.DOFade(0f, 0.5f).WaitForCompletion();
+            screenFadeImage.gameObject.SetActive(false);
+        }
+
+        // 7. 상단 재화 UI 초기화 및 노출
         if (LobbyTopUI.Instance != null)
         {
             LobbyTopUI.Instance.Refresh();
             LobbyTopUI.Instance.ShowUI();
         }
+
+        Debug.Log("[GameManager] 게임 진행 상황 초기화 완료");
     }
 
     private void Update()
@@ -382,13 +416,19 @@ public class GameManager : MonoBehaviour
 
         foreach (var charState in targets)
         {
-            bool isWaiting = true;
-            namingUI.Open(charState, () => isWaiting = false);
+            // 1. 이름 정해주기
+            bool isWaitingName = true;
+            namingUI.Open(charState, () => isWaitingName = false);
 
-            // 유저가 이름을 확정할 때까지 대기
-            while (isWaiting)
+            while (isWaitingName) yield return null;
+
+            // 2. [추가] 정해진 이름과 함께 랜덤으로 받은 스킬/장비 보여주기
+            if (previewUI != null)
             {
-                yield return null;
+                bool isWaitingPreview = true;
+                previewUI.Open(charState, () => isWaitingPreview = false);
+
+                while (isWaitingPreview) yield return null;
             }
         }
 

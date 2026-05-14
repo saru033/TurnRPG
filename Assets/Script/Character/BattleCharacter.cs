@@ -37,6 +37,7 @@ public class BattleCharacter
     public float CritDamage;     // 치명 피해 배율 (예: 1.5 = 150%)
     public float EvasionRate;    // 회피율 (0~1)
     public float AccuracyRate;   // 명중률 (0~1)
+    public float DualAttackChance; // [추가] 협공 확률 (0.03 = 3%)
 
     // -------------------------------------------------------
     // 원본 스탯 (버프/디버프 계산의 기준점)
@@ -49,6 +50,7 @@ public class BattleCharacter
     public float BaseCritDamage;
     public float BaseEvasionRate;
     public float BaseAccuracyRate;
+    public float BaseDualAttackChance; // [추가] 기본 협공 확률
 
     // -------------------------------------------------------
     // 행동게이지 및 스킬 세팅
@@ -102,6 +104,7 @@ public class BattleCharacter
         BaseCritDamage = CritDamage = data.CritDamage;
         BaseEvasionRate = EvasionRate = data.Evasion;
         BaseAccuracyRate = AccuracyRate = data.Accuracy;
+        BaseDualAttackChance = DualAttackChance = data.DualAttackChance;
 
         ActionGauge = 0f;
 
@@ -147,6 +150,7 @@ public class BattleCharacter
         BaseCritDamage = CritDamage = Data.CritDamage + (state.spentCritDmg * 0.01f) + (eqCritDmgPer * 0.01f);
         BaseEvasionRate = EvasionRate = Data.Evasion; // 회피/명중은 현재 포인트 소모 목록에서 제외
         BaseAccuracyRate = AccuracyRate = Data.Accuracy;
+        BaseDualAttackChance = DualAttackChance = state.currentBaseDualAttackChance;
 
         ActionGauge = 0f;
 
@@ -625,6 +629,7 @@ public class BattleCharacter
         CritDamage = BaseCritDamage + critDmgMod;     // 치명 피해 배율 계산
         AccuracyRate = BaseAccuracyRate + accuracyMod;
         EvasionRate = BaseEvasionRate + evasionMod;
+        DualAttackChance = BaseDualAttackChance; // 현재는 별도 디버프/버프가 없으므로 Base값 유지 (필요시 추가)
 
         // 속도가 변했으면 행동게이지 시스템에도 알려줘야 할 수 있음
         if (ActionGaugeSystem != null)

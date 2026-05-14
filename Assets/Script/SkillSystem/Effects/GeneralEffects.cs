@@ -247,8 +247,14 @@ namespace TurnRPG.SkillSystem.Effects
                             ? BattleManager.Instance.allCharacters
                             : new System.Collections.Generic.List<BattleCharacter>();
 
-            // '나를 제외한', '생존해있는', '같은 편'을 싹 긁어모읍니다.
-            var eligibleAllies = allChars.Where(c => c.IsAlive && c.IsPlayer == caster.IsPlayer && c != caster).ToList();
+            // '나를 제외한', '생존해있는', '같은 편', '행동 불가(기절/수면)가 아닌' 아군을 싹 긁어모읍니다.
+            var eligibleAllies = allChars.Where(c => 
+                c.IsAlive && 
+                c.IsPlayer == caster.IsPlayer && 
+                c != caster &&
+                !c.HasStatusEffect(StatusEffectType.Stun) &&
+                !c.HasStatusEffect(StatusEffectType.Sleep)
+            ).ToList();
 
             if (eligibleAllies.Count == 0)
             {
@@ -273,6 +279,7 @@ namespace TurnRPG.SkillSystem.Effects
                 // BattleManager의 우선순위 연출 큐(Front)에 1스킬 반격 루틴 예약
                 if (BattleManager.Instance != null)
                 {
+                    BattleManager.Instance.isProcessingDualAttack = true; // 협공 발생 마킹
                     var routine = BattleManager.Instance.CombinationAttackRoutine(helper, target);
                     BattleManager.Instance.EnqueueExtraActionFront(routine);
                 }
@@ -345,6 +352,7 @@ namespace TurnRPG.SkillSystem.Effects
                 else if (stat.Contains("critchance")) t.BaseCritChance += PercentAmount;
                 else if (stat.Contains("critdmg") || stat.Contains("critdamage")) t.BaseCritDamage += PercentAmount;
                 else if (stat.Contains("evasion")) t.BaseEvasionRate += PercentAmount;
+                else if (stat.Contains("dual")) t.BaseDualAttackChance += PercentAmount;
 
                 executed = true;
             }

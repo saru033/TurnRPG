@@ -22,6 +22,7 @@ public class PlayerCharacterState
     public float currentBaseCritDamage;
     public float currentBaseEvasion;
     public float currentBaseAccuracy;
+    public float currentBaseDualAttackChance; // [추가] 협공 확률 (기본 0.03 = 3%)
 
     [Header("Persistent Battle State")]
     public float currentHp; // 전투 간 유지되는 체력
@@ -66,6 +67,7 @@ public class PlayerCharacterState
         currentBaseCritDamage = data.CritDamage;
         currentBaseEvasion = data.Evasion;
         currentBaseAccuracy = data.Accuracy;
+        currentBaseDualAttackChance = data.DualAttackChance;
 
         // 현재 체력을 장비 보너스가 포함된 최종 MaxHp로 초기화 (풀피 시작)
         currentHp = TotalMaxHp;

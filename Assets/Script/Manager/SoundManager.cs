@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using System.Collections;
 using System.Collections.Generic;
 
 public enum BgmType
@@ -89,6 +90,24 @@ public class SoundManager : MonoBehaviour
     private void Start()
     {
         PlayBGM(BgmType.MainLobby, true);
+        StartCoroutine(InitVolumeDelayed());
+    }
+
+    private IEnumerator InitVolumeDelayed()
+    {
+        // AudioMixer는 Awake 시점에 완벽히 초기화되지 않을 수 있으므로 한 프레임 대기
+        yield return null;
+
+        SetMasterVolume(1f);
+        SetBGMVolume(1f);
+        SetSFXVolume(1f);
+        SetVoiceVolume(1f);
+
+        // 슬라이더가 있다면 슬라이더 값도 동기화
+        if (masterVolumeSlider) masterVolumeSlider.value = 1f;
+        if (bgmVolumeSlider) bgmVolumeSlider.value = 1f;
+        if (sfxVolumeSlider) sfxVolumeSlider.value = 1f;
+        if (voiceVolumeSlider) voiceVolumeSlider.value = 1f;
     }
 
     public void PlayBGM(BgmType type, bool loop = true)
@@ -109,15 +128,11 @@ public class SoundManager : MonoBehaviour
         if (_sfxDict.TryGetValue(type, out var clip))
         {
             // [추가] 광역기 등에서 소리가 겹쳐 깨지는 현상 방지
-            // 키보드 소리는 빠른 입력이 중요하므로 쿨타임에서 제외
-            if (type != SfxType.keyboard)
+            if (_lastPlayTime.TryGetValue(type, out float lastTime))
             {
-                if (_lastPlayTime.TryGetValue(type, out float lastTime))
-                {
-                    if (Time.time - lastTime < SFX_COOLDOWN) return;
-                }
-                _lastPlayTime[type] = Time.time;
+                if (Time.time - lastTime < SFX_COOLDOWN) return;
             }
+            _lastPlayTime[type] = Time.time;
 
             sfxSource.PlayOneShot(clip);
         }
@@ -147,8 +162,8 @@ public class SoundManager : MonoBehaviour
             // 기본 수식: Mathf.Log10(value) * 20f
             float db = Mathf.Log10(value) * 20f;
 
-            // [추가] Voice 파라미터일 경우 기본적으로 6dB 증폭 (약 2배 크게 느껴짐)
-            if (parameter == "Voice") db += 6f;
+            // [추가] SFX 파라미터일 경우 기본적으로 6dB 감쇄
+            if (parameter == "SFX") db -= 6f;
 
             audioMixer.SetFloat(parameter, db);
         }

@@ -27,8 +27,8 @@ public class CharacterNamingUI : MonoBehaviour
 
         if (nameInputField != null)
         {
-            // 입력이 바뀔 때 에러 메시지 숨김 및 키보드 효과음
-            nameInputField.onValueChanged.AddListener((val) =>
+            // 입력이 바뀔 때 에러 메시지만 숨김 (사운드는 Update에서 처리)
+            nameInputField.onValueChanged.AddListener((_) =>
             {
                 if (errorText != null) errorText.SetActive(false);
             });
@@ -36,6 +36,24 @@ public class CharacterNamingUI : MonoBehaviour
 
         _canvasGroup = GetComponent<CanvasGroup>();
         if (_canvasGroup == null) _canvasGroup = gameObject.AddComponent<CanvasGroup>();
+    }
+
+    private void Update()
+    {
+        // [추가] 한국어 IME 대응: 글자가 조합 중일 때도 키보드 소리가 나도록 Update에서 키 입력을 감지
+        // New Input System 방식 적용
+        if (nameInputField != null && nameInputField.isFocused)
+        {
+            var keyboard = UnityEngine.InputSystem.Keyboard.current;
+            if (keyboard != null && keyboard.anyKey.wasPressedThisFrame)
+            {
+                // 마우스 클릭은 SoundManager의 전역 클릭 로직에서 처리하므로 키보드 입력만 체크
+                if (SoundManager.Instance != null)
+                {
+                    SoundManager.Instance.PlaySFX(SfxType.keyboard);
+                }
+            }
+        }
     }
 
     /// <summary>

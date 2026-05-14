@@ -16,10 +16,11 @@ MonoBehaviour:
   SkillName: "\uADF8\uB9BC\uC790"
   SkillIcon: {fileID: 1372627480461126414, guid: 401c595f02fd7684eb9cd1b052b2fd82, type: 3}
   Type: 1
-  SlotIndex: 0
+  SlotIndex: 1
   EquipRestriction: 8
   RequiredAnimationTrigger: skill
   UltimateCutsceneClip: {fileID: 0}
+  UltimateVoiceClip: {fileID: 0}
   LevelDatas:
   - Description: "\uC801 \uC804\uCCB4\uC758 \uAC15\uD654\uD6A8\uACFC\uB97C 2\uAC1C
       \uC81C\uAC70\uD55C \uB4A4 100% \uD655\uB960\uB85C 1\uD134\uAC04 \uBA85\uC911

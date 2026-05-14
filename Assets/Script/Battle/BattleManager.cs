@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using TurnRPG.SkillSystem;
+using TurnRPG.SkillSystem.Effects;
 using System.Linq;
 using UnityEngine.Rendering;
 using System;
@@ -47,6 +48,7 @@ public class BattleManager : MonoBehaviour
     public List<BattleCharacter> allCharacters = new();
     public BattleCharacter currentActor;
 
+    public bool isProcessingDualAttack = false; // [추가] 한 턴에 협공이 한 번만 발생하도록 제어하는 플래그
     // [추가] 줌 효과 상태 관리용
     private bool _isCurrentlyZoomed = false;
     private bool _lastZoomedPlayer = false;
@@ -284,7 +286,8 @@ public class BattleManager : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
             battleUI.SetVisible(currentActor, false);
 
-            // ⭐ 1.5 턴 시작 시스템 발동 (출혈 피해)
+            // [추가] 턴 시작 시 협공 처리 플래그 리셋 (한 턴에 최대 한 번만 발생하도록)
+            isProcessingDualAttack = false; // [추가] 턴 시작 시 협공 플래그 리셋
             currentActor.OnTurnStart();
 
             // 턴 시작시 행동게이지 초기화 (여기서 실제 값 0으로 리셋)
@@ -1522,6 +1525,41 @@ public class BattleManager : MonoBehaviour
         }
 
         BattleEventManager.TriggerSkillUsed(currentActor, skillData);
+
+        // [추가] 글로벌 협공 트리거 체크
+        // 조건: 1스킬 사용 + 협공 진행 중 아님 + 이번 턴에 아직 협공 안 함
+        if (skillData.SlotIndex == SkillSlotIndex.Skill1 && !isProcessingDualAttack)
+        {
+            // '나를 제외한', '생존해있는', '같은 편', '행동 불가(기절/수면)가 아닌' 아군을 찾습니다.
+            var eligibleAllies = allCharacters.Where(c => 
+                c.IsAlive && 
+                c.IsPlayer == currentActor.IsPlayer && 
+                c != currentActor &&
+                !c.HasStatusEffect(StatusEffectType.Stun) &&
+                !c.HasStatusEffect(StatusEffectType.Sleep)
+            ).ToList();
+
+            BattleCharacter triggeredHelper = null;
+            foreach (var ally in eligibleAllies)
+            {
+                // 각 아군 본인의 협공 확률로 주사위를 굴립니다.
+                if (UnityEngine.Random.value < ally.DualAttackChance)
+                {
+                    triggeredHelper = ally;
+                    break; // 한 명만 성공하면 즉시 중단
+                }
+            }
+
+            if (triggeredHelper != null)
+            {
+                isProcessingDualAttack = true; // 이번 턴 협공 완료 마킹
+                Debug.Log($"[GlobalDualAttack] {triggeredHelper.Name}이(가) {currentActor.Name}의 공격에 호응합니다! (확률: {triggeredHelper.DualAttackChance})");
+
+                // 협공 루틴 실행
+                var routine = CombinationAttackRoutine(triggeredHelper, selectedTarget);
+                EnqueueExtraActionFront(routine);
+            }
+        }
 
         // --- 4. 모든 애니메이션(공격자 및 피격자) 종료 대기 ---
         // 최소한의 딜레이 확보 (애니메이션 상태 전환 대기)

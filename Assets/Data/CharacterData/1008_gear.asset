@@ -24,6 +24,7 @@ MonoBehaviour:
   CritDamage: 1.5
   Evasion: 0
   Accuracy: 1
+  DualAttackChance: 0.05
   illustration: {fileID: 9143868440440847147, guid: 78b51429da5e2fa4c83c1c690717e8b0, type: 3}
   iconImage: {fileID: -8198718030236053810, guid: 817e64f0f931f4e47989a1f409c1829c, type: 3}
   sideImage: {fileID: 6871124208172002427, guid: 84ace84a459ec2c4da2f9bc23fe76064, type: 3}
@@ -35,3 +36,11 @@ MonoBehaviour:
     level: 1
   - skillData: {fileID: 11400000, guid: 7a25e3a50b8aa59438b17dc5ba425d3a, type: 2}
     level: 1
+  readyVoices: []
+  attackVoices: []
+  hitVoices: []
+  skillVoices: []
+  winVoices: []
+  skillUpgradeVoices: []
+  skillChangeVoices: []
+  call: []

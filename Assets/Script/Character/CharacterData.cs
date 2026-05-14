@@ -18,6 +18,7 @@ public class CharacterData : ScriptableObject
     public float CritDamage = 1.5f;
     public float Evasion = 0.0f;
     public float Accuracy = 1.0f;
+    [Range(0f, 1f)] public float DualAttackChance = 0.03f;
 
 
 

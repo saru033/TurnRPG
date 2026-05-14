@@ -126,12 +126,6 @@ public class CharacterStatePanelOpener : MonoBehaviour
         var state = GameManager.Instance.party[_currentIdx];
         if (state == null || state.template == null) return;
 
-        // [추가] 스탯 변경 효과음
-        if (SoundManager.Instance != null)
-        {
-            SoundManager.Instance.PlaySFX(SfxType.stateChange);
-        }
-
         var data = state.template;
 
         // 1. 일러스트 갱신
@@ -170,13 +164,13 @@ public class CharacterStatePanelOpener : MonoBehaviour
         if (txtCritRate != null) txtCritRate.text = $"{finalCritRate * 100f:F0}%";
         if (txtCritDmg != null) txtCritDmg.text = $"{finalCritDmg * 100f:F0}%";
 
-        // 보너스 수치 (오른쪽 + 텍스트)
-        if (txtHpBonus != null) txtHpBonus.text = $"+{(pntHpBonus + eqHpVal):F0}";
-        if (txtAtkBonus != null) txtAtkBonus.text = $"+{(pntAtkBonus + eqAtkVal):F0}";
-        if (txtDefBonus != null) txtDefBonus.text = $"+{(pntDefBonus + eqDefVal):F0}";
-        if (txtSpeedBonus != null) txtSpeedBonus.text = $"+{(state.spentSpeed + eqSpeed):F0}";
-        if (txtCritRateBonus != null) txtCritRateBonus.text = $"+{(state.spentCritRate + eqCritRatePer):F0}%";
-        if (txtCritDmgBonus != null) txtCritDmgBonus.text = $"+{(state.spentCritDmg + eqCritDmgPer):F0}%";
+        // 보너스 수치 (오른쪽 + 텍스트) - 초록색 강조
+        if (txtHpBonus != null) txtHpBonus.text = $"<color=#00FF00>+{(pntHpBonus + eqHpVal):F0}</color>";
+        if (txtAtkBonus != null) txtAtkBonus.text = $"<color=#00FF00>+{(pntAtkBonus + eqAtkVal):F0}</color>";
+        if (txtDefBonus != null) txtDefBonus.text = $"<color=#00FF00>+{(pntDefBonus + eqDefVal):F0}</color>";
+        if (txtSpeedBonus != null) txtSpeedBonus.text = $"<color=#00FF00>+{(state.spentSpeed + eqSpeed):F0}</color>";
+        if (txtCritRateBonus != null) txtCritRateBonus.text = $"<color=#00FF00>+{(state.spentCritRate + eqCritRatePer):F0}%</color>";
+        if (txtCritDmgBonus != null) txtCritDmgBonus.text = $"<color=#00FF00>+{(state.spentCritDmg + eqCritDmgPer):F0}%</color>";
 
         // 3. 보너스 포인트 갱신
         if (txtBonusPoints != null) txtBonusPoints.text = $"Points: {state.bonusPoints}";
@@ -325,6 +319,9 @@ public class CharacterStatePanelOpener : MonoBehaviour
         // 6. UI 갱신
         UpdateUI();
 
+        // [추가] 스탯 초기화 사운드
+        if (SoundManager.Instance != null) SoundManager.Instance.PlaySFX(SfxType.stateChange);
+
         Debug.Log($"[UI] {state.characterName} 스탯 초기화 완료. {totalSpent} 포인트 환급됨.");
     }
 
@@ -342,6 +339,10 @@ public class CharacterStatePanelOpener : MonoBehaviour
             {
                 state.bonusPoints--;
                 spentTarget++;
+
+                // [추가] 스탯 변경 사운드
+                if (SoundManager.Instance != null) SoundManager.Instance.PlaySFX(SfxType.stateChange);
+
                 return true;
             }
         }
@@ -351,6 +352,10 @@ public class CharacterStatePanelOpener : MonoBehaviour
             {
                 state.bonusPoints++;
                 spentTarget--;
+
+                // [추가] 스탯 변경 사운드
+                if (SoundManager.Instance != null) SoundManager.Instance.PlaySFX(SfxType.stateChange);
+
                 return true;
             }
         }
@@ -361,6 +366,9 @@ public class CharacterStatePanelOpener : MonoBehaviour
     private void SetupEquipSlot(Image img, EquipmentState state)
     {
         if (img == null || img.sprite == null) return;
+
+        // [중요] Raycast Target이 꺼져 있으면 툴팁이 동작하지 않음
+        img.raycastTarget = true;
 
         var trigger = img.GetComponent<EquipmentTooltipTrigger>();
         if (trigger == null) trigger = img.gameObject.AddComponent<EquipmentTooltipTrigger>();

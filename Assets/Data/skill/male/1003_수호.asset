@@ -116,7 +116,7 @@ MonoBehaviour:
         Duration: 2
         ApplyChance: 1
         StatScaleType: 2
-        StatMultiplier: 15
+        StatMultiplier: 0.2
     - rid: 7481024980550680678
       type: {class: ApplyStatusEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
       data:
@@ -152,7 +152,7 @@ MonoBehaviour:
         Duration: 3
         ApplyChance: 1
         StatScaleType: 2
-        StatMultiplier: 15
+        StatMultiplier: 0.2
     - rid: 7481024980550680682
       type: {class: ApplyStatusEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
       data:

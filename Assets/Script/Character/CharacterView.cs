@@ -43,6 +43,7 @@ public class CharacterView : MonoBehaviour, IPointerClickHandler
     Dictionary<StatusEffect, GameObject> _vfxInstances = new Dictionary<StatusEffect, GameObject>(); // [추가] VFX 인스턴스 관리
     float _maxBarWidth;   // 체력 100%일 때 너비
     Color _originalColor; // [추가] 원래 일러스트 색상 (색깔놀이 대응)
+    Vector3 _originalDamageTextPos; // [추가] 데미지 텍스트 원래 위치 저장용
 
     // -------------------------------------------------------
     // 초기화
@@ -74,7 +75,10 @@ public class CharacterView : MonoBehaviour, IPointerClickHandler
         UpdateHp();
 
         if (damageText != null)
+        {
+            _originalDamageTextPos = damageText.transform.localPosition;
             damageText.gameObject.SetActive(false);
+        }
 
         if (buffPanel != null)
             buffPanel.SetActive(true); // GridLayout 정렬을 위해 활성화 유지
@@ -159,13 +163,8 @@ public class CharacterView : MonoBehaviour, IPointerClickHandler
 
         if (damageText != null)
         {
-            damageText.transform.SetAsLastSibling(); // 레이어 최상단으로 이동
-            damageText.gameObject.SetActive(true);
-            damageText.text = $"+{Mathf.RoundToInt(amount)}";
-            damageText.color = Color.green;
-
-            StopCoroutine(nameof(FadeOutDamageText));
-            StartCoroutine(nameof(FadeOutDamageText));
+            StopCoroutine("AnimateTextPop");
+            StartCoroutine(AnimateTextPop($"+{Mathf.RoundToInt(amount)}", Color.green));
         }
     }
 
@@ -298,10 +297,6 @@ public class CharacterView : MonoBehaviour, IPointerClickHandler
                 shieldBar.DOFillAmount(0f, 0.2f).OnComplete(() => shieldBar.gameObject.SetActive(false));
             }
         }
-
-        // 기존 너비 조절 방식은 사용자가 Fill 방식을 선호하므로 주석 유지
-        // var rt = hpBar.rectTransform;
-        // rt.sizeDelta = new Vector2(_maxBarWidth * ratio, rt.sizeDelta.y);
     }
 
     // -------------------------------------------------------
@@ -311,34 +306,73 @@ public class CharacterView : MonoBehaviour, IPointerClickHandler
     {
         if (damageText == null) return;
 
-        damageText.transform.SetAsLastSibling(); // 레이어 최상단으로 이동
-        damageText.gameObject.SetActive(true);
-
         if (isEvaded)
         {
             ShowPassiveNotice("빗나감");
-            damageText.gameObject.SetActive(false); // [수정] 숫자는 숨기고 문구만 노출
+            damageText.gameObject.SetActive(false);
         }
         else if (damage <= 0)
         {
             ShowPassiveNotice("흡수");
-            damageText.gameObject.SetActive(false); // [수정] 숫자는 숨기고 문구만 노출
+            damageText.gameObject.SetActive(false);
         }
         else
         {
-            string dmgStr = isCrit ? $"<b>{Mathf.RoundToInt(damage)}!</b>" : Mathf.RoundToInt(damage).ToString();
-            damageText.text = dmgStr;
-            damageText.color = isCrit ? Color.yellow : Color.white;
+            string dmgStr = isCrit ? $"{Mathf.RoundToInt(damage)}!" : Mathf.RoundToInt(damage).ToString();
+            Color targetColor = isCrit ? Color.yellow : Color.white;
+
+            StopCoroutine("AnimateTextPop");
+            StartCoroutine(AnimateTextPop(dmgStr, targetColor, isCrit));
+        }
+    }
+
+    /// <summary>
+    /// [수정] 숫자 하나하나가 튀어나오며 빨간색에서 원래 색으로 변하는 연출 코루틴
+    /// </summary>
+    private System.Collections.IEnumerator AnimateTextPop(string fullText, Color finalColor, bool isCrit = false)
+    {
+        damageText.gameObject.SetActive(true);
+        damageText.transform.SetAsLastSibling();
+
+        // 1. 무작위성 추가: 원래 위치 주변으로 살짝 랜덤하게 배치
+        damageText.transform.localPosition = _originalDamageTextPos + new Vector3(Random.Range(-20f, 20f), Random.Range(0f, 30f), 0);
+
+        damageText.text = "";
+        damageText.transform.localScale = Vector3.one;
+        damageText.DOKill();
+        damageText.alpha = 1f;
+
+        string prefix = isCrit ? "<b>" : "";
+        string suffix = isCrit ? "</b>" : "";
+
+        for (int i = 0; i < fullText.Length; i++)
+        {
+            damageText.text = prefix + fullText.Substring(0, i + 1) + suffix;
+            damageText.color = Color.red;
+            damageText.DOColor(finalColor, 0.15f);
+
+            damageText.transform.localScale = Vector3.one * 0.8f;
+            damageText.transform.DOScale(isCrit ? 2.5f : 2.0f, 0.1f).SetEase(Ease.OutQuad)
+                .OnComplete(() => damageText.transform.DOScale(1f, 0.15f).SetEase(Ease.OutBack));
+
+            yield return new WaitForSeconds(0.1f);
         }
 
-        StopCoroutine(nameof(FadeOutDamageText));
-        StartCoroutine(nameof(FadeOutDamageText));
+
+        // 1.2초 뒤 페이드 아웃
+        yield return new WaitForSeconds(1.2f);
+
+        // 부드럽게 사라짐
+        damageText.DOFade(0f, 0.5f).OnComplete(() =>
+        {
+            damageText.gameObject.SetActive(false);
+            damageText.alpha = 1f;
+        });
     }
 
     private System.Collections.IEnumerator FadeOutDamageText()
     {
-        yield return new WaitForSeconds(1.5f);
-        if (damageText != null) damageText.gameObject.SetActive(false);
+        yield break;
     }
 
     // -------------------------------------------------------
@@ -438,8 +472,41 @@ public class CharacterView : MonoBehaviour, IPointerClickHandler
 
         if (tmp != null) tmp.text = passiveName;
 
-        // 1초 뒤에 스스로 파괴 (유저 요청: 다음 턴에 다시 아래에서부터 쌓이게)
-        Destroy(notice, 1.0f);
+        if (tmp != null) tmp.text = passiveName;
+
+        // [추가] LayoutGroup의 간섭을 피하기 위해 내부 콘텐츠만 애니메이션
+        // 1. 공오브젝트(VisualRoot)를 생성하여 기존 프리팹의 모든 자식을 그 아래로 이동
+        GameObject visualRoot = new GameObject("VisualRoot", typeof(RectTransform));
+        visualRoot.transform.SetParent(notice.transform, false);
+
+        // RectTransform 설정 (부모 크기에 맞춤)
+        RectTransform visualRt = visualRoot.GetComponent<RectTransform>();
+        visualRt.anchorMin = Vector2.zero;
+        visualRt.anchorMax = Vector2.one;
+        visualRt.sizeDelta = Vector2.zero;
+        visualRt.anchoredPosition = Vector2.zero;
+
+        // 원래 자식들을 visualRoot로 이동 (단, visualRoot 자신은 제외)
+        List<Transform> children = new List<Transform>();
+        foreach (Transform child in notice.transform)
+        {
+            if (child != visualRoot.transform) children.Add(child);
+        }
+        foreach (var child in children) child.SetParent(visualRoot.transform, false);
+
+        // 2. 이제 LayoutGroup의 통제를 받는 notice 대신, 그 자식인 visualRoot를 애니메이션
+        CanvasGroup cg = notice.GetComponent<CanvasGroup>();
+        if (cg == null) cg = notice.AddComponent<CanvasGroup>();
+
+        cg.alpha = 0f;
+        visualRt.anchoredPosition = new Vector2(-100f, 0f); // 왼쪽에서 시작
+
+        Sequence seq = DOTween.Sequence();
+        seq.Append(cg.DOFade(1f, 0.2f));
+        seq.Join(visualRt.DOAnchorPosX(0f, 0.4f).SetEase(Ease.OutCubic));
+
+        // 1.3초 뒤에 스스로 파괴
+        Destroy(notice, 1.3f);
     }
 
     /// <summary>

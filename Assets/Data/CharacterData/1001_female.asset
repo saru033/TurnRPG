@@ -24,6 +24,7 @@ MonoBehaviour:
   CritDamage: 1.5
   Evasion: 0
   Accuracy: 1
+  DualAttackChance: 0.05
   illustration: {fileID: 8553771532132468781, guid: 02a90ce408e55d348ad22b3cdefc0e97, type: 3}
   iconImage: {fileID: -55260056193131895, guid: 90afa1541dd0a6b4ab39ae4bdb648712, type: 3}
   sideImage: {fileID: 3888641499719248106, guid: 87a664be21bf45f4f9219c14546c1816, type: 3}
