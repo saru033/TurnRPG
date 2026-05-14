@@ -164,7 +164,7 @@ public class CharacterView : MonoBehaviour, IPointerClickHandler
         if (damageText != null)
         {
             StopCoroutine("AnimateTextPop");
-            StartCoroutine(AnimateTextPop($"+{Mathf.RoundToInt(amount)}", Color.green));
+            StartCoroutine(AnimateTextPop($"{Mathf.RoundToInt(amount)}", Color.green));
         }
     }
 
@@ -318,7 +318,7 @@ public class CharacterView : MonoBehaviour, IPointerClickHandler
         }
         else
         {
-            string dmgStr = isCrit ? $"{Mathf.RoundToInt(damage)}!" : Mathf.RoundToInt(damage).ToString();
+            string dmgStr = isCrit ? $"{Mathf.RoundToInt(damage)}" : Mathf.RoundToInt(damage).ToString();
             Color targetColor = isCrit ? Color.yellow : Color.white;
 
             StopCoroutine("AnimateTextPop");
@@ -334,8 +334,8 @@ public class CharacterView : MonoBehaviour, IPointerClickHandler
         damageText.gameObject.SetActive(true);
         damageText.transform.SetAsLastSibling();
 
-        // 1. 무작위성 추가: 원래 위치 주변으로 살짝 랜덤하게 배치
-        damageText.transform.localPosition = _originalDamageTextPos + new Vector3(Random.Range(-20f, 20f), Random.Range(0f, 30f), 0);
+        // 1. 위치: 무작위성 제거, 정해진 원래 위치에서 시작
+        damageText.transform.localPosition = _originalDamageTextPos;
 
         damageText.text = "";
         damageText.transform.localScale = Vector3.one;
@@ -345,17 +345,28 @@ public class CharacterView : MonoBehaviour, IPointerClickHandler
         string prefix = isCrit ? "<b>" : "";
         string suffix = isCrit ? "</b>" : "";
 
+        // 현재까지 쌓인 문자열을 담을 변수
+        string accumulatedText = "";
+
         for (int i = 0; i < fullText.Length; i++)
         {
-            damageText.text = prefix + fullText.Substring(0, i + 1) + suffix;
+            // 방금 추가된 글자에 대해 무작위 폰트 크기(+5 ~ -5) 적용 (TMP Rich Text 활용)
+            int sizeOffset = Random.Range(-5, 6);
+            string sizeTag = sizeOffset >= 0 ? $"+{sizeOffset}" : sizeOffset.ToString();
+
+            accumulatedText += $"<size={sizeTag}>{fullText[i]}</size>";
+            damageText.text = prefix + accumulatedText + suffix;
+
+            // 2. 색상 변화: 빨강 -> 원래 색상
             damageText.color = Color.red;
             damageText.DOColor(finalColor, 0.15f);
 
+            // 3. 팝 연출: 크기가 툭 튀어나오게 (커졌다가 다시 1.0으로 복귀)
             damageText.transform.localScale = Vector3.one * 0.8f;
             damageText.transform.DOScale(isCrit ? 2.5f : 2.0f, 0.1f).SetEase(Ease.OutQuad)
                 .OnComplete(() => damageText.transform.DOScale(1f, 0.15f).SetEase(Ease.OutBack));
 
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.08f);
         }
 
 

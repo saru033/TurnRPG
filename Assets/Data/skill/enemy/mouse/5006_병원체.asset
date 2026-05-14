@@ -10,16 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7166cb7f5dfe6a84cbbfd47fcd0f00ad, type: 3}
-  m_Name: "5006_\uC228\uAE30"
+  m_Name: "5006_\uBCD1\uC6D0\uCCB4"
   m_EditorClassIdentifier: Assembly-CSharp::TurnRPG.SkillSystem.SkillData
   SkillID: 5006
   SkillName: "\uBCD1\uC6D0\uCCB4"
-  SkillIcon: {fileID: 5317870697044535638, guid: 401c595f02fd7684eb9cd1b052b2fd82, type: 3}
+  SkillIcon: {fileID: 3367362255838882418, guid: 537a608492d04a1498d210f400fc62db, type: 3}
   Type: 0
   SlotIndex: 0
   EquipRestriction: 8
   RequiredAnimationTrigger: attack
   UltimateCutsceneClip: {fileID: 0}
+  UltimateVoiceClip: {fileID: 0}
   LevelDatas:
   - Description: "\uC801 \uD55C\uBA85\uC744 \uACF5\uACA9\uD569\uB2C8\uB2E4. \uC790\uC2E0\uC758
       \uD589\uB3D9\uAC8C\uC774\uC9C0\uAC00 15% \uC99D\uAC00\uD569\uB2C8\uB2E4."

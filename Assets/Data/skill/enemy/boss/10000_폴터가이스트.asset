@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TurnRPG.SkillSystem.SkillData
   SkillID: 10000
   SkillName: "\uD3F4\uD130\uAC00\uC774\uC2A4\uD2B8"
-  SkillIcon: {fileID: 1372627480461126414, guid: 401c595f02fd7684eb9cd1b052b2fd82, type: 3}
+  SkillIcon: {fileID: 3367362255838882418, guid: 537a608492d04a1498d210f400fc62db, type: 3}
   Type: 1
   SlotIndex: 2
   EquipRestriction: 8

@@ -14,12 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TurnRPG.SkillSystem.SkillData
   SkillID: 10001
   SkillName: "\uD658\uC0C1"
-  SkillIcon: {fileID: 1372627480461126414, guid: 401c595f02fd7684eb9cd1b052b2fd82, type: 3}
+  SkillIcon: {fileID: 6095519140316644151, guid: 9afe5db00280a7f4189519052a3279f5, type: 3}
   Type: 2
   SlotIndex: 1
   EquipRestriction: 8
   RequiredAnimationTrigger: skill
   UltimateCutsceneClip: {fileID: 0}
+  UltimateVoiceClip: {fileID: 0}
   LevelDatas:
   - Description: "\uC790\uC2E0\uC774 \uAE30\uC808 \uBC0F \uC218\uBA74\uC5D0 \uBA74\uC5ED\uC774
       \uB429\uB2C8\uB2E4. \uC804\uD22C \uC2DC\uC791 \uC2DC, \uC790\uC2E0\uC5D0\uAC8C
