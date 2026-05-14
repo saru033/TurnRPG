@@ -617,6 +617,12 @@ public class BattleManager : MonoBehaviour
             var anim = battleUI.ultimateCutsceneRoot.GetComponentInChildren<Animator>();
             if (anim != null)
             {
+                // [추가] 궁극기 보이스 재생
+                if (SoundManager.Instance != null && skill.UltimateVoiceClip != null)
+                {
+                    SoundManager.Instance.PlayVoice(skill.UltimateVoiceClip);
+                }
+
                 anim.Play(skill.UltimateCutsceneClip.name);
                 if (enhancedSequence)
                 {
@@ -1040,6 +1046,12 @@ public class BattleManager : MonoBehaviour
             var anim = battleUI.ultimateCutsceneRoot.GetComponentInChildren<Animator>();
             if (anim != null)
             {
+                // [추가] 궁극기 보이스 재생
+                if (SoundManager.Instance != null && skill.UltimateVoiceClip != null)
+                {
+                    SoundManager.Instance.PlayVoice(skill.UltimateVoiceClip);
+                }
+
                 anim.Play(skill.UltimateCutsceneClip.name);
                 if (enhancedSequence)
                 {
@@ -1215,6 +1227,12 @@ public class BattleManager : MonoBehaviour
             var anim = battleUI.ultimateCutsceneRoot.GetComponentInChildren<Animator>();
             if (anim != null)
             {
+                // [추가] 궁극기 보이스 재생
+                if (SoundManager.Instance != null && skill.UltimateVoiceClip != null)
+                {
+                    SoundManager.Instance.PlayVoice(skill.UltimateVoiceClip);
+                }
+
                 anim.Play(skill.UltimateCutsceneClip.name);
                 if (enhancedSequence)
                 {
@@ -1443,6 +1461,12 @@ public class BattleManager : MonoBehaviour
             var anim = battleUI.ultimateCutsceneRoot.GetComponentInChildren<Animator>();
             if (anim != null)
             {
+                // [추가] 궁극기 보이스 재생
+                if (SoundManager.Instance != null && skillData.UltimateVoiceClip != null)
+                {
+                    SoundManager.Instance.PlayVoice(skillData.UltimateVoiceClip);
+                }
+
                 anim.Play(skillData.UltimateCutsceneClip.name);
 
                 // 컷신이 화면을 다 가릴 즈음 (약 0.1~0.2초 후) 배경과 캐릭터를 원래대로 복귀
@@ -1629,6 +1653,7 @@ public class BattleManager : MonoBehaviour
 
         if (State == BattleState.Lose)
         {
+            if (SoundManager.Instance != null) SoundManager.Instance.PlaySFX(SfxType.Lose);
             Debug.Log("[Battle] 패배! 게임을 초기화합니다.");
             StartCoroutine(ResetAfterDelay(2.0f));
             return;
@@ -1636,6 +1661,24 @@ public class BattleManager : MonoBehaviour
 
         if (State == BattleState.Win && currentStage != null)
         {
+            // [추가] 승리 SFX 및 보이스
+            if (SoundManager.Instance != null)
+            {
+                SoundManager.Instance.PlaySFX(SfxType.Win);
+
+                // 생존한 아군 중 랜덤으로 승리 대사 출력
+                var survivors = allCharacters.Where(c => c.IsPlayer && c.IsAlive).ToList();
+                if (survivors.Count > 0)
+                {
+                    var luckyOne = survivors[UnityEngine.Random.Range(0, survivors.Count)];
+                    if (luckyOne.Data != null && luckyOne.Data.winVoices.Count > 0)
+                    {
+                        var voice = luckyOne.Data.winVoices[UnityEngine.Random.Range(0, luckyOne.Data.winVoices.Count)];
+                        SoundManager.Instance.PlayVoice(voice);
+                    }
+                }
+            }
+
             // [수정] 비활성 객체 포함하여 MapUI 찾기 및 stageID 기반 보스전 판별
             var mapUI = GameObject.FindAnyObjectByType<MapUI>(FindObjectsInactive.Include);
             if (mapUI != null && mapUI.stageDatabase != null && mapUI.stageDatabase.bossStage != null)

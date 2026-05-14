@@ -44,4 +44,14 @@ public class CharacterData : ScriptableObject
     [Header("시작 스킬 로스터")]
     [Tooltip("전투 시작 시 자동으로 장착될 스킬과 레벨 (최대 3개)")]
     public System.Collections.Generic.List<SkillSlot> StartingSkills;
+
+    [Header("보이스 자원 (랜덤 3개 추천)")]
+    public System.Collections.Generic.List<AudioClip> readyVoices; // 준비 (자기 턴)
+    public System.Collections.Generic.List<AudioClip> attackVoices;
+    public System.Collections.Generic.List<AudioClip> hitVoices;
+    public System.Collections.Generic.List<AudioClip> skillVoices;  // 일반 스킬
+    public System.Collections.Generic.List<AudioClip> winVoices;
+    public System.Collections.Generic.List<AudioClip> skillUpgradeVoices;
+    public System.Collections.Generic.List<AudioClip> skillChangeVoices; // 스킬 변경
+    public System.Collections.Generic.List<AudioClip> call; // 선택 (호출) 시 대사
 }

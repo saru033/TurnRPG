@@ -44,6 +44,9 @@ namespace TurnRPG.SkillSystem
         [Tooltip("3스킬 전용 UI 컷신 클립 (단일 컷신 패널의 Animator Override Controller와 연동)")]
         public AnimationClip UltimateCutsceneClip;
 
+        [Tooltip("3스킬 전용 보이스 (컷신과 연동)")]
+        public AudioClip UltimateVoiceClip;
+
         [Header("단계별 효과 (0번 인덱스가 1레벨)")]
         public List<SkillLevelData> LevelDatas;
 

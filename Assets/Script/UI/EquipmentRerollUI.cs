@@ -170,10 +170,15 @@ public class EquipmentRerollUI : MonoBehaviour
             return;
         }
 
-        // [중요] 누르는 순간 아이템 소모
+        // [중요] 누르는 순간 아이템 소모 및 SFX 재생
         if (isHighTier) GameManager.Instance.highRerollItemCount--;
         else GameManager.Instance.rerollItemCount--;
         if (LobbyTopUI.Instance != null) LobbyTopUI.Instance.Refresh();
+
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.PlaySFX(SfxType.Reroll);
+        }
 
         _selectedState = state;
         _selectedPart = part;

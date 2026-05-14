@@ -35,3 +35,16 @@ MonoBehaviour:
     level: 1
   - skillData: {fileID: 11400000, guid: dd733c6939ee015408680bd9dcab82bc, type: 2}
     level: 1
+  readyVoices: []
+  attackVoices:
+  - {fileID: 8300000, guid: f87e01f59f89ba040b22b732f7eea23a, type: 3}
+  - {fileID: 8300000, guid: 46c659a370e0198439ef786e2be52aec, type: 3}
+  - {fileID: 8300000, guid: d248ef09fde089142a5223cac7c1df36, type: 3}
+  hitVoices:
+  - {fileID: 8300000, guid: be394a3fc1c67294aaf91dfadf9cec88, type: 3}
+  - {fileID: 8300000, guid: b226b17d0109a414ab52b160ec4c0d19, type: 3}
+  - {fileID: 8300000, guid: 7f930e137e2b1f54db500d41b44ec0ed, type: 3}
+  skillVoices: []
+  winVoices: []
+  skillUpgradeVoices: []
+  skillChangeVoices: []

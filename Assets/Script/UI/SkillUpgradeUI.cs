@@ -266,6 +266,19 @@ public class SkillUpgradeUI : MonoBehaviour
             LobbyTopUI.Instance.Refresh();
         }
 
+        // [추가] 강화 성공 사운드 및 보이스
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.PlaySFX(SfxType.UpgradeSkill);
+
+            var charState = GameManager.Instance.party[charIdx];
+            if (charState.template != null && charState.template.skillUpgradeVoices.Count > 0)
+            {
+                var voice = charState.template.skillUpgradeVoices[UnityEngine.Random.Range(0, charState.template.skillUpgradeVoices.Count)];
+                SoundManager.Instance.PlayVoice(voice);
+            }
+        }
+
         // 3. UI 갱신 (연속 강화 가능하도록 상세창만 닫고 리스트 갱신)
         CloseDetail();
         RefreshCharacterList();

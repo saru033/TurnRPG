@@ -16,16 +16,17 @@ MonoBehaviour:
   SkillName: "\uC900\uBE44 \uC0AC\uACA9"
   SkillIcon: {fileID: -7999795207277612686, guid: d2e4857c263b66c4ab9a5b30da4dae0a, type: 3}
   Type: 0
-  PassiveTrigger: 0
   SlotIndex: 2
   EquipRestriction: 2
   RequiredAnimationTrigger: 
   UltimateCutsceneClip: {fileID: 7400000, guid: a6238c54bde8b2140a663b32a3ee08ee, type: 2}
+  UltimateVoiceClip: {fileID: 8300000, guid: 83a231acfda505d46ac567a93829f795, type: 3}
   LevelDatas:
   - Description: "\uC801\uC744 \uACF5\uACA9\uD55C \uD6C4 \uC790\uC2E0\uC5D0\uAC8C
       2\uD134\uAC04 \uBC18\uACA9\uC744 \uBD80\uC5EC\uD569\uB2C8\uB2E4."
     Cooldown: 5
     TargetType: 2
+    PassiveTrigger: 0
     ConstantEffects: []
     Effects:
     - rid: 7481024980550680745
@@ -34,6 +35,7 @@ MonoBehaviour:
       2\uD134\uAC04 \uBC18\uACA9 , \uBC29\uC5B4\uB825 \uC99D\uAC00\uB97C \uBD80\uC5EC\uD569\uB2C8\uB2E4."
     Cooldown: 5
     TargetType: 2
+    PassiveTrigger: 0
     ConstantEffects: []
     Effects:
     - rid: 7481024980550680745
@@ -43,6 +45,7 @@ MonoBehaviour:
       2\uD134\uAC04 \uBC18\uACA9 , \uBC29\uC5B4\uB825 \uC99D\uAC00\uB97C \uBD80\uC5EC\uD569\uB2C8\uB2E4."
     Cooldown: 4
     TargetType: 2
+    PassiveTrigger: 0
     ConstantEffects: []
     Effects:
     - rid: 7481024980550680745
@@ -52,6 +55,7 @@ MonoBehaviour:
       3\uD134\uAC04 \uBC18\uACA9 , \uBC29\uC5B4\uB825 \uC99D\uAC00\uB97C \uBD80\uC5EC\uD569\uB2C8\uB2E4."
     Cooldown: 4
     TargetType: 2
+    PassiveTrigger: 0
     ConstantEffects: []
     Effects:
     - rid: 7481024980550680745
@@ -62,6 +66,7 @@ MonoBehaviour:
       \uC99D\uAC00\uB97C \uBD80\uC5EC\uD569\uB2C8\uB2E4."
     Cooldown: 4
     TargetType: 2
+    PassiveTrigger: 0
     ConstantEffects: []
     Effects:
     - rid: 7481024980550680745
@@ -73,6 +78,7 @@ MonoBehaviour:
       \uBD80\uC5EC\uD569\uB2C8\uB2E4."
     Cooldown: 4
     TargetType: 2
+    PassiveTrigger: 0
     ConstantEffects: []
     Effects:
     - rid: 7481024980550680745

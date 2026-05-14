@@ -35,3 +35,27 @@ MonoBehaviour:
     level: 1
   - skillData: {fileID: 11400000, guid: 8cc637272d4abce4abafe83131c520b3, type: 2}
     level: 1
+  readyVoices:
+  - {fileID: 8300000, guid: b898ece3acc0f1f4f8654e5d05f3c01f, type: 3}
+  - {fileID: 8300000, guid: a9f5fc756b99ffa4f80f3fa9e0092fcc, type: 3}
+  - {fileID: 8300000, guid: a3500122a57676e44b063f03e2d23b55, type: 3}
+  attackVoices:
+  - {fileID: 8300000, guid: af41d408d0f4bdd46bd579434069a037, type: 3}
+  - {fileID: 8300000, guid: a8f4162da95862f4d8b5b8f91a00342a, type: 3}
+  - {fileID: 8300000, guid: 11873be5d5f38914eac76303f473b0ce, type: 3}
+  hitVoices:
+  - {fileID: 8300000, guid: 747ad6022283f0f48917a76d8a3484f3, type: 3}
+  - {fileID: 8300000, guid: 00082ce85def53d4f95249e0014ef3cb, type: 3}
+  - {fileID: 8300000, guid: 1909174d285587945b8ce079334891f0, type: 3}
+  skillVoices:
+  - {fileID: 8300000, guid: 5fea9a18f8f24da478dbfaec332869e8, type: 3}
+  - {fileID: 8300000, guid: d407004d3e25cc143b95479a12650695, type: 3}
+  - {fileID: 8300000, guid: 03ce285e6f05dc64aa6d1ecbaf635398, type: 3}
+  winVoices:
+  - {fileID: 8300000, guid: 35bdcca2072ca66439a6b512ca2f7b50, type: 3}
+  skillUpgradeVoices:
+  - {fileID: 8300000, guid: baae98da3b010b249893bb91e8b428fa, type: 3}
+  skillChangeVoices:
+  - {fileID: 8300000, guid: 164457a3dc44bea478c5e3cc78e356dd, type: 3}
+  call:
+  - {fileID: 8300000, guid: 5dd39e4549951a94eb95e951a1511efc, type: 3}

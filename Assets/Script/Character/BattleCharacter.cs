@@ -327,6 +327,14 @@ public class BattleCharacter
     {
         Debug.Log($"[사망] {Name}이(가) 쓰러졌습니다.");
 
+        // [추가] 모든 상태이상 제거 및 UI 반영
+        foreach (var eff in ActiveStatusEffects.ToList())
+        {
+            eff.DestroyVFX();
+            BattleEventManager.TriggerStatusEffectChanged(this, eff);
+        }
+        ActiveStatusEffects.Clear();
+
 
         //VFX
         if (BattleVFXManager.Instance != null)
@@ -462,6 +470,9 @@ public class BattleCharacter
 
         // 상태이상 변화가 있었으므로 스탯 재산정
         RefreshStats();
+
+        // [추가] 준비 대사 플래그 초기화 (다음 턴을 위해)
+        if (View != null) View.ResetReadyVoice();
 
         BattleEventManager.TriggerTurnEnded(this);
         UpdateControlAnimator(); // [추가] 턴 종료 시 기절/수면 체크

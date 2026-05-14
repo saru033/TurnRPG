@@ -54,6 +54,20 @@ public class CharacterStatePanelOpener : MonoBehaviour
 
         _currentIdx = characterIndex;
 
+        // [추가] 캐릭터 선택(호출) 보이스 출력
+        if (SoundManager.Instance != null)
+        {
+            var charState = GameManager.Instance.party[_currentIdx];
+            if (charState != null && charState.template != null && charState.template.call.Count > 0)
+            {
+                // 여러 개일 경우 대비해 랜덤 재생
+                var clip = charState.template.call[UnityEngine.Random.Range(0, charState.template.call.Count)];
+                SoundManager.Instance.PlayVoice(clip);
+            }
+        }
+
+
+
         // UI 갱신
         UpdateUI();
 
@@ -111,6 +125,12 @@ public class CharacterStatePanelOpener : MonoBehaviour
 
         var state = GameManager.Instance.party[_currentIdx];
         if (state == null || state.template == null) return;
+
+        // [추가] 스탯 변경 효과음
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.PlaySFX(SfxType.stateChange);
+        }
 
         var data = state.template;
 
@@ -233,7 +253,7 @@ public class CharacterStatePanelOpener : MonoBehaviour
             // 3. 변경 후 새로운 최대 체력에 맞춰 비율 적용
             float newMaxHp = state.TotalMaxHp;
             state.currentHp = newMaxHp * hpRatio;
-            
+
             UpdateUI();
         }
     }

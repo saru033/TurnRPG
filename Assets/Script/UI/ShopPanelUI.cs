@@ -419,6 +419,11 @@ public class ShopPanelUI : MonoBehaviour
         if (LobbyTopUI.Instance != null) LobbyTopUI.Instance.Refresh();
         UpdateRerollUI();
         GenerateShopItems(true);
+
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.PlaySFX(SfxType.Shopreroll);
+        }
     }
 
     private void UpdateRerollUI()

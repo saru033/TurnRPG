@@ -16,16 +16,18 @@ MonoBehaviour:
   SkillName: "\uB09C\uC0AC"
   SkillIcon: {fileID: 3597534946442973198, guid: e4616979001df2749aec550e6edeb2eb, type: 3}
   Type: 0
-  PassiveTrigger: 0
   SlotIndex: 2
   EquipRestriction: 1
   RequiredAnimationTrigger: 
   UltimateCutsceneClip: {fileID: 7400000, guid: 30d7743dee538ce4aab9c5e2da876359, type: 2}
+  UltimateVoiceClip: {fileID: 8300000, guid: 0d11525c62f1810488b14cba4ec67524, type: 3}
   LevelDatas:
   - Description: "\uC801 \uC804\uCCB4\uB97C \uACF5\uACA9\uD558\uC5EC \uAC01\uAC01
       75% \uD655\uB960\uB85C 1\uD134\uAC04 2\uAC1C\uC758 \uCD9C\uD608\uC744 \uBC1C\uC0DD\uC2DC\uD0B5\uB2C8\uB2E4."
     Cooldown: 5
     TargetType: 3
+    PassiveTrigger: 0
+    ConstantEffects: []
     Effects:
     - rid: 7481024980550680652
     - rid: 7481024980550680653
@@ -34,6 +36,8 @@ MonoBehaviour:
       75% \uD655\uB960\uB85C 1\uD134\uAC04 3\uAC1C\uC758 \uCD9C\uD608\uC744 \uBC1C\uC0DD\uC2DC\uD0B5\uB2C8\uB2E4."
     Cooldown: 5
     TargetType: 3
+    PassiveTrigger: 0
+    ConstantEffects: []
     Effects:
     - rid: 7481024980550680652
     - rid: 7481024980550680653
@@ -43,6 +47,8 @@ MonoBehaviour:
       75% \uD655\uB960\uB85C 1\uD134\uAC04 3\uAC1C\uC758 \uCD9C\uD608\uC744 \uBC1C\uC0DD\uC2DC\uD0B5\uB2C8\uB2E4."
     Cooldown: 4
     TargetType: 3
+    PassiveTrigger: 0
+    ConstantEffects: []
     Effects:
     - rid: 7481024980550680652
     - rid: 7481024980550680653
@@ -52,6 +58,8 @@ MonoBehaviour:
       75% \uD655\uB960\uB85C 2\uD134\uAC04 3\uAC1C\uC758 \uCD9C\uD608\uC744 \uBC1C\uC0DD\uC2DC\uD0B5\uB2C8\uB2E4."
     Cooldown: 4
     TargetType: 3
+    PassiveTrigger: 0
+    ConstantEffects: []
     Effects:
     - rid: 7481024980550680652
     - rid: 7481024980550680656
@@ -61,6 +69,8 @@ MonoBehaviour:
       75% \uD655\uB960\uB85C 2\uD134\uAC04 4\uAC1C\uC758 \uCD9C\uD608\uC744 \uBC1C\uC0DD\uC2DC\uD0B5\uB2C8\uB2E4."
     Cooldown: 4
     TargetType: 3
+    PassiveTrigger: 0
+    ConstantEffects: []
     Effects:
     - rid: 7481024980550680652
     - rid: 7481024980550680656
@@ -71,6 +81,8 @@ MonoBehaviour:
       100% \uD655\uB960\uB85C 2\uD134\uAC04 3\uAC1C\uC758 \uCD9C\uD608\uC744 \uBC1C\uC0DD\uC2DC\uD0B5\uB2C8\uB2E4."
     Cooldown: 4
     TargetType: 3
+    PassiveTrigger: 0
+    ConstantEffects: []
     Effects:
     - rid: 7481024980550680652
     - rid: 7481024980550680660

@@ -279,6 +279,15 @@ public class GameManager : MonoBehaviour
         {
             if (settingsUI != null) settingsUI.Toggle();
         }
+
+        // [추가] 전역 클릭 사운드 (마우스 좌클릭)
+        if (UnityEngine.InputSystem.Mouse.current != null && UnityEngine.InputSystem.Mouse.current.leftButton.wasPressedThisFrame)
+        {
+            if (SoundManager.Instance != null)
+            {
+                SoundManager.Instance.PlaySFX(SfxType.Click);
+            }
+        }
     }
 
     private void Awake()

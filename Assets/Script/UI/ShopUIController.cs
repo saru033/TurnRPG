@@ -140,6 +140,11 @@ public class ShopUIController : MonoBehaviour
         shopPanel.gameObject.SetActive(true);
         shopPanel.DOKill();
 
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.PlaySFX(SfxType.Coindrop);
+        }
+
         // 상점이 열려있는 동안에는 자동 대사 중지
         if (dialogPanel != null) dialogPanel.SetActive(false);
         // 아이템 생성 호출

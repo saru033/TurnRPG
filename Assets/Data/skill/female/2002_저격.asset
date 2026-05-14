@@ -20,6 +20,7 @@ MonoBehaviour:
   EquipRestriction: 2
   RequiredAnimationTrigger: 
   UltimateCutsceneClip: {fileID: 7400000, guid: b91fd97393304c248957de51518d31a2, type: 2}
+  UltimateVoiceClip: {fileID: 8300000, guid: 24e93f964ebb3374e8a17f77041af316, type: 3}
   LevelDatas:
   - Description: "\uC801\uC744 \uACF5\uACA9\uD569\uB2C8\uB2E4. \uB300\uC0C1\uC758
       \uBC29\uC5B4\uB825\uC744 50% \uAD00\uD1B5\uD569\uB2C8\uB2E4."

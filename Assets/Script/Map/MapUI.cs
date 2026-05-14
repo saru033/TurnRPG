@@ -350,11 +350,6 @@ public class MapUI : MonoBehaviour
         RestPanel.SetActive(false);
         eventPanel.SetActive(false);
         if (shopPanel != null) shopPanel.SetActive(false);
-        //startHubPanel.SetActive(false);
-        //goalHubPanel.SetActive(false);
-
-
-
 
 
         switch (nodeType)
@@ -374,11 +369,23 @@ public class MapUI : MonoBehaviour
             case NodeType.Shop:
                 if (shopPanel != null) shopPanel.SetActive(true);
                 break;
-            case NodeType.StartHub:
-                break;
-            case NodeType.GoalHub:
-                break;
         }
+
+
+        // [추가] 노드 타입에 따른 BGM 전환 (이미 재생 중이면 중복 실행 방지 로직이 SoundManager에 있음)
+        if (SoundManager.Instance != null)
+        {
+            if (nodeType == NodeType.Normal || nodeType == NodeType.Elite)
+            {
+                SoundManager.Instance.PlayBGM(BgmType.Battle);
+            }
+            else
+            {
+                SoundManager.Instance.PlayBGM(BgmType.MainLobby);
+            }
+        }
+
+
     }
 
 
@@ -414,6 +421,10 @@ public class MapUI : MonoBehaviour
                 rt.pivot = new Vector2(0.5f, 0.5f);
                 rt.anchoredPosition = NodePosition(target);
                 rt.sizeDelta = new Vector2(nodeSize, nodeSize);
+                if (SoundManager.Instance != null)
+                {
+                    SoundManager.Instance.PlaySFX(SfxType.Mark);
+                }
             }
 
             // 스크립트의 duration과 맞춤

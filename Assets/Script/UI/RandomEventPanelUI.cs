@@ -274,6 +274,13 @@ public class RandomEventPanelUI : MonoBehaviour
         txtResultLong.gameObject.SetActive(false);
         txtResult.gameObject.SetActive(false);
 
+
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.PlaySFX(SfxType.reward);
+        }
+
+
         if (infoImg == null) return;
 
         SkillTooltipTrigger tooltip = infoImg.GetComponent<SkillTooltipTrigger>();

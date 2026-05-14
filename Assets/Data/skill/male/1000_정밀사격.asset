@@ -20,11 +20,14 @@ MonoBehaviour:
   EquipRestriction: 1
   RequiredAnimationTrigger: 
   UltimateCutsceneClip: {fileID: 7400000, guid: d42756c89710c204ea6f562bf4df99d6, type: 2}
+  UltimateVoiceClip: {fileID: 8300000, guid: a2e0ae488ed5f9a4987a0bda7c4670d4, type: 3}
   LevelDatas:
   - Description: "\uC801 \uD558\uB098\uC5D0\uAC8C 100% \uD655\uB960\uB85C 2\uD134\uAC04
       \uBC29\uC5B4\uB825 \uAC10\uC18C\uB97C \uBD80\uC5EC \uD55C \uD6C4 \uACF5\uACA9\uD569\uB2C8\uB2E4."
     Cooldown: 5
     TargetType: 2
+    PassiveTrigger: 0
+    ConstantEffects: []
     Effects:
     - rid: 7481024980550680643
     - rid: 7481024980550680644
@@ -33,6 +36,8 @@ MonoBehaviour:
       \uAC10\uC18C\uB97C \uBD80\uC5EC \uD55C \uD6C4 \uACF5\uACA9\uD569\uB2C8\uB2E4."
     Cooldown: 5
     TargetType: 2
+    PassiveTrigger: 0
+    ConstantEffects: []
     Effects:
     - rid: 7481024980550680645
     - rid: 7481024980550680643
@@ -42,6 +47,8 @@ MonoBehaviour:
       \uAC10\uC18C\uB97C \uBD80\uC5EC \uD55C \uD6C4 \uACF5\uACA9\uD569\uB2C8\uB2E4."
     Cooldown: 4
     TargetType: 2
+    PassiveTrigger: 0
+    ConstantEffects: []
     Effects:
     - rid: 7481024980550680645
     - rid: 7481024980550680643
@@ -52,6 +59,8 @@ MonoBehaviour:
       \uC774\uD6C4 \uD589\uB3D9\uAC8C\uC774\uC9C0\uB97C 50% \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
     Cooldown: 4
     TargetType: 2
+    PassiveTrigger: 0
+    ConstantEffects: []
     Effects:
     - rid: 7481024980550680645
     - rid: 7481024980550680643
@@ -64,6 +73,8 @@ MonoBehaviour:
       50% \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
     Cooldown: 4
     TargetType: 2
+    PassiveTrigger: 0
+    ConstantEffects: []
     Effects:
     - rid: 7481024980550680645
     - rid: 7481024980550680643
@@ -77,6 +88,8 @@ MonoBehaviour:
       \uC774 \uACF5\uACA9\uC740 \uBE57\uB098\uAC00\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4."
     Cooldown: 4
     TargetType: 2
+    PassiveTrigger: 0
+    ConstantEffects: []
     Effects:
     - rid: 7481024980550680645
     - rid: 7481024980550680643
@@ -88,6 +101,7 @@ MonoBehaviour:
     - rid: 7481024980550680643
       type: {class: ApplyStatusEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
       data:
+        TargetType: 0
         EffectData: {fileID: 11400000, guid: 8436ce67d453ddc4ea1ca35a854cd5f9, type: 2}
         Duration: 2
         ApplyChance: 1
@@ -96,6 +110,7 @@ MonoBehaviour:
     - rid: 7481024980550680644
       type: {class: DamageEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
       data:
+        TargetType: 0
         DamageMultiplier: 2
         Penetration: 0
         CannotBeCountered: 0
@@ -103,15 +118,18 @@ MonoBehaviour:
     - rid: 7481024980550680645
       type: {class: CleanseEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
       data:
+        TargetType: 0
         TargetCategory: 0
         Count: 2
     - rid: 7481024980550680646
       type: {class: ActionGaugeEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
       data:
+        TargetType: 0
         Amount: -50
     - rid: 7481024980550680647
       type: {class: ApplyStatusEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
       data:
+        TargetType: 0
         EffectData: {fileID: 11400000, guid: 20b6d40904affa04cba00dc599d18e9c, type: 2}
         Duration: 2
         ApplyChance: 1
@@ -120,6 +138,7 @@ MonoBehaviour:
     - rid: 7481024980550680651
       type: {class: DamageEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
       data:
+        TargetType: 0
         DamageMultiplier: 2
         Penetration: 0
         CannotBeCountered: 0

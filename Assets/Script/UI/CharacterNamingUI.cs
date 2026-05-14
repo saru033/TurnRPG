@@ -27,8 +27,8 @@ public class CharacterNamingUI : MonoBehaviour
 
         if (nameInputField != null)
         {
-            // 입력이 바뀔 때 에러 메시지 숨김
-            nameInputField.onValueChanged.AddListener((_) =>
+            // 입력이 바뀔 때 에러 메시지 숨김 및 키보드 효과음
+            nameInputField.onValueChanged.AddListener((val) =>
             {
                 if (errorText != null) errorText.SetActive(false);
             });

@@ -16,16 +16,18 @@ MonoBehaviour:
   SkillName: "\uC57D\uD654\uD0C4"
   SkillIcon: {fileID: -8449276782819457348, guid: e4616979001df2749aec550e6edeb2eb, type: 3}
   Type: 1
-  PassiveTrigger: 0
   SlotIndex: 2
   EquipRestriction: 1
   RequiredAnimationTrigger: 
   UltimateCutsceneClip: {fileID: 7400000, guid: ddabf099aa821ae499878d770c611519, type: 2}
+  UltimateVoiceClip: {fileID: 8300000, guid: 095d2975cc7356a479e8742f24e59887, type: 3}
   LevelDatas:
   - Description: "\uC801 \uC804\uCCB4\uC758 \uAC15\uD654\uD6A8\uACFC\uB97C 2\uAC1C
       \uC81C\uAC70\uD55C \uD6C4 \uD589\uB3D9\uAC8C\uC774\uC9C0\uB97C 20% \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
     Cooldown: 6
     TargetType: 3
+    PassiveTrigger: 0
+    ConstantEffects: []
     Effects:
     - rid: 7481024980550680685
     - rid: 7481024980550680686
@@ -33,6 +35,8 @@ MonoBehaviour:
       \uC81C\uAC70\uD55C \uD6C4 \uD589\uB3D9\uAC8C\uC774\uC9C0\uB97C 20% \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
     Cooldown: 5
     TargetType: 3
+    PassiveTrigger: 0
+    ConstantEffects: []
     Effects:
     - rid: 7481024980550680685
     - rid: 7481024980550680686
@@ -42,6 +46,8 @@ MonoBehaviour:
       20% \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
     Cooldown: 5
     TargetType: 3
+    PassiveTrigger: 0
+    ConstantEffects: []
     Effects:
     - rid: 7481024980550680685
     - rid: 7481024980550680687
@@ -53,6 +59,8 @@ MonoBehaviour:
       \uBC1C\uC0DD\uD569\uB2C8\uB2E4."
     Cooldown: 5
     TargetType: 3
+    PassiveTrigger: 0
+    ConstantEffects: []
     Effects:
     - rid: 7481024980550680685
     - rid: 7481024980550680687
@@ -65,6 +73,8 @@ MonoBehaviour:
       \uC790\uC2E0\uC5D0\uAC8C \uCD94\uAC00\uD134\uC774 \uBC1C\uC0DD\uD569\uB2C8\uB2E4."
     Cooldown: 5
     TargetType: 3
+    PassiveTrigger: 0
+    ConstantEffects: []
     Effects:
     - rid: 7481024980550680685
     - rid: 7481024980550680687
@@ -78,6 +88,8 @@ MonoBehaviour:
       \uBC1C\uC0DD\uD569\uB2C8\uB2E4."
     Cooldown: 5
     TargetType: 3
+    PassiveTrigger: 0
+    ConstantEffects: []
     Effects:
     - rid: 7481024980550680685
     - rid: 7481024980550680687

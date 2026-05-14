@@ -157,6 +157,18 @@ public class SkillExchangeUI : MonoBehaviour
 
         // 4. 결과 반영
         if (LobbyTopUI.Instance != null) LobbyTopUI.Instance.Refresh();
+
+        // [추가] 스킬 교체 보이스 및 SFX
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.PlaySFX(SfxType.Newskill);
+
+            if (targetChar.template != null && targetChar.template.skillChangeVoices.Count > 0)
+            {
+                var voice = targetChar.template.skillChangeVoices[UnityEngine.Random.Range(0, targetChar.template.skillChangeVoices.Count)];
+                SoundManager.Instance.PlayVoice(voice);
+            }
+        }
         
         // 5. 즉시 강화창 열기
         if (refund > 0 && skillUpgradeUI != null)

@@ -61,7 +61,7 @@ public class RestPanelUI : MonoBehaviour
                 rt.DOAnchorPos(_origSelectPos, 0.4f).SetEase(Ease.OutCubic);
             }
         }
-        
+
         if (nextBtn != null) nextBtn.SetActive(false);
     }
 

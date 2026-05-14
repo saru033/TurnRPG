@@ -140,6 +140,12 @@ public class InitialGiftUI : MonoBehaviour
                     }
                 }
 
+                if (SoundManager.Instance != null)
+                {
+                    SoundManager.Instance.PlaySFX(SfxType.reward);
+                }
+
+
                 resultPanel.SetActive(true);
                 var cg = resultPanel.GetComponent<CanvasGroup>();
                 if (cg == null) cg = resultPanel.AddComponent<CanvasGroup>();

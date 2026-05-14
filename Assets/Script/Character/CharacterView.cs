@@ -37,6 +37,7 @@ public class CharacterView : MonoBehaviour, IPointerClickHandler
     public Color enemyNumColor = Color.red;
 
     BattleCharacter _character;
+    public BattleCharacter character => _character;
     CanvasGroup _canvasGroup; // [추가] 전체 투명도 관리를 위한 CanvasGroup
     Dictionary<StatusEffect, GameObject> _buffIcons = new Dictionary<StatusEffect, GameObject>();
     Dictionary<StatusEffect, GameObject> _vfxInstances = new Dictionary<StatusEffect, GameObject>(); // [추가] VFX 인스턴스 관리
@@ -439,5 +440,14 @@ public class CharacterView : MonoBehaviour, IPointerClickHandler
 
         // 1초 뒤에 스스로 파괴 (유저 요청: 다음 턴에 다시 아래에서부터 쌓이게)
         Destroy(notice, 1.0f);
+    }
+
+    /// <summary>
+    /// 준비 대사 출력 플래그를 초기화합니다.
+    /// </summary>
+    public void ResetReadyVoice()
+    {
+        var receiver = GetComponentInChildren<TurnRPG.Battle.AnimationEventReceiver>();
+        if (receiver != null) receiver.ResetReadyVoice();
     }
 }
