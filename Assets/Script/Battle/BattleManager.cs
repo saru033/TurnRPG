@@ -636,12 +636,22 @@ public class BattleManager : MonoBehaviour
 
             if (isTargetingEnemy)
             {
-                // 적군 타겟인 경우 아군을 어둡게
-                bc.View.SetDim(bc.IsPlayer);
+                if (bc.IsPlayer)
+                {
+                    // 적군 타겟인 경우 아군은 무조건 어둡게
+                    bc.View.SetDim(true);
+                }
+                else
+                {
+                    // 적군 타겟인 경우: 은신 등 타겟팅 가능 여부에 따라 Dim 결정
+                    // (은신 중이라도 모든 적이 은신이면 CanBeTargetedBy가 true를 반환함)
+                    bool canTarget = bc.CanBeTargetedBy(currentActor, allCharacters);
+                    bc.View.SetDim(!canTarget);
+                }
             }
             else
             {
-                // 아군 타겟인 경우 적군을 어둡게
+                // 아군 타겟인 경우 적군은 무조건 어둡게, 아군은 밝게
                 bc.View.SetDim(!bc.IsPlayer);
             }
         }

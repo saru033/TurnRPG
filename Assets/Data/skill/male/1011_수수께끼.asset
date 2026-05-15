@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7166cb7f5dfe6a84cbbfd47fcd0f00ad, type: 3}
+  m_Name: "1011_\uC218\uC218\uAED8\uB07C"
+  m_EditorClassIdentifier: Assembly-CSharp::TurnRPG.SkillSystem.SkillData
+  SkillID: 1011
+  SkillName: "\uC218\uC218\uAED8\uB07C"
+  SkillIcon: {fileID: 6614577133638725973, guid: dde252b2ddaf9ef4e89efa4611403597, type: 3}
+  Type: 1
+  SlotIndex: 1
+  EquipRestriction: 1
+  RequiredAnimationTrigger: skill
+  UltimateCutsceneClip: {fileID: 0}
+  UltimateVoiceClip: {fileID: 0}
+  LevelDatas:
+  - Description: "\uC544\uBB34 \uD6A8\uACFC\uB3C4 \uC5C6\uC2B5\uB2C8\uB2E4.. \uAC15\uD654\uD574
+      \uBD10\uC57C \uD560\uAC83 \uAC19\uC2B5\uB2C8\uB2E4."
+    Cooldown: 0
+    TargetType: 4
+    PassiveTrigger: 0
+    ConstantEffects: []
+    Effects: []
+  - Description: "\uC544\uC9C1 \uC544\uBB34 \uD6A8\uACFC\uB3C4 \uC5C6\uC2B5\uB2C8\uB2E4..
+      \uAC15\uD654\uD574 \uBD10\uC57C \uD560\uAC83 \uAC19\uC2B5\uB2C8\uB2E4."
+    Cooldown: 0
+    TargetType: 4
+    PassiveTrigger: 0
+    ConstantEffects: []
+    Effects: []
+  - Description: "\uC544\uC9C1 \uC544\uBB34 \uD6A8\uACFC\uB3C4 \uC5C6\uC2B5\uB2C8\uB2E4..
+      \uC880 \uB354 \uAC15\uD654\uD574 \uBD10\uC57C \uD560\uAC83 \uAC19\uC2B5\uB2C8\uB2E4."
+    Cooldown: 0
+    TargetType: 4
+    PassiveTrigger: 0
+    ConstantEffects: []
+    Effects: []
+  - Description: "\uC544\uAD70 \uC804\uCCB4\uC5D0\uAC8C \uCD94\uAC00\uD134\uC744
+      \uBC1C\uC0DD\uC2DC\uD0B5\uB2C8\uB2E4."
+    Cooldown: 5
+    TargetType: 5
+    PassiveTrigger: 0
+    ConstantEffects: []
+    Effects:
+    - rid: 8427518387480690756
+  - Description: "\uC544\uAD70 \uC804\uCCB4\uC758 \uC2A4\uD0AC \uCFE8\uD0C0\uC784\uC744
+      2\uD134 \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
+    Cooldown: 6
+    TargetType: 5
+    PassiveTrigger: 0
+    ConstantEffects: []
+    Effects:
+    - rid: 8427518387480690757
+  references:
+    version: 2
+    RefIds:
+    - rid: 8427518387480690756
+      type: {class: ExtraTurnEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 2
+    - rid: 8427518387480690757
+      type: {class: CooldownEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 2
+        TurnAmount: -2

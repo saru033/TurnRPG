@@ -25457,6 +25457,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ae6b97f8f30c9c348a19af11efec64bf, type: 2}
   - {fileID: 11400000, guid: 30324511b6bb0c7458b00f759c444751, type: 2}
   - {fileID: 11400000, guid: 2e01a00cfdababd4aaeb5d6099cffe4e, type: 2}
+  - {fileID: 11400000, guid: dfbbefc6751486748893c984e574c1fe, type: 2}
+  - {fileID: 11400000, guid: 362ab85834e5cae40ad35c260598dccc, type: 2}
+  - {fileID: 11400000, guid: a1c09db1b0087e74da1bacc1671135bc, type: 2}
 --- !u!1 &947891964
 GameObject:
   m_ObjectHideFlags: 0
@@ -26273,6 +26276,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ae6b97f8f30c9c348a19af11efec64bf, type: 2}
   - {fileID: 11400000, guid: 30324511b6bb0c7458b00f759c444751, type: 2}
   - {fileID: 11400000, guid: 2e01a00cfdababd4aaeb5d6099cffe4e, type: 2}
+  - {fileID: 11400000, guid: dfbbefc6751486748893c984e574c1fe, type: 2}
+  - {fileID: 11400000, guid: 362ab85834e5cae40ad35c260598dccc, type: 2}
+  - {fileID: 11400000, guid: a1c09db1b0087e74da1bacc1671135bc, type: 2}
   skillPrice: 300
   allItemsPool:
   - {fileID: 11400000, guid: 35b31d570c2c0804ca1ccdf79160ed90, type: 2}
