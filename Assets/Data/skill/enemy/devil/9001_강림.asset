@@ -18,7 +18,7 @@ MonoBehaviour:
   Type: 2
   SlotIndex: 1
   EquipRestriction: 8
-  RequiredAnimationTrigger: skill
+  RequiredAnimationTrigger: 
   UltimateCutsceneClip: {fileID: 0}
   UltimateVoiceClip: {fileID: 0}
   LevelDatas:

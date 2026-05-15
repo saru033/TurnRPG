@@ -25,7 +25,10 @@ MonoBehaviour:
   - Description: "\uC801 \uD55C\uBA85\uC744 \uACF5\uACA9\uD569\uB2C8\uB2E4. \uC774\uD6C4
       \uC801 \uC804\uCCB4\uC758 \uD589\uB3D9 \uAC8C\uC774\uC9C0\uB97C 10% \uAC10\uC18C
       \uC2DC\uD0A4\uACE0 \uC544\uAD70 \uC804\uCCB4\uC758 \uD589\uB3D9 \uAC8C\uC774\uC9C0\uB97C
-      10% \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
+      10% \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4. \uC790\uC2E0\uC758 \uACF5\uACA9\uB825\uACFC
+      , \uC18D\uB3C4\uB97C 1% \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4. \uC790\uC2E0\uC758
+      \uC0DD\uBA85\uB825\uC774 30% \uC774\uD558\uC600\uB2E4\uBA74 1\uD134\uAC04 \uC740\uC2E0\uC744
+      \uBC1C\uC0DD \uC2DC\uD0B5\uB2C8\uB2E4."
     Cooldown: 0
     TargetType: 3
     PassiveTrigger: 0
@@ -34,6 +37,10 @@ MonoBehaviour:
     - rid: 8427518313609560138
     - rid: 8427518313609560137
     - rid: 8427518317518389249
+    - rid: 8427518382511489028
+    - rid: 8427518382511489029
+    - rid: 8427518382511489099
+    - rid: 8427518382511489100
   references:
     version: 2
     RefIds:
@@ -55,3 +62,30 @@ MonoBehaviour:
       data:
         TargetType: 2
         Amount: 10
+    - rid: 8427518382511489028
+      type: {class: PassiveStatBoostEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 1
+        TargetStat: atk
+        PercentAmount: 0.01
+    - rid: 8427518382511489029
+      type: {class: PassiveStatBoostEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 1
+        TargetStat: spd
+        PercentAmount: 0.01
+    - rid: 8427518382511489099
+      type: {class: CheckCurrentHpConditionEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 1
+        ThresholdPercent: 0.3
+        IsBelow: 1
+    - rid: 8427518382511489100
+      type: {class: ApplyStatusEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 1
+        EffectData: {fileID: 11400000, guid: 784c459373dd0a54b8846d77a80c9586, type: 2}
+        Duration: 1
+        ApplyChance: 1
+        StatScaleType: 0
+        StatMultiplier: 0

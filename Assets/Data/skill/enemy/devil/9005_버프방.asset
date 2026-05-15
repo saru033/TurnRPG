@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "9005_\uBC84\uD504\uBC29"
   m_EditorClassIdentifier: Assembly-CSharp::TurnRPG.SkillSystem.SkillData
   SkillID: 9004
-  SkillName: "\uBC84\uD504"
+  SkillName: "\uD569\uC8FC"
   SkillIcon: {fileID: -8610483410114405949, guid: dcf873e6ebce33f488f291af9d60ceb3, type: 3}
   Type: 1
   SlotIndex: 1

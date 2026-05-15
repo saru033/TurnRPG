@@ -15,7 +15,7 @@ MonoBehaviour:
   SkillID: 10000
   SkillName: "\uD3F4\uD130\uAC00\uC774\uC2A4\uD2B8"
   SkillIcon: {fileID: 3367362255838882418, guid: 537a608492d04a1498d210f400fc62db, type: 3}
-  Type: 1
+  Type: 0
   SlotIndex: 2
   EquipRestriction: 8
   RequiredAnimationTrigger: 

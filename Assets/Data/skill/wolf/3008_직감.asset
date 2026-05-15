@@ -25,7 +25,7 @@ MonoBehaviour:
   - Description: "\uC801 \uB204\uAD70\uAC00\uAC00 \uACF5\uACA9\uC774 \uC544\uB2CC
       \uC2A4\uD0AC\uC744 \uC0AC\uC6A9\uD588\uB2E4\uBA74 \uC790\uC2E0\uC758 \uACF5\uACA9\uB825\uACFC
       \uD611\uACF5 \uD655\uB960\uC744 10% \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
-    Cooldown: 1
+    Cooldown: 2
     TargetType: 0
     PassiveTrigger: 128
     ConstantEffects: []
@@ -36,7 +36,7 @@ MonoBehaviour:
       \uC2A4\uD0AC\uC744 \uC0AC\uC6A9\uD588\uB2E4\uBA74 \uC790\uC2E0\uC758 \uACF5\uACA9\uB825\uACFC
       \uD611\uACF5 \uD655\uB960\uC744 10% \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4. \uC774\uD6C4
       \uC790\uC2E0\uC758 \uD589\uB3D9\uAC8C\uC774\uC9C0\uB97C 50% \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
-    Cooldown: 1
+    Cooldown: 2
     TargetType: 0
     PassiveTrigger: 128
     ConstantEffects: []
@@ -47,7 +47,7 @@ MonoBehaviour:
   - Description: "\uC801 \uB204\uAD70\uAC00\uAC00 \uACF5\uACA9\uC774 \uC544\uB2CC
       \uC2A4\uD0AC\uC744 \uC0AC\uC6A9\uD588\uB2E4\uBA74 \uC790\uC2E0\uC758 \uACF5\uACA9\uB825\uACFC
       \uD611\uACF5 \uD655\uB960\uC744 10% \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4. \uC774\uD6C4
-      \uC790\uC2E0\uC5D0\uAC8C \uCD94\uAC00\uD134\uC744 \uBC1C\uC0DD \uC2DC\uD0B5\uB2C8\uB2E4."
+      \uC790\uC2E0\uC758 \uD589\uB3D9\uAC8C\uC774\uC9C0\uB97C 50% \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
     Cooldown: 1
     TargetType: 0
     PassiveTrigger: 128
@@ -55,11 +55,11 @@ MonoBehaviour:
     Effects:
     - rid: 8427518363527282760
     - rid: 8427518363527282761
-    - rid: 8427518363527282759
+    - rid: 8427518382511489030
   - Description: "\uC801 \uB204\uAD70\uAC00\uAC00 \uACF5\uACA9\uC774 \uC544\uB2CC
       \uC2A4\uD0AC\uC744 \uC0AC\uC6A9\uD588\uB2E4\uBA74 \uC790\uC2E0\uC758 \uACF5\uACA9\uB825\uACFC
       \uD611\uACF5 \uD655\uB960\uC744 15% \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4. \uC774\uD6C4
-      \uC790\uC2E0\uC5D0\uAC8C \uCD94\uAC00\uD134\uC744 \uBC1C\uC0DD \uC2DC\uD0B5\uB2C8\uB2E4."
+      \uC790\uC2E0\uC758 \uD589\uB3D9\uAC8C\uC774\uC9C0\uB97C 50% \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
     Cooldown: 1
     TargetType: 0
     PassiveTrigger: 128
@@ -67,12 +67,11 @@ MonoBehaviour:
     Effects:
     - rid: 8427518363527282762
     - rid: 8427518363527282763
-    - rid: 8427518363527282759
+    - rid: 8427518382511489031
   - Description: "\uC801 \uB204\uAD70\uAC00\uAC00 \uACF5\uACA9\uC774 \uC544\uB2CC
       \uC2A4\uD0AC\uC744 \uC0AC\uC6A9\uD588\uB2E4\uBA74 \uC790\uC2E0\uC758 \uACF5\uACA9\uB825\uACFC
       \uD611\uACF5 \uD655\uB960, \uC18D\uB3C4\uB97C 10% \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4.
-      \uC774\uD6C4 \uC790\uC2E0\uC5D0\uAC8C \uCD94\uAC00\uD134\uC744 \uBC1C\uC0DD
-      \uC2DC\uD0B5\uB2C8\uB2E4."
+      \uC774\uD6C4 \uC790\uC2E0\uC758 \uD589\uB3D9\uAC8C\uC774\uC9C0\uB97C 50% \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
     Cooldown: 1
     TargetType: 0
     PassiveTrigger: 128
@@ -81,7 +80,7 @@ MonoBehaviour:
     - rid: 8427518363527282764
     - rid: 8427518363527282765
     - rid: 8427518363527282766
-    - rid: 8427518363527282759
+    - rid: 8427518382511489032
   references:
     version: 2
     RefIds:
@@ -114,10 +113,6 @@ MonoBehaviour:
         TargetType: 1
         TargetStat: dual
         PercentAmount: 0.1
-    - rid: 8427518363527282759
-      type: {class: ExtraTurnEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
-      data:
-        TargetType: 1
     - rid: 8427518363527282760
       type: {class: PassiveStatBoostEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
       data:
@@ -158,5 +153,20 @@ MonoBehaviour:
       type: {class: PassiveStatBoostEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
       data:
         TargetType: 1
-        TargetStat: Def
+        TargetStat: dual
         PercentAmount: 0.1
+    - rid: 8427518382511489030
+      type: {class: ActionGaugeEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 1
+        Amount: 50
+    - rid: 8427518382511489031
+      type: {class: ActionGaugeEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 1
+        Amount: 50
+    - rid: 8427518382511489032
+      type: {class: ActionGaugeEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 1
+        Amount: 50

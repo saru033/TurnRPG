@@ -26,7 +26,7 @@ MonoBehaviour:
       \uC218\uBA74\uC744 \uBC1C\uC0DD\uC2DC\uD0B5\uB2C8\uB2E4. \uC774\uD6C4 \uC8FD\uC740
       \uBAA8\uB4E0 \uC544\uAD70\uC744 100% \uC0DD\uBA85\uB825\uC73C\uB85C \uBD80\uD65C\uC2DC\uD0A8
       \uD6C4 \uD589\uB3D9\uAC8C\uC774\uC9C0\uB97C 0%\uB85C \uB418\uB3CC\uB9BD\uB2C8\uB2E4."
-    Cooldown: 3
+    Cooldown: 2
     TargetType: 3
     PassiveTrigger: 0
     ConstantEffects: []

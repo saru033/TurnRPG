@@ -100,10 +100,10 @@ public class RestPanelUI : MonoBehaviour
     {
         if (GameManager.Instance != null)
         {
-            // 강화석 2개 지급
-            GameManager.Instance.skillup += 2;
+            // 강화석 1개 지급
+            GameManager.Instance.skillup += 1;
             if (LobbyTopUI.Instance != null) LobbyTopUI.Instance.Refresh();
-            Debug.Log("[RestPanel] 스킬 강화석 2개 획득!");
+            Debug.Log("[RestPanel] 스킬 강화석 1개 획득!");
         }
 
         // 스킬 강화창 열기

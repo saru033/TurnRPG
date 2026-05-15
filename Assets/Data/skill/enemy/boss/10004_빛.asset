@@ -16,7 +16,7 @@ MonoBehaviour:
   SkillName: "\uBE5B"
   SkillIcon: {fileID: -7865347516974324125, guid: 4cf25bec4aac29345987dc946e94db91, type: 3}
   Type: 1
-  SlotIndex: 1
+  SlotIndex: 2
   EquipRestriction: 8
   RequiredAnimationTrigger: skill
   UltimateCutsceneClip: {fileID: 0}

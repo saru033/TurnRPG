@@ -23,47 +23,37 @@ MonoBehaviour:
   UltimateVoiceClip: {fileID: 0}
   LevelDatas:
   - Description: "\uC790\uC2E0\uC774 \uAE30\uC808 \uBC0F \uC218\uBA74\uC5D0 \uBA74\uC5ED\uC774
-      \uB429\uB2C8\uB2E4. \uC804\uD22C \uC2DC\uC791 \uC2DC, \uC790\uC2E0\uC5D0\uAC8C
-      3\uD134\uAC04 \uD68C\uD53C \uC99D\uAC00\uB97C \uBC1C\uC0DD\uC2DC\uD0B5\uB2C8\uB2E4.
-      \uC774\uD6C4 \uC790\uC2E0\uC758 \uD589\uB3D9\uAC8C\uC774\uC9C0\uB97C 100% \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4.\n\uD53C\uACA9
-      \uD6C4 \uD68C\uD53C\uD588\uB2E4\uBA74 \uC790\uC2E0\uC758 \uC57D\uD654\uD6A8\uACFC\uB97C
+      \uB429\uB2C8\uB2E4. \uC804\uD22C \uC2DC\uC791 \uC2DC \uC790\uC790\uC2E0\uC758
+      \uD589\uB3D9\uAC8C\uC774\uC9C0\uB97C 100% \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4.
+      \uD53C\uACA9 \uD6C4 \uD68C\uD53C\uD588\uB2E4\uBA74 \uC790\uC2E0\uC758 \uC57D\uD654\uD6A8\uACFC\uB97C
       \uBAA8\uB450 \uD574\uC81C\uD558\uACE0 \uC790\uC2E0\uC5D0\uAC8C 2\uD134\uAC04
       \uACF5\uACA9\uB825 \uC99D\uAC00(\uB300) , \uCE58\uBA85 \uD655\uB960 \uC99D\uAC00
       , \uCE58\uBA85 \uD53C\uD574 \uC99D\uAC00\uB97C \uBC1C\uC0DD\uC2DC\uD0A8 \uD6C4
-      \uC790\uC2E0\uC758 \uD589\uB3D9\uAC8C\uC774\uC9C0\uB97C 100% \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
+      \uC790\uC2E0\uC758 \uCFE8\uD0C0\uC784\uC744 \uCD08\uAE30\uD654 \uC2DC\uD0A8
+      \uD6C4 \uCD94\uAC00\uD134\uC774 \uBC1C\uC0DD\uD569\uB2C8\uB2E4."
     Cooldown: 0
     TargetType: 0
     PassiveTrigger: 256
     ConstantEffects:
     - rid: 8427518317518389252
     - rid: 8427518317518389253
-    - rid: 8427518313609560145
-    - rid: 8427518313609560133
+    - rid: 8427518382511489102
     Effects:
     - rid: 8427518313609560135
     - rid: 8427518313609560142
     - rid: 8427518313609560143
     - rid: 8427518313609560144
-    - rid: 8427518313609560136
+    - rid: 8427518382511489024
+    - rid: 8427518382511489025
   references:
     version: 2
     RefIds:
-    - rid: 8427518313609560133
-      type: {class: ActionGaugeEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
-      data:
-        TargetType: 1
-        Amount: 100
     - rid: 8427518313609560135
       type: {class: CleanseEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
       data:
         TargetType: 1
         TargetCategory: 1
         Count: 10
-    - rid: 8427518313609560136
-      type: {class: ActionGaugeEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
-      data:
-        TargetType: 1
-        Amount: 100
     - rid: 8427518313609560142
       type: {class: ApplyStatusEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
       data:
@@ -91,15 +81,6 @@ MonoBehaviour:
         ApplyChance: 1
         StatScaleType: 0
         StatMultiplier: 0
-    - rid: 8427518313609560145
-      type: {class: ApplyStatusEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
-      data:
-        TargetType: 1
-        EffectData: {fileID: 11400000, guid: 116e8314f1bd4054886ac8dbbdeb053c, type: 2}
-        Duration: 3
-        ApplyChance: 1
-        StatScaleType: 0
-        StatMultiplier: 0
     - rid: 8427518317518389252
       type: {class: PassiveImmunityEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
       data:
@@ -110,3 +91,17 @@ MonoBehaviour:
       data:
         TargetType: 1
         ImmuneType: 23
+    - rid: 8427518382511489024
+      type: {class: CooldownEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 1
+        TurnAmount: -10
+    - rid: 8427518382511489025
+      type: {class: ExtraTurnEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 1
+    - rid: 8427518382511489102
+      type: {class: ActionGaugeEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 1
+        Amount: 100

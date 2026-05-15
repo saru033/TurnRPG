@@ -306,7 +306,7 @@ public class BattleManager : MonoBehaviour
             if (isSkipTurn)
             {
                 Debug.Log($"{currentActor.Name} : 기절/수면 상태로 인해 턴을 스킵합니다.");
-                
+
                 // [추가] 행동 불가 알림 표시
                 if (currentActor.View != null) currentActor.View.ShowPassiveNotice("행동불가");
 
@@ -849,9 +849,6 @@ public class BattleManager : MonoBehaviour
     {
         if (!attacker.IsAlive || !target.IsAlive) yield break;
 
-        // [추가] 반격 문구 표시
-        if (attacker.View != null) attacker.View.ShowPassiveNotice("반격");
-
         Debug.Log($"[Battle] {attacker.Name} → {target.Name} 반격 시작");
 
         var skillData = attacker.ActiveSkills.Count > 0 ? attacker.ActiveSkills[0] : null;
@@ -865,7 +862,7 @@ public class BattleManager : MonoBehaviour
         // --- 애니메이션 재생 및 타격 시점 대기 ---
         if (!string.IsNullOrEmpty(skillData.RequiredAnimationTrigger) && attacker.Animator != null)
         {
-            yield return new WaitForSeconds(1.0f);
+            yield return new WaitForSeconds(0.4f);
 
             // idle 상태까지 대기
             float idleTimeout = 3.0f;
@@ -882,9 +879,12 @@ public class BattleManager : MonoBehaviour
             StartCoroutine(SetCameraZoom(attacker.IsPlayer, true));
 
 
-            // 반격 이펙트 출력
+            // 반격 이펙트 및 문구 출력
             if (BattleVFXManager.Instance != null)
+            {
                 BattleVFXManager.Instance.SpawnVFX(VFXType.extraMove, attacker.View.RetHitbox());
+                if (attacker.View != null) attacker.View.ShowPassiveNotice("반격");
+            }
 
 
             _waitingForImpact = true;
@@ -971,9 +971,6 @@ public class BattleManager : MonoBehaviour
     {
         if (!attacker.IsAlive || !target.IsAlive) yield break;
 
-        // [추가] 협공 문구 표시
-        if (attacker.View != null) attacker.View.ShowPassiveNotice("협공");
-
         Debug.Log($"[Battle] {attacker.Name} → {target.Name} 협공 시작");
 
         var skillData = attacker.ActiveSkills.Count > 0 ? attacker.ActiveSkills[0] : null;
@@ -987,7 +984,7 @@ public class BattleManager : MonoBehaviour
         // --- 애니메이션 재생 및 타격 시점 대기 ---
         if (!string.IsNullOrEmpty(skillData.RequiredAnimationTrigger) && attacker.Animator != null)
         {
-            yield return new WaitForSeconds(1.0f);
+            yield return new WaitForSeconds(0.4f);
 
             // idle 상태까지 대기
             float idleTimeout = 3.0f;
@@ -1004,9 +1001,12 @@ public class BattleManager : MonoBehaviour
             StartCoroutine(SetCameraZoom(attacker.IsPlayer, true));
 
 
-            // 반격 이펙트 출력
+            // 반격 이펙트 및 문구 출력
             if (BattleVFXManager.Instance != null)
+            {
                 BattleVFXManager.Instance.SpawnVFX(VFXType.extraMove, attacker.View.RetHitbox());
+                if (attacker.View != null) attacker.View.ShowPassiveNotice("협공");
+            }
 
 
             _waitingForImpact = true;
