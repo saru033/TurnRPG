@@ -15,8 +15,8 @@ MonoBehaviour:
   EffectType: 21
   Category: 1
   EffectName: "\uC18D\uB3C4 \uAC10\uC18C"
-  Description: "\uC18D\uB3C4\uB97C 50% \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
+  Description: "\uC18D\uB3C4\uB97C 30% \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
   Icon: {fileID: -1239193172733740905, guid: 6d7cbc1b559e68744983c25a91071209, type: 3}
   VFXPrefab: {fileID: 0}
   KeepVFXAttached: 0
-  PrimaryValue: 0.5
+  PrimaryValue: 0.3

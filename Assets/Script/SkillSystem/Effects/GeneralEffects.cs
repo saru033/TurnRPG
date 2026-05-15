@@ -194,6 +194,9 @@ namespace TurnRPG.SkillSystem.Effects
                 {
                     t.ActionGaugeSystem.InsertFront(t);
 
+                    // [추가] 추가 턴 획득 알림 표시
+                    if (t.View != null) t.View.ShowPassiveNotice("추가 턴");
+
                     // 시각 이펙트(VFX) 처리
                     if (BattleVFXManager.Instance != null)
                         BattleVFXManager.Instance.SpawnVFX(VFXType.ExtraTurn, t.View.RetHitbox());
@@ -248,9 +251,9 @@ namespace TurnRPG.SkillSystem.Effects
                             : new System.Collections.Generic.List<BattleCharacter>();
 
             // '나를 제외한', '생존해있는', '같은 편', '행동 불가(기절/수면)가 아닌' 아군을 싹 긁어모읍니다.
-            var eligibleAllies = allChars.Where(c => 
-                c.IsAlive && 
-                c.IsPlayer == caster.IsPlayer && 
+            var eligibleAllies = allChars.Where(c =>
+                c.IsAlive &&
+                c.IsPlayer == caster.IsPlayer &&
                 c != caster &&
                 !c.HasStatusEffect(StatusEffectType.Stun) &&
                 !c.HasStatusEffect(StatusEffectType.Sleep)

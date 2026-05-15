@@ -61,6 +61,16 @@ public class InitialCharacterPreviewUI : MonoBehaviour
     {
         _onConfirm = onConfirm;
 
+        if (SoundManager.Instance != null)
+        {
+            if (state != null && state.template != null && state.template.greeting.Count > 0)
+            {
+                // 여러 개일 경우 대비해 랜덤 재생
+                var clip = state.template.greeting[UnityEngine.Random.Range(0, state.template.greeting.Count)];
+                SoundManager.Instance.PlayVoice(clip);
+            }
+        }
+
         // 데이터 반영
         UpdateUI(state);
 

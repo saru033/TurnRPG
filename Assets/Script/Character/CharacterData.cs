@@ -55,4 +55,5 @@ public class CharacterData : ScriptableObject
     public System.Collections.Generic.List<AudioClip> skillUpgradeVoices;
     public System.Collections.Generic.List<AudioClip> skillChangeVoices; // 스킬 변경
     public System.Collections.Generic.List<AudioClip> call; // 선택 (호출) 시 대사
+    public System.Collections.Generic.List<AudioClip> greeting;
 }

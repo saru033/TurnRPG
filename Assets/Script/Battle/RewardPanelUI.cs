@@ -11,7 +11,7 @@ public class RewardPanelUI : MonoBehaviour
 {
     [Header("Resource Reward Slots (Dynamic)")]
     public GameObject[] resourceSlots; // 3개의 슬롯 (각 슬롯은 Button이며, 자식으로 Image와 Text를 가짐)
-    
+
     [Header("Resource Icons")]
     public Sprite goldIcon;
     public Sprite skillUpIcon;
@@ -70,7 +70,7 @@ public class RewardPanelUI : MonoBehaviour
             {
                 resourceSlots[i].SetActive(true);
                 var data = rewards[i];
-                
+
                 // 자식 오브젝트에서 컴포넌트 자동 찾기
                 var amountText = resourceSlots[i].GetComponentInChildren<TextMeshProUGUI>();
                 var btn = resourceSlots[i].GetComponent<Button>();
@@ -153,7 +153,7 @@ public class RewardPanelUI : MonoBehaviour
         Debug.Log($"[RewardPanel] Resource Clicked: {data.Type}, New Count: {(data.Type == ResourceType.Reroll ? GameManager.Instance.rerollItemCount : GameManager.Instance.highRerollItemCount)}");
 
         if (LobbyTopUI.Instance != null) LobbyTopUI.Instance.Refresh();
-        
+
         resourceSlots[slotIdx].SetActive(false);
         resourceWarningPanel.SetActive(false);
     }

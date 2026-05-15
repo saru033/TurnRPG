@@ -168,6 +168,33 @@ public class CharacterView : MonoBehaviour, IPointerClickHandler
         }
     }
 
+    public void HandleDamageTaken(BattleCharacter target, float damage, bool isCrit)
+    {
+        if (target == _character)
+        {
+            // 피격 시 뷰 연출 (필요 시 추가)
+        }
+    }
+
+    /// <summary>
+    /// [신규] 캐릭터 일러스트를 어둡게 하거나 원래대로 되돌립니다. (타겟팅 연출용)
+    /// </summary>
+    public void SetDim(bool isDim)
+    {
+        if (illustration == null) return;
+
+        if (isDim)
+        {
+            // 현재 색상(색깔놀이 대응)의 절반 수치로 어둡게 변경
+            illustration.color = new Color(_originalColor.r * 0.4f, _originalColor.g * 0.4f, _originalColor.b * 0.4f, _originalColor.a);
+        }
+        else
+        {
+            // 저장된 원래 색상으로 복구
+            illustration.color = _originalColor;
+        }
+    }
+
     private void HandleStatusEffectChanged(BattleCharacter target, StatusEffect effect)
     {
         if (target != _character) return;
@@ -465,9 +492,9 @@ public class CharacterView : MonoBehaviour, IPointerClickHandler
     }
 
     /// <summary>
-    /// [신규] 패시브 발동 시 화면에 패시브 이름을 띄웁니다.
+    /// [신규] 패시브 발동 혹은 효과 부여 시 화면에 이름과 아이콘을 띄웁니다.
     /// </summary>
-    public void ShowPassiveNotice(string passiveName)
+    public void ShowPassiveNotice(string passiveName, Sprite icon = null)
     {
         if (passiveNoticeContainer == null || passiveNoticePrefab == null) return;
 
@@ -475,15 +502,37 @@ public class CharacterView : MonoBehaviour, IPointerClickHandler
         passiveNoticeContainer.SetAsLastSibling();
 
         GameObject notice = Instantiate(passiveNoticePrefab, passiveNoticeContainer);
-        notice.transform.SetAsLastSibling(); // [추가] 가장 최근 문구가 가장 아래에 위치하도록 (Layout Group 설정에 따라 노출 순서 결정)
+        notice.transform.SetAsLastSibling(); 
 
-        // [수정] 자식 오브젝트인 passiveText를 찾아 문구 입력 (배경 이미지가 있는 프리팹 대응)
+        // 텍스트 설정
         var tmp = notice.transform.Find("passiveText")?.GetComponent<TextMeshProUGUI>();
-        if (tmp == null) tmp = notice.GetComponentInChildren<TextMeshProUGUI>(); // Fallback
-
+        if (tmp == null) tmp = notice.GetComponentInChildren<TextMeshProUGUI>(); 
         if (tmp != null) tmp.text = passiveName;
 
-        if (tmp != null) tmp.text = passiveName;
+        // [추가] 아이콘 설정
+        var iconImg = notice.transform.Find("icon")?.GetComponent<UnityEngine.UI.Image>();
+        if (iconImg == null)
+        {
+             // 자식 중에 Image가 있다면 그게 아이콘일 가능성이 높음 (단, 배경 이미지는 제외해야 함)
+             var images = notice.GetComponentsInChildren<UnityEngine.UI.Image>();
+             foreach(var img in images)
+             {
+                 if(img.gameObject.name.ToLower().Contains("icon")) { iconImg = img; break; }
+             }
+        }
+
+        if (iconImg != null)
+        {
+            if (icon != null)
+            {
+                iconImg.gameObject.SetActive(true);
+                iconImg.sprite = icon;
+            }
+            else
+            {
+                iconImg.gameObject.SetActive(false);
+            }
+        }
 
         // [추가] LayoutGroup의 간섭을 피하기 위해 내부 콘텐츠만 애니메이션
         // 1. 공오브젝트(VisualRoot)를 생성하여 기존 프리팹의 모든 자식을 그 아래로 이동

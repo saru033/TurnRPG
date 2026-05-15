@@ -175,8 +175,10 @@ public class RandomEventPanelUI : MonoBehaviour
                 {
                     if (charState != null)
                     {
-                        float healAmount = charState.template.MaxHp * choice.value;
-                        charState.currentHp = Mathf.Min(charState.currentHp + healAmount, charState.template.MaxHp);
+                        // [수정] 장비 등이 반영된 최종 최대 체력(TotalMaxHp)을 기준으로 계산 및 제한
+                        float maxHp = charState.TotalMaxHp;
+                        float healAmount = maxHp * choice.value;
+                        charState.currentHp = Mathf.Min(charState.currentHp + healAmount, maxHp);
                     }
                 }
                 resultMsg = $"파티 전원의 체력이 {choice.value * 100}% 회복 되었어요.";

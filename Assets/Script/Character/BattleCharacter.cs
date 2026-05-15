@@ -532,6 +532,12 @@ public class BattleCharacter
             AppliedBuffsThisTurn.Add(newEff); // 생존 보장 등록
             BattleEventManager.TriggerStatusEffectChanged(this, newEff);
             BattleEventManager.TriggerStatusEffectApplied(this, newEff); // 신규 부여 시점 전송
+
+            // [추가] 상태 이상/버프 부여 시 시각적 알림 (이름 + 아이콘)
+            if (View != null && data != null)
+            {
+                View.ShowPassiveNotice(data.EffectName, data.Icon);
+            }
         }
 
         // 스탯 변동 버프일 수 있으므로 재산정

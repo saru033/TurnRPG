@@ -26,7 +26,7 @@ MonoBehaviour:
       \uC81C\uAC70\uD55C \uD6C4 75% \uD655\uB960\uB85C 1\uD134\uAC04 \uC218\uBA74\uC744
       \uBD80\uC5EC\uD569\uB2C8\uB2E4."
     Cooldown: 4
-    TargetType: 0
+    TargetType: 2
     PassiveTrigger: 0
     ConstantEffects: []
     Effects:
@@ -36,7 +36,7 @@ MonoBehaviour:
       \uC81C\uAC70\uD55C \uD6C4 100% \uD655\uB960\uB85C 1\uD134\uAC04 \uC218\uBA74\uC744
       \uBD80\uC5EC\uD569\uB2C8\uB2E4."
     Cooldown: 4
-    TargetType: 0
+    TargetType: 2
     PassiveTrigger: 0
     ConstantEffects: []
     Effects:
@@ -46,7 +46,7 @@ MonoBehaviour:
       \uC81C\uAC70\uD55C \uD6C4 100% \uD655\uB960\uB85C 1\uD134\uAC04 \uC218\uBA74\uC744
       \uBD80\uC5EC\uD569\uB2C8\uB2E4."
     Cooldown: 3
-    TargetType: 0
+    TargetType: 2
     PassiveTrigger: 0
     ConstantEffects: []
     Effects:
@@ -57,7 +57,7 @@ MonoBehaviour:
       \uBD80\uC5EC\uD569\uB2C8\uB2E4. \uC774\uD6C4 \uB300\uC0C1\uC758 \uD589\uB3D9\uAC8C\uC774\uC9C0\uB97C
       50% \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
     Cooldown: 3
-    TargetType: 0
+    TargetType: 2
     PassiveTrigger: 0
     ConstantEffects: []
     Effects:
@@ -69,7 +69,7 @@ MonoBehaviour:
       , 2\uD134\uAC04 \uBC29\uC5B4\uB825 \uAC10\uC18C\uB97C \uBD80\uC5EC\uD569\uB2C8\uB2E4.
       \uC774\uD6C4 \uB300\uC0C1\uC758 \uD589\uB3D9\uAC8C\uC774\uC9C0\uB97C 50% \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
     Cooldown: 3
-    TargetType: 0
+    TargetType: 2
     PassiveTrigger: 0
     ConstantEffects: []
     Effects:
@@ -82,7 +82,7 @@ MonoBehaviour:
       , 2\uD134\uAC04 \uC18D\uB3C4 \uAC10\uC18C\uB97C \uBD80\uC5EC\uD569\uB2C8\uB2E4.
       \uC774\uD6C4 \uB300\uC0C1\uC758 \uD589\uB3D9\uAC8C\uC774\uC9C0\uB97C 50% \uAC10\uC18C\uC2DC\uD0B5\uB2C8\uB2E4."
     Cooldown: 3
-    TargetType: 0
+    TargetType: 2
     PassiveTrigger: 0
     ConstantEffects: []
     Effects:

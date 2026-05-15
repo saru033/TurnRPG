@@ -60,3 +60,5 @@ MonoBehaviour:
   - {fileID: 8300000, guid: eb9f3f8da0548b242af001f4e4a19dc8, type: 3}
   call:
   - {fileID: 8300000, guid: 1324009464db9134f89bf830cf8cdfc0, type: 3}
+  greeting:
+  - {fileID: 8300000, guid: 8140f6cf061be814ba3bd70ab1a80d61, type: 3}

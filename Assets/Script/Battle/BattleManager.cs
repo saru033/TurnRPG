@@ -22,6 +22,7 @@ public class BattleManager : MonoBehaviour
 
     //처음 전투 진입시 흰 화면을 방지하기 위한 검은 이미지
     public GameObject blackScreen;
+    public GameObject invalidTargetNotice; // [추가] 잘못된 대상 선택 시 띄울 문구 오브젝트
 
 
     [Header("전투 참가 데이터")]
@@ -58,6 +59,7 @@ public class BattleManager : MonoBehaviour
 
     private LinkedList<IEnumerator> extraActionQueue = new LinkedList<IEnumerator>();
     private bool _isBattleOverFlag = false; // [추가] 중복 종료 방지용 플래그
+    private Coroutine _invalidTargetNoticeCoroutine; // [추가] 알림 타이머 제어용
 
     public void EnqueueExtraAction(IEnumerator action)
     {
@@ -197,6 +199,9 @@ public class BattleManager : MonoBehaviour
         // --- [수정] 전투 시작 시 상시 패시브 연출 및 적용 ---
         foreach (var bc in allCharacters)
         {
+            // [추가] 초기 행동 게이지 무작위 설정 (0~5 사이)
+            bc.ActionGauge = UnityEngine.Random.Range(0f, 10.0f);
+
             for (int i = 0; i < bc.ActiveSkills.Count; i++)
             {
                 var skill = bc.ActiveSkills[i];
@@ -301,7 +306,11 @@ public class BattleManager : MonoBehaviour
             if (isSkipTurn)
             {
                 Debug.Log($"{currentActor.Name} : 기절/수면 상태로 인해 턴을 스킵합니다.");
-                yield return new WaitForSeconds(0.5f);
+                
+                // [추가] 행동 불가 알림 표시
+                if (currentActor.View != null) currentActor.View.ShowPassiveNotice("행동불가");
+
+                yield return new WaitForSeconds(0.8f); // 문구를 읽을 시간 추가
                 currentActor.OnTurnEnd();
 
                 // [추가] 스킵 시 발생한 턴 종료 패시브 처리
@@ -337,6 +346,9 @@ public class BattleManager : MonoBehaviour
                 battleUI.SetSkillButtonsVisible(true, currentActor);
                 battleUI.SetItemVisible(true);
                 battleUI.SetSideImageVisible(true, currentActor);
+
+                // [추가] 플레이어 턴 시작 시 1번 스킬(기본 공격)을 자동으로 선택
+                OnSkillSelected(0);
 
                 // OnSkillSelected() 및 타겟 지정 완료 시점까지 대기 (SelectTarget 상태도 포함해 대기)
                 yield return new WaitUntil(() => State != BattleState.PlayerTurn && State != BattleState.SelectTarget);
@@ -377,6 +389,7 @@ public class BattleManager : MonoBehaviour
 
             battleUI.SetSideImageVisible(false, currentActor);
             if (currentActor.Animator != null) currentActor.Animator.SetBool("isWaiting", false); // 안전장치
+            ResetAllCharactersDim(); // 턴 종료 시에도 확실히 복구
 
             gaugeSystem.OnTurnEnd(currentActor);
             if (currentActor.IsAlive) battleUI.SetVisible(currentActor, true);
@@ -453,7 +466,95 @@ public class BattleManager : MonoBehaviour
         _selectedItemIndex = -1; // 아이템 선택 해제
 
         battleUI.MoveSkillSelectIndicator(skillIndex);
+        UpdateTargetDimming(skillData);
+        HideInvalidTargetNotice(); // 스킬 변경 시 문구 숨기기
         Debug.Log($"[Battle] {skillData.SkillName} 선택됨! 대상을 클릭해주세요.");
+    }
+
+    private void UpdateTargetDimming(SkillData skill)
+    {
+        if (skill == null)
+        {
+            ResetAllCharactersDim();
+            return;
+        }
+
+        // 스킬의 레벨 데이터를 가져와 타겟 타입을 확인 (1번 레벨 기준)
+        var levelData = skill.LevelDatas != null && skill.LevelDatas.Count > 0 ? skill.LevelDatas[0] : null;
+        if (levelData == null) return;
+
+        bool isTargetingEnemy = false;
+        switch (levelData.TargetType)
+        {
+            case SkillTargetType.SingleEnemy:
+            case SkillTargetType.RandomEnemy:
+            case SkillTargetType.AllEnemies:
+                isTargetingEnemy = true;
+                break;
+            case SkillTargetType.SingleAlly:
+            case SkillTargetType.AllAllies:
+            case SkillTargetType.Self:
+                isTargetingEnemy = false;
+                break;
+        }
+
+        foreach (var bc in allCharacters)
+        {
+            if (bc.View == null) continue;
+
+            // [추가] 현재 턴을 잡은 주인공(currentActor)은 타겟 여부와 관계없이 항상 밝게 유지
+            if (bc == currentActor)
+            {
+                bc.View.SetDim(false);
+                continue;
+            }
+
+            if (isTargetingEnemy)
+            {
+                // 적군 타겟인 경우 아군을 어둡게
+                bc.View.SetDim(bc.IsPlayer);
+            }
+            else
+            {
+                // 아군 타겟인 경우 적군을 어둡게
+                bc.View.SetDim(!bc.IsPlayer);
+            }
+        }
+    }
+
+    private void ResetAllCharactersDim()
+    {
+        foreach (var bc in allCharacters)
+        {
+            if (bc.View != null) bc.View.SetDim(false);
+        }
+    }
+
+    private void ShowInvalidTargetNotice()
+    {
+        if (invalidTargetNotice == null) return;
+
+        if (_invalidTargetNoticeCoroutine != null) StopCoroutine(_invalidTargetNoticeCoroutine);
+        _invalidTargetNoticeCoroutine = StartCoroutine(InvalidTargetNoticeRoutine());
+    }
+
+    private void HideInvalidTargetNotice()
+    {
+        if (invalidTargetNotice == null) return;
+        if (_invalidTargetNoticeCoroutine != null)
+        {
+            StopCoroutine(_invalidTargetNoticeCoroutine);
+            _invalidTargetNoticeCoroutine = null;
+        }
+        invalidTargetNotice.SetActive(false);
+    }
+
+    private IEnumerator InvalidTargetNoticeRoutine()
+    {
+        invalidTargetNotice.SetActive(true);
+        yield return new WaitForSeconds(1.0f);
+        invalidTargetNotice.SetActive(false);
+        _invalidTargetNoticeCoroutine = null;
     }
 
     public void OnItemSelected(int itemIndex)
@@ -470,6 +571,8 @@ public class BattleManager : MonoBehaviour
         _selectedSkillIndex = -1; // 스킬 선택 해제
 
         battleUI.MoveItemSelectIndicator(itemIndex);
+        UpdateTargetDimming(currentItems[itemIndex]); // 아이템 타겟에 맞춰 디밍 처리
+        HideInvalidTargetNotice(); // 아이템 변경 시 문구 숨기기
         Debug.Log($"[Battle] 아이템 {currentItems[itemIndex].SkillName} 선택됨! 대상을 클릭해주세요.");
     }
 
@@ -528,6 +631,7 @@ public class BattleManager : MonoBehaviour
         if (!isValid)
         {
             Debug.Log("[Battle] 유효하지 않은 대상입니다.");
+            ShowInvalidTargetNotice(); // [추가] 잘못된 대상 알림 표시
             return;
         }
 
@@ -535,11 +639,14 @@ public class BattleManager : MonoBehaviour
         if (!target.CanBeTargetedBy(currentActor, allCharacters))
         {
             Debug.Log($"[Battle] {target.Name}은(는) 은신 중이라 타겟으로 지정할 수 없습니다!");
+            ShowInvalidTargetNotice(); // 은신 타겟도 유효하지 않은 대상으로 처리
             return;
         }
 
         // --- 4. 실행 결정 ---
+        HideInvalidTargetNotice(); // 올바른 대상 선택 시 문구 숨기기
         battleUI.select_SkillRect.gameObject.SetActive(false); // 인디케이터 숨기기
+        ResetAllCharactersDim(); // 타겟 클릭 시 즉시 원래 색상 복구
 
         if (isItem)
         {
@@ -1531,9 +1638,9 @@ public class BattleManager : MonoBehaviour
         if (skillData.SlotIndex == SkillSlotIndex.Skill1 && !isProcessingDualAttack)
         {
             // '나를 제외한', '생존해있는', '같은 편', '행동 불가(기절/수면)가 아닌' 아군을 찾습니다.
-            var eligibleAllies = allCharacters.Where(c => 
-                c.IsAlive && 
-                c.IsPlayer == currentActor.IsPlayer && 
+            var eligibleAllies = allCharacters.Where(c =>
+                c.IsAlive &&
+                c.IsPlayer == currentActor.IsPlayer &&
                 c != currentActor &&
                 !c.HasStatusEffect(StatusEffectType.Stun) &&
                 !c.HasStatusEffect(StatusEffectType.Sleep)

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: stage8
   m_EditorClassIdentifier: Assembly-CSharp::StageData
   stageID: 8
-  backgroundSprite: {fileID: -8483731395159641348, guid: 281a96be91a309249921a5e925dc780f, type: 3}
+  backgroundSprite: {fileID: -5183756314255143157, guid: 1f507fa81bcc309439ee3d12d2ead2b1, type: 3}
   difficulty: 0
   era: 1
   enemies:
