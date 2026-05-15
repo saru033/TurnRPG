@@ -26,7 +26,8 @@ public enum SfxType
     Coindrop,
     keyboard,
     reward,
-    stateChange
+    stateChange,
+    BattleStart
 }
 
 public class SoundManager : MonoBehaviour

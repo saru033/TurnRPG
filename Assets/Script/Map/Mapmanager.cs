@@ -16,6 +16,9 @@ public class Mapmanager : MonoBehaviour
     [SerializeField] float weightEvent = 20f;
     [SerializeField] float weightShop = 10f;
 
+    [Header("Generation Settings")]
+    [SerializeField] float crossLinkChance = 0.2f; // [추가] 인접 경로 간 연결 확률
+
     // ── 생성 결과 ────────────────────────────────────────────
     public MapNode StartHub;
     public MapNode GoalHub;
@@ -79,8 +82,82 @@ public class Mapmanager : MonoBehaviour
         foreach (var gen in Generators)
             Link(gen.GoalNode, GoalHub);
 
+        // [추가] 인접 경로 간 교차 연결 생성
+        AddCrossLinks();
+
         // 타입 배정
         AssignTypes();
+    }
+
+    /// <summary>
+    /// 인접한 경로(PathIndex ± 1)의 다음 열 노드와 연결하는 로직
+    /// </summary>
+    void AddCrossLinks()
+    {
+        // 1. 노드들을 (열, 경로, 트랙) 단위로 매핑
+        var nodeMap = new Dictionary<(int col, int path, int track), MapNode>();
+        int maxCol = 0;
+        foreach (var node in AllNodes)
+        {
+            if (node.IsHub) continue;
+            nodeMap[(node.Column, node.PathIndex, node.TrackIndex)] = node;
+            if (node.Column > maxCol) maxCol = node.Column;
+        }
+
+        // 2. 모든 일반 노드를 순회하며 인접 경로 연결 시도
+        for (int col = 1; col < maxCol; col++)
+        {
+            for (int path = 0; path < PathCount; path++)
+            {
+                // 현재 경로의 각 트랙(0, 1) 확인
+                for (int track = 0; track < 2; track++)
+                {
+                    if (!nodeMap.TryGetValue((col, path, track), out MapNode currentNode)) continue;
+
+                    // 위/아래 인접 경로 확인
+                    int[] neighborPaths = { path - 1, path + 1 };
+                    foreach (int nPath in neighborPaths)
+                    {
+                        if (nPath < 0 || nPath >= PathCount) continue;
+
+                        if (Random.value < crossLinkChance)
+                        {
+                            bool isDown = nPath > path;
+
+                            // [Smart Connection] 
+                            // 아래 경로로 연결 시: 현재의 아래쪽 트랙에서 -> 대상의 위쪽 트랙으로
+                            // 위 경로로 연결 시: 현재의 위쪽 트랙에서 -> 대상의 아래쪽 트랙으로
+
+                            bool canStart = false;
+                            if (isDown)
+                                canStart = (currentNode.TrackCount == 1) || (track == 1);
+                            else
+                                canStart = (track == 0);
+
+                            if (!canStart) continue;
+
+                            MapNode targetNode = null;
+                            if (isDown)
+                            {
+                                // 대상 경로의 위쪽 트랙(0) 탐색
+                                nodeMap.TryGetValue((col + 1, nPath, 0), out targetNode);
+                            }
+                            else
+                            {
+                                // 대상 경로의 아래쪽 트랙 탐색 (트랙이 2개면 1번, 1개면 0번)
+                                if (!nodeMap.TryGetValue((col + 1, nPath, 1), out targetNode))
+                                    nodeMap.TryGetValue((col + 1, nPath, 0), out targetNode);
+                            }
+
+                            if (targetNode != null)
+                            {
+                                Link(currentNode, targetNode);
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     // ════════════════════════════════════════════════════════

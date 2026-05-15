@@ -14,6 +14,7 @@ public class MapUI : MonoBehaviour
     [Header("References")]
     public RectTransform mapRoot;
     public RectTransform panelRect;          // 비율 계산 기준이 되는 Panel
+    public GameObject touchBlock;            // [추가] 연출 중 터치 방지 패널
     public GameObject nodeButtonPrefab;
     public GameObject hubPrefab;
     public GameObject edgeImagePrefab;
@@ -87,6 +88,9 @@ public class MapUI : MonoBehaviour
         edgeThickness = h * edgeThicknessRatio;
     }
 
+
+    public System.Collections.Generic.List<AudioClip> MapSelectVoices;
+
     // ── 런타임 상태 ──────────────────────────────────────────
     Mapmanager manager;
     MapNode currentNode;
@@ -133,10 +137,45 @@ public class MapUI : MonoBehaviour
         var rt = GetComponent<RectTransform>();
         if (rt != null)
         {
-            // 오른쪽에서 원래 위치로 스르륵 등장
-            rt.anchoredPosition = new Vector2(_origMapPos.x + 2000f, _origMapPos.y);
-            rt.DOAnchorPos(_origMapPos, 0.2f).SetEase(Ease.OutCubic);
+            if (touchBlock != null) touchBlock.SetActive(true);
+
+            // 초기 상태 설정: 오른쪽 적당한 거리 + Y축 -90도 회전
+            rt.anchoredPosition = new Vector2(_origMapPos.x + 1000f, _origMapPos.y);
+            rt.localRotation = Quaternion.Euler(0, -90, 0);
+
+            Sequence seq = DOTween.Sequence().SetUpdate(true);
+            seq.Join(rt.DOAnchorPos(_origMapPos, 0.5f).SetEase(Ease.OutBack));
+            seq.Join(rt.DOLocalRotateQuaternion(Quaternion.identity, 0.5f).SetEase(Ease.OutCubic));
+            seq.OnComplete(() =>
+            {
+                if (touchBlock != null) touchBlock.SetActive(false);
+            });
         }
+    }
+
+    /// <summary>
+    /// 지도가 꺼질 때의 연출 (좌측 이동 + 회전)
+    /// </summary>
+    public IEnumerator CloseMapRoutine(System.Action onHalfWay = null)
+    {
+        var rt = GetComponent<RectTransform>();
+        if (rt != null)
+        {
+            if (touchBlock != null) touchBlock.SetActive(true);
+
+            Sequence seq = DOTween.Sequence().SetUpdate(true);
+            seq.Join(rt.DOAnchorPos(new Vector2(_origMapPos.x - 1000f, _origMapPos.y), 0.5f).SetEase(Ease.InBack));
+            seq.Join(rt.DOLocalRotateQuaternion(Quaternion.Euler(0, -90, 0), 0.5f).SetEase(Ease.InCubic));
+
+            // 지도가 반 정도 사라졌을 때 (0.25초) 다음 처리를 실행
+            yield return new WaitForSecondsRealtime(0.25f);
+            onHalfWay?.Invoke();
+
+            yield return seq.WaitForCompletion();
+        }
+
+        if (touchBlock != null) touchBlock.SetActive(false);
+        gameObject.SetActive(false);
     }
 
     // ── Public API ────────────────────────────────────────
@@ -425,6 +464,13 @@ public class MapUI : MonoBehaviour
                 {
                     SoundManager.Instance.PlaySFX(SfxType.Mark);
                 }
+
+                // 대사
+                if (MapSelectVoices.Count > 0 && SoundManager.Instance != null)
+                {
+                    int randomIdx = Random.Range(0, MapSelectVoices.Count);
+                    SoundManager.Instance.PlayVoice(MapSelectVoices[randomIdx]);
+                }
             }
 
             // 스크립트의 duration과 맞춤
@@ -434,84 +480,69 @@ public class MapUI : MonoBehaviour
 
         // 동그라미 그려지는 시간 동안 대기
         yield return new WaitForSeconds(circleAnimationDuration);
-        switch (currentNode.Type)
+        // [변경] 지도가 사라지는 연출 도중에 다음 화면이 나타나도록 콜백으로 전달
+        yield return StartCoroutine(CloseMapRoutine(() =>
         {
-            case NodeType.Normal:
-                // [수정] 비활성 상태에서도 데이터를 전달할 수 있도록 직접 컴포넌트 추출
-                if (BattlePanel != null)
-                {
-                    var bm = BattlePanel.GetComponentInChildren<BattleManager>();
-                    if (bm != null && stageDatabase != null)
+            switch (currentNode.Type)
+            {
+                case NodeType.Normal:
+                    if (BattlePanel != null)
                     {
-                        var selectedStage = stageDatabase.GetRandomStage(currentNode.Type, currentNode.Column, nodeCount);
-                        bm.currentStage = selectedStage;
+                        var bm = BattlePanel.GetComponentInChildren<BattleManager>();
+                        if (bm != null && stageDatabase != null)
+                        {
+                            var selectedStage = stageDatabase.GetRandomStage(currentNode.Type, currentNode.Column, nodeCount);
+                            bm.currentStage = selectedStage;
+                        }
                     }
-                }
-
-                LobbyTopUI.Instance.HideUI();
-                DisableOtherPanels(target.Type);
-                gameObject.SetActive(false);
-                break;
-
-
-            case NodeType.Elite:
-                // [수정] 비활성 상태에서도 데이터를 전달할 수 있도록 직접 컴포넌트 추출
-                if (BattlePanel != null)
-                {
-                    var bm = BattlePanel.GetComponentInChildren<BattleManager>();
-                    if (bm != null && stageDatabase != null)
-                    {
-                        // 엘리트 보스 스테이지 가져오기
-                        var selectedStage = stageDatabase.GetRandomStage(currentNode.Type, currentNode.Column, nodeCount);
-                        bm.currentStage = selectedStage;
-                    }
-                }
-
-                LobbyTopUI.Instance.HideUI();
-                DisableOtherPanels(target.Type);
-                gameObject.SetActive(false);
-                break;
-
-            case NodeType.Rest:
-                if (RestPanel != null)
-                {
-                    DisableOtherPanels(target.Type);
-                    gameObject.SetActive(false);
-                }
-                break;
-            case NodeType.Event:
-                if (eventPanel != null)
-                {
-                    DisableOtherPanels(target.Type);
-                    gameObject.SetActive(false);
-                }
-                break;
-            case NodeType.Shop:
-                if (shopPanel != null)
-                {
-                    DisableOtherPanels(target.Type);
-                    gameObject.SetActive(false);
-                }
-                break;
-            case NodeType.StartHub:
-                UnityEngine.Debug.Log("[MapUI] 시작 허브 노드");
-                break;
-            case NodeType.GoalHub:
-                if (BattlePanel != null && stageDatabase != null && stageDatabase.bossStage != null)
-                {
-                    var bm = BattlePanel.GetComponentInChildren<BattleManager>();
-                    if (bm != null)
-                    {
-                        bm.currentStage = stageDatabase.bossStage;
-                    }
-
                     LobbyTopUI.Instance.HideUI();
-                    DisableOtherPanels(NodeType.Elite); // 보스전도 배틀의 일종이므로 Elite와 유사하게 처리
-                    gameObject.SetActive(false);
-                }
-                UnityEngine.Debug.Log("[MapUI] 목표 허브 노드 - 보스전 시작");
-                break;
-        }
+                    DisableOtherPanels(target.Type);
+                    break;
+
+                case NodeType.Elite:
+                    if (BattlePanel != null)
+                    {
+                        var bm = BattlePanel.GetComponentInChildren<BattleManager>();
+                        if (bm != null && stageDatabase != null)
+                        {
+                            var selectedStage = stageDatabase.GetRandomStage(currentNode.Type, currentNode.Column, nodeCount);
+                            bm.currentStage = selectedStage;
+                        }
+                    }
+                    LobbyTopUI.Instance.HideUI();
+                    DisableOtherPanels(target.Type);
+                    break;
+
+                case NodeType.Rest:
+                    DisableOtherPanels(target.Type);
+                    break;
+
+                case NodeType.Event:
+                    DisableOtherPanels(target.Type);
+                    break;
+
+                case NodeType.Shop:
+                    DisableOtherPanels(target.Type);
+                    break;
+
+                case NodeType.StartHub:
+                    UnityEngine.Debug.Log("[MapUI] 시작 허브 노드");
+                    break;
+
+                case NodeType.GoalHub:
+                    if (BattlePanel != null && stageDatabase != null && stageDatabase.bossStage != null)
+                    {
+                        var bm = BattlePanel.GetComponentInChildren<BattleManager>();
+                        if (bm != null)
+                        {
+                            bm.currentStage = stageDatabase.bossStage;
+                        }
+                    }
+                    LobbyTopUI.Instance.HideUI();
+                    DisableOtherPanels(NodeType.Elite);
+                    break;
+            }
+        }));
 
         if (currentNode.IsHub && currentNode.Id == manager.GoalHub.Id)
             OnGoalReached();
