@@ -35,6 +35,8 @@ public class GameManager : MonoBehaviour
     [Header("UI References")]
     public SettingsUI settingsUI; // [추가] ESC 메뉴 UI
     public InitialGiftUI initialGiftUI; // [추가] 시작 보상 선택 UI
+    public GameObject shelterSelectPanel; // [추가] 쉼터 선택 패널
+    public GameObject shelterResultPanel; // [추가] 쉼터 결과 패널
 
 
     [Header("Tooltip")]
@@ -265,6 +267,10 @@ public class GameManager : MonoBehaviour
         {
             panel.SetActive(false);
         }
+
+        // [추가] 쉼터 관련 패널 비활성화
+        if (shelterSelectPanel != null) shelterSelectPanel.SetActive(false);
+        if (shelterResultPanel != null) shelterResultPanel.SetActive(false);
 
         var mapUI = GameObject.FindAnyObjectByType<MapUI>(FindObjectsInactive.Include);
         if (mapUI != null)

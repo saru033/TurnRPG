@@ -29347,6 +29347,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1383e95e07003f9409fe04640ea36788, type: 2}
   settingsUI: {fileID: 32541479}
   initialGiftUI: {fileID: 1682999779}
+  shelterSelectPanel: {fileID: 1682999775}
+  shelterResultPanel: {fileID: 218024416}
   tooltipCanvas: {fileID: 444184211}
   tooltipPrefab: {fileID: 9066065158089194727, guid: 532c32edc17b9724a947da757f8b2273, type: 3}
   statusTooltipPrefab: {fileID: 6929634514008011911, guid: 80e17e3f30c5d6046b5b24ac50f7dff6, type: 3}

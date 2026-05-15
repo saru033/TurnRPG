@@ -71,6 +71,131 @@ public class BattleManager : MonoBehaviour
         extraActionQueue.AddFirst(action);
     }
 
+    /// <summary>
+    /// 하나의 스킬 내에 여러 개의 DamageEffect가 있을 때, 2번째부터는 추가 타격으로 분리하여 실행합니다.
+    /// </summary>
+    private void ProcessEffectChain(BattleCharacter caster, BattleCharacter target, List<SkillEffect> effects, string skillName)
+    {
+        int damageCount = 0;
+        foreach (var eff in effects)
+        {
+            if (eff == null) continue;
+
+            if (eff is DamageEffect dmgEff)
+            {
+                damageCount++;
+                if (damageCount > 1)
+                {
+                    // 2번째 이후의 데미지 이펙트는 추가 행동 큐에 삽입 (시각적 분리)
+                    EnqueueExtraAction(ExecuteExtraDamageRoutine(caster, target, dmgEff, skillName));
+                    continue;
+                }
+            }
+
+            // 조건부 필터(IsCondition) 등은 Execute의 반환값으로 체인 중단 여부 결정
+            if (!eff.Execute(caster, target)) break;
+        }
+    }
+
+    private IEnumerator ExecuteExtraDamageRoutine(BattleCharacter caster, BattleCharacter target, DamageEffect eff, string skillName)
+    {
+        // [추가] 이전 행동의 연출(애니메이션 및 카메라)이 완전히 끝날 때까지 대기
+        float syncTimeout = 3.0f;
+        while (syncTimeout > 0)
+        {
+            bool anyBusy = false;
+            foreach (var bc in allCharacters)
+            {
+                if (bc.IsAlive && (bc.IsAnimationPlaying("attack") || bc.IsAnimationPlaying("hit")))
+                {
+                    anyBusy = true;
+                    break;
+                }
+            }
+
+            // 캐릭터들이 바쁘지 않고, 카메라가 기본 상태(_isCurrentlyZoomed == false)일 때 시작
+            if (!anyBusy && !_isCurrentlyZoomed) break;
+
+            syncTimeout -= Time.deltaTime;
+            yield return null;
+        }
+
+        if (!caster.IsAlive) yield break;
+        if (eff.TargetType == EffectTargetType.Target && (target == null || !target.IsAlive)) yield break;
+
+        Debug.Log($"[ExtraDamage] {caster.Name}의 추가 타격 실행 ({skillName})");
+
+        // 1. 이펙트 및 문구 출력
+        if (BattleVFXManager.Instance != null)
+        {
+            BattleVFXManager.Instance.SpawnVFX(VFXType.extraMove, caster.View.RetHitbox());
+            if (caster.View != null) caster.View.ShowPassiveNotice("추가 공격");
+        }
+
+        // 2. 시전자 진영 포커싱
+        StartCoroutine(SetCameraZoom(caster.IsPlayer, true));
+        yield return new WaitForSeconds(0.2f);
+
+        // 3. 공격 애니메이션 (캐릭터의 1번 스킬 애니메이션 재사용)
+        var basicSkill = caster.ActiveSkills.Count > 0 ? caster.ActiveSkills[0] : null;
+        if (basicSkill != null && !string.IsNullOrEmpty(basicSkill.RequiredAnimationTrigger) && caster.Animator != null)
+        {
+            _waitingForImpact = true;
+            caster.Animator.SetTrigger(basicSkill.RequiredAnimationTrigger);
+
+            // 타격 시점까지 대기
+            float timeout = 2.0f;
+            while (_waitingForImpact && timeout > 0)
+            {
+                timeout -= Time.deltaTime;
+                yield return null;
+            }
+
+            // 타격 시점 피격자 진영 포커싱
+            if (target != null && target.IsPlayer != caster.IsPlayer)
+            {
+                StartCoroutine(SetCameraZoom(target.IsPlayer, true));
+            }
+        }
+        else
+        {
+            yield return new WaitForSeconds(0.4f);
+        }
+
+        // 4. 실제 효과 실행
+        eff.Execute(caster, target);
+
+        // [추가] 모든 애니메이션(공격자 및 피격자) 종료 대기
+        yield return new WaitForSeconds(0.2f);
+        float animTimeout = 2.0f;
+        while (animTimeout > 0)
+        {
+            bool anyBusy = false;
+            // 공격자가 아직 애니메이션 중인가?
+            if (basicSkill != null && caster.IsAnimationPlaying(basicSkill.RequiredAnimationTrigger))
+                anyBusy = true;
+
+            // 피격자들이 아직 Hit 중인가?
+            foreach (var bc in allCharacters)
+            {
+                if (bc.IsAlive && bc.IsAnimationPlaying("hit"))
+                {
+                    anyBusy = true;
+                    break;
+                }
+            }
+
+            if (!anyBusy) break;
+            animTimeout -= Time.deltaTime;
+            yield return null;
+        }
+
+        // 5. 마무리 대기 및 카메라 복귀
+        yield return new WaitForSeconds(0.2f);
+        StartCoroutine(SetCameraZoom(true, false)); // 기본 줌으로 복귀
+        yield return new WaitForSeconds(0.4f);
+    }
+
     void Awake()
     {
         Instance = this;
@@ -781,10 +906,7 @@ public class BattleManager : MonoBehaviour
         // --- 4. 실제 효과 실행 ---
         if (levelData != null && levelData.Effects != null)
         {
-            foreach (var eff in levelData.Effects)
-            {
-                if (eff != null) eff.Execute(character, target);
-            }
+            ProcessEffectChain(character, target, levelData.Effects, skill.SkillName);
             character.RefreshStats();
         }
 
@@ -918,13 +1040,7 @@ public class BattleManager : MonoBehaviour
         {
             if (levelData.Effects != null)
             {
-                foreach (var eff in levelData.Effects)
-                {
-                    if (eff != null)
-                    {
-                        if (!eff.Execute(attacker, target)) break;
-                    }
-                }
+                ProcessEffectChain(attacker, target, levelData.Effects, skillData.SkillName);
             }
         }
 
@@ -1040,13 +1156,7 @@ public class BattleManager : MonoBehaviour
         {
             if (levelData.Effects != null)
             {
-                foreach (var eff in levelData.Effects)
-                {
-                    if (eff != null)
-                    {
-                        if (!eff.Execute(attacker, target)) break;
-                    }
-                }
+                ProcessEffectChain(attacker, target, levelData.Effects, skillData.SkillName);
             }
         }
 
@@ -1210,10 +1320,7 @@ public class BattleManager : MonoBehaviour
         // --- 4. 실제 효과 실행 ---
         if (levelData != null && levelData.ConstantEffects != null)
         {
-            foreach (var eff in levelData.ConstantEffects)
-            {
-                if (eff != null) eff.Execute(character, character);
-            }
+            ProcessEffectChain(character, character, levelData.ConstantEffects, skill.SkillName);
             character.RefreshStats();
         }
 
@@ -1401,14 +1508,7 @@ public class BattleManager : MonoBehaviour
 
             if (levelData.Effects != null)
             {
-                foreach (var eff in levelData.Effects)
-                {
-                    if (eff != null)
-                    {
-                        // Caster=나, Target=이벤트를 유발한 주체
-                        if (!eff.Execute(character, target)) break;
-                    }
-                }
+                ProcessEffectChain(character, target, levelData.Effects, skill.SkillName);
             }
             character.RefreshStats();
         }
@@ -1619,15 +1719,7 @@ public class BattleManager : MonoBehaviour
 
             if (levelData.Effects != null)
             {
-                foreach (var eff in levelData.Effects)
-                {
-                    if (eff != null)
-                    {
-                        // [설계] Execute가 false를 반환하는 경우는 '조건부 필터'에 의해 이후 체인을 중단해야 할 때 뿐입니다.
-                        // 단순한 저항이나 빗나감은 Execute 내부에서 true를 반환하여 체인이 유지되도록 구현되어 있습니다.
-                        if (!eff.Execute(currentActor, selectedTarget)) break;
-                    }
-                }
+                ProcessEffectChain(currentActor, selectedTarget, levelData.Effects, skillData.SkillName);
             }
         }
 

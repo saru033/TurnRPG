@@ -139,13 +139,22 @@ public class MapUI : MonoBehaviour
         {
             if (touchBlock != null) touchBlock.SetActive(true);
 
-            // 초기 상태 설정: 오른쪽 적당한 거리 + Y축 -90도 회전
-            rt.anchoredPosition = new Vector2(_origMapPos.x + 1000f, _origMapPos.y);
-            rt.localRotation = Quaternion.Euler(0, -90, 0);
+            // [변경] 시작 위치: 오른쪽 아래 멀리
+            Vector2 startPos = new Vector2(_origMapPos.x + 800f, _origMapPos.y - 800f);
+            Vector2 midPos = new Vector2(_origMapPos.x + 800f, _origMapPos.y); // 수직으로 올라온 지점
+
+            rt.anchoredPosition = startPos;
+            rt.localRotation = Quaternion.Euler(0, -85, 0);
 
             Sequence seq = DOTween.Sequence().SetUpdate(true);
-            seq.Join(rt.DOAnchorPos(_origMapPos, 0.5f).SetEase(Ease.OutBack));
-            seq.Join(rt.DOLocalRotateQuaternion(Quaternion.identity, 0.5f).SetEase(Ease.OutCubic));
+
+            // 1단계: 아래에서 위로 일자로 올라옴 (0.25초) - 회전 없이 직선 상승
+            seq.Append(rt.DOAnchorPos(midPos, 0.25f).SetEase(Ease.OutCubic));
+
+            // 2단계: 오른쪽에서 왼쪽으로 이동하며 동시에 회전 (0.4초) - 지도를 펼치는 느낌
+            seq.Append(rt.DOAnchorPos(_origMapPos, 0.4f).SetEase(Ease.OutBack));
+            seq.Join(rt.DOLocalRotateQuaternion(Quaternion.identity, 0.4f).SetEase(Ease.OutCubic));
+
             seq.OnComplete(() =>
             {
                 if (touchBlock != null) touchBlock.SetActive(false);
@@ -154,7 +163,7 @@ public class MapUI : MonoBehaviour
     }
 
     /// <summary>
-    /// 지도가 꺼질 때의 연출 (좌측 이동 + 회전)
+    /// 지도가 꺼질 때의 연출 (좌측 이동 후 하단 이동)
     /// </summary>
     public IEnumerator CloseMapRoutine(System.Action onHalfWay = null)
     {
@@ -163,12 +172,21 @@ public class MapUI : MonoBehaviour
         {
             if (touchBlock != null) touchBlock.SetActive(true);
 
+            // [변경] 퇴장 경로: 왼쪽으로 이동 후 아래로 일자로 내려감
+            Vector2 midPos = new Vector2(_origMapPos.x - 800f, _origMapPos.y);
+            Vector2 endPos = new Vector2(_origMapPos.x - 800f, _origMapPos.y - 1000f);
+
             Sequence seq = DOTween.Sequence().SetUpdate(true);
-            seq.Join(rt.DOAnchorPos(new Vector2(_origMapPos.x - 1000f, _origMapPos.y), 0.5f).SetEase(Ease.InBack));
-            seq.Join(rt.DOLocalRotateQuaternion(Quaternion.Euler(0, -90, 0), 0.5f).SetEase(Ease.InCubic));
+
+            // 1단계: 좌측으로 이동하며 동시에 회전 (0.4초) - 지도를 접는 느낌
+            seq.Append(rt.DOAnchorPos(midPos, 0.4f).SetEase(Ease.InCubic));
+            seq.Join(rt.DOLocalRotateQuaternion(Quaternion.Euler(0, -85, 0), 0.4f).SetEase(Ease.InCubic));
+
+            // 2단계: 아래로 일자로 내려감 (0.15초) - 직선 하강
+            seq.Append(rt.DOAnchorPos(endPos, 0.25f).SetEase(Ease.InBack));
 
             // 지도가 반 정도 사라졌을 때 (0.25초) 다음 처리를 실행
-            yield return new WaitForSecondsRealtime(0.25f);
+            yield return new WaitForSecondsRealtime(0.3f);
             onHalfWay?.Invoke();
 
             yield return seq.WaitForCompletion();

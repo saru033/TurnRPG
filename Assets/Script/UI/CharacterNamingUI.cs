@@ -27,11 +27,14 @@ public class CharacterNamingUI : MonoBehaviour
 
         if (nameInputField != null)
         {
-            // 입력이 바뀔 때 에러 메시지만 숨김 (사운드는 Update에서 처리)
+            // 입력이 바뀔 때 에러 메시지만 숨김
             nameInputField.onValueChanged.AddListener((_) =>
             {
                 if (errorText != null) errorText.SetActive(false);
             });
+
+            // [추가] 엔터 키 입력 시 확인 버튼(OnConfirmClick) 로직 실행
+            nameInputField.onSubmit.AddListener((_) => OnConfirmClick());
         }
 
         _canvasGroup = GetComponent<CanvasGroup>();

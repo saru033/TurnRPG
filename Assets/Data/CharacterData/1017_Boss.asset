@@ -18,7 +18,7 @@ MonoBehaviour:
   charType: 0
   MaxHp: 83500
   Attack: 3850
-  Defense: 620
+  Defense: 666
   Speed: 158
   CritChance: 0.15
   CritDamage: 1.5
@@ -50,3 +50,4 @@ MonoBehaviour:
   skillUpgradeVoices: []
   skillChangeVoices: []
   call: []
+  greeting: []

@@ -19,7 +19,7 @@ MonoBehaviour:
   MaxHp: 750
   Attack: 0
   Defense: 500
-  Speed: 80
+  Speed: 93
   CritChance: 0
   CritDamage: 1
   Evasion: 0
@@ -40,3 +40,4 @@ MonoBehaviour:
   skillUpgradeVoices: []
   skillChangeVoices: []
   call: []
+  greeting: []
