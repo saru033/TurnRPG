@@ -26,7 +26,9 @@ MonoBehaviour:
       \uAC10\uC18C\uC640 \uC18D\uB3C4 \uAC10\uC18C\uB97C \uBC1C\uC0DD \uC2DC\uD0B5\uB2C8\uB2E4.
       \uC774 \uACF5\uACA9\uC740 \uBE57\uB098\uAC00\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4.
       \uC8FD\uC740 \uC544\uAD70\uC744 \uCD5C\uB300 \uC0DD\uBA85\uB825\uC758 20%\uB85C
-      \uBD80\uD65C \uC2DC\uD0B5\uB2C8\uB2E4."
+      \uBD80\uD65C \uC2DC\uD0B5\uB2C8\uB2E4. \uC790\uC2E0\uC758 \uC0DD\uBA85\uB825\uC774
+      30% \uC774\uD558\uC600\uB2E4\uBA74 \uC790\uC2E0\uC5D0\uAC8C 1\uD134\uAC04 \uC740\uC2E0\uC744
+      \uBC1C\uC0DD\uC2DC\uD0B5\uB2C8\uB2E4."
     Cooldown: 4
     TargetType: 3
     PassiveTrigger: 0
@@ -36,6 +38,8 @@ MonoBehaviour:
     - rid: 8427518313609560066
     - rid: 8427518313609560148
     - rid: 8427518317518389248
+    - rid: 8427518384886513664
+    - rid: 8427518384886513665
   references:
     version: 2
     RefIds:
@@ -70,3 +74,18 @@ MonoBehaviour:
       data:
         TargetType: 5
         RevivalHpPercent: 0.2
+    - rid: 8427518384886513664
+      type: {class: CheckCurrentHpConditionEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 1
+        ThresholdPercent: 0.3
+        IsBelow: 1
+    - rid: 8427518384886513665
+      type: {class: ApplyStatusEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 1
+        EffectData: {fileID: 11400000, guid: 784c459373dd0a54b8846d77a80c9586, type: 2}
+        Duration: 1
+        ApplyChance: 1
+        StatScaleType: 0
+        StatMultiplier: 0

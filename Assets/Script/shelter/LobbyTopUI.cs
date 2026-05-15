@@ -19,7 +19,7 @@ public class LobbyTopUI : MonoBehaviour
 
     // 데이터가 변경되었을 때 외부에서 호출할 수 있도록 싱글톤처럼 접근 가능하게 만듦 (편의용)
     public static LobbyTopUI Instance { get; private set; }
-    
+
     private void Awake()
     {
         Instance = this;
@@ -75,7 +75,7 @@ public class LobbyTopUI : MonoBehaviour
     {
         InitIfNecessary();
         gameObject.SetActive(true);
-        
+
         // 우측 밖에서 안으로 들어오는 연출
         _rect.anchoredPosition = new Vector2(_originalPos.x + _rect.rect.width, _originalPos.y);
         _rect.DOAnchorPos(_originalPos, duration).SetEase(Ease.OutCubic);
@@ -87,7 +87,7 @@ public class LobbyTopUI : MonoBehaviour
     public void HideUI(float duration = 0.5f)
     {
         InitIfNecessary();
-        
+
         // 우측으로 이동 후 비활성화
         _rect.DOAnchorPosX(_originalPos.x + _rect.rect.width, duration).SetEase(Ease.InCubic).OnComplete(() =>
         {

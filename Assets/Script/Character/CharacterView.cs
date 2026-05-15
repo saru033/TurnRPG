@@ -462,6 +462,19 @@ public class CharacterView : MonoBehaviour, IPointerClickHandler
     /// </summary>
     public void PlayDeathAnimation()
     {
+        // [추가] 사망 시 버프/디버프 아이콘 및 연동된 VFX 즉시 제거
+        foreach (var icon in _buffIcons.Values)
+        {
+            if (icon != null) Destroy(icon);
+        }
+        _buffIcons.Clear();
+
+        foreach (var vfx in _vfxInstances.Values)
+        {
+            if (vfx != null) Destroy(vfx);
+        }
+        _vfxInstances.Clear();
+
         if (_canvasGroup == null)
         {
             gameObject.SetActive(false);
@@ -502,23 +515,23 @@ public class CharacterView : MonoBehaviour, IPointerClickHandler
         passiveNoticeContainer.SetAsLastSibling();
 
         GameObject notice = Instantiate(passiveNoticePrefab, passiveNoticeContainer);
-        notice.transform.SetAsLastSibling(); 
+        notice.transform.SetAsLastSibling();
 
         // 텍스트 설정
         var tmp = notice.transform.Find("passiveText")?.GetComponent<TextMeshProUGUI>();
-        if (tmp == null) tmp = notice.GetComponentInChildren<TextMeshProUGUI>(); 
+        if (tmp == null) tmp = notice.GetComponentInChildren<TextMeshProUGUI>();
         if (tmp != null) tmp.text = passiveName;
 
         // [추가] 아이콘 설정
         var iconImg = notice.transform.Find("icon")?.GetComponent<UnityEngine.UI.Image>();
         if (iconImg == null)
         {
-             // 자식 중에 Image가 있다면 그게 아이콘일 가능성이 높음 (단, 배경 이미지는 제외해야 함)
-             var images = notice.GetComponentsInChildren<UnityEngine.UI.Image>();
-             foreach(var img in images)
-             {
-                 if(img.gameObject.name.ToLower().Contains("icon")) { iconImg = img; break; }
-             }
+            // 자식 중에 Image가 있다면 그게 아이콘일 가능성이 높음 (단, 배경 이미지는 제외해야 함)
+            var images = notice.GetComponentsInChildren<UnityEngine.UI.Image>();
+            foreach (var img in images)
+            {
+                if (img.gameObject.name.ToLower().Contains("icon")) { iconImg = img; break; }
+            }
         }
 
         if (iconImg != null)
