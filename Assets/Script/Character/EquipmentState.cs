@@ -31,19 +31,29 @@ public struct EquipmentSubStat
         this.value = val;
     }
 
-    public string GetStatString()
+    public string GetStatName()
     {
-        string name = "";
         switch (statType)
         {
-            case StatType.HP: name = "체력"; return $"{name} +{(int)value}%";
-            case StatType.Attack: name = "공격력"; return $"{name} +{(int)value}%";
-            case StatType.Defense: name = "방어력"; return $"{name} +{(int)value}%";
-            case StatType.Speed: name = "속도"; return $"{name} +{(int)value}";
-            case StatType.CritChance: name = "치명타 확률"; return $"{name} +{(int)value}%";
-            case StatType.CritDamage: name = "치명타 피해"; return $"{name} +{(int)value}%";
+            case StatType.HP: return "체력";
+            case StatType.Attack: return "공격력";
+            case StatType.Defense: return "방어력";
+            case StatType.Speed: return "속도";
+            case StatType.CritChance: return "치명타 확률";
+            case StatType.CritDamage: return "치명타 피해";
             default: return "";
         }
+    }
+
+    public string GetStatValueString()
+    {
+        string suffix = (statType == StatType.Speed) ? "" : "%";
+        return $"+{(int)value}{suffix}";
+    }
+
+    public string GetStatString()
+    {
+        return $"{GetStatName()} {GetStatValueString()}";
     }
 }
 
@@ -80,10 +90,10 @@ public class EquipmentState
     public void GenerateRandomStats(float minScale = 1.0f, float maxScale = 1.0f, bool isHighTier = false)
     {
         subStats.Clear();
-        
+
         // 1. 가능한 모든 스탯 타입 리스트 생성
         List<StatType> availableTypes = new List<StatType>((StatType[])Enum.GetValues(typeof(StatType)));
-        
+
         // 2. 랜덤하게 4개 선택
         for (int i = 0; i < 4; i++)
         {
@@ -105,30 +115,30 @@ public class EquipmentState
         float min = 0, max = 0;
         switch (type)
         {
-            case StatType.HP: 
-                min = GameManager.Instance.minHpPercent; 
-                max = GameManager.Instance.maxHpPercent; 
+            case StatType.HP:
+                min = GameManager.Instance.minHpPercent;
+                max = GameManager.Instance.maxHpPercent;
                 break;
-            case StatType.Attack: 
-                min = GameManager.Instance.minAtkPercent; 
-                max = GameManager.Instance.maxAtkPercent; 
+            case StatType.Attack:
+                min = GameManager.Instance.minAtkPercent;
+                max = GameManager.Instance.maxAtkPercent;
                 break;
-            case StatType.Defense: 
-                min = GameManager.Instance.minDefPercent; 
-                max = GameManager.Instance.maxDefPercent; 
+            case StatType.Defense:
+                min = GameManager.Instance.minDefPercent;
+                max = GameManager.Instance.maxDefPercent;
                 break;
-            case StatType.Speed: 
-                min = GameManager.Instance.minSpeed; 
-                max = GameManager.Instance.maxSpeed; 
+            case StatType.Speed:
+                min = GameManager.Instance.minSpeed;
+                max = GameManager.Instance.maxSpeed;
                 if (isHighTier) min = max * 0.9f; // 고급 리롤 시 90% 이상 보장
                 return (int)UnityEngine.Random.Range(min * minScale, (max * maxScale) + 1);
-            case StatType.CritChance: 
-                min = GameManager.Instance.minCritChance; 
-                max = GameManager.Instance.maxCritChance; 
+            case StatType.CritChance:
+                min = GameManager.Instance.minCritChance;
+                max = GameManager.Instance.maxCritChance;
                 break;
-            case StatType.CritDamage: 
-                min = GameManager.Instance.minCritDamage; 
-                max = GameManager.Instance.maxCritDamage; 
+            case StatType.CritDamage:
+                min = GameManager.Instance.minCritDamage;
+                max = GameManager.Instance.maxCritDamage;
                 break;
         }
 

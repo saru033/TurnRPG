@@ -42,5 +42,11 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: rain
+    uniqueID: 2410560029
+    locked: 0
+  - name: UpRain
+    uniqueID: 136985877
+    locked: 0
   m_RenderingLayers:
   - Default

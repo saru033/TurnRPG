@@ -28,13 +28,19 @@ public class EquipmentTooltipUI : MonoBehaviour
             }
         }
 
-        // 3. 스탯 목록 구성 (줄바꿈 포함)
+        // 3. 스탯 목록 구성 (좌우 정렬 적용)
         if (txtStatList != null)
         {
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < state.subStats.Count; i++)
             {
-                sb.Append(state.subStats[i].GetStatString());
+                var subStat = state.subStats[i];
+                string statName = subStat.GetStatName();
+                string statValue = subStat.GetStatValueString();
+
+                // 좌측 정렬 이름 + 우측 정렬 수치 (TextMeshPro 부자 텍스트 활용)
+                sb.Append($"<align=left>{statName}<line-height=0>\n<align=right>{statValue}<line-height=1em>");
+                
                 if (i < state.subStats.Count - 1) sb.Append("\n");
             }
             txtStatList.text = sb.ToString();
