@@ -32,7 +32,18 @@ namespace TurnRPG.SkillSystem.Effects
                 if (Random.value > ApplyChance) continue;
 
                 // [추가] 빗나감 체크 (번조: 공격이 빗나갔다면 디버프는 절대 걸리지 않음)
-                if (EffectData.Category == StatusEffectCategory.Debuff && t.LastReceivedAttackEvaded)
+                // 단, 공격이 아닌 스킬(NonAttack)이나 아이템(Item)의 경우 빗나감 판정을 무시함
+                bool isNonAttackOrItem = false;
+                if (BattleManager.Instance != null && BattleManager.Instance.CurrentSkill != null)
+                {
+                    var type = BattleManager.Instance.CurrentSkill.Type;
+                    if (type == SkillType.NonAttack || type == SkillType.Item)
+                    {
+                        isNonAttackOrItem = true;
+                    }
+                }
+
+                if (EffectData.Category == StatusEffectCategory.Debuff && !isNonAttackOrItem && t.LastReceivedAttackEvaded)
                 {
                     Debug.Log($"{t.Name}에게 시도한 [{EffectData.EffectName}] 효과가 공격 빗나감으로 인해 무시되었습니다.");
                     continue;
@@ -88,7 +99,18 @@ namespace TurnRPG.SkillSystem.Effects
                 if (t == null || !t.IsAlive) continue;
 
                 // [추가] 빗나감 체크 (강화효과 해제는 공격이 적중했을 때만 발생)
-                if (TargetCategory == StatusEffectCategory.Buff && t.LastReceivedAttackEvaded)
+                // 단, 공격이 아닌 스킬(NonAttack)이나 아이템(Item)의 경우 빗나감 판정을 무시함
+                bool isNonAttackOrItem = false;
+                if (BattleManager.Instance != null && BattleManager.Instance.CurrentSkill != null)
+                {
+                    var type = BattleManager.Instance.CurrentSkill.Type;
+                    if (type == SkillType.NonAttack || type == SkillType.Item)
+                    {
+                        isNonAttackOrItem = true;
+                    }
+                }
+
+                if (TargetCategory == StatusEffectCategory.Buff && !isNonAttackOrItem && t.LastReceivedAttackEvaded)
                 {
                     Debug.Log($"{t.Name}의 강화효과 해제가 공격 빗나감으로 인해 무시되었습니다.");
                     continue;

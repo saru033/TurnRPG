@@ -43,6 +43,8 @@ public class BattleManager : MonoBehaviour
     public enum BattleState { Idle, PlayerTurn, SelectTarget, EnemyTurn, WaitAction, Win, Lose }
     public BattleState State { get; private set; } = BattleState.Idle;
 
+    public SkillData CurrentSkill { get; set; } // [추가] 현재 실행 중인 스킬/아이템 데이터
+
     public static BattleManager Instance { get; private set; }
 
     Actiongaugesystem gaugeSystem;
@@ -76,6 +78,13 @@ public class BattleManager : MonoBehaviour
     /// </summary>
     private void ProcessEffectChain(BattleCharacter caster, BattleCharacter target, List<SkillEffect> effects, string skillName)
     {
+        // [추가] 신규 효과 체인 실행 전에 모든 캐릭터의 마지막 회피 상태를 초기화하여,
+        // 공격이 아닌 스킬이나 아이템 사용 시 과거의 빗나감 판정이 영향을 미치지 않도록 방지
+        foreach (var bc in allCharacters)
+        {
+            if (bc != null) bc.LastReceivedAttackEvaded = false;
+        }
+
         int damageCount = 0;
         foreach (var eff in effects)
         {
@@ -379,6 +388,15 @@ public class BattleManager : MonoBehaviour
         }
 
         State = BattleState.Idle;
+
+        // [추가] 전투 튜토리얼 진행 (완료할 때까지 대기)
+        if (TutorialPanelUI.Instance != null)
+        {
+            bool isWaitingTutorial = true;
+            TutorialPanelUI.Instance.StartTutorial(TutorialType.Battle, () => isWaitingTutorial = false);
+            while (isWaitingTutorial) yield return null;
+        }
+
         StartCoroutine(TurnLoop());
     }
 
@@ -806,6 +824,7 @@ public class BattleManager : MonoBehaviour
 
     public IEnumerator ExecuteItemRoutine(BattleCharacter character, BattleCharacter target, SkillData skill)
     {
+        CurrentSkill = skill; // [추가] 현재 아이템 스킬 저장
         //스킬창 숨기고 사용 불가능하게
         isItemUse = true;
         battleUI.SetSkillButtonsVisible(false);
@@ -986,6 +1005,8 @@ public class BattleManager : MonoBehaviour
         var skillData = attacker.ActiveSkills.Count > 0 ? attacker.ActiveSkills[0] : null;
         if (skillData == null) yield break;
 
+        CurrentSkill = skillData; // [추가] 현재 반격 스킬 저장
+
         int skillIndex = 0;
         int level = attacker.SkillLevels.Length > skillIndex ? attacker.SkillLevels[skillIndex] : 1;
         var levelData = skillData.LevelDatas != null && skillData.LevelDatas.Count >= level
@@ -1101,6 +1122,8 @@ public class BattleManager : MonoBehaviour
 
         var skillData = attacker.ActiveSkills.Count > 0 ? attacker.ActiveSkills[0] : null;
         if (skillData == null) yield break;
+
+        CurrentSkill = skillData; // [추가] 현재 협공 스킬 저장
 
         int skillIndex = 0;
         int level = attacker.SkillLevels.Length > skillIndex ? attacker.SkillLevels[skillIndex] : 1;
@@ -1219,6 +1242,8 @@ public class BattleManager : MonoBehaviour
     {
         //캐릭터가 죽어 있다면 스킵
         if (!character.IsAlive) yield break;
+
+        CurrentSkill = skill; // [추가] 현재 상시 패시브 스킬 저장
 
 
 
@@ -1381,6 +1406,8 @@ public class BattleManager : MonoBehaviour
         //죽어있고 , 기절 , 수면 상태면 패시브 발동 취소
         if (!character.IsAlive || character.HasStatusEffect(StatusEffectType.Stun) || character.HasStatusEffect(StatusEffectType.Sleep))
         { yield break; }
+
+        CurrentSkill = skill; // [추가] 현재 패시브 스킬 저장
 
 
         Debug.Log($"[Passive-Show] {character.Name} → {skill.SkillName} 패시브 발동 연출 시작");
@@ -1551,6 +1578,7 @@ public class BattleManager : MonoBehaviour
 
     IEnumerator ExecuteSkillRoutine(SkillData skillData, int skillIndex, BattleCharacter manualTarget = null)
     {
+        CurrentSkill = skillData; // [추가] 현재 사용 스킬 저장
         Debug.Log($"[Battle] {currentActor.Name} → {skillData.SkillName} 사용 시작");
 
         // 이 스킬을 이번 턴에 썼다고 마킹 (쿨타임 이중차감 방지)

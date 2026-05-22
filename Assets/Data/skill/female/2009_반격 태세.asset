@@ -53,7 +53,7 @@ MonoBehaviour:
   - Description: "\uC544\uAD70 \uD55C\uBA85\uC5D0\uAC8C 3\uD134\uAC04 \uBC18\uACA9
       , \uBC29\uC5B4\uB825 \uC99D\uAC00, \uBA74\uC5ED\uC744 \uBD80\uC5EC\uD569\uB2C8\uB2E4.
       \uC790\uC2E0\uC5D0\uAC8C \uCD94\uAC00 \uD134\uC774 \uBC1C\uC0DD\uD569\uB2C8\uB2E4."
-    Cooldown: 3
+    Cooldown: 4
     TargetType: 4
     PassiveTrigger: 0
     ConstantEffects: []
@@ -63,8 +63,9 @@ MonoBehaviour:
     - rid: 8427518386006392906
     - rid: 8427518387480690755
   - Description: "\uC544\uAD70 \uD55C\uBA85\uC5D0\uAC8C 3\uD134\uAC04 \uBC18\uACA9
-      , \uBC29\uC5B4\uB825 \uC99D\uAC00 , \uD761\uD608\uC744 \uBD80\uC5EC\uD569\uB2C8\uB2E4."
-    Cooldown: 3
+      , \uBC29\uC5B4\uB825 \uC99D\uAC00 , \uD761\uD608\uC744 \uBD80\uC5EC\uD569\uB2C8\uB2E4.
+      \uC790\uC2E0\uC5D0\uAC8C \uCD94\uAC00 \uD134\uC774 \uBC1C\uC0DD\uD569\uB2C8\uB2E4."
+    Cooldown: 4
     TargetType: 4
     PassiveTrigger: 0
     ConstantEffects: []
@@ -72,6 +73,7 @@ MonoBehaviour:
     - rid: 7481024980550680804
     - rid: 7481024980550680805
     - rid: 7481024980550680806
+    - rid: 8427518389145567232
   references:
     version: 2
     RefIds:
@@ -152,6 +154,10 @@ MonoBehaviour:
       data:
         TargetType: 1
     - rid: 8427518387480690755
+      type: {class: ExtraTurnEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
+      data:
+        TargetType: 1
+    - rid: 8427518389145567232
       type: {class: ExtraTurnEffect, ns: TurnRPG.SkillSystem.Effects, asm: Assembly-CSharp}
       data:
         TargetType: 1

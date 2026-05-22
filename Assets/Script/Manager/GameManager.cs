@@ -440,6 +440,14 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("[GameManager] 모든 캐릭터 명명 완료");
 
+        // [추가] 쉘터 튜토리얼 진행 (완료할 때까지 대기)
+        if (TutorialPanelUI.Instance != null)
+        {
+            bool isWaitingTutorial = true;
+            TutorialPanelUI.Instance.StartTutorial(TutorialType.Shelter, () => isWaitingTutorial = false);
+            while (isWaitingTutorial) yield return null;
+        }
+
         // [수정] 명명 완료 후 보상 선택 UI 오픈
         if (initialGiftUI != null)
         {

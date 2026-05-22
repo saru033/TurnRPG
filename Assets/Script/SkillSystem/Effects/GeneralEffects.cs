@@ -104,7 +104,18 @@ namespace TurnRPG.SkillSystem.Effects
             foreach (var t in actualTargets)
             {
                 // [추가] 빗나감 체크 (행동 게이지 감소는 공격이 적중했을 때만 발생)
-                if (Amount < 0 && t.LastReceivedAttackEvaded)
+                // 단, 공격이 아닌 스킬(NonAttack)이나 아이템(Item)의 경우 빗나감 판정을 무시함
+                bool isNonAttackOrItem = false;
+                if (BattleManager.Instance != null && BattleManager.Instance.CurrentSkill != null)
+                {
+                    var type = BattleManager.Instance.CurrentSkill.Type;
+                    if (type == SkillType.NonAttack || type == SkillType.Item)
+                    {
+                        isNonAttackOrItem = true;
+                    }
+                }
+
+                if (Amount < 0 && !isNonAttackOrItem && t.LastReceivedAttackEvaded)
                 {
                     Debug.Log($"{t.Name}의 행동 게이지 감소가 공격 빗나감으로 인해 무시되었습니다.");
                     continue;
@@ -146,7 +157,18 @@ namespace TurnRPG.SkillSystem.Effects
             foreach (var t in actualTargets)
             {
                 // [추가] 빗나감 체크 (쿨타임 증가는 공격이 적중했을 때만 발생)
-                if (TurnAmount > 0 && t.LastReceivedAttackEvaded)
+                // 단, 공격이 아닌 스킬(NonAttack)이나 아이템(Item)의 경우 빗나감 판정을 무시함
+                bool isNonAttackOrItem = false;
+                if (BattleManager.Instance != null && BattleManager.Instance.CurrentSkill != null)
+                {
+                    var type = BattleManager.Instance.CurrentSkill.Type;
+                    if (type == SkillType.NonAttack || type == SkillType.Item)
+                    {
+                        isNonAttackOrItem = true;
+                    }
+                }
+
+                if (TurnAmount > 0 && !isNonAttackOrItem && t.LastReceivedAttackEvaded)
                 {
                     Debug.Log($"{t.Name}의 쿨타임 증가가 공격 빗나감으로 인해 무시되었습니다.");
                     continue;

@@ -100,6 +100,11 @@ public class SkillUpgradeUI : MonoBehaviour
         }
 
         RefreshCharacterList();
+
+        if (TutorialPanelUI.Instance != null)
+        {
+            TutorialPanelUI.Instance.StartTutorial(TutorialType.Item);
+        }
     }
 
     /// <summary>

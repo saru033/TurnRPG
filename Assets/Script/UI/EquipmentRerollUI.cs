@@ -98,6 +98,11 @@ public class EquipmentRerollUI : MonoBehaviour
         }
 
         RefreshCharacterList();
+
+        if (TutorialPanelUI.Instance != null)
+        {
+            TutorialPanelUI.Instance.StartTutorial(TutorialType.Item);
+        }
     }
 
     public void RefreshCharacterList()

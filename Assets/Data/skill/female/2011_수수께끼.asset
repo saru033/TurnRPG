@@ -25,21 +25,21 @@ MonoBehaviour:
   - Description: "\uC544\uBB34 \uD6A8\uACFC\uB3C4 \uC5C6\uC2B5\uB2C8\uB2E4.. \uAC15\uD654\uD574
       \uBD10\uC57C \uD560\uAC83 \uAC19\uC2B5\uB2C8\uB2E4."
     Cooldown: 0
-    TargetType: 4
+    TargetType: 3
     PassiveTrigger: 0
     ConstantEffects: []
     Effects: []
   - Description: "\uC544\uC9C1 \uC544\uBB34 \uD6A8\uACFC\uB3C4 \uC5C6\uC2B5\uB2C8\uB2E4..
       \uAC15\uD654\uD574 \uBD10\uC57C \uD560\uAC83 \uAC19\uC2B5\uB2C8\uB2E4."
     Cooldown: 0
-    TargetType: 4
+    TargetType: 3
     PassiveTrigger: 0
     ConstantEffects: []
     Effects: []
   - Description: "\uC544\uC9C1 \uC544\uBB34 \uD6A8\uACFC\uB3C4 \uC5C6\uC2B5\uB2C8\uB2E4..
       \uC880 \uB354 \uAC15\uD654\uD574 \uBD10\uC57C \uD560\uAC83 \uAC19\uC2B5\uB2C8\uB2E4."
     Cooldown: 0
-    TargetType: 4
+    TargetType: 3
     PassiveTrigger: 0
     ConstantEffects: []
     Effects: []
