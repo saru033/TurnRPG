@@ -33204,7 +33204,7 @@ MonoBehaviour:
   hourglassExampleObj: {fileID: 1629891764}
   skillGroupExampleObj: {fileID: 1400134235}
   bagExampleObj: {fileID: 906903601}
-  forceShowForTesting: 1
+  forceShowForTesting: 0
 --- !u!114 &1206520805
 MonoBehaviour:
   m_ObjectHideFlags: 0
