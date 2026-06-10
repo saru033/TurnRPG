@@ -80,4 +80,8 @@ public class SettingsUI : MonoBehaviour
             GameManager.Instance.ResetGameProgress();
         }
     }
+
+    public void GameCloseBtn(){
+        Application.Quit();
+    }
 }
