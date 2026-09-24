@@ -74,11 +74,11 @@ public class BattleManager : MonoBehaviour
     }
 
     /// <summary>
-    /// 하나의 스킬 내에 여러 개의 DamageEffect가 있을 때, 2번째부터는 추가 타격으로 분리하여 실행합니다.
+    /// 하나의 스킬 내에 여러 개의 DamageEffect가 있을 때, 2번째부터는 추가 공격으로 분리하여 실행
     /// </summary>
     private void ProcessEffectChain(BattleCharacter caster, BattleCharacter target, List<SkillEffect> effects, string skillName)
     {
-        // [추가] 신규 효과 체인 실행 전에 모든 캐릭터의 마지막 회피 상태를 초기화하여,
+        // 신규 효과 체인 실행 전에 모든 캐릭터의 마지막 회피 상태를 초기화하여,
         // 공격이 아닌 스킬이나 아이템 사용 시 과거의 빗나감 판정이 영향을 미치지 않도록 방지
         foreach (var bc in allCharacters)
         {
@@ -95,7 +95,7 @@ public class BattleManager : MonoBehaviour
                 damageCount++;
                 if (damageCount > 1)
                 {
-                    // 2번째 이후의 데미지 이펙트는 추가 행동 큐에 삽입 (시각적 분리)
+                    // 2번째 이후의 데미지 이펙트는 '추가 공격' 이니 추가 행동 행동 큐에 삽입
                     EnqueueExtraAction(ExecuteExtraDamageRoutine(caster, target, dmgEff, skillName));
                     continue;
                 }
@@ -441,7 +441,7 @@ public class BattleManager : MonoBehaviour
             // 턴 시작시 행동게이지 초기화 (여기서 실제 값 0으로 리셋)
             gaugeSystem.OnTurnStart(currentActor);
 
-            // [추가] 턴 시작 시 발동된 패시브 처리
+            // 턴 시작 시 발동된 패시브 처리
             yield return StartCoroutine(ProcessExtraActions());
 
             // [추가] 기절(Stun) 또는 수면(Sleep) 체크
@@ -519,15 +519,15 @@ public class BattleManager : MonoBehaviour
                 yield return new WaitUntil(() => State == BattleState.Idle || State == BattleState.Win || State == BattleState.Lose);
             }
 
-            // [수정] 승패가 결정되었더라도 마지막 행동 캐릭터의 턴 종료 처리를 위해 여기서 break 하지 않음
+            // 승패가 결정되었더라도 마지막 행동 캐릭터의 턴 종료 처리를 위해 여기서 break 하지 않음
 
-            // [수정] 메인 행동 후 발생한 패시브(반격 등) 처리
+            // 메인 행동 후 발생한 패시브(반격 등) 처리
             yield return StartCoroutine(ProcessExtraActions());
 
             // 4. 턴 종료 — 버프 지속시간 차감
             currentActor.OnTurnEnd();
 
-            // [추가] 턴 종료 시 발동된 패시브 처리 (자신의 턴 종료 패시브 등)
+            // 턴 종료 시 발동된 패시브 처리 (자신의 턴 종료 패시브 등)
             yield return StartCoroutine(ProcessExtraActions());
 
             battleUI.SetSideImageVisible(false, currentActor);

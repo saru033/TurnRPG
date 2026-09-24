@@ -707,7 +707,7 @@ public class BattleCharacter
     // -------------------------------------------------------
 
     /// <summary>
-    /// 전투 중 발생하는 전역 이벤트를 구독합니다. (BattleManager에서 호출)
+    /// 전투 중 발생하는 전역 이벤트를 구독
     /// </summary>
     public void SubscribeEvents()
     {
@@ -759,13 +759,13 @@ public class BattleCharacter
         {
             CheckAndQueuePassive(PassiveTriggerType.OnSelfAttacked, attacker);
 
-            // [추가] 회피 성공 시 전용 트리거
+            // 회피 성공 시 전용 트리거
             if (isEvaded)
             {
                 CheckAndQueuePassive(PassiveTriggerType.OnSelfEvaded, attacker);
             }
 
-            // [추가] 크리티컬 피격 시 전용 트리거
+            // 크리티컬 피격 시 전용 트리거
             if (isCritical)
             {
                 CheckAndQueuePassive(PassiveTriggerType.OnSelfCritReceived, attacker);
